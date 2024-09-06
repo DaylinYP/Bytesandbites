@@ -9,10 +9,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 
 </head>
 <style>
-    * {
+* {
     margin: 0;
 }
 
@@ -22,58 +28,73 @@ body {
 }
 
 header {
-  margin: 10px;
+    margin: 5px;
 }
+
 .imagen {
-    margin-right: 8px;
+    margin-right: 5px;
     float: right;
     margin-top: 10px;
 }
 
 /* INICIA NAV */
 nav {
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 120px;
+    background-color: rgb(0, 0, 0);
+    height: 110px;
     width: 100%;
+    font-family: "Quantico", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 nav ul {
     display: flex;
     justify-content: space-around;
+    /* Distribuye espacio entre los elementos */
     align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    /* Asegura que el ul ocupe todo el alto del nav */
 }
 
 nav ul li {
-    display: inline-block;
-    line-height: 20px;
-    margin: 0 7px;
+    margin: 0 20px;
+    /* Ajusta el espacio entre los elementos del menú */
 }
 
 nav ul li a {
     color: white;
-    font-size: 18px;
-    padding: 10px 10px;
+    font-size: 16px;
+    padding: 8px 12px;
+    /* Espacio entre ícono y texto */
     border-radius: 3px;
     text-transform: uppercase;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    /* Alineación vertical del ícono */
 }
 
 li a.active,
 li a:hover {
-    background-color: white;
+    background-color: rgb(255, 194, 10);
     color: black;
     transition: 0.5s;
 }
-.navbar-custom{
+
+.navbar-custom {
     background-color: transparent !important;
     width: 100%;
     padding: 0;
-  }
-  .navbar-form {
-    width: 100%;
+}
+
+.navbar-form {
+    width: 60%;
     display: flex;
     justify-content: center;
-  }
+}
 
 /*FINALIZA NAV*/
 
@@ -98,8 +119,6 @@ li a:hover {
     display: none;
 }
 
-
-
 /* Media Query para pantallas menores a 768px */
 @media screen and (max-width: 1200px) {
     nav {
@@ -108,17 +127,17 @@ li a:hover {
         height: 100px;
         width: 100%;
     }
-    
+
     .checkbtn {
         display: block;
     }
 
     ul {
         position: fixed;
-        width: 95%;
-        height: 85vh;
-        background: #032921;
-        top: 280px;
+        width: 120%;
+        height: 80vh;
+        background: black;
+        top: 140px;
         left: -10%;
         text-align: center;
         transition: all .5s;
@@ -137,10 +156,11 @@ li a:hover {
         font-size: 15px;
     }
 
-    li a.hover,
-    li a.active {
-        background: none;
-        color: rgb(0, 20, 46);
+    li a.active,
+    li a:hover {
+        background-color: rgb(255, 194, 10);
+        color: black;
+        transition: 0.5s;
     }
 
     #check:checked~ul {
@@ -153,13 +173,12 @@ li a:hover {
         align-items: center;
         margin: 20px;
     }
-
 }
 </style>
 
 <body>
+    <section style="background-color:rgb(255, 194, 10); height:40px; width:100%;"></section>
     <div class="contenedor">
-
         <nav>
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
@@ -168,52 +187,61 @@ li a:hover {
             <ul>
                 <li>
                     <header class="header">
-                        <img src="img/logo.jpg" class="imaintecap" width="230px" height="110px">
+                        <img src="logo_path_here" class="logotipo" width="200px" height="100px">
                     </header>
                 </li>
                 <li class="active"><a href="index.html" class="links">Inicio</a></li>
-                <li class=""><a href="" class="links">Quienes Somos</a></li>
-                <li class=""><a href="" class="links">Marcas</a></li>
-                <li class=""><a href="" class="links">Servicio al Cliente</a></li>
-                <li>LOGIN</li>
+                <li><a href="#">Quienes Somos</a></li>
+                <li><a href="#">Marcas</a></li>
+                <li><a href="#">Servicio al Cliente</a></li>
+                <li><a href="#"><i class="bi bi-person-circle"></i> LOGIN</a></li>
+
+                <li>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+                        <button class="btn btn-warning" type="submit">Buscar</button>
+                    </form>
+                </li>
             </ul>
         </nav>
-    </div>
-    <nav class="navbar navbar-light navbar-custom">
-        <div class="navbar-form">
-            <form class="d-flex" style="width: 90%;">
-                <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
-                <button class="btn btn-warning" type="submit">Buscar</button>
-            </form>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active c-item" style="  height: 600px;">
+                    <img src="https://i.pinimg.com/736x/74/f0/96/74f096f35b69e8dec2fdaa087a8e0238.jpg"
+                        class="d-block w-100 c-img" alt="..."
+                        style="height: 100%;object-fit: cover; margin-left:10px; margin-right:30px;">
+                </div>
+                <div class="carousel-item c-item" style="  height: 600px;">
+                    <img src="https://i.pinimg.com/736x/b4/30/93/b430934d47a6a51f14bf4d6d7135271f.jpg"
+                        class="d-block w-100 c-img" alt="..."
+                        style="height: 100%;object-fit: cover; margin-left:10px; margin-right:30px;">
+                </div>
+                <div class="carousel-item c-item" style="  height: 600px;margin-right:30px;">
+                    <img src="https://i.pinimg.com/736x/90/1d/7f/901d7f9e95cd42c8e992ec90f46ff66a.jpg"
+                        class="d-block w-100 c-img" alt="..."
+                        style="height: 100%;object-fit: cover; margin-left:10px; margin-right:30px;">
+                </div>
+                <div class="carousel-item c-item" style="  height: 600px;">
+                    <img src="https://i.pinimg.com/736x/3e/0b/31/3e0b31081759d4351f5d1d985b54ed4e.jpg"
+                        class="d-block w-100" alt="..."
+                        style="height: 100%;object-fit: cover; margin-left:10px; margin-right:30px;">
+                </div>
+                <div class="carousel-item c-item" style="  height: 600px;">
+                    <img src="https://i.pinimg.com/736x/f5/ab/72/f5ab7279bcd5eeaa1fd39b24ef98a36b.jpg"
+                        class="d-block w-100" alt="..."
+                        style="height: 100%;object-fit: cover; margin-left:10px; margin-right:30px;">
+                </div>
+                <div class="carousel-item c-item" style="  height: 600px;">
+                    <img src="https://i.pinimg.com/736x/12/73/80/1273800108bf924d0ea417086529c86d.jpg"
+                        class="d-block w-100" alt="..."
+                        style="height: 100%;object-fit: cover; margin-left:10px; margin-right:30px;">
+                </div>
+            </div>
         </div>
-    </nav>
 
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            </div>
-            <div class="carousel-item">
-                <img src="/img/carrusel1.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="/img/carrusel2.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="img/carrusel3.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-            </div>
-        </div>
+
     </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
