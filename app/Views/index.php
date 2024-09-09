@@ -15,6 +15,8 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
+
+<!--ESTILOS-->
 <style>
     * {
         margin: 0;
@@ -120,29 +122,52 @@
         display: none;
     }
 
-    @keyframes easeOutAnimation {
-        0% {
-            transform: translateX(0);
-        }
+    .slider {
 
-        100% {
-            transform: translateX(0);
-            /* No las mueve fuera de la pantalla */
-        }
+        height: 250px;
+        margin: auto;
+        position: relative;
+        width: 90%;
+        display: grid;
+        place-items: center;
+    }
+
+    .slide-track {
+        display: flex;
+        width: calc(250px * 18);
+    }
+
+    .slide {
+        height: 200px;
+        width: 250px;
+        display: flex;
+        align-items: center;
+        padding: 15px;
     }
 
     .easeout {
-        animation: easeOutAnimation infinite ease-out forwards;
-
+        width: 90%;
     }
 
-    .sectionColaboradores {
-        height: 300px;
-        width: 350px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
+    .slider::before,
+    .slider::after {
+        background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0)100%);
+        content: "";
+        height: 100%;
+        position: absolute;
+        width: 15%;
+        z-index: 2;
+    }
+
+    .slider::before {
+        left: 0;
+        top: 0;
+    }
+
+    .slider::after {
+        right: 0;
+        top: 0;
+        transform: rotateZ(100deg);
     }
 
     .sectionValores {
@@ -196,7 +221,7 @@
     }
 
     .divImagenHistoria {
-        margin-top: 150px;
+        margin-top: 80px;
 
     }
 
@@ -219,17 +244,26 @@
 
     .contenedorRedesInterno {
         height: 700px;
-    
-    }
-    .divRedesInterno1, .divRedesInterno2, .divRedesInterno3 {
-        width: 300px;
-        background-color: purple;
-        height: 100%;
         display: grid;
         grid-template-columns: auto auto auto;
-     
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
 
     }
+
+    .divRedesInterno1,
+    .divRedesInterno2,
+    .divRedesInterno3 {
+        margin-top: 100px;
+        width: 500px;
+        background-color: white;
+        height: 100%;
+
+
+
+    }
+
     @media screen and (max-width: 1250px) {
         nav {
             margin: 20px 0;
@@ -290,23 +324,14 @@
             text-align: center;
         }
 
-        .sectionColaboradores {
-            height: 120px;
-            width: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-
         .sectionValores {
-            height: 200px;
+            height: 300px;
             width: 100%;
-            margin-top: 130px;
+            margin-top: 150px;
             margin-bottom: 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
             align-items: center;
             margin-left: 10px;
@@ -315,14 +340,17 @@
         .divValores1,
         .divValores2 {
             width: 90%;
+            height: 100%;
         }
 
         .divHistoria {
+            height: 80%;
             width: 90%;
             /* Asegurar que no sea tan ancha en pantallas pequeñas */
             margin-left: auto;
             /* Centrar en resoluciones más pequeñas */
             margin-right: auto;
+            margin-top: 180px;
         }
 
         .sectionHistoria {
@@ -336,17 +364,34 @@
             align-items: center;
         }
 
+        .contenedorRedesInterno {
+            height: 500px;
+            display: grid;
+            grid-template-columns: auto;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+
+        }
+
+        .divRedesInterno1,
+        .divRedesInterno2,
+        .divRedesInterno3 {
+            margin-top: 100px;
+            width: 250px;
+        }
+
     }
 </style>
 
 <body>
     <section
         style="background-color:rgb(255, 194, 10); height:40px; width:100%; display: flex; justify-content: center; align-items: center; gap: 15px;">
-        <a href=""><img src="img/26.png" alt="" style="width: 28px; height: 28px;"></a>
-        <a href=""><img src="img/27.png" alt="" style="width: 28px; height: 28px;"></a>
-        <a href=""><img src="img/28.png" alt="" style="width: 28px; height: 28px;"></a>
-        <a href=""><img src="img/29.png" alt="" style="width: 28px; height: 28px;"></a>
-        <a href=""><img src="img/30.png" alt="" style="width: 28px; height: 28px;"></a>
+        <a href=""><img src="<?= base_url('img/26.png') ?>" alt="" style="width: 28px; height: 28px;"></a>
+        <a href=""><img src="<?= base_url('img/27.png') ?>" alt="" style="width: 28px; height: 28px;"></a>
+        <a href=""><img src="<?= base_url('img/28.png') ?>" alt="" style="width: 28px; height: 28px;"></a>
+        <a href=""><img src="<?= base_url('img/29.png') ?>" alt="" style="width: 28px; height: 28px;"></a>
+        <a href=""><img src="<?= base_url('img/30.png') ?>" alt="" style="width: 28px; height: 28px;"></a>
     </section>
     <div class="contenedor">
         <nav>
@@ -376,57 +421,142 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
 
-                <div class="carousel-item active c-item" style="  height: 500px;">
-                    <img src="img/imagen2.jpg" class="d-block w-100 c-img" alt="..."
+                <div class="carousel-item active c-item" style="  height: 800px;">
+                    <img src="<?= base_url('img/promocion1.png') ?>" class="d-block w-100 c-img" alt="..."
                         style="height: 100%;object-fit: cover;  margin-right:30px;">
                 </div>
-                <div class="carousel-item c-item" style="  height: 500px;">
-                    <img src="img/1.png" class="d-block w-100" alt="..."
+                <div class="carousel-item c-item" style="  height: 800px;">
+                    <img src="<?= base_url('img/carrusel12.jpg') ?>" class="d-block w-100" alt="..."
                         style="height: 100%;object-fit: cover;  margin-right:30px;">
                 </div>
-                <div class="carousel-item c-item" style="  height: 500px;">
-                    <img src="img/imagen3.jpg" class="d-block w-100 c-img" alt="..."
+                <div class="carousel-item c-item" style="  height: 800px;">
+                    <img src="<?= base_url('img/promocion2.png') ?>" class="d-block w-100 c-img" alt="..."
                         style="height: 100%;object-fit: cover; margin-right:30px;">
                 </div>
-                <div class="carousel-item c-item" style="  height: 500px;margin-right:30px;">
-                    <img src="img/imagen4.jpg" class="d-block w-100 c-img" alt="..."
+                <div class="carousel-item c-item" style="  height: 800px;">
+                    <img src="<?= base_url('img/carrusel22.jpg') ?>" class="d-block w-100 c-img" alt="..."
                         style="height: 100%;object-fit: cover; margin-right:30px;">
                 </div>
-                <div class="carousel-item c-item" style="  height: 500px;">
-                    <img src="img/2.png" class="d-block w-100" alt="..."
+                <div class="carousel-item c-item" style="  height: 800px;">
+                    <img src="<?= base_url('img/carrusel32.jpg') ?>" class="d-block w-100" alt="..."
                         style="height: 100%;object-fit: cover; margin-right:30px;">
                 </div>
-                <div class="carousel-item c-item" style="  height: 500px;">
-                    <img src="img/imagen5.jpg" class="d-block w-100" alt="..."
+                <div class="carousel-item c-item" style="  height: 800px;">
+                    <img src="<?= base_url('img/promocion3.png') ?>" class="d-block w-100" alt="..."
                         style="height: 100%;object-fit: cover; margin-right:30px;">
                 </div>
-                <div class="carousel-item c-item" style="  height: 500px;">
-                    <img src="img/3.png" class="d-block w-100" alt="..."
+                <div class="carousel-item c-item" style="  height: 800px;">
+                    <img src="<?= base_url('img/carrusel42') ?>" class="d-block w-100" alt="..."
                         style="height: 100%;object-fit: cover; margin-right:30px;">
                 </div>
 
             </div>
         </div>
         <br>
+
+
+
         <h2 class="titulosH2">NUESTROS SERVICIOS</h2>
         <h2 class="titulosH2">COLABORADORES</h2>
-        <section class="sectionColaboradores">
-            <img src="img/colaboradores1.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores2.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores3.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores4.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores5.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores6.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores7.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores8.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores9.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores10.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores11.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colabotadores12.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores13.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores14.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-            <img src="img/colaboradores15.png" alt="" style="height: 100%; object-fit: cover; " class="easeout">
-        </section>
+        <!--IMAGENES-->
+        <div class="slider">
+            <section class="sectionColaboradores slide-track">
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores1.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores2.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores3.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores4.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores5.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores6.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores7.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores8.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores9.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores10.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores11.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colabotadores12.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores13.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores14.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores15.png') ?>" alt="" class="easeout">
+                </div>
+
+
+                <!--IMAGENES DUBLICADAS-->
+
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores1.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores2.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores3.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores4.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores5.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores6.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores7.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores8.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores9.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores10.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores11.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colabotadores12.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores13.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores14.png') ?>" alt="" class="easeout">
+                </div>
+                <div class="slide">
+                    <img src="<?= base_url('img/colaboradores15.png') ?>" alt="" class="easeout">
+                </div>
+            </section>
+        </div>
         <br><br>
         <h2 style="text-align: center;">NUESTROS VALORES</h2>
         <section class="sectionValores">
@@ -468,7 +598,7 @@
                 </p>
             </div>
             <div class="divImagenHistoria">
-                <img src="img/historiafoto.jpg" alt=""
+                <img src=" <?= base_url(' img/historiafoto.jpg') ?> " alt=""
                     style="width:400px; height:300px; object-fit: cover;box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-right: 20px;">
             </div>
         </section>
@@ -485,7 +615,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html
