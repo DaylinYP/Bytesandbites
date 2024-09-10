@@ -23,9 +23,11 @@
     }
 
     body {
-        background-image: linear-gradient(to right bottom, #004417, #06491a, #0d4e1d, #135421, #195924, #226730, #2b753d, #33834a, #409f66, #4cbb83, #58d8a2, #64f6c3);
-        color: hsl(0, 0%, 100%);
-    }
+    background-image: url(https://img.freepik.com/vector-gratis/fondo-geometrico-formas-luz-abstractas-publicidad-comercial_1017-42845.jpg?t=st=1725938037~exp=1725941637~hmac=3d24e9b634ffe66448b0b58fa86066db3ec33046a17d8391ac8d17d6a7d2c859&w=740);
+    background-attachment: fixed;
+    background-size: cover;
+}
+   
 
     .titulosH2 {
         color: rgb(255, 255, 255);
@@ -121,55 +123,24 @@
     #check {
         display: none;
     }
+    .datos{
+    background-color: rgba(252, 252, 252, 0.404) ;       
+    background-attachment: fixed;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 40px;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 2);
+    box-shadow: 0 0 20px  rgba(0, 0, 0, .2);
+ 
+}
+        
+h1{
+    color: rgb(255, 194, 10);
+}
 
-    .slider {
-
-        height: 250px;
-        margin: auto;
-        position: relative;
-        width: 90%;
-        display: grid;
-        place-items: center;
-    }
-
-    .slide-track {
-        display: flex;
-        width: calc(250px * 18);
-    }
-
-    .slide {
-        height: 200px;
-        width: 250px;
-        display: flex;
-        align-items: center;
-        padding: 15px;
-    }
-
-    .easeout {
-        width: 90%;
-    }
-
-    .slider::before,
-    .slider::after {
-        background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0)100%);
-        content: "";
-        height: 100%;
-        position: absolute;
-        width: 15%;
-        z-index: 2;
-    }
-
-    .slider::before {
-        left: 0;
-        top: 0;
-    }
-
-    .slider::after {
-        right: 0;
-        top: 0;
-        transform: rotateZ(100deg);
-    }
-
+  
     .sectionValores {
         height: 250px;
         width: 100%;
@@ -308,7 +279,7 @@
         #check:checked~ul {
             left: 0;
         }
-
+        
         header {
             display: flex;
             flex-direction: column;
@@ -618,4 +589,4 @@
     </script>
 </body>
 
-</html
+</html>
