@@ -11,3 +11,13 @@ class solicitarMaterialesController extends BaseController
 }
 
 
+/*   public function index()
+    {
+        echo view('header');
+        echo view('productos');
+        echo view('footer');
+
+    }
+ */
+
+

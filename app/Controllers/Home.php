@@ -4,11 +4,9 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    public function index()
+    public function index(): string
     {
-        echo view('header');
-        echo view('productos');
-        echo view('footer');
+        return view('index');
 
     }
  
