@@ -16,360 +16,136 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+
 </head>
 
 <!--ESTILOS-->
 <style>
-* {
-    margin: 0;
-}
-
-body {
-    background: white;
-
-
-
-    /* background-image: url(https://img.freepik.com/vector-gratis/fondo-geometrico-formas-luz-abstractas-publicidad-comercial_1017-42845.jpg?t=st=1725938037~exp=1725941637~hmac=3d24e9b634ffe66448b0b58fa86066db3ec33046a17d8391ac8d17d6a7d2c859&w=740);
-        background-attachment: fixed;
-        background-size: cover;
-*/
-}
-
-/* INICIA SLIDER*/
-
-.slider {
-    height: 350px;
-    margin: auto;
-    position: relative;
-    width: 95%;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-
-}
-
-.slide-track {
-    display: flex;
-    width: calc(450px * 18);
-    animation: scroll 40s linear infinite;
-}
-
-.slide-track:hover {
-    animation-play-state: paused;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
+    * {
+        margin: 0;
     }
 
-    100% {
-        transform: translateX(calc(-250px *9));
-    }
-}
+    body {
+        background: white;
+        font-size: 1rem;
 
-.slide {
-    height: 250px;
-    width: 300px;
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    perspective: 100px;
-
-}
-
-.easeout {
-    width: 100%;
-    transition: transform 1s;
-    box-shadow: 5px 2px 20px #2e2e2e;
-}
-
-.easeout:hover {
-    transform: translateZ(20px);
-}
-
-.slider::before,
-.slider::after {
-    background: linear-gradient(to right, rgba(255, 255, 255, 1)0%,
-            rgba(255, 255, 255, 0)100%);
-    content: "";
-    height: 100%;
-    position: absolute;
-    width: 10%;
-    z-index: 2;
-}
-
-.slider::before {
-    left: 0;
-    top: 0;
-}
-
-.slider::after {
-    left: 0;
-    top: 0;
-}
-
-/* TERMINA SLIDER */
-.divValores {
-    background-color: #381d58;
-    height: 110%;
-}
-
-.datos {
-    background-color: rgba(252, 252, 252, 0.404);
-    padding: 30px;
-    margin: auto;
-    margin-top: 100px;
-    border-radius: 40px;
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, 2);
-    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-
-}
-
-.titulosH2 {
-    color: rgb(0, 0, 0);
-    font-family: "Quantico", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    text-align: center;
-}
-
-header {
-    margin: 5px;
-}
-
-.imagen {
-    margin-right: 2px;
-    float: right;
-    margin-top: 10px;
-}
-
-/* INICIA NAV */
-nav {
-    background-color: rgb(0, 0, 0);
-    height: 110px;
-    width: 100%;
-    font-family: "Quantico", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-nav ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-}
-
-nav ul li {
-    margin: 0 20px;
-}
-
-nav ul li a {
-    color: white;
-    font-size: 16px;
-    padding: 8px 12px;
-    border-radius: 3px;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
-li a.active,
-li a:hover {
-    background-color: rgb(255, 194, 10);
-    color: black;
-    transition: 0.5s;
-}
-
-.navbar-custom {
-    background-color: transparent !important;
-    width: 100%;
-    padding: 0;
-}
-
-.navbar-form {
-    width: 60%;
-    display: flex;
-    justify-content: center;
-}
-
-/*FINALIZA NAV*/
-
-/*MENU DE HAMBURGUESA*/
-
-.enlace {
-    position: absolute;
-    padding: 20px 50px;
-}
-
-.checkbtn {
-    font-size: 20px;
-    color: white;
-    float: right;
-    line-height: 80px;
-    margin-right: 40px;
-    cursor: pointer;
-    display: none;
-}
-
-#check {
-    display: none;
-}
-
-.datos,
-.divHistoria {
-    background-color: rgba(212, 212, 212, 0.404);
-    color: rgb(255, 255, 255);
-    background-attachment: fixed;
-    border-radius: 40px;
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, 2);
-    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-
-}
-
-h1 {
-    color: rgb(255, 194, 10);
-}
-
-
-.sectionValores {
-    height: 250px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-
-}
-
-.divValores1,
-.divValores2 {
-    background-color: rgba(212, 212, 212, 0.404);
-    color: rgb(255, 255, 255);
-    height: 100%;
-    width: 650px;
-    border-radius: 30px 0 30px 0;
-    box-shadow: 5px 2px 15px #2e2e2e;
-
-
-
-}
-
-.divHistoria {
-    margin-top: 200px;
-    background-color: rgba(212, 212, 212, 0.404);
-    color: rgb(255, 255, 255);
-    height: 100%;
-    width: 50%;
-    padding: 30px 30px 30px;
-    box-shadow: 5px 2px 15px #2e2e2e;
-    border-radius: 30px 0 30px 0;
-    margin-left: auto;
-    /* Añadir margen automático a la izquierda */
-    margin-right: auto;
-    /* Añadir margen automático a la derecha */
-}
-
-
-.divValores1:hover,
-.divValores2:hover,
-.divHistoria:hover {
-    background-color: rgba(212, 212, 212, 0.5);
-    transition: 0.5s;
-    box-shadow: 5px 2px 15px rgb(49, 48, 48);
-
-}
-
-.sectionHistoria {
-    display: flex;
-    justify-content: space-around;
-}
-
-.divImagenHistoria {
-    margin-top: 200px;
-
-}
-
-h3 {
-    font-family: "Nerko One", cursive;
-    font-weight: 600;
-    font-style: normal;
-    text-shadow: 1px 2px 2px #000000;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 10px;
-
-}
-
-.contenedorRedes {
-    height: 900px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.contenedorRedesInterno {
-    height: 700px;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-
-}
-
-.divRedesInterno1,
-.divRedesInterno2,
-.divRedesInterno3 {
-    margin-top: 100px;
-    width: 500px;
-    background-color: white;
-    height: 100%;
-
-
-
-}
-
-.divColaboradores {
-    background-color: white;
-}
-
-@media screen and (max-width: 1250px) {
-    nav {
-        margin: 20px 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        height: 100px;
-        width: 100%;
     }
 
-    .checkbtn {
-        display: block;
+    header {
+        margin: 5px;
     }
 
-    ul {
-        position: fixed;
-        width: 80%;
-        height: 100vh;
-        background: black;
-        top: 0;
-        left: -100%;
-        text-align: center;
-        transition: all .5s;
+    /* INICIA SLIDER*/
+
+    .slider {
+        height: 350px;
+        margin: auto;
+        position: relative;
+        width: 95%;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+
+    }
+
+    .slide-track {
         display: flex;
-        flex-direction: column;
-        z-index: 1;
+        width: calc(450px * 18);
+        animation: scroll 40s linear infinite;
+    }
+
+    .slide-track:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(calc(-250px *9));
+        }
+    }
+
+    .slide {
+        height: 250px;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        perspective: 100px;
+
+    }
+
+    .easeout {
+        width: 100%;
+        transition: transform 1s;
+        box-shadow: 5px 2px 20px #2e2e2e;
+    }
+
+    .easeout:hover {
+        transform: translateZ(20px);
+    }
+
+    .slider::before,
+    .slider::after {
+        background: linear-gradient(to right, rgba(255, 255, 255, 1)0%,
+                rgba(255, 255, 255, 0)100%);
+        content: "";
+        height: 100%;
+        position: absolute;
+        width: 10%;
+        z-index: 2;
+    }
+
+    .slider::before {
+        left: 0;
+        top: 0;
+    }
+
+    .slider::after {
+        left: 0;
+        top: 0;
+    }
+
+    /* TERMINA SLIDER */
+
+
+    /* INICIA NAV */
+    nav {
+        background-color: rgb(0, 0, 0);
+        height: 110px;
+        width: 100%;
+        font-family: "Quantico", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        height: 100%;
     }
 
     nav ul li {
-        margin: 30px 0;
+        margin: 0 20px;
     }
 
     nav ul li a {
-        font-size: 15px;
+        color: white;
+        font-size: 16px;
+        padding: 8px 12px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
     }
 
     li a.active,
@@ -379,85 +155,394 @@ h3 {
         transition: 0.5s;
     }
 
-    #check:checked~ul {
-        left: 0;
-    }
-
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 10px;
-    }
-
-    .titulosH2 {
-        color: rgb(255, 255, 255);
-        font-family: "Quantico", sans-serif;
-        font-weight: 200;
-        font-style: normal;
-        text-align: center;
-    }
-
-    .sectionValores {
-        height: 300px;
+    .navbar-custom {
+        background-color: transparent !important;
         width: 100%;
-        margin-top: 150px;
-        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .navbar-form {
+        width: 60%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /*FINALIZA NAV*/
+
+    /*MENU DE HAMBURGUESA*/
+
+    .enlace {
+        position: absolute;
+        padding: 20px 50px;
+    }
+
+    .checkbtn {
+        font-size: 20px;
+        color: white;
+        float: right;
+        line-height: 80px;
+        margin-right: 40px;
+        cursor: pointer;
+        display: none;
+    }
+
+    #check {
+        display: none;
+    }
+
+    /*TERMINA MENÚ DE HAMBURGUESA*/
+
+
+    /*INICIA ESTILOS DE CONTENEDOR DE VALORES*/
+    .divValores {
+        background-color: #291444;
+        min-width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 25px;
-        justify-content: center;
         align-items: center;
-        margin-left: 10px;
+        font-size: 1rem;
+        font-family: 'Comfortaa', cursive;
+
+    }
+
+    .datos {
+        background-color: rgba(252, 252, 252, 0.404);
+        padding: 30px;
+        margin: auto;
+        margin-top: 80px;
+        border-radius: 40px;
+        backdrop-filter: blur(20px);
+        border: 2px solid rgba(255, 255, 255, 2);
+        box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+        border-radius: 30px 0 30px 0;
     }
 
     .divValores1,
     .divValores2 {
-        width: 90%;
+        background-color: rgba(212, 212, 212, 0.404);
+        color: rgb(255, 255, 255);
         height: 100%;
+        width: 600px;
+        border-radius: 30px 0 30px 0;
+        box-shadow: 5px 2px 15px #2e2e2e;
     }
 
     .divHistoria {
-        height: 80%;
+        margin-top: 100px;
+        background-color: rgba(212, 212, 212, 0.404);
+        color: rgb(255, 255, 255);
+        height: 100%;
         width: 90%;
-        /* Asegurar que no sea tan ancha en pantallas pequeñas */
-        margin-left: auto;
-        /* Centrar en resoluciones más pequeñas */
-        margin-right: auto;
-        margin-top: 180px;
-    }
-
-    .sectionHistoria {
-        display: grid;
-        grid-template-columns: auto;
-    }
-
-    .divImagenHistoria {
+        margin-bottom: 40px;
+        padding: 30px 30px 30px;
+        box-shadow: 5px 2px 15px #2e2e2e;
+        border-radius: 30px 0 30px 0;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
+    }
+
+
+    .divHistoria:hover,
+    .divValores1:hover,
+    .divValores2:hover {
+        background-color: rgba(201, 201, 201, 0.5);
+        transition: 0.5s;
+        box-shadow: 5px 2px 15px rgb(49, 48, 48);
+    }
+
+    /*TERMINA CONTENEDOR DE VALORES*/
+
+
+    /*INICIA ESTILOS PARA CONTENEDOR DE REDES SOCIALES*/
+    .contenedorRedes {
+        height: 400px;
+        width: 100%;
+        background-color: rgb(0, 0, 0);
     }
 
     .contenedorRedesInterno {
-        height: 500px;
+        height: 100px;
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: auto auto auto;
         align-items: center;
         justify-content: center;
         gap: 40px;
+        font-family: 'Comfortaa', cursive;
 
     }
 
     .divRedesInterno1,
     .divRedesInterno2,
     .divRedesInterno3 {
-        margin-top: 100px;
-        width: 250px;
+        padding: 60px 150px;
+        margin-top: 50px;
+        width: 500px;
+        height: 100%;
+        
+    }
+
+    .bi {
+        color: rgb(255, 194, 10);
+        font-size: 1.4em;
+
+    }
+
+    h5 {
+        color: rgb(255, 194, 10);
+        text-shadow: 1px 2px 2px #000000;
+
+    }
+
+    .pRedes {
+        color: rgb(255, 255, 255);
+        text-shadow: 1px 1px 2px #000000;
+
+    }
+
+    .icon-text {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        /* Espacio entre el ícono y el texto */
+    }
+
+    .icon-text i {
+        font-size: 1.5em;
+    }
+
+    /*ESTILOS DE CONTENEDOR NUESTROS SERVICIOS*/
+    .contenedorServicios {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: space-around;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        background-color: #291444;
+        min-width: 100%;
+
+    }
+
+    .divServicios1,
+    .divServicios3,
+    .divServicios5 {
+        height: 400px;
+        width: 400px;
+        margin-bottom: 40px;
+        position: relative;
+        box-shadow: 5px 8px 12px black;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+    }
+
+    .divServicios2,
+    .divServicios4,
+    .divServicios6 {
+        height: 400px;
+        width: 400px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        position: relative;
+        box-shadow: 5px 8px 12px black;
+
+    }
+
+    .divServicios1 h4,
+    .divServicios2 h4,
+    .divServicios3 h4,
+    .divServicios4 h4,
+    .divServicios5 h4,
+    .divServicios6 h4 {
+        font-size: 2rem;
+        position: absolute;
+        color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .divServicios1:hover,
+    .divServicios2:hover,
+    .divServicios3:hover,
+    .divServicios4:hover,
+    .divServicios5:hover,
+    .divServicios6:hover {
+        transform: scale(1.1);
+        box-shadow: 13px 15px 37px black;
+    }
+
+    /*FINALIZA CONTENEDOR DE SERVICIOS*/
+
+
+    /*******************/
+    h3 {
+        font-size: 1.5rem;
+        font-family: 'Comfortaa', cursive;
+        font-weight: 600;
+        font-style: normal;
+        text-shadow: 1px 2px 2px #000000;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    .titulosH2 {
+        font-size: 5em;
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: black;
+        text-shadow: 4px 2px rgba(201, 201, 201, 0.5);
+    }
+
+    h6 {
+        color: rgb(255, 255, 255);
+        font-family: 'Comfortaa', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+        text-shadow: 1px 2px 2px #000000;
+
+    }
+
+    footer {
+        padding: 20px;
+        background-color: #150a28d8;
+        height: 50px;
+        box-shadow: 5px 2px 15px #2e2e2e;
+        border-radius: 0px 0 30px 30px;
     }
 
 
+    /*INICIA MEDIA QUERIES*/
+    @media screen and (max-width: 1250px) {
+        nav {
+            margin: 20px 0;
+            background-color: rgb(0, 0, 0);
+            height: 100px;
+            width: 100%;
+        }
 
-}
+        .checkbtn {
+            display: block;
+        }
+
+        ul {
+            position: fixed;
+            width: 80%;
+            height: 100vh;
+            background: black;
+            top: 0;
+            left: -100%;
+            text-align: center;
+            transition: all .5s;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        nav ul li {
+            margin: 30px 0;
+        }
+
+        nav ul li a {
+            font-size: 15px;
+        }
+
+        li a.active,
+        li a:hover {
+            background-color: rgb(255, 194, 10);
+            color: black;
+            transition: 0.5s;
+        }
+
+        #check:checked~ul {
+            left: 0;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .titulosH2 {
+        font-size: 2em;
+        color: black;
+        text-shadow: 4px 2px rgba(201, 201, 201, 0.5);
+    }
+
+        .divValores1,
+        .divValores2 {
+            width: 90%;
+            height: 100%;
+        }
+
+        .divHistoria {
+            height: 80%;
+            width: 90%;
+            /* Asegurar que no sea tan ancha en pantallas pequeñas */
+            margin-left: auto;
+            /* Centrar en resoluciones más pequeñas */
+            margin-right: auto;
+            margin-top: 150px;
+        }
+
+        .divValores {
+            display: grid;
+            grid-template-columns: auto;
+        }
+
+        .contenedorRedes {
+            height: 100%;
+            display: grid;
+            grid-template-columns: auto;
+            margin-bottom: 1px;
+        }
+
+        .contenedorRedesInterno {
+            height: 100%;
+            display: grid;
+            grid-template-columns: auto;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+        }
+
+        .divRedesInterno1,
+        .divRedesInterno2,
+        .divRedesInterno3 {
+            width: 100%;
+        }
+
+        .contenedorServicios {
+            display: grid;
+            grid-template-columns: auto;
+
+        }
+
+        .divServicios1,
+        .divServicios3,
+        .divServicios5 {
+            height: 300px;
+            width: 300px;
+            margin-bottom: 40px;
+
+        }
+
+        .divServicios2,
+        .divServicios4,
+        .divServicios6 {
+            height: 300px;
+            width: 300px;
+            margin-bottom: 40px;
+        }
+
+    }
 </style>
 
 <body>
@@ -531,17 +616,41 @@ h3 {
                         style="height: 100%;object-fit: cover; margin-right:30px;">
                 </div>
                 <div class="carousel-item c-item" style="  height: 800px;">
-                    <img src="<?= base_url('img/carrusel42') ?>" class="d-block w-100" alt="..."
+                    <img src="<?= base_url('img/carrusel42.jpg') ?>" class="d-block w-100" alt="..."
                         style="height: 100%;object-fit: cover; margin-right:30px;">
                 </div>
-
             </div>
         </div>
-        <br>
-        <div style="margin-top: 100px;"></div>
 
-
+        <div class="contenedorServicios" style="margin-top: 40px;"></div>
         <h2 class="titulosH2">NUESTROS SERVICIOS</h2>
+        <section class="contenedorServicios">
+            <div class="divServicios1">
+                <img src="<?= base_url('img/reparacioncomputadoras.jpg') ?>" alt="" style="width:100%;height:100%;object-fit: cover;border-radius: 20px;">
+                <h4>Reparación de <br>Computadoras</h4>
+            </div>
+            <div class="divServicios2">
+                <img src="<?= base_url('img/instalaciondesoftware.jpg') ?>" alt="" style="width:100%;height:100%;object-fit: cover;border-radius: 20px;">
+                <h4>Instalación de Software</h4>
+            </div>
+            <div class="divServicios3">
+                <img src="<?= base_url('img/recuperaciondedatos.jpg') ?>" alt="" style="width:100%;height:100%;object-fit: cover;border-radius: 20px;">
+                <h4>Recuperación de Datos</h4>
+            </div>
+            <div class="divServicios4">
+                <img src="<?= base_url('img/migraciondedatos.jpg') ?>" alt="" style="width:100%;height:100%;object-fit: cover;border-radius: 20px;">
+                <h4>Migración de Datos</h4>
+            </div>
+            <div class="divServicios5">
+                <img src="<?= base_url('img/mantenimientopreventivo.jpg') ?>" alt="" style="width:100%;height:100%;object-fit: cover;border-radius: 20px;">
+                <h4>Mantenimiento Preventivo</h4>
+            </div>
+            <div class="divServicios6">
+                <img src="<?= base_url('img/seguridadinformatica.jpg') ?>" alt="" style="width:100%;height:100%;object-fit: cover;border-radius: 20px;">
+                <h4>Seguridad Informática</h4>
+            </div>
+
+        </section>
 
         <div class="divColaboradores">
             <h2 class="titulosH2">COLABORADORES</h2>
@@ -582,7 +691,7 @@ h3 {
                         <img src="<?= base_url('img/colaboradores11.png') ?>" alt="" class="easeout">
                     </div>
                     <div class="slide">
-                        <img src="<?= base_url('img/colabotadores12.png') ?>" alt="" class="easeout">
+                        <img src="<?= base_url('img/colaboradores12.png') ?>" alt="" class="easeout">
                     </div>
                     <div class="slide">
                         <img src="<?= base_url('img/colaboradores13.png') ?>" alt="" class="easeout">
@@ -631,7 +740,7 @@ h3 {
                         <img src="<?= base_url('img/colaboradores11.png') ?>" alt="" class="easeout">
                     </div>
                     <div class="slide">
-                        <img src="<?= base_url('img/colabotadores12.png') ?>" alt="" class="easeout">
+                        <img src="<?= base_url('img/colaboradores12.png') ?>" alt="" class="easeout">
                     </div>
                     <div class="slide">
                         <img src="<?= base_url('img/colaboradores13.png') ?>" alt="" class="easeout">
@@ -645,68 +754,114 @@ h3 {
                 </div>
             </div>
         </div>
-        <br><br>
+
 
         <div class="divValores">
-            <section class="sectionValores">
-                <div class="divValores1 datos">
-                    <h3>MISIÓN</h3>
-                    <P>
-                        Proporcionar servicios técnicos confiables y eficientes en reparación, recuperación de datos y
-                        mantenimiento de sistemas, asegurando que nuestros clientes puedan operar con tranquilidad y
-                        seguridad en un mundo digital.
-                    </P>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 datos divValores1">
+                        <h3>MISIÓN</h3>
+                        <p>
+                            Proporcionar servicios técnicos confiables y eficientes en reparación, recuperación de datos
+                            y
+                            mantenimiento de sistemas, asegurando que nuestros clientes puedan operar con tranquilidad y
+                            seguridad en un mundo digital.
+                        </p>
+                    </div>
+                    <div class="col-6 datos divValores2">
+                        <h3>VISIÓN</h3>
+                        <p>
+                            Ser el referente líder en servicios técnicos en la región, reconocidos por nuestra capacidad
+                            para
+                            resolver problemas complejos de manera rápida y efectiva, y por nuestra dedicación a
+                            mantener la
+                            satisfacción y confianza de nuestros clientes.
+                        </p>
+                    </div>
                 </div>
-                <div class="divValores2 datos">
-                    <h3>VISIÓN</h3>
-                    <p>Ser el referente líder en servicios técnicos en la región, reconocidos por nuestra capacidad para
-                        resolver problemas complejos de manera rápida y efectiva, y por nuestra dedicación a mantener la
-                        satisfacción y confianza de nuestros clientes.</p>
-                </div>
-            </section>
-            <section class="sectionHistoria">
-                <div class="divHistoria">
-                    <h3>HISTORIA</h3>
-                    <p>Bytes and Bites: Innovación y Confiabilidad desde Guatemala
-                        Fundada en 2024 en Guatemala, Bytes and Bites nació de la visión compartida de un grupo de
-                        colaboradores apasionados por la tecnología y la innovación. Desde el principio, su misión fue
-                        clara: ofrecer soluciones técnicas confiables y de alta calidad que facilitaran la vida digital
-                        de
-                        sus clientes.
-                        <br><br>
-                        Lo que comenzó como un pequeño taller se ha transformado en un referente en el campo de la
-                        reparación y recuperación de datos. El equipo de Bytes and Bites está compuesto por expertos en
-                        diversas áreas tecnológicas, todos unidos por un compromiso con la excelencia y un profundo
-                        respeto
-                        por las necesidades de sus clientes.
-                        Con el paso del tiempo, Bytes and Bites se ha convertido en una empresa reconocida por su
-                        capacidad
-                        para resolver problemas complejos, siempre con un enfoque humano y cercano. Desde reparaciones
-                        rápidas hasta la recuperación de datos vitales, la empresa ha demostrado ser un aliado confiable
-                        para particulares y empresas por igual.
-                        Hoy, Bytes and Bites sigue creciendo, manteniendo siempre su compromiso con la innovación y la
-                        satisfacción del cliente, asegurándose de que la tecnología siga siendo una herramienta poderosa
-                        y
-                        accesible para todos.
-                    </p>
-                </div>
-                <div class="divImagenHistoria">
-                    <img src=" <?= base_url(' img/historiafoto.jpg') ?> " alt=""
-                        style="width:450px; height:350px; object-fit: cover;box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-right: 200px;">
-                </div>
-            </section>
-        </div>
-        <br><br>
 
-        <section class="contenedorRedes">
-            <main class="contenedorRedesInterno">
-                <div class="divRedesInterno1"></div>
-                <div class="divRedesInterno2"></div>
-                <div class="divRedesInterno3"></div>
-            </main>
-        </section>
+
+                <div class="row">
+                    <div class="col-8 datos divHistoria">
+                        <h3>HISTORIA</h3>
+                        <p>
+                            Bytes and Bites: Innovación y Confiabilidad desde Guatemala. Fundada en 2024 en Guatemala,
+                            Bytes
+                            and Bites nació de la visión compartida de un grupo de colaboradores apasionados por la
+                            tecnología y la innovación. Desde el principio, su misión fue clara: ofrecer soluciones
+                            técnicas
+                            confiables y de alta calidad que facilitaran la vida digital de sus clientes.
+                            <br><br>
+                            Lo que comenzó como un pequeño taller se ha transformado en un referente en el campo de la
+                            reparación y recuperación de datos. El equipo de Bytes and Bites está compuesto por expertos
+                            en
+                            diversas áreas tecnológicas, todos unidos por un compromiso con la excelencia y un profundo
+                            respeto
+                            por las necesidades de sus clientes.
+                            <br><br>
+                            Hoy, Bytes and Bites sigue creciendo, manteniendo siempre su compromiso con la innovación y
+                            la
+                            satisfacción del cliente, asegurándose de que la tecnología siga siendo una herramienta
+                            poderosa y
+                            accesible para todos.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
+    <section class="contenedorRedes">
+        <main class="contenedorRedesInterno">
+            <div class="divRedesInterno1">
+                <div>
+                    <h5>¡CONTÁCTANOS!</h5>
+                    <div class="icon-text">
+                        <i class="bi bi-person-fill"></i>
+                        <h6>Atención al Cliente</h6>
+                    </div>
+                    <p class="pRedes">Lunes a Viernes de 8 a 16hrs.<br>
+                        (502) 2329-0000</p>
+                </div>
+                <div>
+                    <div class="icon-text">
+                        <i class="bi bi-whatsapp"></i>
+                        <h6>Whatsapp</h6>
+                    </div>
+                    <p class="pRedes">Lunes a Viernes de 8 a 16hrs.<br>
+                        (502) 5844-0000</p>
+                </div>
+            </div>
+            <div class="divRedesInterno2">
+                <div>
+                    <h5>REDES SOCIALES</h5>
+                    <i class="bi bi-instagram"></i>
+                    <i class="bi bi-envelope-fill"></i>
+                    <i class="bi bi-whatsapp"></i>
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-geo-alt"></i>
+                </div>
+                <div>
+                    <p class="pRedes">
+                        2326-0202 <br>
+                        6 avenida 14-12 Zona 9, <br> Ciudad de Guatemala
+                        <br> contactcenter@bytesandbits.com.gt
+                    </p>
+                </div>
+            </div>
+            <div class="divRedesInterno3">
+                <h5>Empleo</h5>
+                <button type="button" class="btn btn-warning">Aplica aquí!</button>
+            </div>
+        </main>
+    </section>
+
+    </div>
+    <footer>
+        <h6>Creado por: GRUPO #1</h6>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
