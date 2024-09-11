@@ -279,7 +279,7 @@
         margin-top: 50px;
         width: 500px;
         height: 100%;
-        
+
     }
 
     .bi {
@@ -390,7 +390,7 @@
     }
 
     .titulosH2 {
-        font-size: 5em;
+        font-size: 2.8em;
         text-align: center;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         color: black;
@@ -470,10 +470,10 @@
         }
 
         .titulosH2 {
-        font-size: 2em;
-        color: black;
-        text-shadow: 4px 2px rgba(201, 201, 201, 0.5);
-    }
+            font-size: 2em;
+            color: black;
+            text-shadow: 4px 2px rgba(201, 201, 201, 0.5);
+        }
 
         .divValores1,
         .divValores2 {
@@ -853,7 +853,7 @@
             </div>
             <div class="divRedesInterno3">
                 <h5>Empleo</h5>
-                <button type="button" class="btn btn-warning">Aplica aquí!</button>
+                <button type="button" class="btn btn-danger"><b>Aplica aquí!</b></button>
             </div>
         </main>
     </section>
