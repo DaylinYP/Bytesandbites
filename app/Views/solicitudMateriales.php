@@ -202,7 +202,7 @@
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
                         <i class="lni lni-user"></i>
-                        <span>Profile</span>
+                        <span>Perfil del técnico</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -243,7 +243,7 @@
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
                         <i class="lni lni-cog"></i>
-                        <span>Setting</span>
+                        <span>Ajustes</span>
                     </a>
                 </li>
             </ul>
@@ -336,12 +336,12 @@
                             </div>
                             
                         </div>
+                        </section>
 
-
-                        <div class="row">
+                        <div class="row py-4">
                         <div class="col-4">
                             <h1 class="titulo">
-                                Datos del Servicio
+                                Datos de la orden
                             </h1>
                         </div>
                         <div class="col">
@@ -349,7 +349,6 @@
                         </div>
                     </div>
                     <section class="form-fondo">
-                      
                         <div class="col">
                                 <label for="txt_id_orden" class="pb-3" class="texto">Ingrese el ID</label>
                                 <input type="text" name="txt_id_orden" class="form-control" class="texto" placeholder="Ingrese el ID">
@@ -363,13 +362,13 @@
                                 <label for="txt_observaciones_orden" class="pb-3">Observaciones:</label>
                                 <textarea name="txt_observaciones_orden" class="form-control" style="height: 150px;" id=""></textarea>
                             </div>
-                            
+                            </section>  
                      
                        
         </div>
         <hr>
 
-        </section>
+        
 
 
         </form>

@@ -338,6 +338,7 @@
                             <label for="txt_usuario" class="pb-3">Especificaciones:</label>
                             <textarea name="" class="form-control" id=""></textarea>
                         </div>
+                        </div>
                         <div class="row pt-4">
                             <div class="col">
                                 <label for="txt_usuario" class="pb-3">Observaciones:</label>
