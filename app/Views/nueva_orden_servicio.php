@@ -13,27 +13,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="icon" href="<?= base_url('img/favicon.ico') ?>" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <style>
         * {
             margin: 0;
         }
-
+       
         .form-fondo {
-            background-color: rgba(252, 252, 252, 0.404);
+            background-color: rgba(252, 252, 252, 0.404) ;       
             padding: 30px;
             border-radius: 40px;
             backdrop-filter: blur(20px);
             border: 2px solid rgba(255, 255, 255, 2);
-            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-
+            box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+          
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-
+      
         a {
             text-decoration: none;
         }
@@ -48,7 +46,7 @@
         }
 
         body {
-            font-family: 'Comfortaa', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         .wrapper {
@@ -57,25 +55,16 @@
 
         .main {
             background-image: url(https://img.freepik.com/vector-gratis/fondo-geometrico-formas-luz-abstractas-publicidad-comercial_1017-42845.jpg?t=st=1725938037~exp=1725941637~hmac=3d24e9b634ffe66448b0b58fa86066db3ec33046a17d8391ac8d17d6a7d2c859&w=740);
-
+            
             background-size: cover;
             width: 100%;
             overflow: hidden;
             transition: all 0.35s ease-in-out;
         }
 
-        .titulo {
-            font-family: "Quantico", sans-serif;
-            font-size: xx-large;
-        }
-
-        .texto {
-            font-family: "Comfortaa", sans-serif;
-        }
-
 
         #sidebar {
-            height: 100vh;
+            height: 100vh; 
             overflow-y: auto;
             position: sticky;
             width: 70px;
@@ -183,7 +172,8 @@
             transform: rotate(45deg);
             transition: all .2s ease-out;
         }
-    </style>
+        
+        </style>
 
 </head>
 
@@ -195,7 +185,7 @@
                     <i class="lni lni-grid-alt"></i>
                 </button>
                 <div class="sidebar-logo">
-                    <a href="#" class="titulo">Bytes & Bits</a>
+                    <a href="#">Bytes & Bits</a>
                 </div>
             </div>
             <ul class="sidebar-nav">
@@ -259,8 +249,8 @@
                 <form action="#">
                     <div class="row">
                         <div class="col-4">
-                            <h1 class="titulo">
-                                Datos del Técnico
+                            <h1>
+                                Datos del Cliente
                             </h1>
                         </div>
                         <div class="col">
@@ -269,26 +259,47 @@
                     </div>
                     <section class="form-fondo">
                         <div class="row pt-4">
-                        <div class="col">
-                                <label for="txt_id_tecnico" class="pb-3" class="texto">Busque su ID</label>
-                                <input type="text" name="txt_id_tecnico" class="form-control" class="texto" placeholder="Ingrese su ID">
+                            <div class="col">
+                                <label for="txt_usuario" class="pb-3">Primer Nombre:</label>
+                                <input type="text" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
                             </div>
                             <div class="col">
-                                <label for="txt_nombre_tecnico" class="pb-3" class="texto">Nombre:</label>
-                                <input type="text" name="txt_nombre_tecnico" class="form-control"  class="texto" readonly>
+                                <label for="txt_usuario" class="pb-3">Segundo Nombre:</label>
+                                <input type="text" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
+                            </div>
+                        </div>
+                        <div class="row py-4">
+                            <div class="col">
+                                <label for="txt_usuario" class="pb-3">Primer Apellido:</label>
+                                <input type="text" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
                             </div>
                             <div class="col">
-                                <label for="txt_apellido_tecnico" class="pb-3" class="texto">Apellido:</label>
-                                <input type="text" name="txt_apellido_tecnico" class="form-control" class="texto" readonly>
+                                <label for="txt_usuario" class="pb-3">Segundo Apellido:</label>
+                                <input type="text" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
                             </div>
-                       
-                       
-                       
+                        </div>
+                        <div class="row pb-4">
+                            <div class="col">
+                                <label for="txt_usuario" class="pb-3">Email:</label>
+                                <input type="text" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
+                            </div>
+                            <div class="col">
+                                <label for="txt_usuario" class="pb-3">Teléfono:</label>
+                                <input type="text" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
+                            </div>
+                        </div>
+                        <div class="row pb-4">
+                            <div class="col">
+                                <label for="txt_usuario" class="pb-3">NIT:</label>
+                                <input type="text" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
+                            </div>
+                        
+                        </div>
                     </section>
                     <div class="row py-4">
                         <div class="col-4">
-                            <h1 class="titulo">
-                                Material a solicitar
+                            <h1>
+                                Datos del Equipo
                             </h1>
                         </div>
                         <div class="col">
@@ -298,84 +309,65 @@
                     <section class="form-fondo">
                         <div class="row pt-4">
                             <div class="col">
-                                <label for="txt_id_material" class="pb-3">Código del material</label>
-                                <input type="text" name="txt_id_material" class="form-control" placeholder="Ingrese el código del material">
+                                <label for="txt_usuario" class="pb-3">Tipo de Equipo:</label>
+                                <input type="text" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
                             </div>
                             <div class="col">
-                                <label for="txt_marca_material" class="pb-3">Marca:</label>
-                                <input type="text" name="txt_marca_material" class="form-control"  readonly>
+                                <label for="txt_usuario" class="pb-3">Marca:</label>
+                                <input type="text" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
                             </div>
-                            
-                        </div>
-                        
-                        <div class="col py-4">
-                                <label for="txt_nombre_material" class="pb-3">Nombre:</label>
-                                <input type="text" name="txt_nombre_material" class="form-control"  readonly>
+                            <div class="col">
+                                <label for="txt_usuario" class="pb-3">Modelo:</label>
+                                <input type="text" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
                             </div>
-
-                        <div class="col pb-4">
-                            <label for="txt_cantidad_material" class="pb-3">Cantidad:</label>
-                            <input type="number" name="txt_cantidad_material" class="form-control" id="txt_cantidad_material" placeholder="Ingrese la cantidad de material que necesita en ENTEROS"></input>
                         </div>
-                        <div class="col py-4">
-                            <label for="txt_fecha_material" class="pb-3">Fecha de solicitud:</label>
-                            <input type="date" name="txt_fecha_material" class="form-control" id="txt_fecha_material"></>
-                        </div>
-                        
                         <div class="col py-4">
                             <label for="txt_usuario" class="pb-3">Descripción:</label>
                             <textarea name="" class="form-control" id=""></textarea>
                         </div>
-
-
                     
+                    
+                        <div class="col pb-4">
+                            <label for="txt_usuario" class="pb-3">Evaluación:</label>
+                            <textarea name="" class="form-control" id=""></textarea>
+                        </div>
+                        
+                    
+                    
+                        <div class="col pb-4">
+                            <label for="txt_usuario" class="pb-3">Especificaciones:</label>
+                            <textarea name="" class="form-control" id=""></textarea>
+                        </div>
                         <div class="row pt-4">
                             <div class="col">
                                 <label for="txt_usuario" class="pb-3">Observaciones:</label>
                                 <textarea name="" class="form-control" style="height: 150px;" id=""></textarea>
                             </div>
+                            <div class="col">
+                                <div class="row ">
+                                    <div class="col">
+                                        <label for="txt_usuario" class="pb-">Fecha de Ingreso:</label>
+                                        <input type="date" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
+                                    </div>
+                                </div>
+                                <div class="row pt-4"></div>
+                                    <div class="col">
+                                        <label for="txt_usuario" class="pb-3">Fecha de Entrega Estimada:</label>
+                                        <input type="date" name="txt_usuario" class="form-control" placeholder="Ingrese su Usuario">
+                                    </div>
+                                </div>
+                            </div>
                             
                         </div>
+                        <hr>
+                        
+                    </section>
+                    
 
+                </form>
 
-                        <div class="row">
-                        <div class="col-4">
-                            <h1 class="titulo">
-                                Datos del Servicio
-                            </h1>
-                        </div>
-                        <div class="col">
-                            <hr>
-                        </div>
-                    </div>
-                    <section class="form-fondo">
-                      
-                        <div class="col">
-                                <label for="txt_id_orden" class="pb-3" class="texto">Ingrese el ID</label>
-                                <input type="text" name="txt_id_orden" class="form-control" class="texto" placeholder="Ingrese el ID">
-                            </div>
-                            <div class="col">
-                                <label for="txt_estado_orden" class="pb-3" class="texto">Estado:</label>
-                                <input type="text" name="txt_estado_orden" class="form-control"  class="texto" readonly>
-                            </div>
-                            <div class="row pt-4">
-                            <div class="col">
-                                <label for="txt_observaciones_orden" class="pb-3">Observaciones:</label>
-                                <textarea name="txt_observaciones_orden" class="form-control" style="height: 150px;" id=""></textarea>
-                            </div>
-                            
-                     
-                       
+            </main>
         </div>
-        <hr>
-
-        </section>
-
-
-        </form>
-
-        </main>
-    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
@@ -384,8 +376,8 @@
     <script>
         const hamBurger = document.querySelector(".toggle-btn");
 
-        hamBurger.addEventListener("click", function() {
-            document.querySelector("#sidebar").classList.toggle("expand");
+        hamBurger.addEventListener("click", function () {
+        document.querySelector("#sidebar").classList.toggle("expand");
         });
     </script>
 </body>

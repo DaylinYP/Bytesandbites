@@ -1,10 +1,46 @@
-#encabezado{
-    padding: 2px;
-    margin: 10px;
-}
-h1 {
+h1{
     font-family: 'Quantico', sans-serif;
 }
+
+h2{
+    font-family: 'Quantico', sans-serif;
+}
+h3 {
+    font-family: 'Quantico', sans-serif;
+}
+h4 {
+    font-family: 'Quantico', sans-serif;
+}
+
+.titulos {
+    font-family: 'Quantico', sans-serif;
+}
+
+h5 {
+    font-family: 'Quantico', sans-serif;
+}
+
 p {
     font-family: 'Comfortaa', sans-serif;
-}  
+    font-weight:bolder;
+}
+.texto_cuerpo {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight:bolder;
+}
+
+#encabezado {
+    padding-top: 5%;
+    justify-content: space-around;
+    text-align: right;
+    padding-bottom: 5%;
+}
+.titulo{
+    padding-left: 12%;
+    text-align: left;
+}
+.quantico-regular {
+    font-family: "Quantico", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
