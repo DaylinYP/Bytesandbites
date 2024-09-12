@@ -4,13 +4,13 @@
 
 
 <a class="btn btn-outline-warning shadow-lg p-3 mb-5 bg-body rounded botonRegresar "
-    href="<?php echo base_url('index') ?>" role="button"><i class="bi bi-arrow-left-square-fill">
+    href="<?php echo base_url('vistaClientes/index') ?>" role="button"><i class="bi bi-arrow-left-square-fill">
         Regresar</i></a>
 
 
 <div class="contenedor">
-<section style="margin-top: 20%;">
-    <h1 class="h1Bienvenidos">Bienvenidos</h1>
+<section class="encabezadoBienvenidos" style="margin-top: 20%;">
+    <h1 class="h1Bienvenidos">Bienvenido!</h1>
     <p class="pBienvenidos">Si no tienes una cuenta con nosotros, <br> porfavor llena los campos con tus datos para crear una cuenta con nosotros.</p>
 </section>
     <section class="formulario1">
@@ -45,18 +45,10 @@
                     <input type="number" required id="nit" name="nit">
                     <label for="nit">NIT</label>
                 </div>
-                <button type="button" class="btn btn-warning botonRegistrarse">Regístrate!</button>
-            </form>
+                <button type="submit" class="btn btn-warning botonRegistrarse">Regístrate!</button>
+                </form>
         </article>
     </section>
 </div>
 <?php echo $this->endSection(); ?>
 
-
-
-<?php echo $this->section('scripts'); ?>
-<script>
-
-</script>
-
-<?php echo $this->endSection(); ?>
