@@ -6,8 +6,8 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        $data = ['titulo' => 'Inicio'];
-        return view('vistaClientes/index', $data);
+        $data = ['titulo' => 'Iniciar Sesión'];
+        return view('vistaClientes/form_inicio_sesion', $data);
 
     }
  
