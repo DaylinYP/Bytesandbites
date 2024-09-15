@@ -23,7 +23,7 @@
 <body>
 
 
-<?php echo $this->renderSection("contenido")?>
+<?php echo $this->renderSection("content")?>
 
 
 
@@ -72,8 +72,6 @@
             </div>
         </main>
     </section>
-
-    </div>
     <footer>
         <h6>Creado por: GRUPO #1</h6>
     </footer>

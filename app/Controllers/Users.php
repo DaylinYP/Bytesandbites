@@ -1,11 +1,12 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Models\UsersModel; // Importar el modelo correctamente
 
 class Users extends BaseController
 {
+    protected $helpers = ['form'];
+
     public function index(): string
     {
         $data = ['titulo' => 'Registro'];
@@ -20,10 +21,10 @@ class Users extends BaseController
             'txtPrimerApellido' => 'required|max_length[60]',
             'txtSegundoApellido' => 'max_length[60]',
             'txtEmail' => 'required|max_length[150]|valid_email|is_unique[clientes.email]',
-            'txtTelefono' => 'required|max_length[8]',
+            'txtTelefono' => 'required|max_length[8]', // Revisa si 8 es adecuado para el país
             'txtNit' => 'required|max_length[13]',
             'txtContrasenia' => 'required|max_length[50]|min_length[5]',
-            'txtReContrasenia' => 'matches[txtContrasenia]',
+            'txtReContrasenia' => 'required|matches[txtContrasenia]|max_length[50]|min_length[5]', // Agregar validación de longitud
         ];
 
         // Validación de los campos
@@ -51,7 +52,7 @@ class Users extends BaseController
             'email' => $post['txtEmail'],
             'nit' => $post['txtNit'],
             'contrasenia' => password_hash($post['txtContrasenia'], PASSWORD_DEFAULT),
-            'active' => 0,
+            'activacion' => 0,
             'activation_token' => $token
         ]);
 
@@ -71,17 +72,20 @@ class Users extends BaseController
         $email->send();
 
         // Mostrar mensaje de éxito
-        return $this->showMessage('Registro exitoso', 'Revisa tu correo electrónico para activar tu cuenta.');
+        $title = 'Registro exitoso';
+        $message = 'Revisa tu correo electrónico para activar tu cuenta.';
+
+        return $this->showMessage($title, $message);
     }
 
     public function activateUser($token)
     {
         $userModel = new UsersModel();
-        $user = $userModel->where(['activation_token' => $token, 'active' => 0])->first();
+        $user = $userModel->where(['activation_token' => $token, 'activacion' => 0])->first(); // 'active' => 'activacion'
 
         if ($user) {
             $userModel->update($user['id'], [
-                'active' => 1,
+                'activacion' => 1,
                 'activation_token' => ''
             ]);
             return $this->showMessage('Cuenta activada', 'Tu cuenta ha sido activada.');
