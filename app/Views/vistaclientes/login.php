@@ -1,4 +1,4 @@
-<?php echo $this->extend('plantilla/layout'); ?>
+<?php echo $this->extend('layout/layout_registro'); ?>
 
 <?php echo $this->section('contenido'); ?>
 
