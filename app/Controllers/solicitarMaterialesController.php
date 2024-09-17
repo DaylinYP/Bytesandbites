@@ -6,7 +6,7 @@ class solicitarMaterialesController extends BaseController
 {
     public function solicitarMateriales()
     {
-        return view('solicitudMateriales');
+        return view('vistaTecnico/solicitudMateriales');
     }
 }
 

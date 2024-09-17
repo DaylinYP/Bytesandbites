@@ -19,4 +19,7 @@ $routes->get('iniciodesesion', 'Login::index');
 /*Ruta para enviar el formulario*/
 $routes->post('auth', 'Login::auth');
 
+
+/*VISTA TÉCNICO */
 $routes ->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales');
+$routes ->get('ordenesDeServicio', 'ordenesDeServicioController::ordenesDeServicio');
