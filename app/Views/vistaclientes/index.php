@@ -271,9 +271,4 @@
 
 
 
-<?php echo $this->section('scripts'); ?>
-<script>
-   
-</script>
 
-<?php echo $this->endSection(); ?>
