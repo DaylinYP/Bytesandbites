@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitud de Materiales</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <title>Orden de Servicio</title>
+    
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -16,22 +16,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="icon" href="<?=base_url('img/favicon.ico') ?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?= base_url('css/css_form_material.css') ?>">
-
+    <link rel="stylesheet" href="<?php echo base_url('css/css_form_material.css');?>">
         
-
+    <!--
     <style>
         * {
             margin: 0;
         }
 
         .form-fondo {
-            background-color: rgba(58, 14, 94, 0.568);
+            background-color: rgba(252, 252, 252, 0.404);
             padding: 30px;
             border-radius: 40px;
-            backdrop-filter: blur(55px);            border: 2px solid rgba(255, 255, 255, 2);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 2);
             box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-            color:white;
 
         }
 
@@ -53,7 +52,6 @@
 
         body {
             font-family: 'Comfortaa', sans-serif;
-            background-color:white;
         }
 
         .wrapper {
@@ -61,25 +59,23 @@
         }
 
         .main {
-            
+            background-image: url(https://img.freepik.com/vector-gratis/fondo-geometrico-formas-luz-abstractas-publicidad-comercial_1017-42845.jpg?t=st=1725938037~exp=1725941637~hmac=3d24e9b634ffe66448b0b58fa86066db3ec33046a17d8391ac8d17d6a7d2c859&w=740);
+
             background-size: cover;
             width: 100%;
             overflow: hidden;
             transition: all 0.35s ease-in-out;
         }
+
         .titulo {
             font-family: "Quantico", sans-serif;
-            font-size: 60px;
+            font-size: xx-large;
         }
 
         .texto {
             font-family: "Comfortaa", sans-serif;
         }
 
-        .boton{
-            width: 80%;
-            font-size:xx-large;
-        }
 
         #sidebar {
             height: 100vh;
@@ -190,19 +186,19 @@
             transform: rotate(45deg);
             transition: all .2s ease-out;
         }
-        
     </style>
-
+-->
 </head>
 
 <body>
+<?=base_url('css/css_form_material.css');?>
 
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
                 <button class="toggle-btn" type="button">
                     <i class="lni lni-grid-alt"></i>
-                   
+
                 </button>
                 <div class="sidebar-logo">
                     <a href="#" class="titulo">Bytes & Bits</a>
@@ -217,17 +213,16 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                    <i class="lni lni-layout"></i>
-                        <span> Órdenes de servicio</span>
+                        <i class="lni lni-agenda"></i>
+                        <span> Nueva Orden de Servicio</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                    <i class="lni lni-layout"></i>
-                        <span> Solicitud de Materiales</span>
+                        <i class="lni lni-popup"></i>
+                        <span>Ordenes de Servicio</span>
                     </a>
                 </li>
-               
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
@@ -265,7 +260,7 @@
                 </a>
             </div>
         </aside>
-        <div class="main p-3 main">
+        <div class="main p-3">
             <main class="container">
                 <form action="nombre">
                     <div class="row">
@@ -347,12 +342,6 @@
                             </div>
                             
                         </div>
-
-                        <div class="row pt-4">
-                        <div class="col">
-                        <button type="submit" class="btn btn-warning" id="btnAgregarMaterial" name="btnAgregarMaterial"><i class="bi bi-plus-circle-fill"></i> Agregar material </button>
-                        </div>
-                        </div>
                         </section>
 
                         <div class="row py-4">
@@ -380,13 +369,6 @@
                                 <textarea name="txt_observaciones_orden" class="form-control" style="height: 150px;" id=""></textarea>
                             </div>
                             </section>  
-
-                            <div class="row pt-4">
-                            <div class="col text-center">
-                        
-                        <button type="submit" class="btn btn-warning boton" id="btnSolicitarMaterial" name="btnSolicitarMaterial"><i class="bi bi-check2"></i> Ordenar material </button>
-                        </div>
-                        </div>
                             </form>
 
 </main>         
@@ -394,6 +376,10 @@
         </div>
         <hr>
 
+        
+
+
+        
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
@@ -411,4 +397,4 @@
     </script>
 </body>
 
-</html> 
+</html>
