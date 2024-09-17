@@ -1,6 +1,6 @@
-<?php echo $this->extend('plantilla/layout'); ?>
+<?php echo $this->extend('layout/template'); ?>
 
-<?php echo $this->section('contenido'); ?>
+<?php echo $this->section('content'); ?>
 <section
     style="background-color:rgb(255, 194, 10); height:40px; width:100%; display: flex; justify-content: center; align-items: center; gap: 15px;">
     <a href="" class="icon-img"><img src="<?= base_url('img/26.png') ?>"
@@ -271,9 +271,4 @@
 
 
 
-<?php echo $this->section('scripts'); ?>
-<script>
-   
-</script>
 
-<?php echo $this->endSection(); ?>
