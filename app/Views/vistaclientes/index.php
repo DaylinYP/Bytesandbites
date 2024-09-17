@@ -31,11 +31,10 @@
                     <img src="" class="logotipo" width="250px" height="100px">
                 </header>
             </li>
-            <li class="active"><a href="index.html" class="links">Inicio</a></li>
-            <li><a href="#">Quienes Somos</a></li>
-            <li><a href="#">Marcas</a></li>
-            <li><a href="#">Registrarse</a></li>
-            <li><a href="#"><i class="bi bi-person-circle"></i> LOGIN</a></li>
+            <li class="active"><a href="<?= base_url('index')?>" class="links">Inicio</a></li>
+            <li><a href="<?= base_url('quienes_somos')?>">Quienes Somos</a></li>
+            <li><a href="<?= base_url('registrarse')?>">Registrarse</a></li>
+            <li><a href="<?= base_url('login')?>"><i class="bi bi-person-circle"></i> LOGIN</a></li>
             <li>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
