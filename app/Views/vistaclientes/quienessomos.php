@@ -31,7 +31,7 @@
                     <img src="" class="logotipo" width="250px" height="100px">
                 </header>
             </li>
-            <li class="active"><a href="<?= base_url('index') ?>" class="links">Inicio</a></li>
+            <li class="active"><a href="<?= base_url('regresar_Home') ?>" class="links">Inicio</a></li>
             <li><a href="<?= base_url('quienes_somos') ?>">Quienes Somos</a></li>
             <li><a href="<?= base_url('registrarse') ?>">Registrarse</a></li>
             <li><a href="<?= base_url('login') ?>"><i class="bi bi-person-circle"></i> LOGIN</a></li>

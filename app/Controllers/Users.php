@@ -18,7 +18,7 @@ class Users extends BaseController
         $rules = [
             'txtPrimerNombre' => [
                 'label' => 'Primer Nombre',
-                'rules' => 'required|max_length[60]'
+                'rules' => 'is_unique|required|max_length[60]'
             ],
             'txtSegundoNombre' => [
                 'label' => 'Segundo Nombre',
@@ -46,7 +46,7 @@ class Users extends BaseController
             ],
             'txtContrasenia' => [
                 'label' => 'Contraseña',
-                'rules' => 'required|max_length[50]|min_length[5]'
+                'rules' => 'required|max_length[40]|min_length[5]'
             ],
             'txtReContrasenia' => [
                 'label' => 'Confirmar Contraseña',
@@ -54,7 +54,7 @@ class Users extends BaseController
             ]
         ];
         
-
+    
         // Validación de los campos
         if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
@@ -66,7 +66,7 @@ class Users extends BaseController
         $post = $this->request->getPost([
             'txtPrimerNombre', 'txtSegundoNombre',
             'txtPrimerApellido', 'txtSegundoApellido',
-            'txtEmail', 'txtTelefono', 'txtNit', 'txtContrasenia'
+            'txtEmail', 'txtContrasenia', 'txtTelefono', 'txtNit'
         ]);
 
         // Generar token de activación
@@ -79,8 +79,8 @@ class Users extends BaseController
             'primer_apellido' => $post['txtPrimerApellido'],
             'segundo_apellido' => $post['txtSegundoApellido'],
             'email' => $post['txtEmail'],
-            'nit' => $post['txtNit'],
             'contrasenia' => password_hash($post['txtContrasenia'], PASSWORD_DEFAULT),
+            'nit' => $post['txtNit'],
             'activacion' => 0,
             'activation_token' => $token
         ]);

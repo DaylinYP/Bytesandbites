@@ -1,8 +1,9 @@
 <?php echo $this->extend('layout/layout_registro'); ?>
 
+
 <?php echo $this->section('content'); ?>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<a class="btn btn-outline-warning shadow-lg p-3 mb-5 bg-body rounded botonRegresar"
+    <a class="btn btn-outline-warning shadow-lg p-3 mb-5 bg-body rounded botonRegresar"
    href="<?php echo base_url('regresar_Home') ?>" role="button">
     <i class="bi bi-arrow-left-square-fill"> Regresar</i>
 </a>

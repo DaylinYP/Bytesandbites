@@ -21,7 +21,9 @@
 <body>
 
     <?php echo $this->renderSection("content")?>
-<div style="margin-top: 50px;"></div>
+
+
+
     <section class="contenedorRedes">
         <main class="contenedorRedesInterno">
             <div class="divRedesInterno1">
