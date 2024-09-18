@@ -3,7 +3,7 @@
 }
 
 body {
-    background: white;
+    background-image: linear-gradient(to left, rgb(207, 207, 207), rgb(255, 255, 255));
     font-size: 1rem;
 
 }
@@ -519,3 +519,5 @@ footer {
     }
 
 }
+
+

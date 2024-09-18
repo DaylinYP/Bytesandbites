@@ -1,11 +1,12 @@
 <?php echo $this->extend('layout/layout_registro'); ?>
 
-<?php echo $this->section('contenido'); ?>
+<?php echo $this->section('content'); ?>
 
+<a class="btn btn-outline-warning shadow-lg p-3 mb-5 bg-body rounded botonRegresar"
+    href="<?php echo base_url('regresar_Home') ?>" role="button">
+    <i class="bi bi-arrow-left-square-fill"> Regresar</i>
+</a>
 
-    <button type="button" class="btn btn-outline-warning btn-lg botonRegresar">
-        <i class="bi bi-arrow-left-square-fill">  Regresar</i>
-    </button>
     <div class="contenedor">
         <h1>BIENVENIDO!</h1>
         <p>Porfavor, ingrese sus datos</p>

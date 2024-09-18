@@ -16,21 +16,50 @@ class Users extends BaseController
     public function create()
     {
         $rules = [
-            'txtPrimerNombre' => 'required|max_length[60]',
-            'txtSegundoNombre'=> 'max_length[60]',
-            'txtPrimerApellido' => 'required|max_length[60]',
-            'txtSegundoApellido' => 'max_length[60]',
-            'txtEmail' => 'required|max_length[150]|valid_email|is_unique[clientes.email]',
-            'txtTelefono' => 'required|max_length[8]', // Revisa si 8 es adecuado para el país
-            'txtNit' => 'required|max_length[13]',
-            'txtContrasenia' => 'required|max_length[50]|min_length[5]',
-            'txtReContrasenia' => 'required|matches[txtContrasenia]|max_length[50]|min_length[5]', // Agregar validación de longitud
+            'txtPrimerNombre' => [
+                'label' => 'Primer Nombre',
+                'rules' => 'required|max_length[60]'
+            ],
+            'txtSegundoNombre' => [
+                'label' => 'Segundo Nombre',
+                'rules' => 'max_length[60]'
+            ],
+            'txtPrimerApellido' => [
+                'label' => 'Primer Apellido',
+                'rules' => 'required|max_length[60]'
+            ],
+            'txtSegundoApellido' => [
+                'label' => 'Segundo Apellido',
+                'rules' => 'max_length[60]'
+            ],
+            'txtEmail' => [
+                'label' => 'Correo Electrónico',
+                'rules' => 'required|max_length[150]|valid_email|is_unique[clientes.email]'
+            ],
+            'txtTelefono' => [
+                'label' => 'Teléfono',
+                'rules' => 'required|max_length[8]'
+            ],
+            'txtNit' => [
+                'label' => 'NIT',
+                'rules' => 'required|max_length[13]'
+            ],
+            'txtContrasenia' => [
+                'label' => 'Contraseña',
+                'rules' => 'required|max_length[50]|min_length[5]'
+            ],
+            'txtReContrasenia' => [
+                'label' => 'Confirmar Contraseña',
+                'rules' => 'required|matches[txtContrasenia]|max_length[50]|min_length[5]'
+            ]
         ];
+        
 
         // Validación de los campos
         if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
         }
+        
 
         // Obtener los datos del POST
         $userModel = new UsersModel();
