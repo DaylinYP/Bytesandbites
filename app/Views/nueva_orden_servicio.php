@@ -172,7 +172,28 @@
             transform: rotate(45deg);
             transition: all .2s ease-out;
         }
-        
+
+        .sidebar-footer {
+    padding: 1rem 1.625rem;
+    background-color: #212122;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.sidebar-footer a {
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    text-decoration: none;
+}
+
+.sidebar-footer a:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #7041df;
+}
+
         </style>
 
 </head>

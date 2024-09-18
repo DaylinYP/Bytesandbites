@@ -54,6 +54,7 @@
         body {
             font-family: 'Comfortaa', sans-serif;
             background-color:white;
+            background-image: linear-gradient(to left, rgb(207, 207, 207), rgb(255, 255, 255));
         }
 
         .wrapper {
@@ -191,6 +192,9 @@
             transition: all .2s ease-out;
         }
         
+
+
+        
     </style>
 
 </head>
@@ -198,73 +202,72 @@
 <body>
 
     <div class="wrapper">
-        <aside id="sidebar">
-            <div class="d-flex">
-                <button class="toggle-btn" type="button">
-                    <i class="lni lni-grid-alt"></i>
-                   
-                </button>
-                <div class="sidebar-logo">
-                    <a href="#" class="titulo">Bytes & Bits</a>
-                </div>
-            </div>
-            <ul class="sidebar-nav">
+    <aside id="sidebar">
+    <div class="d-flex">
+        <button class="toggle-btn" type="button">
+            <i class="lni lni-grid-alt"></i>
+        </button>
+        <div class="sidebar-logo">
+            <a href="#">Bytes & Bits</a>
+        </div>
+    </div>
+    <ul class="sidebar-nav">
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="lni lni-user"></i>
+                <span>Perfil del técnico</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href=" <?php echo base_url('solicitarMateriales');?>" class="sidebar-link">
+                <i class="lni lni-list"></i>
+                <span>Órdenes de servicio</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="lni lni-package"></i>
+                <span>Solicitud de Materiales</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+               data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
+                <i class="lni lni-menu"></i>
+                <span>Multi Level</span>
+            </a>
+            <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-user"></i>
-                        <span>Perfil del técnico</span>
+                    <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
+                       data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                        Two Links
                     </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                    <i class="lni lni-layout"></i>
-                        <span> Órdenes de servicio</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                    <i class="lni lni-layout"></i>
-                        <span> Solicitud de Materiales</span>
-                    </a>
-                </li>
-               
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
-                        <i class="lni lni-layout"></i>
-                        <span>Multi Level</span>
-                    </a>
-                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
-                                Two Links
-                            </a>
-                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Link 1</a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Link 2</a>
-                                </li>
-                            </ul>
+                            <a href="#" class="sidebar-link">Link 1</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Link 2</a>
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-cog"></i>
-                        <span>Ajustes</span>
-                    </a>
-                </li>
             </ul>
-            <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
-                    <i class="lni lni-exit"></i>
-                    <span>Cerrar Sesión</span>
-                </a>
-            </div>
-        </aside>
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="lni lni-cog"></i>
+                <span>Configuración</span>
+            </a>
+        </li>
+    </ul>
+    <div class="sidebar-footer">
+        <a href="#" class="sidebar-link">
+            <i class="lni lni-exit"></i>
+            <span>Cerrar Sesión</span>
+        </a>
+    </div>
+</aside>
+
         <div class="main p-3 main">
             <main class="container">
                 <form action="nombre">
@@ -272,7 +275,8 @@
                         <div class="col-4">
                             <h1 class="titulo">
                                 Datos del Técnico
-                            </h1>
+                                <?php echo base_url('vistaTecnico/solicitudMateriales');?>
+                                </h1>
                         </div>
                         <div class="col">
                             <hr>
@@ -412,3 +416,4 @@
 </body>
 
 </html> 
+
