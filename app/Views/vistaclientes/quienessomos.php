@@ -31,6 +31,17 @@
             </div>
             <div class="col-sm-4"><img src="img/quienessomos.jpg" alt="" width="300px" height="300px" style="object-fit: cover;">
             </div>
+        </div>
+<HR></HR>
+        <div class="row">
+            <div class="col-sm-8">
+                <h1 class="text-center"> NUESTROS VALORES</h1>
+                <p class="historaiQuienesSomos">
+                    MISIÓN-
+                </p>
+            </div>
+            <div class="col-sm-4">
+            </div>
 
 
         </div>
