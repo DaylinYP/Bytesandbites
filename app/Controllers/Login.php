@@ -24,11 +24,11 @@ class Login extends BaseController
         $userModel = new UsersModel();
         $post = $this->request->getPost(['txtCorreoElectronico', 'txtContrasenia']);
 
-        $user = $userModel->validateUser($post['txtCorreoElectronico'], $post['txtContrasenia']);
+        $email = $userModel->validateUser($post['txtCorreoElectronico'], $post['txtContrasenia']);
 
-        if ($user !== null) {
-            $this->setSession($user);
-            return redirect()->to(base_url('home'));
+        if ($email !== null) {
+            $this->setSession($email);
+            return redirect()->to(base_url('cerrarsesion'));
         }
 
         return redirect()->back()->withInput()->with('errors', 'El usuario y/o la contraseña son incorrectos.');
@@ -38,8 +38,14 @@ class Login extends BaseController
         $data = [
             'logged_in' => true,
             'userid' => $userData['id'],
-            'username' => $userData['txtCorreoElectronico']
+            'usercorreo' => $userData['txtCorreoElectronico']
         ];
         $this->session->set($data);
+    }
+    public function logout(){
+        if($this->session->get('loggen_in')){
+            $this->session->destroy();
+        }
+        return redirect()->to(base_url());
     }
 }

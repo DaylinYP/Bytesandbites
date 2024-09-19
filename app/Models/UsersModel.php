@@ -44,15 +44,15 @@ class UsersModel extends Model
      * @param string $contrasenia
      * @return array|null
      */
-    public function validateUser($email, $contrasenia){
+    public function validateUser($email, $password){
         // Buscar el correo en la base de datos
-        $user = $this->where(['email' => $email, 'active' => 1])->first();
+        $email = $this->where(['email' => $email, 'active' => 1])->first();
         
         // Verificar si existe el usuario y si la contraseña es correcta
-        if ($user && password_verify($contrasenia, $user['password'])) {  // Asegúrate que el campo en la base de datos sea 'password'
-            return $user;
+        if ($email && password_verify($password, $email['txtContrasenia'])) {  // Asegúrate que el campo en la base de datos sea 'password'
+            return $email;
         }
 
         return null; // Si el usuario no existe o la contraseña es incorrecta
     }
-}
+} 

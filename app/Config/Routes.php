@@ -28,6 +28,9 @@ $routes->get('activate-user/(:any)', 'Users::activateUser/$1');
 $routes->get('iniciodesesion', 'Login::index');
 /*Ruta para enviar el formulario*/
 $routes->post('auth', 'Login::auth');
+/*Ruta para cerrar sesion */
+$routes->get('cerrarsesion', 'CerrarSesion::index');
+$routes->get('logout', 'Login::logout');
 
 
 /*VISTA TÉCNICO */
