@@ -6,16 +6,16 @@
     <a href="" class="icon-img"><img src="<?= base_url('img/26.png') ?>"
             class="animate__animated animate__pulse animate__infinite	infinite" alt=""
             style="width: 28px; height: 28px;"></a>
-    <a href=""><img src="<?= base_url('img/27.png') ?>" class="icon-img"
+    <a href="" class="icon-img" ><img src="<?= base_url('img/27.png') ?>"
             class="animate__animated animate__pulse animate__infinite	infinite" alt=""
             style="width: 28px; height: 28px;"></a>
-    <a href=""><img src="<?= base_url('img/28.png') ?>" class="icon-img"
+    <a href="" class="icon-img" ><img src="<?= base_url('img/28.png') ?>"
             class="animate__animated animate__pulse animate__infinite	infinite" alt=""
             style="width: 28px; height: 28px;"></a>
-    <a href=""><img src="<?= base_url('img/29.png') ?>" class="icon-img"
+    <a href="" class="icon-img" ><img src="<?= base_url('img/29.png') ?>"
             class="animate__animated animate__pulse animate__infinite	infinite" alt=""
             style="width: 28px; height: 28px;"></a>
-    <a href=""><img src="<?= base_url('img/30.png') ?>" class="icon-img"
+    <a href="" class="icon-img" ><img src="<?= base_url('img/30.png') ?>"
             class="animate__animated animate__pulse animate__infinite	infinite" alt=""
             style="width: 28px; height: 28px;"></a>
 </section>

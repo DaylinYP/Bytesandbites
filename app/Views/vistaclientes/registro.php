@@ -58,15 +58,20 @@
                     <input type="password" required id="txtContrasenia" name="txtContrasenia">
                     <label for="txtContrasenia">Contraseña</label>
                 </div>
+
                 <div class="inputbox">
                     <input type="password" required id="txtReContrasenia" name="txtReContrasenia">
                     <label for="txtReContrasenia">Confirmar contraseña</label>
                 </div>
+
                 <button type="submit" class="btn btn-warning botonRegistrarse">¡Regístrate!</button>
                 <div style="text-align:center; margin-top:25px;">
                     <a style="color:white;" href="<?= base_url('login'); ?>">Iniciar Sesión</a>
                 </div>
+                
             </form>
+
+
             <?php if (session()->getFlashdata('errors') !== null): ?>
                 <div class="alert alert-danger my-3" role="alert">
                     <?= session()->getFlashdata('errors'); ?>

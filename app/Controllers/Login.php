@@ -7,7 +7,8 @@ class Login extends BaseController
 {
     public function index() //: string
     {
-        return view('login');
+        $data = ['titulo' => 'Login'];
+        return view('vistaclientes/login' , $data);
     }
 
     public function auth(){
