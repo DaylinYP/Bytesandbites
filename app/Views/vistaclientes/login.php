@@ -4,16 +4,15 @@
 
 <div class="container">
     <br>
-    <a class="btn btn-danger shadow-lg p-2 mb-3 rounded" 
-    href="<?php echo base_url('regresar_Home') ?>"
-    role="button">
-    <i class="bi-arrow-left-square-fill"></i> Regresar
-</a>
+    <a class="btn btn-danger shadow-lg p-2 mb-3 rounded" href="<?php echo base_url('regresar_Home') ?>" role="button">
+        <i class="bi-arrow-left-square-fill"></i> Regresar
+    </a>
 
 
     <h1 class="text-center">BIENVENIDO!</h1>
     <p class="text-center">Porfavor, ingrese sus datos</p>
-    <div class="card shadow-lg form-signin" style="max-width: 400px; margin: auto;"> <!-- Ajuste de ancho -->
+    <div class="card shadow-lg form-signin" style="max-width: 400px; margin: auto;">
+        <!-- Ajuste de ancho -->
         <div class="card-body p-4">
             <h1 class="fs-3 card-title fw-bold mb-4">Iniciar sesión</h1>
             <form method="POST" action="<?= base_url('auth');?>" autocomplete="off">
@@ -35,9 +34,11 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary text-center">
-                    Ingresar
-                </button>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary text-center">
+                        Ingresar
+                    </button>
+                </div>
             </form>
 
             <?php if (session()->getFlashdata('errors') !== null): ?>

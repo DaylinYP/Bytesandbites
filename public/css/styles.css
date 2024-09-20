@@ -11,7 +11,9 @@ body {
 header {
     margin: 5px;
 }
-
+ h5, h6, .icono{
+    color: rgb(255, 194, 10);
+}
 /* INICIA SLIDER*/
 
 .slider {
@@ -178,6 +180,7 @@ li a:hover {
     align-items: center;
     font-size: 1rem;
     font-family: 'Comfortaa', cursive;
+    gap: 40%;
 
 }
 
@@ -198,7 +201,7 @@ li a:hover {
     background-color: rgba(212, 212, 212, 0.404);
     color: rgb(255, 255, 255);
     height: 100%;
-    width: 600px;
+    width: 500px;
     border-radius: 30px 0 30px 0;
     box-shadow: 5px 2px 15px #2e2e2e;
 }
@@ -217,14 +220,12 @@ li a:hover {
     flex-direction: column;
     justify-content: center;
 }
+.divValores .datos {
+    margin-bottom: 30px; /* Ajusta este valor para aumentar o disminuir el espacio */
+}
 
-
-.divHistoria:hover,
-.divValores1:hover,
-.divValores2:hover {
-    background-color: rgba(201, 201, 201, 0.5);
-    transition: 0.5s;
-    box-shadow: 5px 2px 15px rgb(49, 48, 48);
+.divHistoria {
+    margin-top: 40px; /* Añade espacio superior al bloque de HISTORIA */
 }
 
 /*TERMINA CONTENEDOR DE VALORES*/
@@ -453,6 +454,7 @@ footer {
         /* Centrar en resoluciones más pequeñas */
         margin-right: auto;
         margin-top: 150px;
+        gap:15%;
     }
 
     .divValores {
@@ -509,3 +511,18 @@ footer {
 }
 
 
+/*PAGINA QUIENES SOMOS*/
+
+.historiaQuienesSomos, .pBienvenidos {
+    font-size: 1rem;
+    font-family: 'Comfortaa', cursive;
+}
+
+/*PAGINA REGISTRO*/
+form{
+    font-size: .9rem;
+    font-family: 'Comfortaa', cursive;
+}
+.h1Bienvenidos{
+    text-align: center;
+}

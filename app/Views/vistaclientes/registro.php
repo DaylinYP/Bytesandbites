@@ -4,17 +4,16 @@
 <?php echo $this->section('content'); ?>
 
 
-<a class="btn btn-outline-warning shadow-lg p-3 mb-5 rounded" href="<?php echo base_url('regresar_Home') ?>"
-    role="button"><i class="bi bi-arrow-left-square-fill">Regresar</i>
-</a>
-
-
-
 <div class="container">
+    <br>
+    <a class="btn btn-danger shadow-lg p-2 mb-3 rounded" href="<?php echo base_url('regresar_Home') ?>" role="button">
+        <i class="bi-arrow-left-square-fill"></i> Regresar
+    </a>
+
     <h1 class="h1Bienvenidos">¡Bienvenido!</h1>
-    <p class="pBienvenidos">Si no tienes una cuenta con nosotros, por favor llena los campos con tus datos para
-        crear una cuenta.</p>
-    <div class="card shadow-lg form-signin">
+    <p class="pBienvenidos text-center">Si no tienes una cuenta con nosotros, por favor llena los campos con tus datos
+        para crear una cuenta.</p>
+    <div class="card shadow-lg form-signin col-md-6 mx-auto">
         <div class="card-body p-5">
             <h1 class="fs-4 card-title fw-bold mb-4">Registro</h1>
             <form method="POST" action="<?php echo base_url('registro') ?>" autocomplete="off">
@@ -58,7 +57,8 @@
 
                 <div class="mb-3">
                     <label class="mb-2" for="txtNit">NIT</label>
-                    <input type="number" required id="txtNit" name="txtNit" value="<?= set_value('txtNit'); ?>" class="form-control">
+                    <input type="number" required id="txtNit" name="txtNit" value="<?= set_value('txtNit'); ?>"
+                        class="form-control">
                 </div>
 
                 <div class="mb-3">
@@ -72,10 +72,11 @@
                 </div>
 
 
-
-                <button type="submit" class="btn btn-danger">
-                    ¡Regístrate!
-                </button>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">
+                        ¡Regístrate!
+                    </button>
+                </div>
             </form>
 
 
@@ -94,4 +95,4 @@
     </div>
 </div><br>
 
-    <?php echo $this->endSection(); ?>
+<?php echo $this->endSection(); ?>

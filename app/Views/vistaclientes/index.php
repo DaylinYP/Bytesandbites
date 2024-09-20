@@ -171,7 +171,7 @@
 
     <div class="divValores">
         <div class="container">
-            <div class="row">
+            <div class="row g-4">
                 <div class="col-6 datos divValores1">
                     <h3>MISIÓN</h3>
                     <p>
