@@ -245,19 +245,19 @@ table {
     </div>
     <ul class="sidebar-nav">
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="<?php echo base_url('editarPerfil');?>" class="sidebar-link">
                 <i class="lni lni-user"></i>
                 <span>Perfil del técnico</span>
             </a>
         </li>
         <li class="sidebar-item">
-            <a href="<?php echo base_url('solicitarMateriales'); ?>" class="sidebar-link">
+            <a href="<?php echo base_url('ordenesDeServicio'); ?>" class="sidebar-link">
                 <i class="lni lni-list"></i>
                 <span>Órdenes de servicio</span>
             </a>
         </li>
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="<?php echo base_url('solicitarMateriales'); ?>" class="sidebar-link">
                 <i class="lni lni-package"></i>
                 <span>Solicitud de Materiales</span>
             </a>

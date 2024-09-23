@@ -208,24 +208,24 @@
             <i class="lni lni-grid-alt"></i>
         </button>
         <div class="sidebar-logo">
-            <a href="#">Bytes & Bits</a>
+            <a href="<?php echo base_url('vistaclientes/index');?>">Bytes & Bits</a>
         </div>
     </div>
     <ul class="sidebar-nav">
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="<?php echo base_url('editarPerfil');?>" class="sidebar-link">
                 <i class="lni lni-user"></i>
                 <span>Perfil del técnico</span>
             </a>
         </li>
         <li class="sidebar-item">
-            <a href=" <?php echo base_url('solicitarMateriales');?>" class="sidebar-link">
+            <a href=" <?php echo base_url('ordenesDeServicio');?>" class="sidebar-link">
                 <i class="lni lni-list"></i>
                 <span>Órdenes de servicio</span>
             </a>
         </li>
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="<?php echo base_url('solicitarMateriales'); ?>" class="sidebar-link">
                 <i class="lni lni-package"></i>
                 <span>Solicitud de Materiales</span>
             </a>
@@ -275,7 +275,6 @@
                         <div class="col-4">
                             <h1 class="titulo">
                                 Datos del Técnico
-                                <?php echo base_url('vistaTecnico/solicitudMateriales');?>
                                 </h1>
                         </div>
                         <div class="col">
@@ -283,20 +282,23 @@
                         </div>
                     </div>
                     <section class="form-fondo">
-                        <div class="row pt-4">
-                        <div class="col">
+                    <div class="row pt-4">
+                            <div class="col">
                                 <label for="txt_id_tecnico" class="pb-3" class="texto">Busque su ID</label>
                                 <input type="text" name="txt_id_tecnico" class="form-control" class="texto" placeholder="Ingrese su ID">
                             </div>
                             <div class="col">
                                 <label for="txt_nombre_tecnico" class="pb-3" class="texto">Nombre:</label>
-                                <input type="text" name="txt_nombre_tecnico" class="form-control"  class="texto" readonly>
+                                <input type="text" name="txt_nombre_tecnico" class="form-control" class="texto" value="" readonly>
                             </div>
                             <div class="col">
                                 <label for="txt_apellido_tecnico" class="pb-3" class="texto">Apellido:</label>
-                                <input type="text" name="txt_apellido_tecnico" class="form-control" class="texto" readonly>
+                                <input type="text" name="txt_apellido_tecnico" class="form-control" class="texto" value="" readonly>
                             </div>
-                       
+                            <div class="col">
+                                <button type="button" id="btnBuscar" class="btn btn-primary mt-4">
+                                    Buscar
+                                </button>
                        
                        
                     </section>
@@ -411,6 +413,29 @@
 
         hamBurger.addEventListener("click", function() {
             document.querySelector("#sidebar").classList.toggle("expand");
+        });
+
+        document.getElementById('btnBuscar').addEventListener('click', function () {
+            const idTecnico = document.getElementById('txt_id_tecnico').value;
+            
+            if (idTecnico) {
+                fetch(`<?= base_url('buscarTecnico') ?>?id=${idTecnico}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data) {
+                            document.getElementById('txt_nombre_tecnico').value = data.primer_nombre + ' ' + data.segundo_nombre;
+                            document.getElementById('txt_apellido_tecnico').value = data.primer_apellido + ' ' + data.segundo_apellido;
+                        } else {
+                            alert('Técnico no encontrado');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error al buscar técnico');
+                    });
+            } else {
+                alert('Por favor, ingrese un ID');
+            }
         });
     </script>
 </body>

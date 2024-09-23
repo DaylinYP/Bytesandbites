@@ -1,0 +1,26 @@
+<?php
+namespace App\Models;
+use CodeIgniter\Model;
+
+class EmpleadoModel extends Model
+{
+   protected $table = 'empleados';
+
+   protected $primaryKey = 'id_empleado';
+   protected $allowedFields= ['id_empleado',
+  'dpi' ,
+  'primer_nombre',
+  'segundo_nombre',
+  'primer_apellido' ,
+  'segundo_apellido' ,
+  'nit' ,
+  'email' ,
+  'telefono' ,
+  'direccion',
+  'id_rol' ,
+  'id_empresa' ,
+  'extension' ];
+}
+?>
+
+
