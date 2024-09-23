@@ -21,6 +21,6 @@ class EmpleadoModel extends Model
   'id_empresa' ,
   'extension' ];
 }
-?>
+
 
 
