@@ -33,4 +33,4 @@ $routes->post('auth', 'Login::auth');
 /*VISTA TÉCNICO */
 $routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales');
 $routes ->get('ordenesDeServicio', 'ordenesDeServicioController::ordenesDeServicio');
-$routes->get('solicitarMateriales', 'EmpleadoController::solicitarMateriales');
+$routes->get('editarPerfil', 'EmpleadoController::editarPerfil');

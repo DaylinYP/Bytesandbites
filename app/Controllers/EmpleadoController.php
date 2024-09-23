@@ -26,4 +26,9 @@ class EmpleadoController extends BaseController
         
         return view('solicitudMateriales', $datos);
     }
+
+    public function editarPerfil()
+    {
+        return view('vistaTecnico/editarPerfil');
+    }
 }

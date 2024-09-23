@@ -9,7 +9,7 @@ class solicitarMaterialesController extends BaseController
         return view('vistaTecnico/solicitudMateriales');
     }
 
-
+/*
 public function buscarTecnico($id = null)
 {
     $empleado = new EmpleadoModel();
@@ -29,8 +29,9 @@ public function buscarTecnico($id = null)
     }
     
     return view('vistaTecnico/solicitudMateriales' , $datos);
+}*/
 }
-}
+
 
 
 /*   public function index()
