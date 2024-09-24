@@ -13,6 +13,8 @@ $routes->get('registro', 'Users::index');
 $routes->post('registro', 'Users::create');
 
 
+
+
 /*Ruta de botón regresar de form_registro a página de inicio*/
 $routes->get('regresar_Home', 'Home::index');
 /*Ruta para acceder a las paginas desde el nav*/
@@ -31,6 +33,8 @@ $routes->post('auth', 'Login::auth');
 /*Ruta para cerrar sesion */
 $routes->get('cerrarsesion', 'CerrarSesion::index');
 $routes->get('logout', 'Login::logout');
+
+/* FINALIZA VISTA CLIENTES */
 
 
 /*VISTA TÉCNICO */
