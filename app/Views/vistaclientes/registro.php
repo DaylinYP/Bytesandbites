@@ -89,7 +89,8 @@
         </div>
         <div class="card-footer py-3 border-0">
             <div class="text-center">
-                <a href=href="<?= base_url('login'); ?>">Iniciar sesión</a>
+
+                <a href="<?= base_url('login'); ?>">Iniciar sesión</a>
             </div>
         </div>
     </div>
