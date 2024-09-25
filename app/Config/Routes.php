@@ -33,6 +33,8 @@ $routes->post('auth', 'Login::auth');
 /*Ruta para cerrar sesion */
 $routes->get('cerrarsesion', 'CerrarSesion::index');
 $routes->get('logout', 'Login::logout');
+/*Ruta para boton de login>afterlogin */
+$routes->get('afterlogin', 'afterLogin::index');
 
 /* FINALIZA VISTA CLIENTES */
 

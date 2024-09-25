@@ -8,12 +8,15 @@
     <hr class="usuario">
     <div class="row justify-content-center text-center btn-login">
         <div class="col-2 col-md-6 mb-2  text-center">
-            <button type="button" class="btn btn-primary btn-lg btn-block animate__animated animate__pulse animate__infinite animate__slow"><i class="bi bi-person-fill"> Cliente</i></button>
+            <a class="btn btn-primary btn-lg btn-block animate__animated animate__pulse animate__infinite animate__slow" href="<?php echo base_url('afterlogin') ?>" role="button"><i class="bi bi-person-fill"> </i> Cliente
+            </a>
         </div>
         <div class="col-12 col-md-6 mb-2  text-center">
-            <button type="button" class="btn btn-primary btn-lg btn-block animate__animated animate__pulse animate__infinite animate__slow"><i class="bi bi-person-vcard-fill"> Empleado</i></button>
+            <a class="btn btn-primary btn-lg btn-block animate__animated animate__pulse animate__infinite animate__slow" href="<?php echo base_url('') ?>" role="button"><i class="bi bi-person-fill"> </i> Empleado
+            </a>
         </div>
     </div>
+</div>
 </div>
 <br>
 <?php echo $this->endSection(); ?>
