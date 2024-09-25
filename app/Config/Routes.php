@@ -28,9 +28,13 @@ $routes->get('activate-user/(:any)', 'Users::activateUser/$1');
 $routes->get('iniciodesesion', 'Login::index');
 /*Ruta para enviar el formulario*/
 $routes->post('auth', 'Login::auth');
+/*Ruta para cerrar sesion */
+$routes->get('cerrarsesion', 'CerrarSesion::index');
+$routes->get('logout', 'Login::logout');
 
 
 /*VISTA TÉCNICO */
 $routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales');
 $routes ->get('ordenesDeServicio', 'ordenesDeServicioController::ordenesDeServicio');
 $routes->get('editarPerfil', 'EmpleadoController::editarPerfil');
+$routes->get('inicioSesion', 'EmpleadoController::inicioSesion');

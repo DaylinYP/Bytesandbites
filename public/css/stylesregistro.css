@@ -17,47 +17,6 @@ html, body {
     z-index: 1; /* Asegura que el formulario esté por encima del fondo */
 }
 
-.botonRegresar {
-    position: absolute;
-    top: 10px;
-    left: 40px;
-    margin: 5px;
-    z-index: 2; /* Asegura que el botón esté por encima del formulario */
-}
-
-.formulario1 {
-    width: 100%;
-    max-width: 500px;
-    background-color: rgba(58, 14, 94, 0.568);
-    border: 2px solid rgba(214, 214, 214, 0.5);
-    border-radius: 20px;
-    padding: 2rem 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 1; /* Asegura que el formulario esté por encima */
-}
-
-.inputbox input {
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid white;
-    background-color: transparent;
-    color: white;
-    padding: 10px 0;
-    outline: none;
-}
-
-.inputbox label {
-    color: white;
-    position: absolute;
-    top: -10px;
-    left: 0;
-    transition: 0.5s;
-}
-
-
 h1.h1Bienvenidos, h2.h2Bienvenidos {
     margin-top: 20px;
     margin-bottom: 20px; /* Ajusta según sea necesario */
@@ -72,32 +31,6 @@ footer {
     box-shadow: 5px 2px 15px #2e2e2e;
     border-radius: 0 0 30px 30px;
 }
-
-/* Estilos para formulario */
-.formulario1 {
-    width: 100%;
-    max-width: 500px;
-    background-color: rgba(58, 14, 94, 0.568);
-    border: 2px solid rgba(214, 214, 214, 0.5);
-    border-radius: 20px;
-    padding: 2rem 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.botonRegistrarse {
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #ffc107;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 
 /* Contenedor de redes sociales */
 .contenedorRedes {
@@ -137,12 +70,7 @@ footer {
 /* Estilos responsivos para el formulario */
 
 @media screen and (max-width: 768px) {
-    .formulario1 {
-        padding: 1rem 2rem;
-        width: 90%;
-        z-index: 1; /* Asegura que el formulario esté en la parte superior */
-    }
-
+   
     .contenedorRedesInterno {
         grid-template-columns: 1fr;
         gap: 10px;
