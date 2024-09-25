@@ -37,3 +37,33 @@ $routes->get('logout', 'Login::logout');
 $routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales');
 $routes ->get('ordenesDeServicio', 'ordenesDeServicioController::ordenesDeServicio');
 $routes->get('editarPerfil', 'EmpleadoController::editarPerfil');
+
+
+
+
+/*Admin---<*/
+
+/*Inicio*/
+$routes->get('/Inicio','InicioController::index');
+
+/*Empleados*/
+$routes->get('/empleados','AdminEmpleadosController::index');
+$routes->post('/empleados/()','AdminEmpleadosController::actualizarEstado/');
+
+/**Usuarios */
+$routes->get('/usuario','UsuariosController::index');
+$routes->post('/authe','UsuariosController::auth');
+
+$routes->get('/nuevo_empleado','AdminEmpleadosController::nuevoEmpleado');
+$routes->post('/agregar_empleado','AdminEmpleadosController::agregarEmpleado');
+$routes->get('/buscar_empleado/(:num)','AdminEmpleadosController::buscarEmpleado/$1');
+$routes->post('/modificar_empleado','AdminEmpleadosController::modificar');
+
+/*Rol*/
+$routes->get('/nuevo_rol','AdminEmpleadosController::nuevoRol');
+$routes->post('/agregar_rol','AdminRolesController::agregarRol');
+
+/*Quejas */
+$routes->get('/quejas','QuejasController::quejas');
+
+/**---------> */ 
