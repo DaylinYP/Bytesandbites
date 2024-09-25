@@ -7,7 +7,7 @@ class AfterLogin extends BaseController
     public function index(): string
     {
         $data = ['titulo' => 'Login'];
-        return view('vistacgtlientes/afterlogin', $data);
+        return view('vistaclientes/afterlogin', $data);
 
     }
  

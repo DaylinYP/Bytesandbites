@@ -21,19 +21,19 @@
 <body>
     <section
         style="background-color:rgb(255, 194, 10); height:40px; width:100%; display: flex; justify-content: center; align-items: center; gap: 15px;">
-        <a href="" class="icon-img"><img src="<?= base_url('img/26.png') ?>"
+        <a href="https://www.instagram.com/" class="icon-img"><img src="<?= base_url('img/26.png') ?>"
                 class="animate__animated animate__pulse animate__infinite	infinite" alt=""
                 style="width: 28px; height: 28px;"></a>
-        <a href="" class="icon-img"><img src="<?= base_url('img/27.png') ?>"
+        <a href="https://www.gmail.com/mail/help/intl/es/about.html?iframe" class="icon-img"><img src="<?= base_url('img/27.png') ?>"
                 class="animate__animated animate__pulse animate__infinite	infinite" alt=""
                 style="width: 28px; height: 28px;"></a>
-        <a href="" class="icon-img"><img src="<?= base_url('img/28.png') ?>"
+        <a href="https://www.whatsapp.com/" class="icon-img"><img src="<?= base_url('img/28.png') ?>"
                 class="animate__animated animate__pulse animate__infinite	infinite" alt=""
                 style="width: 28px; height: 28px;"></a>
-        <a href="" class="icon-img"><img src="<?= base_url('img/29.png') ?>"
+        <a href="https://www.facebook.com/" class="icon-img"><img src="<?= base_url('img/29.png') ?>"
                 class="animate__animated animate__pulse animate__infinite	infinite" alt=""
                 style="width: 28px; height: 28px;"></a>
-        <a href="" class="icon-img"><img src="<?= base_url('img/30.png') ?>"
+        <a href="https://www.google.com/maps/@14.6232368,-90.5183232,15z?entry=ttu&g_ep=EgoyMDI0MDkyMy4wIKXMDSoASAFQAw%3D%3D" class="icon-img"><img src="<?= base_url('img/30.png') ?>"
                 class="animate__animated animate__pulse animate__infinite	infinite" alt=""
                 style="width: 28px; height: 28px;"></a>
     </section>
@@ -46,7 +46,7 @@
             <ul>
                 <li>
                     <header class="header">
-                        <img src="" class="logotipo" width="250px" height="100px">
+                        <img src="<?= base_url('img/logotipoBb.PNG');?>" class="logotipo" width="300px" height="100px">
                     </header>
                 </li>
                 <li class="active"><a href="<?= base_url('regresar_Home') ?>" class="links">Inicio</a></li>
@@ -104,7 +104,7 @@
                         <p class="pRedes">
                             2326-0202 <br>
                             6 avenida 14-12 Zona 9, <br> Ciudad de Guatemala
-                            <br> contactcenter@bytesandbits.com.gt
+                            <br> andbitsb@gmail.com
                         </p>
                     </div>
                 </div>
