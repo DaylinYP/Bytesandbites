@@ -13,6 +13,8 @@ $routes->get('registro', 'Users::index');
 $routes->post('registro', 'Users::create');
 
 
+
+
 /*Ruta de botón regresar de form_registro a página de inicio*/
 $routes->get('regresar_Home', 'Home::index');
 /*Ruta para acceder a las paginas desde el nav*/
@@ -31,10 +33,47 @@ $routes->post('auth', 'Login::auth');
 /*Ruta para cerrar sesion */
 $routes->get('cerrarsesion', 'CerrarSesion::index');
 $routes->get('logout', 'Login::logout');
+/*Ruta para boton de login>afterlogin */
+$routes->get('afterlogin', 'afterLogin::index');
+
+/* FINALIZA VISTA CLIENTES */
 
 
 /*VISTA TÉCNICO */
 $routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales');
 $routes ->get('ordenesDeServicio', 'ordenesDeServicioController::ordenesDeServicio');
 $routes->get('editarPerfil', 'EmpleadoController::editarPerfil');
+<<<<<<< HEAD
 $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
+=======
+
+
+
+
+/*Admin---<*/
+
+/*Inicio*/
+$routes->get('/Inicio','InicioController::index');
+
+/*Empleados*/
+$routes->get('/empleados','AdminEmpleadosController::index');
+$routes->post('/empleados/()','AdminEmpleadosController::actualizarEstado/');
+
+/**Usuarios */
+$routes->get('/usuario','UsuariosController::index');
+$routes->post('/authe','UsuariosController::auth');
+
+$routes->get('/nuevo_empleado','AdminEmpleadosController::nuevoEmpleado');
+$routes->post('/agregar_empleado','AdminEmpleadosController::agregarEmpleado');
+$routes->get('/buscar_empleado/(:num)','AdminEmpleadosController::buscarEmpleado/$1');
+$routes->post('/modificar_empleado','AdminEmpleadosController::modificar');
+
+/*Rol*/
+$routes->get('/nuevo_rol','AdminEmpleadosController::nuevoRol');
+$routes->post('/agregar_rol','AdminRolesController::agregarRol');
+
+/*Quejas */
+$routes->get('/quejas','QuejasController::quejas');
+
+/**---------> */ 
+>>>>>>> a46c869e3ae0d09a58b24a8af57d56aa8482554c
