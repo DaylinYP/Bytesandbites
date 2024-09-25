@@ -1,5 +1,5 @@
-<?php echo $this->extend('layout/template'); ?>
 
+<?php echo $this->extend('layout/template'); ?>
 <?php echo $this->section('content'); ?>
 
 <div class="container">
