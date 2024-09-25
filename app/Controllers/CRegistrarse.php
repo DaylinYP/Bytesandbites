@@ -3,7 +3,7 @@
 namespace App\Controllers;
 use App\Models\RegistrarseModel;
 
-class Registrarse extends BaseController
+class CRegistrarse extends BaseController
 {
     public function index(): string
     {

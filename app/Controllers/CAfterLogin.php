@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class AfterLogin extends BaseController
+class CAfterLogin extends BaseController
 {
     public function index(): string
     {

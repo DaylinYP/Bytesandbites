@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 
-class CerrarSesion extends BaseController
+class CCerrarSesion extends BaseController
 {
     public function index(): string
     {
