@@ -12,7 +12,7 @@
             </a>
         </div>
         <div class="col-12 col-md-6 mb-2  text-center">
-            <a class="btn btn-primary btn-lg btn-block animate__animated animate__pulse animate__infinite animate__slow" href="<?php echo base_url('') ?>" role="button"><i class="bi bi-person-fill"> </i> Empleado
+            <a class="btn btn-primary btn-lg btn-block animate__animated animate__pulse animate__infinite animate__slow" href="<?php echo base_url('/usuario') ?>" role="button"><i class="bi bi-person-fill"> </i> Empleado
             </a>
         </div>
     </div>

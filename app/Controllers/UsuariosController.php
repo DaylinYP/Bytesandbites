@@ -47,4 +47,11 @@ class UsuariosController extends BaseController
         ];
         $this->session->set($data);
     }
+
+    public function logout(){
+        if($this->session->get('logged_in')){
+            $this->session->destroy();
+        }
+        return redirect()->to(base_url('/usuario'));
+    }
 } 

@@ -59,6 +59,7 @@ $routes->post('/empleados/()','AdminEmpleadosController::actualizarEstado/');
 /**Usuarios */
 $routes->get('/usuario','UsuariosController::index');
 $routes->post('/authe','UsuariosController::auth');
+$routes->get('/salir','UsuariosController::logout');
 
 $routes->get('/nuevo_empleado','AdminEmpleadosController::nuevoEmpleado');
 $routes->post('/agregar_empleado','AdminEmpleadosController::agregarEmpleado');
