@@ -23,21 +23,21 @@ class UsuariosController extends BaseController
         ];
 
         if (!$this->validate($reglas)) {
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
         }
-
         $usuario = new UsuariosModel();
         $post = $this->request->getPost(['txt_email_usuario', 'txt_contrasenia']);
-
+        
         $user = $usuario->validateUser($post['txt_email_usuario'], $post['txt_contrasenia']);
-      
+        
+        
 
         if ($user !== null){
             $this->setSession($user);
-            return redirect()->to(base_url('/quejas'));
+            return redirect()->to(base_url('/Inicio'));
         }
-        return redirect()->back()->withInput()->with('errors','El usuario o contraseña no coinciden');
-    }
+        return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
+        }
 
     private function setSession($userData){
         $data = [

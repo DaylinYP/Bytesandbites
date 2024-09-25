@@ -123,7 +123,7 @@ class AdminEmpleadosController extends BaseController
          $datosUsuarios = [
             'id_empleado' => $this->request->getVar('txt_id'),
             'nombre_usuario' => $this->request->getVar('txt_email_usuario'),
-            'contrasenia' => $this->request->getVar('txt_contrasenia'),
+            'contrasenia' => password_hash($this->request->getPost('txt_contrasenia'), PASSWORD_DEFAULT),
             'fecha_modificacion' => $this->request->getVar('txt_fecha_modificacion'),
             'estado_id' => $this->request->getVar('txt_estado')
          ]
