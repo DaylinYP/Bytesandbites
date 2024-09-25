@@ -326,7 +326,7 @@ li a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);
 }
 
 .divServicios1:hover,
@@ -348,7 +348,7 @@ h3 {
     font-family: 'Comfortaa', cursive;
     font-weight: 600;
     font-style: normal;
-    text-shadow: 1px 2px 2px #000000;
+    text-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -360,7 +360,7 @@ h3 {
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: black;
-    text-shadow: 4px 2px rgba(201, 201, 201, 0.5);
+    text-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);
 }
 
 h6 {
@@ -369,7 +369,7 @@ h6 {
     font-weight: 400;
     font-style: normal;
     text-align: center;
-    text-shadow: 1px 2px 2px #000000;
+    text-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);
 
 }
 
@@ -513,9 +513,14 @@ footer {
 
 /*PAGINA QUIENES SOMOS*/
 
-.historiaQuienesSomos, .pBienvenidos {
+.historiaQuienesSomos, .pBienvenidos, .btn-login {
     font-size: 1rem;
     font-family: 'Comfortaa', cursive;
+    
+}
+h1{
+    text-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);
+
 }
 
 /*PAGINA REGISTRO*/
@@ -525,6 +530,11 @@ form{
 }
 .h1Bienvenidos{
     text-align: center;
-    text-shadow: 2px 0px #000000;
+    text-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);
 }
-
+.btn-login{
+    margin-bottom: 1%;
+}
+.usuario{
+    margin-bottom: 10%;
+}
