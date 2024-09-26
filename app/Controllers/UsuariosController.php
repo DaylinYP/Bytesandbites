@@ -27,31 +27,43 @@ class UsuariosController extends BaseController
         }
         $usuario = new UsuariosModel();
         $post = $this->request->getPost(['txt_email_usuario', 'txt_contrasenia']);
-        
-        $user = $usuario->validateUser($post['txt_email_usuario'], $post['txt_contrasenia']);
-        
-        
 
-        if ($user !== null){
-            $this->setSession($user);
-            return redirect()->to(base_url('/Inicio'));
+        $user = $usuario->validateUser($post['txt_email_usuario'], $post['txt_contrasenia']);
+
+
+
+        if ($user !== null) {
+            $this->setSession($user); // Guardar los datos del usuario y rol en la sesión
+
+            // Dependiendo del rol, redirigir a diferentes vistas
+            if ($user['nombre_rol'] === 'Gerente') {
+                return redirect()->to(base_url('/Inicio')); // Vista para admin
+            } elseif ($user['nombre_rol'] === 'Tecnico') {
+                return redirect()->to(base_url('')); // Vista para empleado
+            }
+            /* else {
+                return redirect()->to(base_url('/')); // Vista genérica
+            }*/
         }
         return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
-        }
+    }
 
-    private function setSession($userData){
+    private function setSession($userData)
+    {
         $data = [
             'logged_in' => true,
             'user_id' => $userData['id_empleado'],
-            'user_name' => $userData['nombre_usuario']
+            'user_name' => $userData['nombre_usuario'],
+            'user_role' => $userData['nombre_rol']
         ];
         $this->session->set($data);
     }
 
-    public function logout(){
-        if($this->session->get('logged_in')){
+    public function logout()
+    {
+        if ($this->session->get('logged_in')) {
             $this->session->destroy();
         }
         return redirect()->to(base_url('/usuario'));
     }
-} 
+}

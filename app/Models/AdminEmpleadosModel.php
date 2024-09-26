@@ -33,8 +33,7 @@ class AdminEmpleadosModel extends Model
     ];
 
     protected $belongsTo = [
-        'usuario' => 'App\Models\UsuarioModel',
-        'estado'  => 'App\Models\EstadoModel',
+        'usuario' => 'App\Models\UsuarioModel'
     ];
 
 
