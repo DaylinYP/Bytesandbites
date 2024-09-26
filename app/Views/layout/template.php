@@ -46,7 +46,7 @@
             <ul>
                 <li>
                     <header class="header">
-                        <img src="<?= base_url('img/logotipoBb.PNG');?>" class="logotipo" width="300px" height="100px">
+                        <img src="<?= base_url('img/logotipoBb.png');?>" class="logotipo" width="280px" height="80px">
                     </header>
                 </li>
                 <li class="active"><a href="<?= base_url('regresar_Home') ?>" class="links">Inicio</a></li>

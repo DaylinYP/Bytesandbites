@@ -10,7 +10,7 @@ class Users extends BaseController
     public function index(): string
     {
         $data = ['titulo' => 'Registro'];
-        return view('vistaClientes/registro', $data);
+        return view('vistaclientes/registro', $data);
     }
 
     public function create()
@@ -18,7 +18,7 @@ class Users extends BaseController
         $rules = [
             'txtPrimerNombre' => [
                 'label' => 'Primer Nombre',
-                'rules' => 'is_unique|required|max_length[60]'
+                'rules' => 'required|max_length[60]'
             ],
             'txtSegundoNombre' => [
                 'label' => 'Segundo Nombre',
@@ -32,18 +32,11 @@ class Users extends BaseController
                 'label' => 'Segundo Apellido',
                 'rules' => 'max_length[60]'
             ],
-            'txtEmail' => [
-                'label' => 'Correo Electrónico',
-                'rules' => 'required|max_length[150]|valid_email|is_unique[clientes.email]'
-            ],
-            'txtTelefono' => [
-                'label' => 'Teléfono',
-                'rules' => 'required|max_length[8]'
-            ],
             'txtNit' => [
                 'label' => 'NIT',
                 'rules' => 'required|max_length[13]'
             ],
+                  
             'txtContrasenia' => [
                 'label' => 'Contraseña',
                 'rules' => 'required|max_length[40]|min_length[5]'
@@ -51,7 +44,17 @@ class Users extends BaseController
             'txtReContrasenia' => [
                 'label' => 'Confirmar Contraseña',
                 'rules' => 'required|matches[txtContrasenia]|max_length[50]|min_length[5]'
+            ],
+            'txtEmail' => [
+                'label' => 'Correo Electrónico',
+                'rules' => 'required|max_length[150]|valid_email|is_unique[clientes.email]' // especifica 'clientes.email'
+            ],
+            'txtTelefono' => [
+                'label' => 'Teléfono',
+                'rules' => 'required|max_length[8]'
             ]
+  
+        
         ];
         
     
@@ -78,9 +81,9 @@ class Users extends BaseController
             'segundo_nombre' => $post['txtSegundoNombre'],
             'primer_apellido' => $post['txtPrimerApellido'],
             'segundo_apellido' => $post['txtSegundoApellido'],
-            'email' => $post['txtEmail'],
-            'contrasenia' => password_hash($post['txtContrasenia'], PASSWORD_DEFAULT),
             'nit' => $post['txtNit'],
+            'contrasenia' => password_hash($post['txtContrasenia'], PASSWORD_DEFAULT),
+            'email' => $post['txtEmail'],
             'activacion' => 0,
             'activation_token' => $token
         ]);
@@ -110,10 +113,10 @@ class Users extends BaseController
     public function activateUser($token)
     {
         $userModel = new UsersModel();
-        $user = $userModel->where(['activation_token' => $token, 'activacion' => 0])->first(); // 'active' => 'activacion'
+        $user = $userModel->where(['activation_token' => $token, 'activacion' => 0])->first(); 
 
         if ($user) {
-            $userModel->update($user['id'], [
+            $userModel->update($user['id_cliente'], [
                 'activacion' => 1,
                 'activation_token' => ''
             ]);
@@ -129,6 +132,6 @@ class Users extends BaseController
             'title' => $title,
             'message' => $message
         ];
-        return view('message', $data);
+        return view('layout/message', $data);
     }
 }
