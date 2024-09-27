@@ -16,189 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="icon" href="<?=base_url('img/favicon.ico') ?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?= base_url('css/css_form_material.css') ?>">
-
-        
-
-    <style>
-        * {
-            margin: 0;
-        }
-
-        .form-fondo {
-            background-color: rgba(58, 14, 94, 0.568);
-            padding: 30px;
-            border-radius: 40px;
-            backdrop-filter: blur(55px);            border: 2px solid rgba(255, 255, 255, 2);
-            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-            color:white;
-
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-
-        a {
-            text-decoration: none;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        h1 {
-            font-weight: 600;
-            font-size: 1.5rem;
-        }
-
-        body {
-            font-family: 'Comfortaa', sans-serif;
-            background-color:white;
-            background-image: linear-gradient(to left, rgb(207, 207, 207), rgb(255, 255, 255));
-        }
-
-        .wrapper {
-            display: flex;
-        }
-
-        .main {
-            
-            background-size: cover;
-            width: 100%;
-            overflow: hidden;
-            transition: all 0.35s ease-in-out;
-        }
-        .titulo {
-            font-family: "Quantico", sans-serif;
-            font-size: 60px;
-        }
-
-        .texto {
-            font-family: "Comfortaa", sans-serif;
-        }
-
-        .boton{
-            width: 80%;
-            font-size:xx-large;
-        }
-
-        #sidebar {
-            height: 100vh;
-            overflow-y: auto;
-            position: sticky;
-            width: 70px;
-            min-width: 70px;
-            z-index: 1000;
-            transition: all .25s ease-in-out;
-            background-color: #212122;
-            display: flex;
-            flex-direction: column;
-            top: 0;
-            left: 0;
-        }
-
-        #sidebar.expand {
-            width: 260px;
-            min-width: 260px;
-        }
-
-        .toggle-btn {
-            background-color: transparent;
-            cursor: pointer;
-            border: 0;
-            padding: 1rem 1.5rem;
-        }
-
-        .toggle-btn i {
-            font-size: 1.5rem;
-            color: #FFF;
-        }
-
-        .sidebar-logo {
-            margin: auto 0;
-        }
-
-        .sidebar-logo a {
-            color: #FFF;
-            font-size: 1.15rem;
-            font-weight: 600;
-        }
-
-        #sidebar:not(.expand) .sidebar-logo,
-        #sidebar:not(.expand) a.sidebar-link span {
-            display: none;
-        }
-
-        .sidebar-nav {
-            padding: 2rem 0;
-            flex: 1 1 auto;
-        }
-
-        a.sidebar-link {
-            padding: .625rem 1.625rem;
-            color: #FFF;
-            display: block;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            border-left: 3px solid transparent;
-        }
-
-        .sidebar-link i {
-            font-size: 1.1rem;
-            margin-right: .75rem;
-        }
-
-        a.sidebar-link:hover {
-            background-color: rgba(255, 255, 255, .075);
-            border-left: 3px solid #7041df;
-        }
-
-        .sidebar-item {
-            position: relative;
-        }
-
-        #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
-            position: absolute;
-            top: 0;
-            left: 70px;
-            background-color: #0e2238;
-            padding: 0;
-            min-width: 15rem;
-            display: none;
-        }
-
-        #sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
-            display: block;
-            max-height: 15em;
-            width: 100%;
-            opacity: 1;
-        }
-
-        #sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
-            border: solid;
-            border-width: 0 .075rem .075rem 0;
-            content: "";
-            display: inline-block;
-            padding: 2px;
-            position: absolute;
-            right: 1.5rem;
-            top: 1.4rem;
-            transform: rotate(-135deg);
-            transition: all .2s ease-out;
-        }
-
-        #sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
-            transform: rotate(45deg);
-            transition: all .2s ease-out;
-        }
-        .boton{
-            justify-content: space-around;
-        }
-
-
-        
-    </style>
-
+    <link rel="stylesheet" href="<?= base_url('css/tecnico.css') ?>">
+   
 </head>
 
 <body>
@@ -276,7 +95,7 @@
                     <div class="row">
                         <div class="col-8 pt-4">
                             <h1 class="titulo pt-4">
-                                Solicitud de materiales
+                                SOLICITUD DE MATERIALES
                                 </h1>
                                 <p class="pt-4">Por favor complete los campos para solicitar los materiales necesarios para el servicio</p>
                         </div>
@@ -298,7 +117,7 @@
                                 <label for="txt_no_repuesto" class="pb-3" class="texto">Número de repuesto</label>
                                 <input type="text" name="txt_no_repuesto" class="form-control" class="texto" value="" placeholder="Ingrese el número de repuesto">
                             </div>
-                            <div class="row-12 pt-4 text-center boton">
+                            <div class="row-12 pt-4 text-center centro ">
                             <button type="submit" class="btn btn-warning boton" id="btnSolicitarMaterial" name="btnSolicitarMaterial"><i class="bi bi-check2"></i> Ordenar material </button>
 
                             </div>

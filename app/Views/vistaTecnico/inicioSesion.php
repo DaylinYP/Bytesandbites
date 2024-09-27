@@ -16,115 +16,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="icon" href="<?= base_url('img/favicon.ico') ?>" type="image/x-icon">
-
-    <style>
-        * {
-            margin: 0;
-        }
-
-        .form-fondo {
-
-            background-color: rgba(58, 14, 94, 0.450);
-            padding: 30px;
-            border-radius: 40px;
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 2);
-            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-            width: 60%;
-            color: white;
-
-        }
-
-
-
-        a {
-            text-decoration: none;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        h1 {
-            font-weight: 600;
-            font-size: 1.5rem;
-        }
-
-        body {
-            font-family: 'Comfortaa', sans-serif;
-            background-color: white;
-            background-image: linear-gradient(to left, rgb(207, 207, 207), rgb(255, 255, 255));
-        }
-
-
-        .main {
-
-            background-size: cover;
-            width: 100%;
-            overflow: hidden;
-            transition: all 0.35s ease-in-out;
-        }
-
-        .boton {
-            width: 80%;
-            font-size: xx-large;
-        }
-
-        .titulo {
-            font-family: "Quantico", sans-serif;
-            font-size: 30px;
-        }
-        .titulo1 {
-            font-family: "Quantico", sans-serif;
-            font-size: 15px;
-        }
-
-        .texto {
-            font-family: "Comfortaa", sans-serif;
-        }
-
-        .container {
-            text-align: center;
-            display: flex;
-            justify-content: space-around;
-            padding: 60px;
-        }
-
-        .valid-feedback {
-            color: rgb(255, 255, 255);
-        }
-
-        .invalid-feedback {
-            color: rgb(255, 255, 255);
-        }
-
-        .button {
-            font-size: 40px;
-
-        }
-    </style>
+    <link rel="stylesheet" href="<?= base_url('css/tecnico.css') ?>">
+ 
 
 </head>
 
 <body>
 
     <div class="main p-3">
-        <main class="container">
+        <main class="container contenedor">
             <section class="form-fondo">
                 <div class="text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor" class="bi bi-screwdriver" viewBox="0 0 16 16">
                         <path d="M0 .995.995 0l3.064 2.19a1 1 0 0 1 .417.809v.07c0 .264.105.517.291.704l5.677 5.676.909-.303a1 1 0 0 1 1.018.24l3.338 3.339a.995.995 0 0 1 0 1.406L14.13 15.71a.995.995 0 0 1-1.406 0l-3.337-3.34a1 1 0 0 1-.24-1.018l.302-.909-5.676-5.677a1 1 0 0 0-.704-.291H3a1 1 0 0 1-.81-.417zm11.293 9.595a.497.497 0 1 0-.703.703l2.984 2.984a.497.497 0 0 0 .703-.703z" />
                     </svg>
                 </div>
-                <h1 class="titulo pt-4">
+                <h1 class="titulo pt-4 text-center">
                     INICIO DE SESIÓN
 
                 </h1>
-                <h3 class="titulo1">
+                <h3 class="titulo1 text-center">
                     TÉCNICO
                 </h3>
 
-                <form action="" class="needs-validation" novalidate>
+                <form action="" class="needs-validation sesion" novalidate>
                     <div class="input-group mb-3 pt-5">
                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
                         <input type="text" class="form-control" placeholder="usuario" aria-label="Username" aria-describedby="basic-addon1" required>
@@ -139,8 +54,8 @@
                         <div class="invalid-feedback">Por favor, ingrese una contraseña.</div>
                     </div>
 
-                    <div class="col-12">
-                        <button class="btn btn-warning" type="submit" id="btnEnviar" name="btnEnviar">Ingresar</button>
+                    <div class="col-12 pt-4">
+                        <button class="btn btn-warning boton " type="submit" id="btnEnviar" name="btnEnviar">Ingresar</button>
                     </div>
                 </form>
 
