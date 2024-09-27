@@ -28,7 +28,7 @@ class Login extends BaseController
 
         if ($email !== null) {
             $this->setSession($email);
-            return redirect()->to(base_url('cerrarsesion'));
+            return redirect()->to(base_url('vistaclientes/cerrarsesion'));
         }
 
         return redirect()->back()->withInput()->with('errors', 'El usuario y/o la contraseña son incorrectos.');
@@ -37,15 +37,15 @@ class Login extends BaseController
     private function setSession($userData){
         $data = [
             'logged_in' => true,
-            'userid' => $userData['id'],
-            'usercorreo' => $userData['txtCorreoElectronico']
+            'user_id' => $userData['id_cliente'],
+            'user_correo' => $userData['email']
         ];
         $this->session->set($data);
     }
     public function logout(){
-        if($this->session->get('loggen_in')){
+        if($this->session->get('logged_in')){
             $this->session->destroy();
         }
-        return redirect()->to(base_url());
+        return redirect()->to(base_url('vistaclientes/index'));
     }
 }

@@ -128,7 +128,7 @@ nav ul li a {
 
 li a.active,
 li a:hover {
-    background-color: rgb(255, 194, 10);
+   
     color: black;
     transition: 0.5s;
 }

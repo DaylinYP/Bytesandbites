@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class QuienesSomos extends BaseController
+class CQuienesSomos extends BaseController
 {    
         public function index(): string
         {

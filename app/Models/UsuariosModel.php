@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
- 
+
 use CodeIgniter\Model;
 
 class UsuariosModel extends Model
@@ -18,9 +18,15 @@ class UsuariosModel extends Model
         'contrasenia',
         'fecha_creacion',
         'fecha_modificacion',
-        'estado_id'];
+        'estado_id'
+    ];
 
-     public function validateUser($user, $password)
+    protected $belongsTo = [
+        'usuario' => 'App\Models\UsuarioModel',
+        'estado'  => 'App\Models\EstadoModel',
+    ];
+
+    /*    public function validateUser($user, $password)
      {
         $user = $this->where(['nombre_usuario'=> $user , 'estado_id' => 1])->first();
         if ($user && password_verify($password, $user['contrasenia'])){
@@ -28,6 +34,28 @@ class UsuariosModel extends Model
         }
         return null;
      }   
+     */
+
+    public function validateUser($user, $password)
+    {
+        // Obtener el usuario por nombre de usuario y estado activo
+        $user = $this->db->table('usuarios')
+            ->join('empleados', 'usuarios.id_empleado = empleados.id_empleado')
+            ->join('roles', 'empleados.id_rol = roles.id_rol')  // Relacionar con la tabla roles
+            ->select('usuarios.*, empleados.*, roles.nombre_rol') // Obtener campos necesarios
+            ->where(['usuarios.nombre_usuario' => $user, 'usuarios.estado_id' => 1])
+            ->get()
+            ->getRowArray(); // Obtener una fila como arreglo
+
+        // Verificar si el usuario existe y si la contraseña es correcta
+        if ($user && password_verify($password, $user['contrasenia'])) {
+            return $user; // Retornar todos los datos del usuario con el rol
+        }
+
+        return null; // Si no coincide la contraseña o el usuario no existe
+    }
+
+
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

@@ -2,12 +2,12 @@
 
 namespace App\Controllers;
 
-class AfterLogin extends BaseController
+class CAfterLogin extends BaseController
 {
     public function index(): string
     {
         $data = ['titulo' => 'Login'];
-        return view('vistacgtlientes/afterlogin', $data);
+        return view('vistaclientes/afterlogin', $data);
 
     }
  

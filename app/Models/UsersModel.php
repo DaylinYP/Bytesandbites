@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class UsersModel extends Model
 {
     protected $table            = 'clientes';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_cliente';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false; // Considera habilitar esto si usas "soft deletes"
@@ -19,12 +19,14 @@ class UsersModel extends Model
         'primer_apellido',
         'segundo_apellido',
         'nit',
-        'email',
         'contrasenia',  
+        'email',
         'activacion',
         'activation_token',
         'reset_token',
         'reset_token_expires_at',
+        'created_at',
+        'updated_at',
         'telefono',
         'id_empresa'
     ];
@@ -46,7 +48,7 @@ class UsersModel extends Model
      */
     public function validateUser($email, $password){
         // Buscar el correo en la base de datos
-        $email = $this->where(['email' => $email, 'active' => 1])->first();
+        $email = $this->where(['email' => $email, 'activacion' => 1])->first();
         
         // Verificar si existe el usuario y si la contraseña es correcta
         if ($email && password_verify($password, $email['txtContrasenia'])) {  // Asegúrate que el campo en la base de datos sea 'password'

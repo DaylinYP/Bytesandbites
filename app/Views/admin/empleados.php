@@ -6,7 +6,7 @@
 
 <div class="main  p-3"> 
     <main class="container">
-        <form action="<?= base_url('')?>" method="post" class="formulario">
+        <form action="<?= base_url('')?>" method="post" class="form-fondo">
             <div class="row">
                 <div class="col-4">
                     <h1>
@@ -19,7 +19,7 @@
             </div>
 
 
-            <section class="form-fondo">
+            <section class="formulario">
                 <div class="d-grid gap-2 d-md-flex ">
                     <a href="<?= base_url('nuevo_empleado'); ?>" class="btn btn-primary bi bi-person-fill-add m-2"><br>Agregar Empleado</a>
                     <a href="<?= base_url('nuevo_rol'); ?>" class="btn btn-primary bi bi-diagram-3-fill m-2"><br>Roles/Puesto</a>

@@ -12,6 +12,8 @@
                 <div class="col-4">
                     <h1>
                         Inicio
+                        <?= esc($user_id) ?>
+                        <?= esc($user_name); ?>
                     </h1>
                 </div>
                 <div class="col">
