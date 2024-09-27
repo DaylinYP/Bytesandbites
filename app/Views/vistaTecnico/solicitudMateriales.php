@@ -191,7 +191,9 @@
             transform: rotate(45deg);
             transition: all .2s ease-out;
         }
-        
+        .boton{
+            justify-content: space-around;
+        }
 
 
         
@@ -272,125 +274,39 @@
             <main class="container">
                 <form action="nombre">
                     <div class="row">
-                        <div class="col-4">
-                            <h1 class="titulo">
-                                Datos del Técnico
+                        <div class="col-8 pt-4">
+                            <h1 class="titulo pt-4">
+                                Solicitud de materiales
                                 </h1>
+                                <p class="pt-4">Por favor complete los campos para solicitar los materiales necesarios para el servicio</p>
                         </div>
                         <div class="col">
                             <hr>
                         </div>
                     </div>
-                    <section class="form-fondo">
+                    <section class="form-fondo" class="pt-4">
                     <div class="row pt-4">
                             <div class="col">
-                                <label for="txt_id_tecnico" class="pb-3" class="texto">Busque su ID</label>
-                                <input type="text" name="txt_id_tecnico" class="form-control" class="texto" placeholder="Ingrese su ID">
+                                <label for="no_servicio_reparacion" class="pb-3" class="texto">ID de servicio</label>
+                                <input type="text" name="no_servicio_reparacion" class="form-control" class="texto" placeholder="Ingrese su ID">
                             </div>
                             <div class="col">
-                                <label for="txt_nombre_tecnico" class="pb-3" class="texto">Nombre:</label>
-                                <input type="text" name="txt_nombre_tecnico" class="form-control" class="texto" value="" readonly>
+                                <label for="txt_orden_de_servicio" class="pb-3" class="texto">Número de orden de servicio</label>
+                                <input type="text" name="txt_orden_de_servicio" class="form-control" class="texto" value="" placeholder="Ingrese el número de orden de servicio">
                             </div>
                             <div class="col">
-                                <label for="txt_apellido_tecnico" class="pb-3" class="texto">Apellido:</label>
-                                <input type="text" name="txt_apellido_tecnico" class="form-control" class="texto" value="" readonly>
+                                <label for="txt_no_repuesto" class="pb-3" class="texto">Número de repuesto</label>
+                                <input type="text" name="txt_no_repuesto" class="form-control" class="texto" value="" placeholder="Ingrese el número de repuesto">
                             </div>
-                            <div class="col">
-                                <button type="button" id="btnBuscar" class="btn btn-primary mt-4">
-                                    Buscar
+                            <div class="row-12 pt-4 text-center boton">
+                            <button type="submit" class="btn btn-warning boton" id="btnSolicitarMaterial" name="btnSolicitarMaterial"><i class="bi bi-check2"></i> Ordenar material </button>
+
+                            </div>
                                 </button>
                        
                        
                     </section>
-                    <div class="row py-4">
-                        <div class="col-4">
-                            <h1 class="titulo">
-                                Material a solicitar
-                            </h1>
-                        </div>
-                        <div class="col">
-                            <hr>
-                        </div>
-                    </div>
-                    <section class="form-fondo">
-                        <div class="row pt-4">
-                            <div class="col">
-                                <label for="txt_id_material" class="pb-3">Código del material</label>
-                                <input type="text" name="txt_id_material" class="form-control" placeholder="Ingrese el código del material">
-                            </div>
-                            <div class="col">
-                                <label for="txt_marca_material" class="pb-3">Marca:</label>
-                                <input type="text" name="txt_marca_material" class="form-control"  readonly>
-                            </div>
-                            
-                        </div>
-                        
-                        <div class="col py-4">
-                                <label for="txt_nombre_material" class="pb-3">Nombre:</label>
-                                <input type="text" name="txt_nombre_material" class="form-control"  readonly>
-                            </div>
-
-                        <div class="col pb-4">
-                            <label for="txt_cantidad_material" class="pb-3">Cantidad:</label>
-                            <input type="number" name="txt_cantidad_material" class="form-control" id="txt_cantidad_material" placeholder="Ingrese la cantidad de material que necesita en ENTEROS"></input>
-                        </div>
-                        <div class="col py-4">
-                            <label for="txt_fecha_material" class="pb-3">Fecha de solicitud:</label>
-                            <input type="date" name="txt_fecha_material" class="form-control" id="txt_fecha_material"></>
-                        </div>
-                        
-                        <div class="col py-4">
-                            <label for="txt_usuario" class="pb-3">Descripción:</label>
-                            <textarea name="txt_usuario" class="form-control" id=""></textarea>
-                        </div>
-
-
                     
-                        <div class="row pt-4">
-                            <div class="col">
-                                <label for="txt_observacion" class="pb-3">Observaciones:</label>
-                                <textarea name="txt_observacion" class="form-control" style="height: 150px;" id=""></textarea>
-                            </div>
-                            
-                        </div>
-
-                        <div class="row pt-4">
-                        <div class="col">
-                        <button type="submit" class="btn btn-warning" id="btnAgregarMaterial" name="btnAgregarMaterial"><i class="bi bi-plus-circle-fill"></i> Agregar material </button>
-                        </div>
-                        </div>
-                        </section>
-
-                        <div class="row py-4">
-                        <div class="col-4">
-                            <h1 class="titulo">
-                                Datos de la orden
-                            </h1>
-                        </div>
-                        <div class="col">
-                            <hr>
-                        </div>
-                    </div>
-                    <section class="form-fondo">
-                        <div class="col">
-                                <label for="txt_id_orden" class="pb-3" class="texto">Ingrese el ID</label>
-                                <input type="text" name="txt_id_orden" class="form-control" class="texto" placeholder="Ingrese el ID">
-                            </div>
-                            <div class="col">
-                                <label for="txt_estado_orden" class="pb-3" class="texto">Estado:</label>
-                                <input type="text" name="txt_estado_orden" class="form-control"  class="texto" readonly>
-                            </div>
-                            <div class="row pt-4">
-                            <div class="col">
-                                <label for="txt_observaciones_orden" class="pb-3">Observaciones:</label>
-                                <textarea name="txt_observaciones_orden" class="form-control" style="height: 150px;" id=""></textarea>
-                            </div>
-                            </section>  
-
-                            <div class="row pt-4">
-                            <div class="col text-center">
-                        
-                        <button type="submit" class="btn btn-warning boton" id="btnSolicitarMaterial" name="btnSolicitarMaterial"><i class="bi bi-check2"></i> Ordenar material </button>
                         </div>
                         </div>
                             </form>
