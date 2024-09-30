@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+}
+
+/* Estilos para el fondo del formulario */
+.form-fondo {
+    background-color: rgba(26, 25, 28, 0.962);
+    padding: 30px;
+    border-radius: 40px;
+    backdrop-filter: blur(55px);
+    border: 2px solid rgba(255, 255, 255, 2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: white;
+    width: 100%;
+}
+
+/* Estilos para enlaces */
+a {
+    text-decoration: none;
+}
+
+/* Estilos para listas */
+li {
+    list-style: none;
+}
+
+/* Estilos para encabezados */
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+/* Estilos globales del cuerpo */
+body {
+    font-family: 'Comfortaa', sans-serif;
+    background-color: white;
+    background-image: linear-gradient(to left, rgb(207, 207, 207), rgb(255, 255, 255));
+}
+
+/* Estructura principal */
+.wrapper {
+    display: flex;
+}
+
+.main {
+    background-size: cover;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+
+}
+
+/* Estilos para el título */
+.titulo {
+    font-family: "Quantico", sans-serif;
+    font-size: 60px;
+}
+
+.titulo1 {
+    font-family: "Quantico", sans-serif;
+    font-size: 15px;
+}
+
+/* Estilos de texto */
+.centro{
+    justify-content: space-around;
+}
+.texto {
+    font-family: "Comfortaa", sans-serif;
+}
+
+/* Estilos para botones */
+.boton {
+    width: 50%;
+    font-size: x-large;
+    justify-content: space-around;
+}
+
+/* Estilos para la barra lateral */
+#sidebar {
+    height: 100vh;
+    overflow-y: auto;
+    position: sticky;
+    width: 70px;
+    min-width: 70px;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    background-color: #212122;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+}
+
+#sidebar.expand {
+    width: 260px;
+    min-width: 260px;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo a {
+    color: #FFF;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: #FFF;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #7041df;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #0e2238;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+/* Estilos para tablas */
+.tabla {
+    background-color: rgba(44, 42, 42, 0.62);
+    border-radius: 40px;
+    backdrop-filter: blur(80px);
+    border: 2px solid rgba(255, 255, 255, 2);
+    text-align: center;
+    font-size: large;
+    color: white;
+    width: 100%;
+}
+
+.th {
+    background-color:rgb(255, 193, 7);
+    backdrop-filter: blur(450px);
+    color: white !important;
+}
+
+table {
+    color: white !important;
+}
+
+.table-striped th td:nth-of-type(odd) {
+    background-color:rgb(255, 193, 7)!important;
+    backdrop-filter: blur(450px);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(47, 42, 42, 0.224) !important;
+    backdrop-filter: blur(450px);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: rgba(16, 15, 15, 0.321) !important;
+    backdrop-filter: blur(450px);
+}
+
+.table-striped tbody tr td {
+    color: white !important;
+}
+
+/* Estilos de retroalimentación para formularios */
+.valid-feedback {
+    color: rgb(255, 255, 255);
+}
+
+.invalid-feedback {
+    color: rgb(255, 255, 255);
+}
+
+/* Contenedores */
+.contenedor {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    padding: 60px;
+}
+
+/* Botones específicos */
+.button {
+    font-size: 40px;
+}
+
+.sesion
+{
+    justify-content: center;
+    
+}
