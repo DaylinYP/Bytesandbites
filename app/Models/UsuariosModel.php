@@ -16,6 +16,7 @@ class UsuariosModel extends Model
         'id_empleado',
         'nombre_usuario',
         'contrasenia',
+        'contrasenia_p',
         'fecha_creacion',
         'fecha_modificacion',
         'estado_id'
@@ -25,16 +26,6 @@ class UsuariosModel extends Model
         'usuario' => 'App\Models\UsuarioModel',
         'estado'  => 'App\Models\EstadoModel',
     ];
-
-    /*    public function validateUser($user, $password)
-     {
-        $user = $this->where(['nombre_usuario'=> $user , 'estado_id' => 1])->first();
-        if ($user && password_verify($password, $user['contrasenia'])){
-            return $user; 
-        }
-        return null;
-     }   
-     */
 
     public function validateUser($user, $password)
     {
@@ -54,6 +45,7 @@ class UsuariosModel extends Model
 
         return null; // Si no coincide la contraseña o el usuario no existe
     }
+    
 
 
 
