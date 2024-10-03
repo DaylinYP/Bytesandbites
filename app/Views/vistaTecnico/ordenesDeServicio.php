@@ -107,25 +107,28 @@
 
                     <div class="row pt-4">
                         <div class="col">
-                            <table class="table table-border table-striped table-light">
-                                <thead>
+                            <table class="table table-striped tabla">
+                                <thead class="thead">
                                     <tr>
                                         <th>No de Orden</th>
                                         <th>ID Cliente</th>
                                         <th>Fecha Recepción</th>
                                         <th>Fecha Entrega Estimada</th>
                                         <th>Fecha Entrega</th>
+                                        <th>Estado</th>
                                         <th>Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($datos as $orden): ?>
+                                    <?php
+                                     foreach ($datos as $orden): ?>
                                         <tr>
-                                            <td><?= $orden['no_orden']; ?></td>
-                                            <td><?= $orden['id_cliente']; ?></td>
-                                            <td><?= $orden['fecha_recepcion']; ?></td>
-                                            <td><?= $orden['fecha_entrega_estimada']; ?></td>
-                                            <td><?= $orden['fecha_entrega']; ?></td>
+                                            <td><?php echo $orden['no_orden']; ?></td>
+                                            <td><?php echo $orden['id_cliente']; ?></td>
+                                            <td><?php echo $orden['fecha_recepcion']; ?></td>
+                                            <td><?php echo $orden['fecha_entrega_estimada']; ?></td>
+                                            <td><?php echo $orden['fecha_entrega']; ?></td>
+                                            <td><?php echo $orden['estado_orden']; ?></td>
                                             <td>
                                                 <a href="<?= base_url('buscar_orden/') . $orden['no_orden'] ?>" class="btn btn-success">
                                                     <i class="bi bi-pencil-square">Actualizar</i>
@@ -135,7 +138,9 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php 
+                                    endforeach;
+                                     ?>
                                 </tbody>
                             </table>
                         </div>

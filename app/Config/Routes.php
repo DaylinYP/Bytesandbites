@@ -40,10 +40,13 @@ $routes->get('afterlogin', 'CAfterLogin::index');
 
 
 /*VISTA TÉCNICO */
+/*Para solicitar materiales*/
 $routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales');
-$routes ->get('ordenesDeServicio', 'ordenesDeServicioController::ordenesDeServicio');
+/* Para ver las órdenes de servicio*/
+$routes ->get('ordenesDeServicio', 'ordenesDeServicioController::index');
+/* Para editar la información del técnico*/
 $routes->get('editarPerfil', 'EmpleadoController::editarPerfil');
-<<<<<<< HEAD
+/* Para iniciar sesión*/
 $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 
 
@@ -76,5 +79,3 @@ $routes->post('/agregar_rol','AdminRolesController::agregarRol');
 /*Quejas */
 $routes->get('/quejas','QuejasController::quejas');
 
-/**---------> */ 
->>>>>>> a46c869e3ae0d09a58b24a8af57d56aa8482554c
