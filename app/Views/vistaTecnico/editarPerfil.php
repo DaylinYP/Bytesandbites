@@ -15,8 +15,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="icon" href="<?= base_url('img/favicon.ico') ?>" type="image/x-icon">
-    <link rel="stylesheet" href="<?= base_url('css/tecnico.css') ?>">
+    <link rel="icon" href="<?= base_url('img/favicon.ico'); ?> ?v=1.0" type="image/x-icon">
+    <link rel="stylesheet" href="<?= base_url('css/tecnico.css');?> ?v=1.0">
 
 
 

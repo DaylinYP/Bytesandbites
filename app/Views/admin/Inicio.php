@@ -6,15 +6,18 @@
 
 
 <div class="main  p-3">
-    <main class="container"> 
+    <main class="container">
         <form action="#" class="form-fondo">
             <div class="row">
                 <div class="col-4">
                     <h1>
                         Inicio
-                        <?= esc($user_id) ?>
-                        <?= esc($user_name); ?>
                     </h1>
+                    <h5>
+                        Nombre: <?= esc($user_nombre); ?> <br>
+                        Rol: <?= esc($user_role); ?> <br>
+                        Usuario: <?= esc($user_name); ?>
+                    </h5>
                 </div>
                 <div class="col">
                     <hr>

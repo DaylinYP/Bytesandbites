@@ -12,13 +12,12 @@ use CodeIgniter\HTTP\ResponseInterface;
 class AdminEmpleadosController extends BaseController
 {
    protected $helpers = ['form'];
-   
+
 
    public function index()
    {
 
       /* $datos['datos'] = $empleados->findAll();*/
-
       $db = \Config\Database::connect();
 
       $sql = $db->table('empleados');
@@ -42,12 +41,60 @@ class AdminEmpleadosController extends BaseController
       $sql->join('empresas', 'empleados.id_empresa = empresas.id_empresa');
       $sql->join('usuarios', 'empleados.id_empleado = usuarios.id_empleado');
       $sql->join('estados', 'usuarios.estado_id = estados.estado_id');
+
       $query = $sql->get();
       $resultado = $query->getResultArray();
 
       $data = ['empleadoss' => $resultado];
       return view('admin/empleados', $data);
    }
+
+   public function buscar()
+   {
+
+      /* $datos['datos'] = $empleados->findAll();*/
+      $busqueda = $this->request->getPost('busqueda');
+      $db = \Config\Database::connect();
+
+      $sql = $db->table('empleados');
+      $sql->select(
+         'empleados.id_empleado,
+         empleados.dpi,
+         empleados.primer_nombre, 
+         empleados.segundo_nombre,
+         empleados.primer_apellido,
+         empleados.segundo_apellido,
+         empleados.email,
+         empleados.nit,
+         empleados.telefono,
+         empleados.direccion,
+         roles.nombre_rol as rol, 
+         empresas.nombre_empresa as sucursal,
+         empleados.extension,
+         estados.nombre as estado'
+      );
+      $sql->join('roles', 'empleados.id_rol = roles.id_rol');
+      $sql->join('empresas', 'empleados.id_empresa = empresas.id_empresa');
+      $sql->join('usuarios', 'empleados.id_empleado = usuarios.id_empleado');
+      $sql->join('estados', 'usuarios.estado_id = estados.estado_id');
+
+
+      if (!empty($busqueda)) {
+         $sql->groupStart();
+         $sql->like('empleados.primer_nombre', $busqueda);
+         $sql->orLike('empleados.primer_apellido', $busqueda);
+         $sql->orLike('empleados.email', $busqueda);
+         $sql->orLike('empleados.id_empleado', $busqueda);
+         // Agrega más campos según sea necesario
+         $sql->groupEnd();
+     }
+      $query = $sql->get();
+      $resultado = $query->getResultArray();
+
+      $data = ['empleadoss' => $resultado];
+      return view('admin/empleados', $data);
+   }
+
 
 
    public function buscarEmpleado($id = null)
@@ -102,7 +149,7 @@ class AdminEmpleadosController extends BaseController
       $usuarios = new UsuariosModel();
 
       $data = [
-         
+
          $datos = [
             'id_empleado' => $this->request->getVar('txt_id'),
             'primer_nombre' => $this->request->getVar('txt_pr_nombre'),
@@ -124,6 +171,7 @@ class AdminEmpleadosController extends BaseController
             'id_empleado' => $this->request->getVar('txt_id'),
             'nombre_usuario' => $this->request->getVar('txt_email_usuario'),
             'contrasenia' => password_hash($this->request->getPost('txt_contrasenia'), PASSWORD_DEFAULT),
+            'contrasenia_p' => $this->request->getPost('txt_contrasenia'),
             'fecha_modificacion' => $this->request->getVar('txt_fecha_modificacion'),
             'estado_id' => $this->request->getVar('txt_estado')
          ]
@@ -261,12 +309,11 @@ class AdminEmpleadosController extends BaseController
 
       if (!$this->validate($reglas)) {
          return redirect()->back()->withInput();
-      }else{
+      } 
 
          $empleados->update($datos['id_empleado'], $datos);
          $usuarios->update($datosUsuarios['id_empleado'], $datosUsuarios);
-
-      }
+      
       return redirect()->route('empleados');
 
 
@@ -308,6 +355,7 @@ class AdminEmpleadosController extends BaseController
          'id_empleado' => $this->request->getVar('txt_id'),
          'nombre_usuario' => $this->request->getVar('txt_email_usuario'),
          'contrasenia' => password_hash($this->request->getPost('txt_contrasenia'), PASSWORD_DEFAULT),
+         'contrasenia_p' => $this->request->getPost('txt_contrasenia'),
          'fecha_creacion' => $this->request->getVar('txt_fecha_creacion'),
          'estado_id' => $this->request->getVar('txt_estado')
       ];

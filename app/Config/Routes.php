@@ -46,7 +46,7 @@ $routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMat
 $routes ->get('ordenesDeServicio', 'ordenesDeServicioController::index');
 /* Para editar la información del técnico*/
 $routes->get('editarPerfil', 'EmpleadoController::editarPerfil');
-/* Para iniciar sesión*/
+<<<<<<< HEAD
 $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 
 
@@ -57,6 +57,7 @@ $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 
 /*Inicio*/
 $routes->get('/Inicio','InicioController::index');
+$routes->post('/buscar','AdminEmpleadosController::buscar');
 
 /*Empleados*/
 $routes->get('/empleados','AdminEmpleadosController::index');
@@ -79,3 +80,5 @@ $routes->post('/agregar_rol','AdminRolesController::agregarRol');
 /*Quejas */
 $routes->get('/quejas','QuejasController::quejas');
 
+/**---------> */ 
+>>>>>>> a46c869e3ae0d09a58b24a8af57d56aa8482554c

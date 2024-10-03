@@ -54,7 +54,8 @@ class UsuariosController extends BaseController
             'logged_in' => true,
             'user_id' => $userData['id_empleado'],
             'user_name' => $userData['nombre_usuario'],
-            'user_role' => $userData['nombre_rol']
+            'user_role' => $userData['nombre_rol'],
+            'user_nombre' => $userData['primer_nombre']. ' ' .$userData['primer_apellido']
         ];
         $this->session->set($data);
     }
