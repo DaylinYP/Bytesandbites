@@ -6,7 +6,7 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    public string $fromEmail  = 'andbitsb@gmail.com';
+    public string $fromEmail  = 'noreplybytesandbits@gmail.com';
     public string $password = '';
     public string $fromName   = 'Proyecto Final';
     public string $recipients = '';
@@ -34,7 +34,7 @@ class Email extends BaseConfig
     /**
      * SMTP Username
      */
-    public string $SMTPUser = 'andbitsb@gmail.com';
+    public string $SMTPUser = 'noreplybytesandbits@gmail.com';
 
     /**
      * SMTP Password
@@ -63,7 +63,7 @@ class Email extends BaseConfig
      *             to the server. 'ssl' means implicit SSL. Connection on port
      *             465 should set this to ''.
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = 'ssl';
 
     /**
      * Enable word-wrap

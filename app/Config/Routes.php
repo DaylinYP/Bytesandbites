@@ -43,7 +43,7 @@ $routes->get('afterlogin', 'CAfterLogin::index');
 $routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales');
 $routes ->get('ordenesDeServicio', 'ordenesDeServicioController::ordenesDeServicio');
 $routes->get('editarPerfil', 'EmpleadoController::editarPerfil');
-<<<<<<< HEAD
+
 $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 
 
@@ -77,4 +77,4 @@ $routes->post('/agregar_rol','AdminRolesController::agregarRol');
 $routes->get('/quejas','QuejasController::quejas');
 
 /**---------> */ 
->>>>>>> a46c869e3ae0d09a58b24a8af57d56aa8482554c
+

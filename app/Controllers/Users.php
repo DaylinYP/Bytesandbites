@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\UsersModel; // Importar el modelo correctamente
@@ -6,12 +7,13 @@ use App\Models\UsersModel; // Importar el modelo correctamente
 class Users extends BaseController
 {
     protected $helpers = ['form'];
-
+    
     public function index(): string
     {
         $data = ['titulo' => 'Registro'];
-        return view('vistaclientes/registro', $data);
+        return view('vistaclientes/registro', $data); // Cargar la vista con el título
     }
+    
 
     public function create()
     {
@@ -36,7 +38,7 @@ class Users extends BaseController
                 'label' => 'NIT',
                 'rules' => 'required|max_length[13]'
             ],
-                  
+
             'txtContrasenia' => [
                 'label' => 'Contraseña',
                 'rules' => 'required|max_length[40]|min_length[5]'
@@ -53,23 +55,31 @@ class Users extends BaseController
                 'label' => 'Teléfono',
                 'rules' => 'required|max_length[8]'
             ]
-  
-        
         ];
-        
     
+     
+
+      
+
+
         // Validación de los campos
         if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
         }
-        
+
 
         // Obtener los datos del POST
         $userModel = new UsersModel();
         $post = $this->request->getPost([
-            'txtPrimerNombre', 'txtSegundoNombre',
-            'txtPrimerApellido', 'txtSegundoApellido',
-            'txtEmail', 'txtContrasenia', 'txtTelefono', 'txtNit'
+            'txtPrimerNombre',
+            'txtSegundoNombre',
+            'txtPrimerApellido',
+            'txtSegundoApellido',
+            'txtEmail',
+            'txtContrasenia',
+            'txtTelefono',
+            'txtNit',
+            'txtIdEmpresa'
         ]);
 
         // Generar token de activación
@@ -85,7 +95,9 @@ class Users extends BaseController
             'contrasenia' => password_hash($post['txtContrasenia'], PASSWORD_DEFAULT),
             'email' => $post['txtEmail'],
             'activacion' => 0,
-            'activation_token' => $token
+            'activation_token' => $token,
+            'telefono' => $post['txtTelefono'],
+            'id_empresa' => $post['txtIdEmpresa']
         ]);
 
         // Configuración del email
@@ -113,7 +125,7 @@ class Users extends BaseController
     public function activateUser($token)
     {
         $userModel = new UsersModel();
-        $user = $userModel->where(['activation_token' => $token, 'activacion' => 0])->first(); 
+        $user = $userModel->where(['activation_token' => $token, 'activacion' => 0])->first();
 
         if ($user) {
             $userModel->update($user['id_cliente'], [

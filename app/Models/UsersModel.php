@@ -29,6 +29,7 @@ class UsersModel extends Model
         'updated_at',
         'telefono',
         'id_empresa'
+        
     ];
 
     protected bool $allowEmptyInserts = false;

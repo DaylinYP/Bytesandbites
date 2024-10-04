@@ -1,7 +1,9 @@
-<?php echo $this->extend('layout/template'); ?>
+<?= $this->extend('layout/template'); ?> <!-- Extendemos el template base -->
 
+<?= $this->section('content'); ?> <!-- Iniciamos la sección de contenido -->
 
-<?php echo $this->section('content'); ?>
+    <!-- Formulario o contenido específico de la vista -->
+
 
 
 <div class="container">
@@ -22,7 +24,7 @@
                 <div class="mb-3">
                     <label class="mb-2" for="txtPrimerNombre">Nombre</label>
                     <input type="text" class="form-control" type="text" required id="txtPrimerNombre"
-                        name="txtPrimerNombre" value="<?= set_value('txtPrimerNombre');?>">
+                        name="txtPrimerNombre" value="<?= set_value('txtPrimerNombre'); ?>">
                 </div>
 
                 <div class="mb-3">
@@ -62,14 +64,21 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="mb-2" for="txtContraseña">Contraseña</label>
-                    <input type="password" required id="txtContrasenia" name="txtContrasenia" class="form-control">
+                    <label class="mb-2" for="txtContrasenia">Contraseña</label>
+                    <input type="password" required id="txtContrasenia" name="txtContrasenia" class="form-control" value="<?= set_value('txtContrasenia'); ?>">
                 </div>
 
                 <div class="mb-3">
                     <label class="mb-2" for="txtReContrasenia">Confirmar Contraseña</label>
-                    <input type="password" required id="txtReContrasenia" name="txtReContrasenia" class="form-control">
+                    <input type="password" required id="txtReContrasenia" name="txtReContrasenia" class="form-control" value="<?= set_value('txtReContrasenia'); ?>">
                 </div>
+
+
+                <div class="mb-3">
+                    <label class="mb-2" for="txtIdEmpresa">ID Empresa</label>
+                    <input type="number" readonly id="txtIdEmpresa" name="txtIdEmpresa" class="form-control" value="1" value="<?= set_value('txtIdEmpresa'); ?>">
+                </div>
+
 
 
                 <div class="d-flex justify-content-center">
@@ -81,9 +90,9 @@
 
 
             <?php if (session()->getFlashdata('errors') !== null): ?>
-            <div class="alert alert-danger my-3" role="alert">
-                <?= session()->getFlashdata('errors'); ?>
-            </div>
+                <div class="alert alert-danger my-3" role="alert">
+                    <?= session()->getFlashdata('errors'); ?>
+                </div>
             <?php endif; ?>
 
         </div>
@@ -95,5 +104,4 @@
         </div>
     </div>
 </div><br>
-
-<?php echo $this->endSection(); ?>
+<?= $this->endSection(); ?> <!-- Cerramos la sección -->
