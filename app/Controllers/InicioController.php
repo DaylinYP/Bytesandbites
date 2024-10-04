@@ -13,8 +13,9 @@ class InicioController extends BaseController
         $session = \Config\Services::session();
 
         // Recuperar datos de la sesión
-        $data['user_id'] = $session->get('user_id');
+        $data['user_role'] = $session->get('user_role');
         $data['user_name'] = $session->get('user_name');
+        $data['user_nombre'] = $session->get('user_nombre');
 
         // Verificar si el usuario está autenticado
         if (!$session->get('logged_in')) {

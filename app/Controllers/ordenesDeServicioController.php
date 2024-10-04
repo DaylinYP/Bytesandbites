@@ -1,23 +1,16 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\TOrdenServicioModel;
 
 class ordenesDeServicioController extends BaseController
 {
-    public function ordenesDeServicio()
+    public function index()
     {
-        return view('vistaTecnico/ordenesDeServicio');
+   $orden=new TOrdenServicioModel();
+   $datos['datos']=$orden->getOrdenesEstado();
+   return view ('vistaTecnico/ordenesDeServicio', $datos);
     }
-}
-
-
-/*   public function index()
-    {
-        echo view('header');
-        echo view('productos');
-        echo view('footer');
 
     }
- */
-
-
+ 
