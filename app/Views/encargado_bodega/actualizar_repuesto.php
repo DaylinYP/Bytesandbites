@@ -232,14 +232,14 @@
                     <i class="lni lni-grid-alt"></i>
                 </button>
                 <div class="sidebar-logo">
-                    <a href="#">Bytes & Bits</a>
+                    <a href="lista_repuestos">Bytes & Bits</a>
                 </div>
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="<?=base_url('perfil_empleado')?>" class="sidebar-link">
                         <i class="lni lni-user"></i>
-                        <span>Profile</span>
+                        <span>Perfil</span>
                     </a>
                 </li>
                 <li class="sidebar-item">

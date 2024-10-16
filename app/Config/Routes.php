@@ -82,3 +82,34 @@ $routes->get('/quejas','QuejasController::quejas');
 
 /**---------> */ 
 
+/*Agente de Servicio*/
+$routes->get('menu_ordenes_servicio', 'OrdenesController::index');
+$routes->get('detallesOrdenes', 'OrdenesController::verDatosOrden');
+$routes->get('ordenes_pendientes', 'OrdenesController::ordenesPendientes');
+$routes->get('ordenes_enproceso', 'OrdenesController::ordenesEnProceso');
+$routes->get('ordenes_finalizadas', 'OrdenesController::ordenesFinalizadas');
+
+$routes->get('orden/nueva', 'OrdenesController::nuevaOrden');
+$routes->post('orden/agregar', 'OrdenesController::agregarOrden');
+
+$routes->get('detalles/(:num)', 'OrdenesController::verDatosOrden/$1');
+
+/*Encargado de Bodega*/
+
+$routes->get('lista_repuestos', 'RepuestosController::index');
+
+//Agregar nuevo registro
+$routes->get('nuevo_repuesto', 'RepuestosController::nuevoRepuesto');
+$routes->post('agregar_repuesto', 'RepuestosController::agregarRepuesto');
+
+//Actualizar un registro
+$routes->get('buscar_repuesto/(:num)', 'RepuestosController::buscarRepuesto/$1');
+$routes->post('modificar_repuesto', 'RepuestosController::modificarRepuesto');
+
+
+// Eliminar registro
+$routes->get('eliminar_Repuesto/(:num)', 'RepuestosController::eliminarRepuesto/$1');
+
+/**---------> */ 
+//Perfil de empleados
+$routes->get('perfil_empleado/(:num)', 'EmpleadoController::perfilEmpleado/$1');
