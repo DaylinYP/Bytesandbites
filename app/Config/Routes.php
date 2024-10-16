@@ -73,6 +73,11 @@ $routes->post('/agregar_empleado','AdminEmpleadosController::agregarEmpleado');
 $routes->get('/buscar_empleado/(:num)','AdminEmpleadosController::buscarEmpleado/$1');
 $routes->post('/modificar_empleado','AdminEmpleadosController::modificar');
 
+
+/**Cliente */
+$routes->get('/verClientes','AdminClientesController::clientes');
+$routes->post('/buscarCliente','AdminClientesController::buscarCliente');
+
 /*Rol*/
 $routes->get('/nuevo_rol','AdminEmpleadosController::nuevoRol');
 $routes->post('/agregar_rol','AdminRolesController::agregarRol');
@@ -81,6 +86,11 @@ $routes->post('/agregar_rol','AdminRolesController::agregarRol');
 $routes->get('/quejas','QuejasController::quejas');
 
 /**---------> */ 
+
+
+
+
+
 
 /*Agente de Servicio*/
 $routes->get('menu_ordenes_servicio', 'OrdenesController::index');

@@ -57,7 +57,25 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
+                        <i class="lni lni-menu"></i>
+                        <span>Ordenes</span>
+                    </a>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">
+                                Listados Productos
+                            </a>
+                            <a href="<?= base_url('verClientes');?>" class="sidebar-link">
+                                Listados Clientes
+                            </a>
+                            
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="" class="sidebar-link">
                         <i class="lni lni-cog"></i>
                         <span>Setting</span>
                     </a>
