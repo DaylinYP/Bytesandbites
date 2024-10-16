@@ -46,7 +46,7 @@ $routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMat
 $routes ->get('ordenesDeServicio', 'ordenesDeServicioController::index');
 /* Para editar la información del técnico*/
 $routes->get('editarPerfil', 'EmpleadoController::editarPerfil');
-<<<<<<< HEAD
+
 $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 
 

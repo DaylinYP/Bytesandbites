@@ -77,6 +77,7 @@ class Users extends BaseController
             'txtSegundoApellido',
             'txtEmail',
             'txtContrasenia',
+            'txtcontrasenia_p',
             'txtTelefono',
             'txtNit',
             'txtIdEmpresa'
