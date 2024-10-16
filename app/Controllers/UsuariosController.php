@@ -39,7 +39,11 @@ class UsuariosController extends BaseController
             if ($user['nombre_rol'] === 'Gerente') {
                 return redirect()->to(base_url('/Inicio')); // Vista para admin
             } elseif ($user['nombre_rol'] === 'Tecnico') {
-                return redirect()->to(base_url('')); // Vista para empleado
+                return redirect()->to(base_url('')); // Vista para Tecnico
+            } elseif ($user['nombre_rol'] === 'Agente') {
+                return redirect()->to(base_url('menu_ordenes_servicio')); // Vista para Agente
+            }elseif ($user['nombre_rol'] === 'Bodega') {
+                return redirect()->to(base_url('lista_repuestos')); // Vista para Encargado de Bodega
             }
             /* else {
                 return redirect()->to(base_url('/')); // Vista genérica
