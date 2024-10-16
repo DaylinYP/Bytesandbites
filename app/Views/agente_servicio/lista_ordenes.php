@@ -267,14 +267,14 @@
                     <i class="lni lni-grid-alt"></i>
                 </button>
                 <div class="sidebar-logo">
-                    <a href="<?=base_url('ordenes_servicio')?>">Bytes & Bits</a>
+                    <a href="<?=base_url('menu_ordenes_servicio')?>">Bytes & Bits</a>
                 </div>
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="<?=base_url('perfil_empleado')?>" class="sidebar-link">
                         <i class="lni lni-user"></i>
-                        <span>Profile</span>
+                        <span>Perfil</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -283,15 +283,12 @@
                         <span>Ordenes de Servicio</span>
                     </a>
                 </li>
-                
                 <li class="sidebar-item">
                     <a href="<?=base_url('orden/nueva')?>" class="sidebar-link">
                         <i class="lni lni-agenda"></i>
                         <span> Nueva Orden de Servicio</span>
                     </a>
                 </li>
-                
-                
             </ul>
             <div class="sidebar-footer">
                 <a href="#" class="sidebar-link">
