@@ -50,38 +50,45 @@
 
 
                     <div class="">
-                        <main class="container-fluid py-5">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="card card-pendiente">
-                                        <div class="card-body">
-                                            <h5 class="card-title titulo">Pendientes</h5>
-                                            <p class="card-text cantidades-importantes text-end">5</p>
-                                            <a href="#" class="btn btn-warning btn-lg shadow-lg border border-2 border-white">Ver</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="card card-proceso">
-                                        <div class="card-body">
-                                            <h5 class="card-title titulo">En proceso</h5>
-                                            <p class="card-text cantidades-importantes text-end">10</p>
-                                            <a href="#" class="btn btn-warning btn-lg shadow-lg border border-2 border-white">Ver</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="card card-terminada">
-                                        <div class="card-body">
-                                            <h5 class="card-title titulo">Finalizadas</h5>
-                                            <p class="card-text cantidades-importantes text-end">25</p>
-                                            <a href="#" class="btn btn-warning btn-lg shadow-lg border border-2 border-white">Ver</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                        </main>
+                    <main class="container-fluid py-5">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 pb-5">
+                          <div class="card card-pendiente">
+                            <div class="card-body">
+                              <h5 class="card-title titulo">Pendientes</h5>
+                              <p class="card-text cantidades-importantes text-end">
+                                    <?= isset($pendientesCount) ? $pendientesCount : 0 ?>
+                              </p>
+                              <a href="<?=base_url('ordenes_pendientes')?>" class="btn btn-warning btn-lg shadow-lg border border-2 border-white">Ver</a>
+                              
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pb-5">
+                          <div class="card card-proceso">
+                            <div class="card-body">
+                              <h5 class="card-title titulo">En proceso</h5>
+                              <p class="card-text cantidades-importantes text-end">
+                                    <?= isset($enProcesoCount) ? $enProcesoCount : 0 ?>
+                              </p>
+                              <a href="<?=base_url('ordenes_enproceso')?>" class="btn btn-warning btn-lg shadow-lg border border-2 border-white">Ver</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pb-5">
+                            <div class="card card-terminada">
+                              <div class="card-body">
+                                <h5 class="card-title titulo">Finalizadas</h5>
+                                <p class="card-text cantidades-importantes text-end">
+                                    <?= isset($finalizadasCount) ? $finalizadasCount : 0 ?>
+                                </p>
+                                <a href="<?=base_url('ordenes_finalizadas')?>" class="btn btn-warning btn-lg shadow-lg border border-2 border-white">Ver</a>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+    
+                </main>
 
 
                 </section>
