@@ -16,83 +16,19 @@ class AdminEmpleadosController extends BaseController
 
    public function index()
    {
-
-      /* $datos['datos'] = $empleados->findAll();*/
-      $db = \Config\Database::connect();
-
-      $sql = $db->table('empleados');
-      $sql->select(
-         'empleados.id_empleado,
-         empleados.dpi,
-         empleados.primer_nombre, 
-         empleados.segundo_nombre,
-         empleados.primer_apellido,
-         empleados.segundo_apellido,
-         empleados.email,
-         empleados.nit,
-         empleados.telefono,
-         empleados.direccion,
-         roles.nombre_rol as rol, 
-         empresas.nombre_empresa as sucursal,
-         empleados.extension,
-         estados.nombre as estado'
-      );
-      $sql->join('roles', 'empleados.id_rol = roles.id_rol');
-      $sql->join('empresas', 'empleados.id_empresa = empresas.id_empresa');
-      $sql->join('usuarios', 'empleados.id_empleado = usuarios.id_empleado');
-      $sql->join('estados', 'usuarios.estado_id = estados.estado_id');
-
-      $query = $sql->get();
-      $resultado = $query->getResultArray();
-
-      $data = ['empleadoss' => $resultado];
-      return view('admin/empleados', $data);
+      $empleados = new AdminEmpleadosModel();
+      $datos['datos'] = session()->getFlashdata('resultado') ?? $empleados->verEmpleado();
+      return view('admin/empleados', $datos);
    }
 
    public function buscar()
    {
-
-      /* $datos['datos'] = $empleados->findAll();*/
+      $empleados = new AdminEmpleadosModel();
       $busqueda = $this->request->getPost('busqueda');
-      $db = \Config\Database::connect();
+      $datos['datos'] = $empleados->busqueda($busqueda);
+      session()->setFlashdata('resultado', $empleados->busqueda($busqueda));
 
-      $sql = $db->table('empleados');
-      $sql->select(
-         'empleados.id_empleado,
-         empleados.dpi,
-         empleados.primer_nombre, 
-         empleados.segundo_nombre,
-         empleados.primer_apellido,
-         empleados.segundo_apellido,
-         empleados.email,
-         empleados.nit,
-         empleados.telefono,
-         empleados.direccion,
-         roles.nombre_rol as rol, 
-         empresas.nombre_empresa as sucursal,
-         empleados.extension,
-         estados.nombre as estado'
-      );
-      $sql->join('roles', 'empleados.id_rol = roles.id_rol');
-      $sql->join('empresas', 'empleados.id_empresa = empresas.id_empresa');
-      $sql->join('usuarios', 'empleados.id_empleado = usuarios.id_empleado');
-      $sql->join('estados', 'usuarios.estado_id = estados.estado_id');
-
-
-      if (!empty($busqueda)) {
-         $sql->groupStart();
-         $sql->like('empleados.primer_nombre', $busqueda);
-         $sql->orLike('empleados.primer_apellido', $busqueda);
-         $sql->orLike('empleados.email', $busqueda);
-         $sql->orLike('empleados.id_empleado', $busqueda);
-         // Agrega más campos según sea necesario
-         $sql->groupEnd();
-     }
-      $query = $sql->get();
-      $resultado = $query->getResultArray();
-
-      $data = ['empleadoss' => $resultado];
-      return view('admin/empleados', $data);
+      return redirect()->to('empleados');
    }
 
 
@@ -100,44 +36,10 @@ class AdminEmpleadosController extends BaseController
    public function buscarEmpleado($id = null)
    {
 
-      $db = \Config\Database::connect();
-      $sql = $db->table('empleados');
-      $sql->select(
-         'empleados.id_empleado,
-         empleados.dpi,
-         empleados.primer_nombre as primer_nombre, 
-         empleados.segundo_nombre,
-         empleados.primer_apellido,
-         empleados.segundo_apellido,
-         empleados.email,
-         empleados.nit,
-         empleados.telefono,
-         empleados.direccion,
-         roles.id_rol,
-         roles.nombre_rol as rol, 
-         empresas.id_empresa,
-         empresas.nombre_empresa as sucursal,
-         empleados.extension,
-         estados.estado_id,
-         estados.nombre as estado,
-         usuarios.id_empleado,
-         usuarios.contrasenia,
-         usuarios.nombre_usuario,
-         usuarios.fecha_creacion,
-         usuarios.fecha_modificacion
-         '
-      );
-      $sql->join('roles', 'empleados.id_rol = roles.id_rol');
-      $sql->join('empresas', 'empleados.id_empresa = empresas.id_empresa');
-      $sql->join('usuarios', 'empleados.id_empleado = usuarios.id_empleado');
-      $sql->join('estados', 'usuarios.estado_id = estados.estado_id');
-      $sql->where('usuarios.id_empleado', $id);
-      $query = $sql->get();
-      $resultado = $query->getResultArray();
-
-      $datos = ['empleadosss' => $resultado];
-
-
+      $empleados = new AdminEmpleadosModel();
+      $empleado = $empleados->buscarID($id);
+      $datos['empleadosss'] = [$empleado];
+    
       return view('admin/frm/frm_empleado_modificar', $datos);
    }
 
@@ -148,7 +50,7 @@ class AdminEmpleadosController extends BaseController
       $empleados = new AdminEmpleadosModel();
       $usuarios = new UsuariosModel();
 
-      $data = [
+      
 
          $datos = [
             'id_empleado' => $this->request->getVar('txt_id'),
@@ -165,7 +67,7 @@ class AdminEmpleadosController extends BaseController
             'id_empresa' => $this->request->getVar('txt_empresa'),
             'extension' => $this->request->getVar('txt_extension')
 
-         ],
+         ];
 
          $datosUsuarios = [
             'id_empleado' => $this->request->getVar('txt_id'),
@@ -174,9 +76,7 @@ class AdminEmpleadosController extends BaseController
             'contrasenia_p' => $this->request->getPost('txt_contrasenia'),
             'fecha_modificacion' => $this->request->getVar('txt_fecha_modificacion'),
             'estado_id' => $this->request->getVar('txt_estado')
-         ]
-
-      ];
+         ];
 
 
 
@@ -309,11 +209,11 @@ class AdminEmpleadosController extends BaseController
 
       if (!$this->validate($reglas)) {
          return redirect()->back()->withInput();
-      } 
+      }
 
-         $empleados->update($datos['id_empleado'], $datos);
-         $usuarios->update($datosUsuarios['id_empleado'], $datosUsuarios);
-      
+      $empleados->update($datos['id_empleado'], $datos);
+      $usuarios->update($datosUsuarios['id_empleado'], $datosUsuarios);
+
       return redirect()->route('empleados');
 
 

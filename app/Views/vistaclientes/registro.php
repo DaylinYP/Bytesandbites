@@ -75,8 +75,7 @@
 
 
                 <div class="mb-3">
-                    <label class="mb-2" for="txtIdEmpresa">ID Empresa</label>
-                    <input type="number" readonly id="txtIdEmpresa" name="txtIdEmpresa" class="form-control" value="1" value="<?= set_value('txtIdEmpresa'); ?>">
+                    <input hidden type="number" readonly id="txtIdEmpresa" name="txtIdEmpresa" class="form-control" value="1" value="<?= set_value('txtIdEmpresa'); ?>">
                 </div>
 
 

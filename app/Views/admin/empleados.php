@@ -35,7 +35,7 @@
                 <?= form_close() ;?>
                 <div class="text-center d-flex justify-content-evenly table-scroll">
 
-                    <?php if (!empty($empleadoss)): ?>
+                    <?php if (!empty($datos)): ?>
 
                         <table class="table table-hover table-dark">
                             <thead class="">
@@ -55,7 +55,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($empleadoss as $empleados): ?>
+                                <?php foreach ($datos as $empleados): ?>
                                     <tr>
                                         <td> <?php echo $empleados['id_empleado']; ?></td>
                                         <td><?php echo $empleados['dpi']; ?></td>

@@ -9,7 +9,7 @@ class AdminEmpleadosModel extends Model
 
 
 {
-    
+
     protected $table            = 'empleados';
     protected $primaryKey       = 'id_empleado';
     protected $useAutoIncrement = true;
@@ -32,9 +32,102 @@ class AdminEmpleadosModel extends Model
         'extension'
     ];
 
-    protected $belongsTo = [
-        'usuario' => 'App\Models\UsuarioModel'
-    ];
+
+
+
+    public function verEmpleado()
+    {
+        return $this->select(
+            'empleados.id_empleado,
+         empleados.dpi,
+         empleados.primer_nombre, 
+         empleados.segundo_nombre,
+         empleados.primer_apellido,
+         empleados.segundo_apellido,
+         empleados.email,
+         empleados.nit,
+         empleados.telefono,
+         empleados.direccion,
+         roles.nombre_rol as rol, 
+         empresas.nombre_empresa as sucursal,
+         empleados.extension,
+         estados.nombre as estado'
+        )
+            ->join('roles', 'empleados.id_rol = roles.id_rol')
+            ->join('empresas', 'empleados.id_empresa = empresas.id_empresa')
+            ->join('usuarios', 'empleados.id_empleado = usuarios.id_empleado')
+            ->join('estados', 'usuarios.estado_id = estados.estado_id')
+            ->findAll();
+    }
+
+    public function busqueda($busqueda)
+    {
+        $this->select(
+            'empleados.id_empleado,
+             empleados.dpi,
+             empleados.primer_nombre, 
+             empleados.segundo_nombre,
+             empleados.primer_apellido,
+             empleados.segundo_apellido,
+             empleados.email,
+             empleados.nit,
+             empleados.telefono,
+             empleados.direccion,
+             roles.nombre_rol as rol, 
+             empresas.nombre_empresa as sucursal,
+             empleados.extension,
+             estados.nombre as estado'
+        )
+            ->join('roles', 'empleados.id_rol = roles.id_rol')
+            ->join('empresas', 'empleados.id_empresa = empresas.id_empresa')
+            ->join('usuarios', 'empleados.id_empleado = usuarios.id_empleado')
+            ->join('estados', 'usuarios.estado_id = estados.estado_id');
+
+        if (!empty($busqueda)) {
+            $this->groupStart()
+                ->like('empleados.primer_nombre', $busqueda)
+                ->orLike('empleados.primer_apellido', $busqueda)
+                ->orLike('empleados.email', $busqueda)
+                ->orLike('empleados.id_empleado', $busqueda)
+                // Agrega más campos según sea necesario
+                ->groupEnd();
+        }
+        return $this->findAll();
+    }
+
+    public function buscarID($id){
+        return $this->select(
+            'empleados.id_empleado,
+         empleados.dpi,
+         empleados.primer_nombre as primer_nombre, 
+         empleados.segundo_nombre,
+         empleados.primer_apellido,
+         empleados.segundo_apellido,
+         empleados.email,
+         empleados.nit,
+         empleados.telefono,
+         empleados.direccion,
+         roles.id_rol,
+         roles.nombre_rol as rol, 
+         empresas.id_empresa,
+         empresas.nombre_empresa as sucursal,
+         empleados.extension,
+         estados.estado_id,
+         estados.nombre as estado,
+         usuarios.id_empleado,
+         usuarios.contrasenia,
+         usuarios.nombre_usuario,
+         usuarios.fecha_creacion,
+         usuarios.fecha_modificacion
+         '
+        )
+        ->join('roles', 'empleados.id_rol = roles.id_rol')
+            ->join('empresas', 'empleados.id_empresa = empresas.id_empresa')
+            ->join('usuarios', 'empleados.id_empleado = usuarios.id_empleado')
+            ->join('estados', 'usuarios.estado_id = estados.estado_id')
+            ->where('usuarios.id_empleado', $id)
+            ->first();
+    }
 
 
     protected bool $allowEmptyInserts = false;
@@ -67,4 +160,3 @@ class AdminEmpleadosModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 }
-

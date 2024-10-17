@@ -77,7 +77,7 @@ class Users extends BaseController
             'txtSegundoApellido',
             'txtEmail',
             'txtContrasenia',
-            'txtcontrasenia_p',
+            'txtReContrasenia',
             'txtTelefono',
             'txtNit',
             'txtIdEmpresa'
@@ -94,6 +94,7 @@ class Users extends BaseController
             'segundo_apellido' => $post['txtSegundoApellido'],
             'nit' => $post['txtNit'],
             'contrasenia' => password_hash($post['txtContrasenia'], PASSWORD_DEFAULT),
+            'contrasenia_p' => $post['txtReContrasenia'],
             'email' => $post['txtEmail'],
             'activacion' => 0,
             'activation_token' => $token,

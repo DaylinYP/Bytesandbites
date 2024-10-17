@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\ClientesModel;
+use App\Models\UsersModel;
 
 class AdminClientesController extends BaseController
 {
@@ -11,7 +11,7 @@ class AdminClientesController extends BaseController
 
     public function clientes()
     {
-        $clientes = new ClientesModel();
+        $clientes = new UsersModel();
         $datos['datos'] = session()->getFlashdata('resultado') ?? $clientes->verClientes();
         //print_r($datos);
         return view('admin/clientes', $datos);
@@ -19,7 +19,7 @@ class AdminClientesController extends BaseController
 
     public function buscarCliente()
     {
-        $clientes = new ClientesModel();
+        $clientes = new UsersModel();
         $busqueda = $this->request->getPost('busqueda');
         $datos['datos'] = $clientes->buscar($busqueda);
         // Almacena los resultados en la sesión

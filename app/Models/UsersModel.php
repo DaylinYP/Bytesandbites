@@ -20,7 +20,7 @@ class UsersModel extends Model
         'segundo_apellido',
         'nit',
         'contrasenia',
-        'contrasenia_p', 
+        'contrasenia_p',
         'email',
         'activacion',
         'activation_token',
@@ -30,7 +30,7 @@ class UsersModel extends Model
         'updated_at',
         'telefono',
         'id_empresa'
-        
+
     ];
 
     protected bool $allowEmptyInserts = false;
@@ -48,10 +48,11 @@ class UsersModel extends Model
      * @param string $contrasenia
      * @return array|null
      */
-    public function validateUser($email, $password){
+    public function validateUser($email, $password)
+    {
         // Buscar el correo en la base de datos
         $email = $this->where(['email' => $email, 'activacion' => 1])->first();
-        
+
         // Verificar si existe el usuario y si la contraseña es correcta
         if ($email && password_verify($password, $email['txtContrasenia'])) {  // Asegúrate que el campo en la base de datos sea 'password'
             return $email;
@@ -59,4 +60,31 @@ class UsersModel extends Model
 
         return null; // Si el usuario no existe o la contraseña es incorrecta
     }
-} 
+
+
+    /**ADMIN -<<<--*/
+    public function verClientes()
+    {
+        return $this->select('clientes.*, empresas.nombre_empresa')
+            ->join('empresas', 'clientes.id_empresa = empresas.id_empresa')
+            ->findAll();
+    }
+    public function buscar($busqueda)
+    {
+        $this->select('clientes.*, empresas.nombre_empresa')
+            ->join('empresas', 'clientes.id_empresa = empresas.id_empresa');
+
+        if (!empty($busqueda)) {
+            $this->groupStart()
+                ->like('clientes.primer_nombre', $busqueda)
+                ->orLike('clientes.primer_apellido', $busqueda)
+                ->orLike('clientes.email', $busqueda)
+                ->orLike('clientes.id_cliente', $busqueda)
+                // Agrega más campos según sea necesario
+                ->groupEnd();
+        }
+
+        return $this->findAll();
+    }
+    /**----> >> */
+}
