@@ -21,7 +21,7 @@
 <body>
 
 <!--Button Sticky-->
-<button class="button-sticky chat-button" type="button" onclick="window.location.href='<?= base_url('vistaclientes/servicio_al_cliente') ?>'">
+<button class="button-sticky chat-button" type="button" onclick="window.location.href='<?= base_url('servicio_al_cliente') ?>'">
     <i class="bi bi-emoji-smile-fill"></i>
 </button>
 

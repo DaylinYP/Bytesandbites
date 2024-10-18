@@ -8,7 +8,7 @@ class CReporteQueja extends BaseController
     public function index(): string
     {
         $data = ['titulo' => 'Quejas o Sugerencias'];
-        return view('reporte_queja', $data); 
+        return view('vistaclientes/reporte_queja', $data); 
     }
     
  
