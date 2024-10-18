@@ -85,7 +85,7 @@ $routes->post('/agregar_rol','AdminRolesController::agregarRol');
 
 /*Quejas */
 $routes->get('/quejas','QuejasController::quejas');
-
+$routes->get('/eliminar_quejas/(:num)','QuejasController::eliminarQueja/$1');
 /**---------> */ 
 
 

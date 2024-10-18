@@ -8,8 +8,8 @@
 
 <div class="main  p-3">
     <main class="container">
-        <form action="<?= base_url('agregar_empleado'); ?>" method="post" class="formulario">
-            <?= csrf_field();?>
+        <form action="<?= base_url('agregar_empleado'); ?>" method="post" class="formulario" id="miFormulario">
+            <?= csrf_field(); ?>
             <div class="row">
                 <div class="col-4">
                     <h1>
@@ -155,7 +155,7 @@
 
                 </div>
 
-<!--Usuarios-->
+                <!--Usuarios-->
 
                 <div class="row">
                     <div class="col-4">
@@ -215,7 +215,7 @@
 
 
                         <div class="d-grid gap-2 d-md-flex p-3 justify-content-center">
-                            <button class="btn btn-primary" type="submit">Agregar Empleado</button>
+                            <button class="btn btn-primary" id="btn-agregar" type="submit">Agregar Empleado</button>
                         </div>
                     </div>
 
@@ -237,5 +237,33 @@
 
 </main>
 </div>
+
+
+<!--alerta-->
+<script>
+    document.getElementById('miFormulario').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevenir el envío inmediato
+
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Deseas agregar este registro?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, agregar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si el usuario confirma, enviar el formulario
+                this.submit();
+            }
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!--alerta finaliza-->
+
 
 <?php echo $this->endSection(); ?>
