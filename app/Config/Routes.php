@@ -24,6 +24,9 @@ $routes->get('quienes_somos', 'CQuienesSomos::index');
 $routes->get('login', 'Login::index');
 $routes->get('servicio_al_cliente', 'CServicioAlCliente::index');
 $routes->get('reporte_queja', 'CReporteQueja::index');
+$routes->post('agregar_reporte', 'CReporteQueja::agregarQueja');
+
+
 
 /*Ruta para activa la cuenta despues de registro*/
 $routes->get('activate-user/(:any)', 'Users::activateUser/$1');

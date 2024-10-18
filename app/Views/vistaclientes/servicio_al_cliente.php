@@ -17,7 +17,7 @@
                     <p class="card-text">
                         ¿Deseas darnos una sugerencia de mejora en nuestro servicio?
                     </p>
-                    <a href="<?= base_url('reporte_queja')?>" class="btn btn-warning">Reportar</a>
+                    <a href="<?= base_url('reporte_queja') ?>" class="btn btn-warning">Reportar</a>
                 </div>
             </div>
         </div>
