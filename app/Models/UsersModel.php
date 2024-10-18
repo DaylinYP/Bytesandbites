@@ -10,7 +10,7 @@ class UsersModel extends Model
     protected $primaryKey       = 'id_cliente';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = false; // Considera habilitar esto si usas "soft deletes"
+    protected $useSoftDeletes   = false; 
     protected $protectFields    = true;
     protected $allowedFields    = [
         'id_cliente',
@@ -36,7 +36,7 @@ class UsersModel extends Model
     protected bool $allowEmptyInserts = false;
 
     // Dates
-    protected $useTimestamps = true;  // Corregido: se eliminó el error tipográfico
+    protected $useTimestamps = true; 
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

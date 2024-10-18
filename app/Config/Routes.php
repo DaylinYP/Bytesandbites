@@ -22,6 +22,7 @@ $routes->get('index', 'Home:index');
 $routes->get('registrarse', 'Users::index');
 $routes->get('quienes_somos', 'CQuienesSomos::index');
 $routes->get('login', 'Login::index');
+$routes->get('servicio_al_cliente', 'CServicioAlCliente::index');
 
 
 /*Ruta para activa la cuenta despues de registro*/

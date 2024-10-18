@@ -9,6 +9,5 @@ class Home extends BaseController
         $data = ['titulo' => 'Inicio'];
         return view('vistaClientes/index', $data);
 
-    }
- 
+    } 
 }

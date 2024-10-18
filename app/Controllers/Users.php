@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\UsersModel; // Importar el modelo correctamente
+use App\Models\UsersModel;
 
 class Users extends BaseController
 {
@@ -11,7 +11,7 @@ class Users extends BaseController
     public function index(): string
     {
         $data = ['titulo' => 'Registro'];
-        return view('vistaclientes/registro', $data); // Cargar la vista con el título
+        return view('vistaclientes/registro', $data); 
     }
     
 

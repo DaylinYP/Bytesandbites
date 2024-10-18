@@ -1,5 +1,7 @@
 * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -11,9 +13,13 @@ body {
 header {
     margin: 5px;
 }
- h5, h6, .icono{
+
+h5,
+h6,
+.icono {
     color: rgb(255, 194, 10);
 }
+
 /* INICIA SLIDER*/
 
 .slider {
@@ -90,7 +96,51 @@ header {
 
 /* TERMINA SLIDER */
 
+/*Button Sticky*/
+.button-sticky {
+    height: 60px;
+    width: 65px;
+    border-radius: 60px;
+    border: none;
+    background-color: rgb(255, 194, 10);
+    background-position: center;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
 
+}
+
+.bi-emoji-smile-fill {
+    color: rgb(255, 255, 255);
+    font-size: 1.6rem;
+    text-shadow: 0 0 2px #000000;
+
+}
+
+.button-sticky:hover {
+    background-color: rgb(231, 176, 10);
+}
+
+.bi-emoji-smile-fill:hover {
+    color: rgb(255, 255, 255);
+    font-size: 1.7rem;
+    text-shadow: 0 0 5px #000000;
+
+}
+
+.card-title,
+.btn {
+    font-weight: 500;
+    color: #000000;
+    text-shadow: 0 0 5px #c2c2c2;
+    font-family: 'Comfortaa', cursive;
+
+}
+.btn-regresar{
+    margin-top: 50px;
+}
 /* INICIA NAV */
 nav {
     background-color: rgb(0, 0, 0);
@@ -128,7 +178,7 @@ nav ul li a {
 
 li a.active,
 li a:hover {
-   
+
     color: black;
     transition: 0.5s;
 }
@@ -220,12 +270,15 @@ li a:hover {
     flex-direction: column;
     justify-content: center;
 }
+
 .divValores .datos {
-    margin-bottom: 30px; /* Ajusta este valor para aumentar o disminuir el espacio */
+    margin-bottom: 30px;
+    /* Ajusta este valor para aumentar o disminuir el espacio */
 }
 
 .divHistoria {
-    margin-top: 40px; /* Añade espacio superior al bloque de HISTORIA */
+    margin-top: 40px;
+    /* Añade espacio superior al bloque de HISTORIA */
 }
 
 /*TERMINA CONTENEDOR DE VALORES*/
@@ -233,12 +286,13 @@ li a:hover {
 
 /*INICIA ESTILOS PARA CONTENEDOR DE REDES SOCIALES*/
 .contenedorRedes {
-    height: 400px;
+    height: 380px;
     width: 100%;
     background-color: rgb(0, 0, 0);
 }
 
 .contenedorRedesInterno {
+    font-size: 1rem;
     height: 100px;
     display: grid;
     grid-template-columns: auto auto auto;
@@ -270,7 +324,6 @@ li a:hover {
     display: flex;
     align-items: center;
     gap: 10px;
-    /* Espacio entre el ícono y el texto */
 }
 
 .icon-text i {
@@ -371,6 +424,7 @@ h6 {
 
 }
 
+
 footer {
     padding: 20px;
     background-color: #150a28d8;
@@ -379,6 +433,14 @@ footer {
     border-radius: 0px 0 30px 30px;
 }
 
+.card-view {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.card {
+    border: none;
+}
 
 /*INICIA MEDIA QUERIES*/
 @media screen and (max-width: 1250px) {
@@ -447,12 +509,10 @@ footer {
     .divHistoria {
         height: 80%;
         width: 90%;
-        /* Asegurar que no sea tan ancha en pantallas pequeñas */
         margin-left: auto;
-        /* Centrar en resoluciones más pequeñas */
         margin-right: auto;
         margin-top: 150px;
-        gap:15%;
+        gap: 15%;
     }
 
     .divValores {
@@ -511,28 +571,34 @@ footer {
 
 /*PAGINA QUIENES SOMOS*/
 
-.historiaQuienesSomos, .pBienvenidos, .btn-login {
+.historiaQuienesSomos,
+.pBienvenidos,
+.btn-login {
     font-size: 1rem;
     font-family: 'Comfortaa', cursive;
-    
+
 }
-h1{
+
+h1 {
     text-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);
 
 }
 
 /*PAGINA REGISTRO*/
-form{
+form {
     font-size: .9rem;
     font-family: 'Comfortaa', cursive;
 }
-.h1Bienvenidos{
+
+.h1Bienvenidos {
     text-align: center;
     text-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);
 }
-.btn-login{
+
+.btn-login {
     margin-bottom: 8%;
 }
-.usuario{
+
+.usuario {
     margin-bottom: 10%;
 }

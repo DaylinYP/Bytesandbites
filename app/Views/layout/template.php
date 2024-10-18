@@ -19,6 +19,12 @@
 </head>
 
 <body>
+
+<!--Button Sticky-->
+<button class="button-sticky chat-button" type="button" onclick="window.location.href='<?= base_url('servicio_al_cliente') ?>'">
+    <i class="bi bi-emoji-smile-fill"></i>
+</button>
+
     <section
         style="background-color:rgb(255, 194, 10); height:40px; width:100%; display: flex; justify-content: center; align-items: center; gap: 15px;">
         <a href="https://www.instagram.com/" class="icon-img"><img src="<?= base_url('img/26.png') ?>"
@@ -122,6 +128,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
+       
 
 </body>
 
