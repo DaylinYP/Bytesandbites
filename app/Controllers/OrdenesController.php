@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\ClientesModel;
+use App\Models\UsersModel; // Borre el modelo de cliente porque era el mismo de usersModel
 use App\Models\OrdenesServicioModel;
 use App\Models\DetallesEquiposModel;
 use App\Models\MarcaModel;
@@ -41,7 +41,7 @@ class OrdenesController extends Controller
     {
         $marcaModel = new MarcaModel();
         $tipoEquipoModel = new TipoEquipoModel();
-        $clienteModel = new ClientesModel();
+        $clienteModel = new UsersModel();
         $detalleEquiposModel = new  DetallesEquiposModel();
         $ordenesServicioModel = new OrdenesServicioModel();
 
@@ -89,7 +89,7 @@ class OrdenesController extends Controller
         
 
         // Guardar los datos del cliente
-        $clienteModel = new ClientesModel();
+        $clienteModel = new UsersModel();
         $clienteModel->insert($clienteData);
         $id_cliente = $clienteModel->insertID();
 
@@ -155,7 +155,7 @@ class OrdenesController extends Controller
     {
         // Cargar el modelo de órdenes de servicio, clientes y estados
         $ordenesServicioModel = new OrdenesServicioModel();
-        $clienteModel = new ClientesModel();
+        $clienteModel = new UsersModel();
         $estadoOrdenesModel = new EstadoOrdenesModel(); // Instancia del modelo de estados
 
         // Suponiendo que el estado "pendiente" tiene un id de 1
@@ -194,7 +194,7 @@ class OrdenesController extends Controller
     {
         // Cargar el modelo de órdenes de servicio, clientes y estados
         $ordenesServicioModel = new OrdenesServicioModel();
-        $clienteModel = new ClientesModel();
+        $clienteModel = new UsersModel();
         $estadoOrdenesModel = new EstadoOrdenesModel(); // Instancia del modelo de estados
 
         // Suponiendo que el estado "pendiente" tiene un id de 1
@@ -233,7 +233,7 @@ class OrdenesController extends Controller
     {
         // Cargar el modelo de órdenes de servicio, clientes y estados
         $ordenesServicioModel = new OrdenesServicioModel();
-        $clienteModel = new ClientesModel();
+        $clienteModel = new UsersModel();
         $estadoOrdenesModel = new EstadoOrdenesModel(); // Instancia del modelo de estados
 
         // Suponiendo que el estado "pendiente" tiene un id de 1
@@ -273,7 +273,7 @@ class OrdenesController extends Controller
         // Cargar el modelo de órdenes de servicio y detalles de equipos
         $ordenesServicioModel = new OrdenesServicioModel();
         $detalleEquiposModel = new DetallesEquiposModel();
-        $clienteModel = new ClientesModel();
+        $clienteModel = new UsersModel();
 
         // Buscar la orden de servicio por ID
         $orden = $ordenesServicioModel->find($idOrden);
