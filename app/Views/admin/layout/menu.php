@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="<?= base_url('img/favicon.ico'); ?> ?v=1.0" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url('admin/admin.css');  ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> <!--alerta estilo-->
 
 </head>
 
@@ -67,10 +68,10 @@
                             <a href="#" class="sidebar-link">
                                 Listados Productos
                             </a>
-                            <a href="<?= base_url('verClientes');?>" class="sidebar-link">
+                            <a href="<?= base_url('verClientes'); ?>" class="sidebar-link">
                                 Listados Clientes
                             </a>
-                            
+
                         </li>
                     </ul>
                 </li>
@@ -82,7 +83,7 @@
                 </li>
             </ul>
             <div class="sidebar-footer">
-                <a href="<?= base_url('salir'); ?>" class="sidebar-link">
+                <a id="btn-salir" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Logout</span>
                 </a>
@@ -97,6 +98,32 @@
 
 
         <!---->
+        <!--alerta-->
+        <script>
+            document.querySelectorAll('#btn-salir').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+
+                    Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: "Saldras de la Sesion",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, Salir',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "<?= base_url('/salir') ?>";
+                        }
+                    });
+                });
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!--alerta finaliza-->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
@@ -109,6 +136,7 @@
                 document.querySelector("#sidebar").classList.toggle("expand");
             });
         </script>
+
 </body>
 
 </html>
