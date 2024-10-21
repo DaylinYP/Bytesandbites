@@ -53,6 +53,10 @@ $routes->get('editarPerfil', 'EmpleadoController::editarPerfil');
 
 $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 
+$routes->get('/solicitarMateriales', 'SolicitarMaterialesController::solicitarMateriales');
+$routes->post('solicitarMateriales/procesarSolicitud', 'solicitarMaterialesController::procesarSolicitud');
+
+
 
 
 

@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AdminEmpleadosModel;
-use App\Models\EmpleadosModel;
+use App\Models\EmpleadoModel;
 use App\Models\EstadosModel;
 use App\Models\UsuariosModel;
 use CodeIgniter\HTTP\ResponseInterface;

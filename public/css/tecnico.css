@@ -8,7 +8,7 @@
     padding: 30px;
     border-radius: 40px;
     backdrop-filter: blur(55px);
-    border: 2px solid rgba(255, 255, 255, 2);
+    border: 2px solid rgba(255, 255, 255, 1); /* Valor corregido */
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     color: white;
     width: 100%;
@@ -47,7 +47,6 @@ body {
     width: 100%;
     overflow: hidden;
     transition: all 0.35s ease-in-out;
-
 }
 
 /* Estilos para el título */
@@ -62,9 +61,10 @@ body {
 }
 
 /* Estilos de texto */
-.centro{
+.centro {
     justify-content: space-around;
 }
+
 .texto {
     font-family: "Comfortaa", sans-serif;
 }
@@ -187,21 +187,30 @@ a.sidebar-link:hover {
     transition: all .2s ease-out;
 }
 
+/* Estilos para la tabla */
 .tabla {
     background-color: rgba(44, 42, 42, 0.62);
     border-radius: 40px;
     backdrop-filter: blur(80px);
-    border: 2px solid rgba(255, 255, 255, 2);
+    border: 2px solid rgba(255, 255, 255, 1); /* Valor corregido */
     text-align: center;
     font-size: large;
     color: white;
     width: 100%;
 }
 
+/* Corrección del selector .striped */
+table.striped {
+    color: white;
+}
+
+td {
+    color: white;
+}
 
 table {
     color: white;
-    border-radius: 0%;
+    border-radius: 0;
 }
 
 /* Estilos de retroalimentación para formularios */
@@ -226,9 +235,19 @@ table {
     font-size: 40px;
 }
 
-.sesion
-{
+.sesion {
     justify-content: center;
-    
 }
 
+/* Estilos para la tabla con .striped */
+table.striped tbody tr td {
+    color: white;
+}
+
+table.striped tbody td {
+    color: white;
+}
+
+table.striped thead th {
+    color: white;
+}

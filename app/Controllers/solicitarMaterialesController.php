@@ -2,45 +2,48 @@
 
 namespace App\Controllers;
 
-class solicitarMaterialesController extends BaseController
+use App\Models\SolicitarMaterialModel; 
+
+class SolicitarMaterialesController extends BaseController
 {
     public function solicitarMateriales()
     {
         return view('vistaTecnico/solicitudMateriales');
     }
 
-/*
-public function buscarTecnico($id = null)
-{
-    $empleado = new EmpleadoModel();
-    $empleado = $empleado->where('id_empleado', $id)->first();
-    
-    if ($empleado) {
-        // Concatenar nombres y apellidos
-        $nombres = $empleado['primer_nombre'] . ' ' . $empleado['segundo_nombre'];
-        $apellidos = $empleado['primer_apellido'] . ' ' . $empleado['segundo_apellido'];
-
-        $datos = [
-            'nombres' => $nombres,
-            'apellidos'=> $apellidos
-        ];
-    } else {
-        $datos = ['id_empleado' => 'Empleado no encontrado'];
-    }
-    
-    return view('vistaTecnico/solicitudMateriales' , $datos);
-}*/
-}
-
-
-
-/*   public function index()
+    public function procesarSolicitud()
     {
-        echo view('header');
-        echo view('productos');
-        echo view('footer');
+        $materialModel = new SolicitarMaterialModel();
 
+        // Configurar las reglas de validación
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'no_servicio_reparacion' => 'required',
+            'txt_orden_de_servicio' => 'required',
+            'txt_no_repuesto' => 'required',
+        ]);
+
+        // Validar los datos del formulario
+        if (!$this->validate($validation->getRules())) {
+            return view('vistaTecnico/solicitudMateriales', [
+                'validation' => $this->validator,
+            ]);
+        } else {
+            // Recoger los datos del formulario
+            $data = [
+                'servicio_id' => $this->request->getPost('no_servicio_reparacion'),
+                'no_orden' => $this->request->getPost('txt_orden_de_servicio'),
+                'id_repuesto' => $this->request->getPost('txt_no_repuesto'),
+            ];
+
+            // Llamar al modelo para insertar los datos
+            $materialModel->insertarSolicitud($data);
+
+            // Almacenar el mensaje en la sesión
+            session()->setFlashdata('success', 'Material solicitado correctamente');
+
+            // Redireccionar a la misma vista
+            return view('vistaTecnico/solicitudMateriales');
+     }
     }
- */
-
-
+}
