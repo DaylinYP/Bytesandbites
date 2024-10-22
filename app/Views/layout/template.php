@@ -16,14 +16,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> <!--alerta estilo-->
+
 </head>
 
 <body>
 
-<!--Button Sticky-->
-<button class="button-sticky chat-button" type="button" onclick="window.location.href='<?= base_url('servicio_al_cliente') ?>'">
-    <i class="bi bi-emoji-smile-fill"></i>
-</button>
+    <!--Button Sticky-->
+    <button class="button-sticky chat-button" type="button" onclick="window.location.href='<?= base_url('servicio_al_cliente') ?>'">
+        <i class="bi bi-emoji-smile-fill"></i>
+    </button>
 
     <section
         style="background-color:rgb(255, 194, 10); height:40px; width:100%; display: flex; justify-content: center; align-items: center; gap: 15px;">
@@ -43,94 +45,111 @@
                 class="animate__animated animate__pulse animate__infinite	infinite" alt=""
                 style="width: 28px; height: 28px;"></a>
     </section>
-    
-        <nav>
-            <input type="checkbox" id="check">
-            <label for="check" class="checkbtn">
-                <i class="fas fa-bars"></i>
-            </label>
-            <ul>
-                <li>
-                    <header class="header">
-                        <img src="<?= base_url('img/logotipoBb.png');?>" class="logotipo" width="280px" height="80px">
-                    </header>
-                </li>
-                <li class="active"><a href="<?= base_url('regresar_Home') ?>" class="links">Inicio</a></li>
-                <li><a href="<?= base_url('quienes_somos') ?>">Quienes Somos</a></li>
-                <li><a href="<?= base_url('registrarse') ?>">Registrarse</a></li>
-                <li><a href="<?= base_url('login') ?>"><i class="bi bi-person-circle"></i> LOGIN</a></li>
-                <li>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
-                        <button class="btn btn-warning" type="submit">Buscar</button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
+
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li>
+                <header class="header">
+                    <img src="<?= base_url('img/logotipoBb.png'); ?>" class="logotipo" width="280px" height="80px">
+                </header>
+            </li>
+            <li class="active"><a href="<?= base_url('regresar_Home') ?>" class="links">Inicio</a></li>
+            <li><a href="<?= base_url('quienes_somos') ?>">Quienes Somos</a></li>
+            <li><a href="<?= base_url('registrarse') ?>">Registrarse</a></li>
+            <li><a href="<?= base_url('login') ?>"><i class="bi bi-person-circle"></i> LOGIN</a></li>
+            <li>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+                    <button class="btn btn-warning" type="submit">Buscar</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
 
 
 
 
-        <?php echo $this->renderSection("content") ?>
+    <?php echo $this->renderSection("content") ?>
 
 
 
 
-        <section class="contenedorRedes">
-            <main class="contenedorRedesInterno">
-                <div class="divRedesInterno1">
-                    <div>
-                        <h5>¡CONTÁCTANOS!</h5>
-                        <div class="icon-text">
-                            <i class="bi bi-person-fill icono"></i>
-                            <h6>Atención al Cliente</h6>
-                        </div>
-                        <p class="pRedes">Lunes a Viernes de 8 a 16hrs.<br>
-                            (502) 2329-0000</p>
+    <section class="contenedorRedes">
+        <main class="contenedorRedesInterno">
+            <div class="divRedesInterno1">
+                <div>
+                    <h5>¡CONTÁCTANOS!</h5>
+                    <div class="icon-text">
+                        <i class="bi bi-person-fill icono"></i>
+                        <h6>Atención al Cliente</h6>
                     </div>
-                    <div>
-                        <div class="icon-text">
-                            <i class="bi bi-whatsapp icono"></i>
-                            <h6>Whatsapp</h6>
-                        </div>
-                        <p class="pRedes">Lunes a Viernes de 8 a 16hrs.<br>
-                            (502) 5844-0000</p>
-                    </div>
+                    <p class="pRedes">Lunes a Viernes de 8 a 16hrs.<br>
+                        (502) 2329-0000</p>
                 </div>
-                <div class="divRedesInterno2">
-                    <div>
-                        <h5>REDES SOCIALES</h5>
-                        <i class="bi bi-instagram icono"></i>
-                        <i class="bi bi-envelope-fill icono"></i>
+                <div>
+                    <div class="icon-text">
                         <i class="bi bi-whatsapp icono"></i>
-                        <i class="bi bi-facebook icono"></i>
-                        <i class="bi bi-geo-alt icono"></i>
+                        <h6>Whatsapp</h6>
                     </div>
-                    <div>
-                        <p class="pRedes">
-                            2326-0202 <br>
-                            6 avenida 14-12 Zona 9, <br> Ciudad de Guatemala
-                            <br> andbitsb@gmail.com
-                        </p>
-                    </div>
+                    <p class="pRedes">Lunes a Viernes de 8 a 16hrs.<br>
+                        (502) 5844-0000</p>
                 </div>
-                <div class="divRedesInterno3">
-                    <h5 style="color: rgb(255, 194, 10);">Empleo</h5>
-                    <button type="button" class="btn btn-danger"><b>Aplica aquí!</b></button>
+            </div>
+            <div class="divRedesInterno2">
+                <div>
+                    <h5>REDES SOCIALES</h5>
+                    <i class="bi bi-instagram icono"></i>
+                    <i class="bi bi-envelope-fill icono"></i>
+                    <i class="bi bi-whatsapp icono"></i>
+                    <i class="bi bi-facebook icono"></i>
+                    <i class="bi bi-geo-alt icono"></i>
                 </div>
-            </main>
-        </section>
+                <div>
+                    <p class="pRedes">
+                        2326-0202 <br>
+                        6 avenida 14-12 Zona 9, <br> Ciudad de Guatemala
+                        <br> andbitsb@gmail.com
+                    </p>
+                </div>
+            </div>
+            <div class="divRedesInterno3">
+                <h5 style="color: rgb(255, 194, 10);">Empleo</h5>
+                <button type="button" class="btn btn-danger"><b>Aplica aquí!</b></button>
+            </div>
+        </main>
+    </section>
 
-        <footer>
-            <h6>Creado por: GRUPO #1</h6>
-        </footer>
+    <footer>
+        <h6>Creado por: GRUPO #1</h6>
+    </footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
-       
+   <!--ALERTA QUEJA ENVIADA -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+    document.querySelector('#form-queja').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Mostrar la alerta de éxito
+        Swal.fire({
+            title: "Enviado",
+            text: "Tu reporte ha sido enviado con éxito",
+            icon: "success"
+        }).then(() => {
+            console.log("La alerta fue mostrada y ahora se enviará el formulario");
+            this.submit();
+        }).catch(err => console.log("Error en SweetAlert: ", err));
+    });
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
 
 </body>
 
 </html>
-
