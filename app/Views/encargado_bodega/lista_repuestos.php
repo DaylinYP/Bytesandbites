@@ -17,15 +17,17 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="<?= base_url('img/favicon.ico') ?>" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> <!--alerta estilo-->
+
     <style>
         * {
             margin: 0;
         }
-      
+
 
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-      
+
         a {
             text-decoration: none;
         }
@@ -34,15 +36,15 @@
             list-style: none;
         }
 
-        .titulo{
+        .titulo {
             font-family: "Quantico", sans-serif;
         }
 
-        .texto{
+        .texto {
             font-family: 'Comfortaa', sans-serif;
         }
 
-        .color-seccion1{
+        .color-seccion1 {
             background-color: #7041df;
         }
 
@@ -65,10 +67,11 @@
             overflow: hidden;
             transition: all 0.35s ease-in-out;
             background-image: linear-gradient(to left, rgb(207, 207, 207), rgb(255, 255, 255));
-            color: hsl(0, 0%, 0%);                                 
+            color: hsl(0, 0%, 0%);
             text-shadow: 1px 2px 2px #000000;
         }
-        .img_lista{
+
+        .img_lista {
             width: 25vh;
             height: 15vh;
         }
@@ -76,18 +79,21 @@
         /* tabla */
         .table-responsive {
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch; /* Para mejorar el desplazamiento en dispositivos móviles */
-         }
+            -webkit-overflow-scrolling: touch;
+            /* Para mejorar el desplazamiento en dispositivos móviles */
+        }
 
         .table {
-            width: 100%; /* Asegúrate de que la tabla ocupe todo el ancho disponible */
-            max-width: 1800px; /* Establece un ancho máximo para evitar que se extienda demasiado */
-            margin: 0 auto; 
+            width: 100%;
+            /* Asegúrate de que la tabla ocupe todo el ancho disponible */
+            max-width: 1800px;
+            /* Establece un ancho máximo para evitar que se extienda demasiado */
+            margin: 0 auto;
         }
-       
+
 
         #sidebar {
-            height: 100vh; 
+            height: 100vh;
             overflow-y: auto;
             position: sticky;
             width: 80px;
@@ -196,86 +202,93 @@
             transition: all .2s ease-out;
         }
 
-        .icono-tamaño{
+        .icono-tamaño {
             max-width: 45px;
         }
-        .titulo-principal{
+
+        .titulo-principal {
             font-size: 3rem;
         }
-        .cantidades-importantes{
+
+        .cantidades-importantes {
             font-size: 5.0rem;
         }
 
-        .card-title{
+        .card-title {
             font-size: 2.0rem;
         }
+
         /*ordenes*/
-        .card{
+        .card {
             height: 300px;
             padding: 30px;
             border-radius: 40px;
             backdrop-filter: blur(20px);
             border: 2px solid rgba(255, 255, 255, 2);
-            box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
         }
-        .card-pendiente{
-            background-color: rgba(253, 115, 115, 0.404) ;       
+
+        .card-pendiente {
+            background-color: rgba(253, 115, 115, 0.404);
         }
-        .card-proceso{
-            background-color: rgba(115, 175, 253, 0.404) ;       
+
+        .card-proceso {
+            background-color: rgba(115, 175, 253, 0.404);
         }
-        .card-terminada{
-            background-color: rgba(170, 253, 115, 0.404) ;       
+
+        .card-terminada {
+            background-color: rgba(170, 253, 115, 0.404);
         }
+
         /*formulario popup*/
 
 
-.modal-container {
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.3);
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  pointer-events: none;
-  opacity: 0;  
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  transition: opacity 0.3s ease;
-}
+        .modal-container {
+            display: flex;
+            background-color: rgba(0, 0, 0, 0.3);
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            transition: opacity 0.3s ease;
+        }
 
-.show {
-  pointer-events: auto;
-  opacity: 1;
-}
+        .show {
+            pointer-events: auto;
+            opacity: 1;
+        }
 
-.modal {
-  background-color: #fff;
-  width: 600px;
-  max-width: 100%;
-  padding: 30px 50px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  text-align: center;
-}
+        .modal {
+            background-color: #fff;
+            width: 600px;
+            max-width: 100%;
+            padding: 30px 50px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
 
-.modal h1 {
-  margin: 0;
-}
+        .modal h1 {
+            margin: 0;
+        }
 
-.modal p {
-  opacity: 0.7;
-  font-size: 14px;
-}
-        </style>
+        .modal p {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+    </style>
 
 </head>
 
 <body>
     <div class="wrapper">
         <aside id="sidebar">
-        <div class="d-flex">
+            <div class="d-flex">
                 <button class="toggle-btn" type="button">
                     <i class="lni lni-grid-alt"></i>
                 </button>
@@ -285,28 +298,28 @@
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="<?=base_url('perfil_empleado')?>" class="sidebar-link">
+                    <a href="<?= base_url('perfil_empleado') ?>" class="sidebar-link">
                         <i class="lni lni-user"></i>
                         <span>Perfil</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="<?=base_url('lista_repuestos')?>" class="sidebar-link">
+                    <a href="<?= base_url('lista_repuestos') ?>" class="sidebar-link">
                         <i class="lni lni-popup"></i>
                         <span>Repuestos</span>
                     </a>
                 </li>
-               
+
                 <li class="sidebar-item">
-                    <a href="<?=base_url('nuevo_repuesto')?>" class="sidebar-link">
+                    <a href="<?= base_url('nuevo_repuesto') ?>" class="sidebar-link">
                         <i class="lni lni-agenda"></i>
                         <span>Nuevo Repuesto</span>
                     </a>
                 </li>
-                
+
             </ul>
             <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
+                <a id="btn-salir" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Cerrar Sesión</span>
                 </a>
@@ -314,21 +327,21 @@
         </aside>
         <div class="main texto p-3">
             <div class="row container-fluid">
-                
-                <div class="col-11 text-center">   
+
+                <div class="col-11 text-center">
                     <h1 class="titulo   titulo-principal  py-5">
                         Lista de Repuestos
                     </h1>
-                    
+
                 </div>
                 <div class="col-1 d-md-flex justify-content-md-end  py-5 animate__animated animate__slideInRight">
-                <a href="<?=base_url('nuevo_repuesto')?>" class="btn btn-outline-primary btn-lg position-absolute  translate-middle rounded-pill">
-                    <i class="bi bi-plus-square px-2"></i> Nuevo Repuesto
-                </a>
+                    <a href="<?= base_url('nuevo_repuesto') ?>" class="btn btn-outline-primary btn-lg position-absolute  translate-middle rounded-pill">
+                        <i class="bi bi-plus-square px-2"></i> Nuevo Repuesto
+                    </a>
                 </div>
-                
+
             </div>
-        
+
             <div>
                 <main class="container-fluid py-5">
                     <div class="table-responsive">
@@ -351,11 +364,11 @@
                             </thead>
                             <tbody class="bg-dark">
                                 <?php foreach ($repuestos as $repuesto): ?>
-                                <tr>
-                                    <td class="text-light"><?= $repuesto['id_repuesto'] ?></td>
-                                    <td class="text-light"><?= $repuesto['nombre'] ?></td>
-                                    <td class="text-light">
-                                        <?php 
+                                    <tr>
+                                        <td class="text-light"><?= $repuesto['id_repuesto'] ?></td>
+                                        <td class="text-light"><?= $repuesto['nombre'] ?></td>
+                                        <td class="text-light">
+                                            <?php
                                             // Buscar el nombre del tipo de equipo
                                             foreach ($tiposEquipo as $tipo) {
                                                 if ($tipo['id_tipo_equipo'] == $repuesto['id_tipo_equipo']) {
@@ -363,10 +376,10 @@
                                                     break;
                                                 }
                                             }
-                                        ?>
-                                    </td>
-                                    <td class="text-light">
-                                        <?php 
+                                            ?>
+                                        </td>
+                                        <td class="text-light">
+                                            <?php
                                             // Buscar el nombre de la marca
                                             foreach ($marcas as $marca) {
                                                 if ($marca['id_marca'] == $repuesto['id_marca']) {
@@ -374,14 +387,14 @@
                                                     break;
                                                 }
                                             }
-                                        ?>
-                                    </td>
-                                    <td class="text-light"><?= $repuesto['modelo'] ?></td>
-                                    <td class="text-light"><?= $repuesto['precio'] ?></td>
-                                    <td class="text-light"><img src="<?= $repuesto['img_repuesto'] ?>" alt="Imagen del repuesto" class="img_lista img-thumbnail"></td>
-                                    <td class="text-light"><?= $repuesto['cantidad'] ?></td>
-                                    <td class="text-light">
-                                        <?php 
+                                            ?>
+                                        </td>
+                                        <td class="text-light"><?= $repuesto['modelo'] ?></td>
+                                        <td class="text-light"><?= $repuesto['precio'] ?></td>
+                                        <td class="text-light"><img src="<?= $repuesto['img_repuesto'] ?>" alt="Imagen del repuesto" class="img_lista img-thumbnail"></td>
+                                        <td class="text-light"><?= $repuesto['cantidad'] ?></td>
+                                        <td class="text-light">
+                                            <?php
                                             // Buscar el nombre del proveedor
                                             foreach ($proveedores as $proveedor) {
                                                 if ($proveedor['id_proveedor'] == $repuesto['id_proveedor']) {
@@ -389,11 +402,11 @@
                                                     break;
                                                 }
                                             }
-                                        ?>
-                                    </td>
-                                    <td class="text-light"><?= $repuesto['descripcion'] ?></td>
-                                    <td class="text-light">
-                                        <?php 
+                                            ?>
+                                        </td>
+                                        <td class="text-light"><?= $repuesto['descripcion'] ?></td>
+                                        <td class="text-light">
+                                            <?php
                                             // Buscar el nombre de la marca
                                             foreach ($estadoRepuestos as $estadoRepuesto) {
                                                 if ($estadoRepuesto['id_estado_repuesto'] == $repuesto['id_estado_repuesto']) {
@@ -401,21 +414,21 @@
                                                     break;
                                                 }
                                             }
-                                        ?>
-                                    </td>
-                                    <td class="text-light">
-                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                            <a href="buscar_repuesto/<?= $repuesto['id_repuesto'] ?>" class="btn btn-primary btn-md form-control me-md-2"><i class="bi bi-pencil-square"></i></a>
-                                            <a href="eliminar_Repuesto/<?= $repuesto['id_repuesto'] ?>" class="btn btn-danger form-control"><i class="bi bi-trash3"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                            ?>
+                                        </td>
+                                        <td class="text-light">
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                <a href="buscar_repuesto/<?= $repuesto['id_repuesto'] ?>" class="btn btn-primary btn-md form-control me-md-2"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="eliminar_Repuesto/<?= $repuesto['id_repuesto'] ?>" class="btn btn-danger form-control"><i class="bi bi-trash3"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
 
                     </div>
-                    
+
                 </main>
             </div>
         </div>
@@ -424,11 +437,43 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
+
+
+    <!--alerta-->
+    <script>
+        document.querySelectorAll('#btn-salir').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "Saldras de la Sesion",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, Salir',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "<?= base_url('/salir') ?>";
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--alerta finaliza-->
+
+
+
+
     <script>
         const hamBurger = document.querySelector(".toggle-btn");
 
-        hamBurger.addEventListener("click", function () {
-        document.querySelector("#sidebar").classList.toggle("expand");
+        hamBurger.addEventListener("click", function() {
+            document.querySelector("#sidebar").classList.toggle("expand");
         });
 
         const open = document.getElementById('open');
@@ -436,11 +481,11 @@
         const close = document.getElementById('close');
 
         open.addEventListener('click', () => {
-        modal_container.classList.add('show');  
+            modal_container.classList.add('show');
         });
 
         close.addEventListener('click', () => {
-        modal_container.classList.remove('show');
+            modal_container.classList.remove('show');
         });
     </script>
 </body>
