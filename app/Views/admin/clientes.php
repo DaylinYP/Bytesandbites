@@ -1,4 +1,4 @@
-<?= $this->extend('admin/layout/menu'); ?>
+<?= $this->extend('admin/layout/menu_general'); ?>
 <!--Finaliza menu-->
 
 <!--main modificable-->
@@ -28,7 +28,7 @@
                 </div>
                 <?= form_open('buscarCliente')?>
                 <div class="form-group">
-                    <label for="busqueda">Buscar empleado:</label>
+                    <label for="busqueda">Buscar Cliente:</label>
                     <input type="text" class="form-control" name="busqueda" id="busqueda" placeholder="Nombre, apellido o cualquier otro campo...">
                 </div>
                 <button type="submit" class="btn btn-primary">Buscar</button>

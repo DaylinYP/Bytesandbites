@@ -12,14 +12,16 @@ class QuejasController extends BaseController
 
 {
     
-    public function quejas() //Muestra las quejas en la vista
+    public function quejas()
     {
         $quejas = new QuejasModel();
         $datos['datos'] = $quejas->findAll();
-        
+        $datos['titulo'] = 'Quejas';
+
+
         return view('admin/quejas' , $datos);
     }
-    public function eliminarQueja($id = null){ //Nos permite eliminar.
+    public function eliminarQueja($id = null){
         $quejas = new QuejasModel();
        // print_r($id);
        $quejas->delete($id);

@@ -4,31 +4,25 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AdminEmpleadosModel;
-use App\Models\EmpleadoModel;
+use App\Models\EmpleadosModel;
 use App\Models\EstadosModel;
 use App\Models\UsuariosModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class AdminEmpleadosController extends BaseController
 {
-   //protected $filters = ['auth']; //Falta probarlo
    protected $helpers = ['form'];
 
-   public function index() //Metodo que llama a una funcion del modelo llamado verEmpleado y lo muestra en la vista.
-   {
-    $session = \Config\Services::session();
-      if (!$session->get('logged_in')) {
-         return redirect()->to('/login'); // Redirige si no está autenticado
-     }
 
+   public function index()
+   {
       $empleados = new AdminEmpleadosModel();
       $datos['datos'] = session()->getFlashdata('resultado') ?? $empleados->verEmpleado();
-      
+      $datos['titulo'] = 'Lista de Empleados';
       return view('admin/empleados', $datos);
    }
 
-   public function buscar() 
-   //Metodo que funciona con un input de la vista y que busca similitudes con los datos por medio del metodo busqueda que es llamado del Modelo.
+   public function buscar()
    {
       $empleados = new AdminEmpleadosModel();
       $busqueda = $this->request->getPost('busqueda');
@@ -41,9 +35,7 @@ class AdminEmpleadosController extends BaseController
 
 
    public function buscarEmpleado($id = null)
-   //Busca el id y devuelve los datos en una vista de un formulario
    {
-      
 
       $empleados = new AdminEmpleadosModel();
       $empleado = $empleados->buscarID($id);
@@ -54,7 +46,6 @@ class AdminEmpleadosController extends BaseController
 
 
    public function modificar()
-   //Permite que con los datos del id buscado, modificarlos.
    {
 
       $empleados = new AdminEmpleadosModel();
@@ -89,7 +80,7 @@ class AdminEmpleadosController extends BaseController
          ];
 
 
-//Reglas para no permitir el ingreso de datos erroneo o icoherentes.
+
       $reglas = [
          'txt_id' => [
             'label' => 'Colocar un id',
@@ -236,11 +227,11 @@ class AdminEmpleadosController extends BaseController
    }
 
 
-   public function nuevoEmpleado() //Retorna vista de un fomulario.
+   public function nuevoEmpleado()
    {
       return view('admin/frm/frm_empleado_nuevo');
    }
-   public function agregarEmpleado() //Permite agregar un nuevo empleado
+   public function agregarEmpleado()
    {
       $empleados = new AdminEmpleadosModel();
       $usuarios = new UsuariosModel();
@@ -249,7 +240,7 @@ class AdminEmpleadosController extends BaseController
          'primer_nombre' => $this->request->getVar('txt_pr_nombre'),
          'segundo_nombre' => $this->request->getVar('txt_s_nombre'),
          'primer_apellido' => $this->request->getVar('txt_p_apellido'),
-         'segundo_apellido' => $this->request->getVar('txt_s_apellido'), //obtengo los datos de los inputs para insertar en la bd.
+         'segundo_apellido' => $this->request->getVar('txt_s_apellido'),
          'dpi' => $this->request->getVar('txt_dpi'),
          'nit' => $this->request->getVar('txt_nit'),
          'email' => $this->request->getVar('txt_email_usuario'),
@@ -264,7 +255,7 @@ class AdminEmpleadosController extends BaseController
       $datosUsuarios = [
          'id_empleado' => $this->request->getVar('txt_id'),
          'nombre_usuario' => $this->request->getVar('txt_email_usuario'),
-         'contrasenia' => password_hash($this->request->getPost('txt_contrasenia'), PASSWORD_DEFAULT), //convierte texto en hash
+         'contrasenia' => password_hash($this->request->getPost('txt_contrasenia'), PASSWORD_DEFAULT),
          'contrasenia_p' => $this->request->getPost('txt_contrasenia'),
          'fecha_creacion' => $this->request->getVar('txt_fecha_creacion'),
          'estado_id' => $this->request->getVar('txt_estado')

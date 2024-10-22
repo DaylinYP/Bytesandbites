@@ -1,4 +1,4 @@
-<?php echo $this->extend('admin/layout/menu'); ?>
+<?php echo $this->extend('admin/layout/menu_general'); ?>
 <!--Finaliza menu-->
 
 <!--main modificable-->
@@ -53,36 +53,36 @@
                     <main class="container-fluid py-5">
                     <div class="row">
                         <div class="col-lg-4 col-md-12 pb-5">
-                          <div class="card card-pendiente">
+                          <div class="card bg-danger text-light">
                             <div class="card-body">
-                              <h5 class="card-title titulo">Pendientes</h5>
+                              <h5>Pendientes</h5>
                               <p class="card-text cantidades-importantes text-end">
                                     <?= isset($pendientesCount) ? $pendientesCount : 0 ?>
                               </p>
-                              <a href="<?=base_url('ordenes_pendientes')?>" class="btn btn-warning btn-lg shadow-lg border border-2 border-white">Ver</a>
+                              <a href="<?=base_url('ordenes_pendientes')?>" class="btn btn-dark btn-lg shadow-lg border border-2 border-white form-control">Ver</a>
                               
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pb-5">
-                          <div class="card card-proceso">
+                          <div class="card bg-warning text-light">
                             <div class="card-body">
-                              <h5 class="card-title titulo">En proceso</h5>
+                              <h5>En proceso</h5>
                               <p class="card-text cantidades-importantes text-end">
                                     <?= isset($enProcesoCount) ? $enProcesoCount : 0 ?>
                               </p>
-                              <a href="<?=base_url('ordenes_enproceso')?>" class="btn btn-warning btn-lg shadow-lg border border-2 border-white">Ver</a>
+                              <a href="<?=base_url('ordenes_enproceso')?>" class="btn btn-dark btn-lg shadow-lg border border-2 border-white form-control">Ver</a>
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pb-5">
-                            <div class="card card-terminada">
+                            <div class="card bg-success text-light">
                               <div class="card-body">
-                                <h5 class="card-title titulo">Finalizadas</h5>
+                                <h5>Finalizadas</h5>
                                 <p class="card-text cantidades-importantes text-end">
                                     <?= isset($finalizadasCount) ? $finalizadasCount : 0 ?>
                                 </p>
-                                <a href="<?=base_url('ordenes_finalizadas')?>" class="btn btn-warning btn-lg shadow-lg border border-2 border-white">Ver</a>
+                                <a href="<?=base_url('ordenes_finalizadas')?>" class="btn btn-dark btn-lg shadow-lg border border-2 border-white form-control">Ver</a>
                               </div>
                             </div>
                           </div>

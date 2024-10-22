@@ -63,13 +63,13 @@ class UsersModel extends Model
 
 
     /**ADMIN -<<<--*/
-    public function verClientes() //Devuelve una union de tablas, y esto es llamado al controlador para la vista
+    public function verClientes()
     {
         return $this->select('clientes.*, empresas.nombre_empresa')
             ->join('empresas', 'clientes.id_empresa = empresas.id_empresa')
             ->findAll();
     }
-    public function buscar($busqueda) //Devuelve el valor relacionado a esta tabla por el input, esto es llamado por el controllador
+    public function buscar($busqueda)
     {
         $this->select('clientes.*, empresas.nombre_empresa')
             ->join('empresas', 'clientes.id_empresa = empresas.id_empresa');
