@@ -13,6 +13,7 @@ class AdminClientesController extends BaseController
     {
         $clientes = new UsersModel();
         $datos['datos'] = session()->getFlashdata('resultado') ?? $clientes->verClientes();
+        $datos['titulo'] = 'Lista de Clientes';
         //print_r($datos);
         return view('admin/clientes', $datos);
     }

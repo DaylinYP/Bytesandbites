@@ -107,7 +107,7 @@
 
                     <div class="row pt-4">
                         <div class="col">
-                            <table class="table table-striped tabla">
+                            <table class="table  tabla">
                                 <thead class="thead">
                                     <tr>
                                         <th>No de Orden</th>

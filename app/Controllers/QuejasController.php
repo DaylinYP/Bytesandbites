@@ -16,7 +16,9 @@ class QuejasController extends BaseController
     {
         $quejas = new QuejasModel();
         $datos['datos'] = $quejas->findAll();
-        
+        $datos['titulo'] = 'Quejas';
+
+
         return view('admin/quejas' , $datos);
     }
     public function eliminarQueja($id = null){

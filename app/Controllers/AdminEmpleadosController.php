@@ -18,6 +18,7 @@ class AdminEmpleadosController extends BaseController
    {
       $empleados = new AdminEmpleadosModel();
       $datos['datos'] = session()->getFlashdata('resultado') ?? $empleados->verEmpleado();
+      $datos['titulo'] = 'Lista de Empleados';
       return view('admin/empleados', $datos);
    }
 

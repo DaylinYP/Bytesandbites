@@ -18,6 +18,20 @@ class OrdenesController extends Controller
 
     public function index(): string
     {  
+
+        $session = \Config\Services::session();
+
+        // Recuperar datos de la sesión
+        $data['titulo'] = 'Inicio';
+        $data['user_role'] = $session->get('user_role');
+        $data['user_name'] = $session->get('user_name');
+        $data['user_nombre'] = $session->get('user_nombre');
+
+        // Verificar si el usuario está autenticado
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/login'); // Redirige si no está autenticado
+        }
+
        // Cargar el modelo de órdenes de servicio
        $ordenesServicioModel = new OrdenesServicioModel();
 
@@ -31,6 +45,8 @@ class OrdenesController extends Controller
            'pendientesCount' => $pendientesCount,
            'enProcesoCount' => $enProcesoCount,
            'finalizadasCount' => $finalizadasCount,
+           'titulo' => ' Inicio',
+
        ]; 
         
         return view('/agente_servicio/menu_ordenes_servicio',  $datos);
@@ -46,7 +62,9 @@ class OrdenesController extends Controller
         $ordenesServicioModel = new OrdenesServicioModel();
 
         // Obtener marcas y tipos de equipo para el formulario
+       
         $datos = [
+            'titulo' => 'Nueva Orden',
             'marcas' => $marcaModel->findAll(),
             'tiposEquipo' => $tipoEquipoModel->findAll(),
             'clientes' => $clienteModel->findAll(),
@@ -78,20 +96,28 @@ class OrdenesController extends Controller
         // Obtener los datos del cliente
         $clienteData = [
             'primer_nombre'   => $this->request->getVar('txt_pNombre'),
-            'segundo_nombre'  => $this->request->getVar('txt_sNombre'),  // Corrección aquí
+            'segundo_nombre'  => $this->request->getVar('txt_sNombre'),  // Corregido
             'primer_apellido' => $this->request->getVar('txt_pApellido'),
-            'segundo_apellido'=> $this->request->getVar('txt_sApellido'),  // Corrección aquí
+            'segundo_apellido'=> $this->request->getVar('txt_sApellido'),  // Corregido
             'email'           => $this->request->getVar('txt_email'),
             'telefono'        => $this->request->getVar('txt_telefono'),
             'nit'             => $this->request->getVar('txt_nit'),
-            'id_empresa'      => 1,  // Ejemplo de empresa por defecto
+            'id_empresa'      => 1,  // Empresa por defecto
         ];
-        
 
-        // Guardar los datos del cliente
         $clienteModel = new UsersModel();
-        $clienteModel->insert($clienteData);
-        $id_cliente = $clienteModel->insertID();
+
+        // Verificar si el cliente ya existe
+        $existingClient = $clienteModel->where('email', $clienteData['email'])->first();
+
+        if ($existingClient) {
+            // Si el cliente ya existe, obtener su id
+            $id_cliente = $existingClient['id_cliente'];
+        } else {
+            // Si no existe, guardar el nuevo cliente
+            $clienteModel->insert($clienteData);
+            $id_cliente = $clienteModel->insertID();  // Obtener el id del cliente recién insertado
+        }
 
         // Obtener los datos de las órdenes y equipos
         $fechasIngreso = $this->request->getVar('txt_fecha_ingreso');
@@ -111,28 +137,26 @@ class OrdenesController extends Controller
         foreach ($fechasIngreso as $index => $fechaIngreso) {
             // Datos de la orden de servicio
             $ordenData = [
-                'id_cliente'            => $id_cliente,
+                'id_cliente'            => $id_cliente,  // Usar el id_cliente para todas las órdenes
                 'fecha_recepcion'       => $fechaIngreso,
                 'fecha_entrega_estimada'=> $fechasEstimada[$index],
-                'id_estado_orden'=> 1,
-
-
+                'id_estado_orden'       => 1,  // Estado predeterminado "pendiente"
             ];
 
             // Guardar los datos de la orden de servicio
             $ordenesServicioModel->insert($ordenData);
-            $no_orden = $ordenesServicioModel->insertID();
+            $no_orden = $ordenesServicioModel->insertID();  // Obtener el id de la orden recién insertada
 
             // Datos del equipo
             $equipoData = [
-                'no_orden'              => $no_orden,
+                'no_orden'              => $no_orden,  // Asociar el equipo a la orden recién insertada
                 'id_tipo_equipo'        => $tiposEquipo[$index],
                 'id_marca'              => $marcas[$index],
                 'modelo'                => $modelos[$index],
                 'descripcion_cliente'   => $descripciones[$index],
                 'evaluacion_agente'     => $evaluaciones[$index],
                 'observaciones'         => $observaciones[$index],
-                'espesificaciones_equipo'=> $especificaciones[$index],
+                'especificaciones_equipo'=> $especificaciones[$index],
             ];
 
             // Guardar los datos del equipo
@@ -140,8 +164,10 @@ class OrdenesController extends Controller
         }
 
         // Redirigir con un mensaje de éxito
-        return redirect()->route('menu_ordenes_servicio');
-    } 
+        return redirect()->route('menu_ordenes_servicio')->with('success', 'Orden y equipos guardados exitosamente.');
+    }
+
+
     
     public function getNombreCompleto($cliente)
     {
@@ -182,12 +208,14 @@ class OrdenesController extends Controller
         }
 
         // Pasar los datos filtrados a la vista
+
         $datos = [
             'ordenes' => $pendientes,
-            'titulo' => 'LISTA DE ÓRDENES PENDIENTES',
+            'titulo' => 'ÓRDENES PENDIENTES',
+            'titulo_2' => 'LISTA DE ÓRDENES PENDIENTES',
         ];
 
-        return view('/agente_servicio/lista_ordenes', $datos);
+        return view('/agente_servicio/ordenes', $datos);
     }
 
     public function ordenesEnProceso(): string
@@ -221,12 +249,14 @@ class OrdenesController extends Controller
         }
 
         // Pasar los datos filtrados a la vista
+
         $datos = [
+            'titulo' => 'ÓRDENES EN PROCESO',
             'ordenes' => $pendientes,
-            'titulo' => ' LISTA DE ÓRDENES EN PROCESO',
+            'titulo_2' => ' LISTA DE ÓRDENES EN PROCESO',
         ];
 
-        return view('/agente_servicio/lista_ordenes', $datos);
+        return view('/agente_servicio/ordenes', $datos);
     }
 
     public function ordenesFinalizadas(): string
@@ -260,12 +290,14 @@ class OrdenesController extends Controller
         }
 
         // Pasar los datos filtrados a la vista
+
         $datos = [
+            'titulo' => 'ÓRDENES FINALIZADAS',
             'ordenes' => $pendientes,
             'titulo' => 'LISTA DE ÓRDENES FINALIZADAS',
         ];
 
-        return view('/agente_servicio/lista_ordenes', $datos);
+        return view('/agente_servicio/ordenes', $datos);
     }
     
     public function verDatosOrden($idOrden): string
@@ -290,7 +322,9 @@ class OrdenesController extends Controller
         $equipos = $detalleEquiposModel->where('no_orden', $idOrden)->findAll();
 
         // Pasar los datos a la vista
+
         $datos = [
+            'titulo' => 'Detalles Órdenes',
             'cliente' => $cliente,
             'orden' => $orden,
             'equipos' => $equipos,

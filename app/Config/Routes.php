@@ -78,9 +78,14 @@ $routes->get('/buscar_empleado/(:num)','AdminEmpleadosController::buscarEmpleado
 $routes->post('/modificar_empleado','AdminEmpleadosController::modificar');
 
 
-/**Cliente */
+/*Cliente */
 $routes->get('/verClientes','AdminClientesController::clientes');
 $routes->post('/buscarCliente','AdminClientesController::buscarCliente');
+
+/*Ordenes */
+$routes->get('/verOrdenes','AdminDetalleOrdenesController::ordenes');
+$routes->post('/buscarOrdenes', 'AdminDetallesOrdenesController::buscarOrdenes');
+
 
 /*Rol*/
 $routes->get('/nuevo_rol','AdminEmpleadosController::nuevoRol');
@@ -106,7 +111,7 @@ $routes->get('ordenes_finalizadas', 'OrdenesController::ordenesFinalizadas');
 $routes->get('orden/nueva', 'OrdenesController::nuevaOrden');
 $routes->post('orden/agregar', 'OrdenesController::agregarOrden');
 
-$routes->get('detalles/(:num)', 'OrdenesController::verDatosOrden/$1');
+$routes->get('detalles_orden/(:num)','DetalleOrdenesController::verDetalles/$1');
 
 /*Encargado de Bodega*/
 

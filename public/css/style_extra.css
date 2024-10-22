@@ -1,0 +1,44 @@
+.form-fondo {
+    
+    font-weight: 400;
+    font-style: normal;
+    border: 2px solid rgba(214, 214, 214, 0.5);      
+    padding: 30px;
+    box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+  
+}
+
+.icono-tamaño{
+    max-width: 45px;
+}
+.titulo-principal{
+    font-size: 2.5rem;
+}
+.cantidades-importantes{
+    font-size: 5.0rem;
+}
+
+.card-title{
+    font-size: 2.0rem;
+}
+/*ordenes*/
+.card{
+    min-height: 300px;
+    padding: 30px;
+    border-radius: 40px;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 2);
+    box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+}
+
+.card-pendiente{
+    background-color: rgba(253, 115, 115, 0.404) ;       
+}
+.card-proceso{
+    background-color: rgba(115, 175, 253, 0.404) ;       
+}
+.card-terminada{
+    background-color: rgba(170, 253, 115, 0.404) ;       
+}
+
+

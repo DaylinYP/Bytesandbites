@@ -19,7 +19,8 @@
             ,'id_agente'
             ,'evaluacion_agente'
             ,'observaciones'
-            ,'espesificaciones_equipo'
+            ,'especificaciones_equipo'
         ];
 
     }
+    

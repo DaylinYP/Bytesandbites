@@ -35,7 +35,7 @@ class AdminEmpleadosModel extends Model
 
 
 
-    public function verEmpleado()
+    public function verEmpleado() //Metodo qu devuelve una union de tablas
     {
         return $this->select(
             'empleados.id_empleado,
@@ -60,7 +60,7 @@ class AdminEmpleadosModel extends Model
             ->findAll();
     }
 
-    public function busqueda($busqueda)
+    public function busqueda($busqueda) // Busca algun dato que se encuentren en las tablas que sean similares al parametro $busqueda.
     {
         $this->select(
             'empleados.id_empleado,
@@ -95,7 +95,7 @@ class AdminEmpleadosModel extends Model
         return $this->findAll();
     }
 
-    public function buscarID($id){
+    public function buscarID($id){ //Este metodo hace una busqueda por el Id 
         return $this->select(
             'empleados.id_empleado,
          empleados.dpi,

@@ -90,7 +90,8 @@
 
         <div class="main p-3">
             <main class="container">
-                <form action="nombre" id="solicitudForm" novalidate>
+                <!-- Formulario de Solicitud de Materiales -->
+                <form action="<?php echo base_url('solicitarMateriales/procesarSolicitud'); ?>" id="solicitudForm"nname="solicitudForm" novalidate method="post">
                     <div class="row">
                         <div class="col-8 pt-4">
                             <h1 class="titulo pt-4">SOLICITUD DE MATERIALES</h1>
@@ -124,6 +125,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row-12 pt-4 text-right ">
+                             <button type="button"  class=" btn btn-secondary" onclick="limpiarFormulario()" >
+                             <i class="bi bi-trash3"> </i>
+                             Limpiar sección
+                            </button>
 
                         <div class="row-12 pt-4 text-center">
                             <button type="submit" class="btn btn-warning boton" id="btnSolicitarMaterial">
@@ -131,6 +137,18 @@
                             </button>
                         </div>
                     </section>
+
+                    <!-- Mensajes de error de validación -->
+                    <?php if (isset($validation)): ?>
+                        <div class="alert alert-danger mt-3">
+                            <?php echo $validation->listErrors(); ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success">
+        <?= session()->getFlashdata('success') ?>
+    </div>
+<?php endif; ?>
                 </form>
             </main>
         </div>
@@ -162,6 +180,12 @@
                     }, false);
                 });
         })();
+
+
+        function limpiarFormulario() {
+        // Seleccionar el formulario por su ID
+        document.getElementById("solicitudForm").reset();
+        }
     </script>
 </body>
 
