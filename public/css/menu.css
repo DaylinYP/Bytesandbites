@@ -83,8 +83,8 @@ body {
     height: 100vh;
     overflow-y: auto;
     position: sticky;
-    width: 70px;
-    min-width: 70px;
+    width: 75px;
+    min-width: 75px;
     z-index: 1000;
     transition: all .25s ease-in-out;
     background-color: #212122;
