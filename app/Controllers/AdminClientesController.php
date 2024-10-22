@@ -9,7 +9,7 @@ class AdminClientesController extends BaseController
 {
     protected $helpers = ['form'];
 
-    public function clientes()
+    public function clientes()  //Muestra  todos los clientes del metodo del modelo llamado verCliente
     {
         $clientes = new UsersModel();
         $datos['datos'] = session()->getFlashdata('resultado') ?? $clientes->verClientes();
@@ -17,7 +17,7 @@ class AdminClientesController extends BaseController
         return view('admin/clientes', $datos);
     }
 
-    public function buscarCliente()
+    public function buscarCliente() //Llama al metodo buscar del modelo y lo manda a la vista
     {
         $clientes = new UsersModel();
         $busqueda = $this->request->getPost('busqueda');

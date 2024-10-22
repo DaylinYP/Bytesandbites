@@ -11,24 +11,25 @@ class UsuariosController extends BaseController
     public function index(): string
     {
         $data = ['titulo' => 'Usuariosss'];
-        return view('admin/usuarios_login', $data);
+        return view('admin/usuarios_login', $data); //Vista login para empleados
     }
 
-    public function auth()
+    public function auth() //Función para autentificación
     {
 
         $reglas = [
             'txt_email_usuario' => 'required',
-            'txt_contrasenia' => 'required',
+            'txt_contrasenia' => 'required', //datos requeridos
         ];
 
         if (!$this->validate($reglas)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
         }
         $usuario = new UsuariosModel();
-        $post = $this->request->getPost(['txt_email_usuario', 'txt_contrasenia']);
+        $post = $this->request->getPost(['txt_email_usuario', 'txt_contrasenia']); //obtiene los datos del login
 
         $user = $usuario->validateUser($post['txt_email_usuario'], $post['txt_contrasenia']);
+        //Compara los datos con el metodo validateUser que es llamado del modelo Usuarios.
 
 
 
@@ -52,7 +53,7 @@ class UsuariosController extends BaseController
         return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
     }
 
-    private function setSession($userData)
+    private function setSession($userData) //Recopila estos datos.
     {
         $data = [
             'logged_in' => true,
@@ -62,9 +63,10 @@ class UsuariosController extends BaseController
             'user_nombre' => $userData['primer_nombre']. ' ' .$userData['primer_apellido']
         ];
         $this->session->set($data);
+        log_message('debug', 'Sesión establecida: ' . json_encode($data)); // Log para verificar
     }
 
-    public function logout()
+    public function logout() //Cierra la sesion
     {
         if ($this->session->get('logged_in')) {
             $this->session->destroy();
