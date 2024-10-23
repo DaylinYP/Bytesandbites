@@ -14,7 +14,7 @@
             , 'id_tipo_equipo'
             , 'id_marca'
             , 'modelo'
-            , 'precio'
+            , 'precio_repuesto'
             , 'img_repuesto'
             , 'cantidad'
             , 'id_proveedor'

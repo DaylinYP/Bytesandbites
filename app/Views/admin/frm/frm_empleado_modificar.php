@@ -216,8 +216,8 @@
                             <div class="col-lg-6 offset-lg-3 col-lg-6 col-sm-12">
 
                                 <label for="txt_s_nombre" class="pb-3">Contraseña:</label>
-                                <input type="text" name="txt_contrasenia" class="form-control" placeholder="Ingrese la contraseña"
-                                    value="<?php echo set_value('txt_contrasenia', $empleadosss['contrasenia']); ?>">
+                                <input type="password" name="txt_contrasenia" class="form-control" placeholder="Ingrese la contraseña"
+                                    value="<?php echo set_value('txt_contrasenia', $empleadosss['contrasenia_p']); ?>">
                                 <label for="">
                                     <?php echo validation_show_error('txt_contrasenia'); ?>
                                 </label>
@@ -315,8 +315,26 @@
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Si el usuario confirma, enviar el formulario
-                this.submit();
+                // Segunda alerta: Cheque
+                Swal.fire({
+                    title: '¡Bien hecho!',
+                    text: 'Datos Actualizados Correctamente',
+                    icon: 'success',
+                    imageWidth: 400,
+                    imageHeight: 200,
+                    confirmButtonText: 'Aceptar'
+                }).then(() => {
+                    // Finalmente, enviar el formulario
+                    this.submit();
+                });
+            } else {
+                // Alerta de cancelación
+                Swal.fire({
+                    title: 'Cancelado',
+                    text: 'La actualización no se ha realizado',
+                    icon: 'info',
+                    confirmButtonText: 'Aceptar'
+                });
             }
         });
     });

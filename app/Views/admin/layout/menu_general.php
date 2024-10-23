@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Título dinámico -->
-    <title><?= $titulo; ?></title>
+<?= $this->renderSection('styles'); ?>
 
-    <!-- Agregar ruta de CSS según el rol -->
-    <?php if (session()->get('rol') == 'admin'): ?>
-        <link rel="stylesheet" href="<?= base_url('admin/admin.css'); ?>">
-    <?php elseif (session()->get('rol') == 'agente'): ?>
-        <link rel="stylesheet" href="<?= base_url('css/style_extra.css') ?>?v=1.0">
-
-    <?php endif; ?>
-    <?php echo $this->renderSection('styles'); ?>
-
+<!-- Cargar estilos según el rol del usuario -->
+<?php if (session()->get('rol') == 'admin'): ?>
+    <link rel="stylesheet" href="<?= base_url('admin/admin.css'); ?>">
+<?php elseif (session()->get('rol') == 'agente'): ?>
+    <link rel="stylesheet" href="<?= base_url('css/style_extra.css'); ?>">
+<?php elseif (session()->get('rol') == 'tecnico'): ?>
+    <link rel="stylesheet" href="<?= base_url('css/tecnico.css'); ?>">
+<?php elseif (session()->get('rol') == 'bodega'): ?>
+    <link rel="stylesheet" href="<?= base_url('css/style_extra.css'); ?>">
+<?php endif; ?>
+    
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -55,8 +52,10 @@
                                 echo base_url('Inicio');
                             } elseif (session()->get('rol') == 'agente') {
                                 echo base_url('menu_ordenes_servicio');
+                            } elseif (session()->get('rol') == 'tecnico') {
+                                echo base_url('ordenesDeServicio');
                             } else {
-                                echo base_url('inicio'); // Ruta por defecto en caso de que no haya rol o sea otro rol
+                                echo base_url('/lista_repuestos'); // Ruta por defecto en caso de que no haya rol o sea otro rol
                             }
                         ?>" class="text-decoration-none">
                             Bytes & Bits
@@ -124,6 +123,50 @@
                             <span>Nueva Orden de Servicio</span>
                         </a>
                     </li>
+                <?php endif; ?>
+
+                <!-- Enlaces para Técnico -->
+                <?php if (session()->get('rol') == 'tecnico'): ?>
+                    <li class="sidebar-item">
+                        <a href="<?php echo base_url('editarPerfil'); ?>" class="sidebar-link">
+                            <i class="lni lni-user"></i>
+                            <span>Perfil del técnico</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="<?php echo base_url('ordenesDeServicio'); ?>" class="sidebar-link">
+                            <i class="lni lni-list"></i>
+                            <span>Órdenes de servicio</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="<?php echo base_url('solicitarMateriales'); ?>" class="sidebar-link">
+                            <i class="lni lni-package"></i>
+                            <span>Solicitud de Materiales</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <?php if (session()->get('rol') == 'bodega'): ?>
+                    <li class="sidebar-item">
+                    <a href="<?=base_url('lista_repuestos')?>" class="sidebar-link">
+                        <i class="lni lni-popup"></i>
+                        <span>Repuestos</span>
+                    </a>
+                </li>
+               
+                <li class="sidebar-item">
+                    <a href="<?=base_url('nuevo_repuesto')?>" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>Nuevo Repuesto</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="<?=base_url('nuevo_repuesto')?>" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>Solicitud de Materiales</span>
+                    </a>
+                </li>
                 <?php endif; ?>
 
                 <!-- Enlace común para todos -->

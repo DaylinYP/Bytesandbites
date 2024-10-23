@@ -12,7 +12,7 @@ class ServiciosModel extends Model
         'servicio_id',
         'nombre',
         'img_servicio',
-        'precio'
+        'precio_servicio'
         
     ];
 }

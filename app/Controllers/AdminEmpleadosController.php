@@ -12,7 +12,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 class AdminEmpleadosController extends BaseController
 {
    protected $helpers = ['form'];
-   //protected $filters = ['auth'];
+   protected $filters = ['auth'];
 
    public function index()
    {

@@ -47,11 +47,11 @@ $routes->get('afterlogin', 'CAfterLogin::index');
 
 /*VISTA TÉCNICO */
 /*Para solicitar materiales*/
-$routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales');
+$routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales',['filter' => 'auth']);
 /* Para ver las órdenes de servicio*/
-$routes ->get('ordenesDeServicio', 'ordenesDeServicioController::index');
+$routes ->get('ordenesDeServicio', 'ordenesDeServicioController::index',['filter' => 'auth']);
 /* Para editar la información del técnico*/
-$routes->get('editarPerfil', 'EmpleadoController::editarPerfil');
+$routes->get('editarPerfil', 'EmpleadoController::editarPerfil',['filter' => 'auth']);
 
 $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 
@@ -62,11 +62,13 @@ $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 /*Admin---<*/
 
 /*Inicio*/
-$routes->get('/Inicio','InicioController::index');
+$routes->get('/Inicio','InicioController::index',['filter' => 'auth']);
 $routes->post('/buscar','AdminEmpleadosController::buscar');
 
 /*Empleados*/
-$routes->get('/empleados','AdminEmpleadosController::index');
+
+    //El ['filter' => 'auth'] sirve para permitir ingresar a la url si el usuario esta autentificado
+$routes->get('/empleados','AdminEmpleadosController::index',['filter' => 'auth']);
 $routes->post('/empleados/()','AdminEmpleadosController::actualizarEstado/');
 
 /**Usuarios */
@@ -74,28 +76,28 @@ $routes->get('/usuario','UsuariosController::index');
 $routes->post('/authe','UsuariosController::auth');
 $routes->get('/salir','UsuariosController::logout');
 
-$routes->get('/nuevo_empleado','AdminEmpleadosController::nuevoEmpleado');
+$routes->get('/nuevo_empleado','AdminEmpleadosController::nuevoEmpleado', ['filter' => 'auth']);
 $routes->post('/agregar_empleado','AdminEmpleadosController::agregarEmpleado');
-$routes->get('/buscar_empleado/(:num)','AdminEmpleadosController::buscarEmpleado/$1');
+$routes->get('/buscar_empleado/(:num)','AdminEmpleadosController::buscarEmpleado/$1',['filter' => 'auth']);
 $routes->post('/modificar_empleado','AdminEmpleadosController::modificar');
 
 
 /*Cliente */
-$routes->get('/verClientes','AdminClientesController::clientes');
+$routes->get('/verClientes','AdminClientesController::clientes',['filter' => 'auth']);
 $routes->post('/buscarCliente','AdminClientesController::buscarCliente');
 
 /*Ordenes */
-$routes->get('/verOrdenes','AdminDetalleOrdenesController::ordenes');
+$routes->get('/verOrdenes','AdminDetalleOrdenesController::ordenes',['filter' => 'auth']);
 $routes->post('/buscarOrdenes', 'AdminDetallesOrdenesController::buscarOrdenes');
 
 
 /*Rol*/
-$routes->get('/nuevo_rol','AdminEmpleadosController::nuevoRol');
-$routes->post('/agregar_rol','AdminRolesController::agregarRol');
+$routes->get('/nuevo_rol','AdminEmpleadosController::nuevoRol',['filter' => 'auth']);
+$routes->post('/agregar_rol','AdminRolesController::agregarRol',['filter' => 'auth']);
 
 /*Quejas */
-$routes->get('/quejas','QuejasController::quejas');
-$routes->get('/eliminar_quejas/(:num)','QuejasController::eliminarQueja/$1');
+$routes->get('/quejas','QuejasController::quejas', ['filter' => 'auth']);
+$routes->get('/eliminar_quejas/(:num)','QuejasController::eliminarQueja/$1',['filter' => 'auth']);
 /**---------> */ 
 
 
@@ -104,32 +106,30 @@ $routes->get('/eliminar_quejas/(:num)','QuejasController::eliminarQueja/$1');
 
 
 /*Agente de Servicio*/
-$routes->get('menu_ordenes_servicio', 'OrdenesController::index');
-$routes->get('detallesOrdenes', 'OrdenesController::verDatosOrden');
+$routes->get('menu_ordenes_servicio', 'OrdenesController::index',['filter' => 'auth']);
 $routes->get('ordenes_pendientes', 'OrdenesController::ordenesPendientes');
 $routes->get('ordenes_enproceso', 'OrdenesController::ordenesEnProceso');
 $routes->get('ordenes_finalizadas', 'OrdenesController::ordenesFinalizadas');
 
-$routes->get('orden/nueva', 'OrdenesController::nuevaOrden');
+$routes->get('orden/nueva', 'OrdenesController::nuevaOrden',['filter' => 'auth']);
 $routes->post('orden/agregar', 'OrdenesController::agregarOrden');
 
-$routes->get('detalles_orden/(:num)','DetalleOrdenesController::verDetalles/$1');
 
 /*Encargado de Bodega*/
 
-$routes->get('lista_repuestos', 'RepuestosController::index');
+$routes->get('lista_repuestos', 'RepuestosController::index', ['filter' => 'auth']);
 
 //Agregar nuevo registro
-$routes->get('nuevo_repuesto', 'RepuestosController::nuevoRepuesto');
+$routes->get('nuevo_repuesto', 'RepuestosController::nuevoRepuesto',['filter' => 'auth']);
 $routes->post('agregar_repuesto', 'RepuestosController::agregarRepuesto');
 
 //Actualizar un registro
-$routes->get('buscar_repuesto/(:num)', 'RepuestosController::buscarRepuesto/$1');
+$routes->get('buscar_repuesto/(:num)', 'RepuestosController::buscarRepuesto/$1',['filter' => 'auth']);
 $routes->post('modificar_repuesto', 'RepuestosController::modificarRepuesto');
 
 
 // Eliminar registro
-$routes->get('eliminar_Repuesto/(:num)', 'RepuestosController::eliminarRepuesto/$1');
+$routes->get('eliminar_Repuesto/(:num)', 'RepuestosController::eliminarRepuesto/$1',['filter' => 'auth']);
 
 /**---------> */ 
 //Perfil de empleados

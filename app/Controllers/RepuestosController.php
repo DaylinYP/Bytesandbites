@@ -28,13 +28,14 @@ class RepuestosController extends BaseController
         $estadoRepuestos = $estadoRepuestoModel->findAll();
 
         // Pasar los datos a la vista
-        $data['titulo'] = 'Inicio';
+        
         $datos = [
             'repuestos' => $repuestos,
             'marcas' => $marcas,
             'tiposEquipo' => $tiposEquipo,
             'proveedores' => $proveedores,
             'estadoRepuestos' => $estadoRepuestos,
+            'titulo' => 'Lista de Repuestos',
         ];
 
         return view('/encargado_bodega/lista_repuestos', $datos);
@@ -48,12 +49,13 @@ class RepuestosController extends BaseController
         $estadoRepuestoModel = new EstadoRepModel();
 
         // Obtener marcas y tipos de equipo para el formulario
-        $data['titulo'] = 'Nuevo Repuesto';
+        
         $datos = [
             'marcas' => $marcaModel->findAll(),
             'tiposEquipo' => $tipoEquipoModel->findAll(),
             'proveedores' => $proveedorModel->findAll(),
             'estadoRepuestos' => $estadoRepuestoModel->findAll(),
+            'titulo' => 'Nuevo Repuesto',
         ];
 
         return view('/encargado_bodega/nuevo_repuesto', $datos);
@@ -109,13 +111,13 @@ class RepuestosController extends BaseController
         $proveedorModel = new ProveedoresModel();
         $estadoRepuestoModel = new EstadoRepModel();
 
-        $data['titulo'] = 'Modificar Repuesto';
         $datos = [
             'repuesto' => $repuestoModel->where('id_repuesto', $id)->first(), // Obtenemos el repuesto
             'marcas' => $marcaModel->findAll(),
             'tiposEquipo' => $tipoEquipoModel->findAll(),
             'proveedores' => $proveedorModel->findAll(),
             'estadoRepuestos' => $estadoRepuestoModel->findAll(),
+            'titulo' => 'Modificar Repuesto',
         ];
 
         return view('/encargado_bodega/actualizar_repuesto', $datos);
