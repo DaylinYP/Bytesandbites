@@ -8,7 +8,7 @@
 
 
             <div class="row py-4">
-                <div class="col-4">
+                <div class="col-6">
                     <h1 class="titulo">
                         LISTA DE SOLICITUDES DE MATERIALES
 
@@ -23,35 +23,50 @@
                 <div class="row pt-4">
                     <div class="col">
                         <table class="table  tabla">
-                            <thead class="thead">
+                            <thead class="thead bg-warning text-dark">
                                 <tr>
-                                    <th>No de Orden</th>
-                                    <th>ID Cliente</th>
-                                    <th>Fecha Recepción</th>
-                                    <th>Fecha Entrega Estimada</th>
-                                    <th>Fecha Entrega</th>
-                                    <th>Estado</th>
-                                    <th>Opciones</th>
+                                    <th>No. de Solicitud</th>
+                                    <th>Fecha Solicitada</th>
+                                    <th>Servicio</th>
+                                    <th>No. de Orden</th>
+                                    <th>Código del Orden</th>
+                                    <th>Repuesto</th>
+                                    <th>Nuevo Repuesto</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                foreach ($datos as $orden): ?>
+                                foreach ($solicitudes as $solicitud): ?>
                                     <tr>
-                                        <td><?php echo $orden['no_orden']; ?></td>
-                                        <td><?php echo $orden['id_cliente']; ?></td>
-                                        <td><?php echo $orden['fecha_recepcion']; ?></td>
-                                        <td><?php echo $orden['fecha_entrega_estimada']; ?></td>
-                                        <td><?php echo $orden['fecha_entrega']; ?></td>
-                                        <td><?php echo $orden['estado_orden']; ?></td>
-                                        <td>
-                                            <a href="<?= base_url('buscar_orden/') . $orden['no_orden'] ?>" class="btn btn-success">
-                                                <i class="bi bi-pencil-square">Actualizar</i>
-                                            </a>
-                                            <a href="<?= base_url('eliminar_orden/') . $orden['no_orden'] ?>" class="btn btn-danger">
-                                                <i class="bi bi-trash">Eliminar</i>
-                                            </a>
+                                    
+                                        <td><?php echo $solicitud['id_solicitud']; ?></td>
+                                        <td><?php echo $solicitud['fecha_solicitud']; ?></td>
+                                        <td><?php echo $solicitud['servicio_id']; ?>
+                                        <?php
+                                            // Buscar el nombre del servicio
+                                            foreach ($servicios as $servicio) {
+                                                if ($servicio['servicio_id'] == $solicitud['servicio_id']) {
+                                                    echo $servicio['nombre'];
+                                                    break;
+                                                }
+                                            }
+                                        ?>
                                         </td>
+                                        <td><?php echo $solicitud['no_orden']; ?></td>
+                                        <td><?php echo $solicitud['id_repuesto']; ?></td>
+                                        <td><?php echo $solicitud['id_repuesto']; ?>
+                                            <?php
+                                                // Buscar el nombre del servicio
+                                                foreach ($repuestos as $repuesto) {
+                                                    if ($repuesto['id_repuesto'] == $solicitud['id_repuesto']) {
+                                                        echo $repuesto['nombre'];
+                                                        break;
+                                                    }
+                                                }
+                                            ?>
+                                        </td>
+                                        <td><?php echo $solicitud['detalles_nuevo_repuesto']; ?></td>
+                                        
                                     </tr>
                                 <?php 
                                 endforeach;

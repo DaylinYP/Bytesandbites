@@ -8,8 +8,17 @@
 
 <div class="main  p-3">
     <main class="container">
+        <div class="col-xl-1 col-12">
+                    <div class=" d-md-flex justify-content-md-end container py-5 animate__animated animate__slideInRight mx-4 my-4">
+                        <a href="<?=base_url('menu_ordenes_servicio')?>" class="btn btn-outline-primary btn-lg position-absolute  translate-middle rounded-pill"><i class="bi bi-caret-left-square"></i></a>
+                    </div>
+                </div>
+                <div class="col-xl-11 col-12">
+                    
+        </div >
         <div class="form-fondo">
             <div class="row">
+                
                 <div class="col-4">
                 <h1>
                         Lista de Òrdenes
@@ -28,7 +37,7 @@
                     <?php if (!empty($detalles_equipos)): ?>
                         <div style="overflow-x: auto; width: 100%; overflow-y: auto; max-height: 500px; width: 100%;">
                             <table class="table table-hover table-dark  vertical-bar">
-                                <thead>
+                                <thead class="text-dark">
                                     <tr>
                                         <th>No. Orden</th>
                                         <th>Fecha de Ingreso</th>

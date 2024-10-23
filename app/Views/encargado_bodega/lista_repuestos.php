@@ -13,8 +13,8 @@
 
             </div>
             <div class="col-1 d-md-flex justify-content-md-end  py-5 animate__animated animate__slideInRight">
-                <a href="<?= base_url('nuevo_repuesto') ?>" class="btn btn-outline-primary btn-lg position-absolute  translate-middle rounded-pill">
-                    <i class="bi bi-plus-square px-2"></i> Nuevo Repuesto
+                <a href="<?= base_url('nuevo_repuesto') ?>" class="btn btn-outline-dark btn-lg position-absolute  translate-middle rounded-pill">
+                    <i class="bi bi-plus-square p-1"></i> Nuevo Repuesto
                 </a>
             </div>
 

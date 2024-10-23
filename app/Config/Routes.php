@@ -45,7 +45,9 @@ $routes->get('afterlogin', 'CAfterLogin::index');
 
 /*VISTA TÉCNICO */
 /*Para solicitar materiales*/
-$routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales',['filter' => 'auth']);
+$routes->get('solicitarMateriales', 'SolicitarMaterialesController::solicitarMateriales',['filter' => 'auth']);
+/*Para Lista de materiales solicitados*/
+$routes->get('listaSolicitudes', 'SolicitarMaterialesController::listaSolicitudes',['filter' => 'auth']);
 /* Para ver las órdenes de servicio*/
 $routes ->get('ordenesDeServicio', 'ordenesDeServicioController::index',['filter' => 'auth']);
 /* Para editar la información del técnico*/

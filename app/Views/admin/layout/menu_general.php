@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?= base_url('css/tecnico.css'); ?>">
 <?php elseif (session()->get('rol') == 'bodega'): ?>
     <link rel="stylesheet" href="<?= base_url('css/style_extra.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('css/tecnico.css'); ?>">
 <?php endif; ?>
     
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
@@ -73,14 +74,8 @@
                 <?php if (session()->get('rol') == 'admin'): ?>
                     <li class="sidebar-item">
                         <a href="<?= base_url('Inicio'); ?>" class="sidebar-link text-decoration-none">
-                            <i class="lni lni-user"></i>
+                            <i class="lni lni-home"></i>
                             <span>Inicio</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="<?= base_url('quejas'); ?>" class="sidebar-link text-decoration-none">
-                            <i class="lni lni-popup"></i>
-                            <span>Quejas</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -91,21 +86,27 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed has-dropdown  text-decoration-none" data-bs-toggle="collapse"
-                            data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
-                            <i class="lni lni-menu"></i>
-                            <span>Òrdenes</span>
-                        </a>
-                        <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="<?= base_url('verOrdenes'); ?>" class="sidebar-link text-decoration-none">
-                                    Lista de Òrdenes
-                                </a>
-                                <a href="<?= base_url('verClientes');?>" class="sidebar-link text-decoration-none">
-                                    Listados Clientes
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
+                        <i class="lni lni-menu"></i>
+                        <span>Òrdenes</span>
+                    </a>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="<?= base_url('verOrdenes'); ?>" class="sidebar-link text-decoration-none">
+                                Lista de Òrdenes
+                            </a>
+                            <a href="<?= base_url('verClientes');?>" class="sidebar-link text-decoration-none">
+                                Listados Clientes
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="<?= base_url('quejas'); ?>" class="sidebar-link text-decoration-none">
+                        <i class="lni lni-popup"></i>
+                        <span>Quejas</span>
+                    </a>
+                </li>
                 <?php endif; ?>
 
                 <!-- Enlaces para Agente -->
@@ -113,13 +114,13 @@
                     
                     <li class="sidebar-item">
                         <a href="<?= base_url('menu_ordenes_servicio') ?>" class="sidebar-link text-decoration-none">
-                            <i class="lni lni-popup"></i>
+                            <i class="lni lni-home"></i>
                             <span>Inicio</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
                         <a href="<?= base_url('orden/nueva') ?>" class="sidebar-link text-decoration-none">
-                            <i class="lni lni-agenda"></i>
+                            <i class="lni lni-package"></i>
                             <span>Nueva Orden de Servicio</span>
                         </a>
                     </li>
@@ -145,28 +146,34 @@
                             <span>Solicitud de Materiales</span>
                         </a>
                     </li>
+                    <li class="sidebar-item">
+                        <a href="<?php echo base_url('listaSolicitudes'); ?>" class="sidebar-link">
+                            <i class="lni lni-list"></i>
+                            <span>Lista de Solicitudes</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
                 <?php if (session()->get('rol') == 'bodega'): ?>
                     <li class="sidebar-item">
                     <a href="<?=base_url('lista_repuestos')?>" class="sidebar-link">
-                        <i class="lni lni-popup"></i>
+                        <i class="lni lni-list"></i>
                         <span>Repuestos</span>
                     </a>
                 </li>
                
                 <li class="sidebar-item">
                     <a href="<?=base_url('nuevo_repuesto')?>" class="sidebar-link">
-                        <i class="lni lni-agenda"></i>
+                        <i class="lni lni-package"></i>
                         <span>Nuevo Repuesto</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="<?=base_url('nuevo_repuesto')?>" class="sidebar-link">
-                        <i class="lni lni-agenda"></i>
-                        <span>Solicitud de Materiales</span>
-                    </a>
-                </li>
+                        <a href="<?php echo base_url('listaSolicitudes'); ?>" class="sidebar-link">
+                            <i class="lni lni-list"></i>
+                            <span>Lista de Solicitudes</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
 
                 <!-- Enlace común para todos -->
