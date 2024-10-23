@@ -23,7 +23,7 @@
                 <div class="row pt-4">
                     <div class="col">
                         <table class="table  tabla">
-                            <thead class="thead">
+                            <thead class="thead bg-warning text-dark">
                                 <tr>
                                     <th>No de Orden</th>
                                     <th>ID Cliente</th>

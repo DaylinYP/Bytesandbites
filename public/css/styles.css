@@ -119,7 +119,7 @@ h6,
     background-color: rgb(255, 194, 10);
     background-position: center;
     position: fixed;
-    bottom: 80px;
+    bottom: 100px;
     right: 30px;
     z-index: 1;
     box-shadow: 0 0 30px rgba(0, 0, 0, .2);

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= isset($titulo) ? $titulo : 'Título por defecto'; ?></title>
-    <link rel="stylesheet" href="<?= base_url('css/styles.css') ?>">
+    <title><?= isset($titulo) ? $titulo : 'Login'; ?></title>
+    <link rel="stylesheet" href="<?= base_url('css/styles.css?v=1') ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
@@ -27,10 +27,7 @@
     <i class="bi bi-emoji-smile-fill"></i>
     </button>
     
-    <!--Button Cerrar Sesion-->
-    <button class="button-sticky2 chat-button2" type="button" onclick="window.location.href='<?= base_url('cerrar_sesion') ?>'">
-       <i class="bi bi-escape"></i>
-    </button>
+
 
 
     <section
@@ -136,38 +133,60 @@
    <!--ALERTA QUEJA ENVIADA -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    document.querySelector('#form-queja').addEventListener('submit', function(event) {
-        event.preventDefault();
+   document.addEventListener('DOMContentLoaded', function () {
+    const formQueja = document.querySelector('#form-queja');
+    const formLogin = document.querySelector('#form-login');
+    const logoutButton = document.querySelector('#logout-button');
 
-        // Mostrar la alerta de éxito
-        Swal.fire({
-            title: "Enviado",
-            text: "Tu reporte ha sido enviado con éxito",
-            icon: "success"
-        }).then(() => {
-            console.log("La alerta fue mostrada y ahora se enviará el formulario");
-            this.submit(); // Se envía el formulario después de la alerta
-        }).catch(err => {
-            console.log("Error en SweetAlert: ", err); // Usamos 'err' aquí, coherente con el parámetro catch
+    if (formQueja) {
+        formQueja.addEventListener('submit', function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: "Enviado",
+                text: "Tu reporte ha sido enviado con éxito",
+                icon: "success"
+            }).then(() => {
+                this.submit();
+            }).catch(err => console.error("Error en SweetAlert:", err));
         });
-    });
+    }
 
-    document.querySelector('#form-login').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Mostrar la alerta de éxito
-        Swal.fire({
-            title: "Bienvenido a Bytes&bits!",
-            text: "Has iniciado sesión",
-            icon: "success"
-        }).then(() => {
-            console.log("La alerta fue mostrada y ahora se enviará el formulario");
-            this.submit(); // Se envía el formulario después de la alerta
-        }).catch(err => {
-            console.log("Error en SweetAlert: ", err); // Usamos 'err' aquí, coherente con el parámetro catch
+    if (formLogin) {
+        formLogin.addEventListener('submit', function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: "Bienvenido a Bytes&Bits!",
+                text: "Has iniciado sesión",
+                icon: "success"
+            }).then(() => {
+                this.submit();
+            }).catch(err => console.error("Error en SweetAlert:", err));
         });
-    });
+    }
+
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function () {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¿Quieres cerrar sesión?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, cerrar sesión!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '<?= base_url('regresar_Home'); ?>';
+                }
+            });
+        });
+    }
+});
+
+
 </script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
