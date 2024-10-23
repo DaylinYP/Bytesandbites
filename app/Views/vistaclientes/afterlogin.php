@@ -15,7 +15,7 @@
       
         <div class="card-body p-4">
             <h1 class="fs-3 card-title fw-bold mb-4">Iniciar sesión</h1>
-            <form method="POST" action="<?= base_url('auth');?>" autocomplete="off">
+            <form method="POST" action="<?= base_url('auth');?>" autocomplete="off" id="form-login">
                 <?= csrf_field();?>
 
                 <div class="mb-4">

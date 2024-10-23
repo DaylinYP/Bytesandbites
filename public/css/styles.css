@@ -111,19 +111,33 @@ h6,
     box-shadow: 0 0 30px rgba(0, 0, 0, .2);
 
 }
+.button-sticky2 {
+    height: 60px;
+    width: 65px;
+    border-radius: 60px;
+    border: none;
+    background-color: rgb(255, 194, 10);
+    background-position: center;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    z-index: 1;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
 
-.bi-emoji-smile-fill {
+}
+
+.bi-emoji-smile-fill, .bi-escape {
     color: rgb(255, 255, 255);
     font-size: 1.6rem;
     text-shadow: 0 0 2px #000000;
 
 }
 
-.button-sticky:hover {
+.button-sticky:hover, .button-sticky2:hover {
     background-color: rgb(231, 176, 10);
 }
 
-.bi-emoji-smile-fill:hover {
+.bi-emoji-smile-fill:hover, .bi-escape:hover {
     color: rgb(255, 255, 255);
     font-size: 1.7rem;
     text-shadow: 0 0 5px #000000;

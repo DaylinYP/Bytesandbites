@@ -25,6 +25,7 @@ $routes->get('login', 'Login::index');
 $routes->get('servicio_al_cliente', 'CServicioAlCliente::index');
 $routes->get('reporte_queja', 'CReporteQueja::index');
 $routes->post('agregar_reporte', 'CReporteQueja::agregarQueja');
+$routes->get('inicio_dos', 'CInicioDos::index');
 
 
 
@@ -41,6 +42,7 @@ $routes->get('cerrar_sesion', 'CCerrarSesion::index');
 $routes->get('logout', 'Login::logout');
 /*Ruta para boton de login>afterlogin */
 $routes->get('afterlogin', 'CAfterLogin::index');
+/*Ruta para alerta */
 
 /* FINALIZA VISTA CLIENTES */
 
