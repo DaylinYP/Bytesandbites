@@ -46,8 +46,9 @@
 
 </main>
 </div>
-<!---->
-<script>
+
+<!--Alertas-->
+<script> //Alerta de confirmación 
     document.querySelectorAll('#eliminar-queja').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault(); // Prevenir el comportamiento por defecto del enlace
@@ -69,6 +70,20 @@
                 }
             });
         });
+    });
+</script>
+<!--Alerta de Exito-->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mostrar alerta de éxito si existe
+        <?php if (session()->getFlashdata('success')): ?>
+            Swal.fire({
+                title: '¡Bien hecho!',
+                text: "<?php echo session()->getFlashdata('success'); ?>",
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
+        <?php endif; ?>
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

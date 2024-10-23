@@ -21,7 +21,10 @@
                 <div class="mb-4">
                     <label for="txt_email_usuario" class="mb-2">Correo Electrónico</label>
                     <input type="email" required autofocus id="txt_email_usuario" name="txt_email_usuario"
-                        class="form-control">
+                        class="form-control"  value="<?php echo set_value('txt_email_usuario') ?>">
+                        <label for="">
+                                <?php echo validation_show_error('txt_email_usuario'); ?>
+                            </label>
                 </div>
 
                 <div class="mb-4">
@@ -29,7 +32,6 @@
                         <label for="txt_contrasenia">Contraseña</label>
                         <input class="form-control" type="password" required id="txtContrasenia" name="txt_contrasenia">
 
-                        <a href="">Olvidé mi contraseña</a>
 
                     </div>
                 </div>

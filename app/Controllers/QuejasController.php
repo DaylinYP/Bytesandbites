@@ -25,7 +25,7 @@ class QuejasController extends BaseController
         $quejas = new QuejasModel();
        // print_r($id);
        $quejas->delete($id);
-       return redirect()->route('quejas');
+       return redirect()->route('quejas')->with('success', 'Queja eliminada correctamente.');
         
 
     }
