@@ -9,6 +9,7 @@ class ordenesDeServicioController extends BaseController
     {
    $orden=new TOrdenServicioModel();
    $datos['datos']=$orden->getOrdenesEstado();
+   $datos['titulo'] = 'Lista de Órdenes de Servicio';
    return view ('vistaTecnico/ordenesDeServicio', $datos);
     }
 

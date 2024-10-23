@@ -6,7 +6,8 @@ class solicitarMaterialesController extends BaseController
 {
     public function solicitarMateriales()
     {
-        return view('vistaTecnico/solicitudMateriales');
+        $datos['titulo'] = 'Solicitud de Materiales';
+        return view('vistaTecnico/solicitudMateriales', $datos);
     }
 
 /*

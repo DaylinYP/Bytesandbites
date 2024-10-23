@@ -3,39 +3,24 @@
 namespace App\Controllers;
 
 use App\Models\EmpleadoModel;
-use App\Models\RolesModel; // Asegúrate de que este modelo existe
-use App\Models\EmpresasModel; // Asegúrate de que este modelo existe
+use App\Models\RolesModel;
+use App\Models\EmpresasModel;
+use CodeIgniter\Controller;
 
-class PerfilEmpleadoController extends BaseController
+class PerfilEmpleadoController extends Controller
 {
-    public function perfilEmpleado($id): string
-    {
-        $empleadoModel = new EmpleadoModel();
-        $rolModel = new RolesModel();
-        $empresaModel = new EmpresasModel();
+    //public function mostrarPerfil()
+    //{
+        //$session = session();
+        //$idEmpleado = $session->get('id_empleado'); // Obtener el ID del empleado que inició sesión
 
-        // Obtener el empleado por su ID
-        $empleado = $empleadoModel->find($id);
+        // Instanciar el modelo de empleados
+        //$empleadoModel = new EmpleadoModel();
 
-        if (!$empleado) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException("Empleado no encontrado");
-        }
+        // Buscar los datos del empleado según el ID
+        //$empleado = $empleadoModel->find($idEmpleado);
 
-        // Obtener el nombre del rol y la empresa
-        $rol = $rolModel->find($empleado['id_rol']);
-        $empresa = $empresaModel->find($empleado['id_empresa']);
-
-        // Crear el nombre completo
-        $nombreCompleto = $empleado['primer_nombre'] . ' ' . $empleado['segundo_nombre'] . ' ' . $empleado['primer_apellido'] . ' ' . $empleado['segundo_apellido'];
-
-        // Pasar los datos a la vista
-        $datos = [
-            'empleado' => $empleado,
-            'nombreCompleto' => $nombreCompleto,
-            'nombreRol' => $rol ? $rol['nombre_rol'] : 'N/A', // Cambia 'nombre_rol' 
-            'nombreEmpresa' => $empresa ? $empresa['nombre_empresa'] : 'N/A', // Cambia 'nombre_empresa'
-        ];
-
-        return view('/encargado_bodega/perfil_empleado', $datos);
-    }
-}
+        // Pasar los datos del empleado a la vista
+        //return view('perfil_empleado', ['empleado' => $empleado]);
+    //}
+} 

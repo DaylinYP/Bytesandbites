@@ -15,7 +15,7 @@
             'fecha_finalizacion',
             'tecnico_id',
             'servicio_id',
-            'precio',
+            'precio_reparacion',
             'descripcion'
         ];
     }

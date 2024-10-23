@@ -13,7 +13,7 @@
             'fecha',
             'reparacion_id',
             'id_repuesto',
-            'precio',
+            'precio_detalle_reparacion',
             'descripcion'
         ];
     }

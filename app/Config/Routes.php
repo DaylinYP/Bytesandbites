@@ -45,11 +45,11 @@ $routes->get('afterlogin', 'CAfterLogin::index');
 
 /*VISTA TÉCNICO */
 /*Para solicitar materiales*/
-$routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales');
+$routes->get('solicitarMateriales', 'solicitarMaterialesController::solicitarMateriales',['filter' => 'auth']);
 /* Para ver las órdenes de servicio*/
-$routes ->get('ordenesDeServicio', 'ordenesDeServicioController::index');
+$routes ->get('ordenesDeServicio', 'ordenesDeServicioController::index',['filter' => 'auth']);
 /* Para editar la información del técnico*/
-$routes->get('editarPerfil', 'EmpleadoController::editarPerfil');
+$routes->get('editarPerfil', 'EmpleadoController::editarPerfil',['filter' => 'auth']);
 
 $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 
@@ -60,7 +60,7 @@ $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 /*Admin---<*/
 
 /*Inicio*/
-$routes->get('/Inicio','InicioController::index');
+$routes->get('/Inicio','InicioController::index',['filter' => 'auth']);
 $routes->post('/buscar','AdminEmpleadosController::buscar');
 
 /*Empleados*/
@@ -104,20 +104,18 @@ $routes->get('/eliminar_quejas/(:num)','QuejasController::eliminarQueja/$1',['fi
 
 
 /*Agente de Servicio*/
-$routes->get('menu_ordenes_servicio', 'OrdenesController::index');
-$routes->get('detallesOrdenes', 'OrdenesController::verDatosOrden');
+$routes->get('menu_ordenes_servicio', 'OrdenesController::index',['filter' => 'auth']);
 $routes->get('ordenes_pendientes', 'OrdenesController::ordenesPendientes');
 $routes->get('ordenes_enproceso', 'OrdenesController::ordenesEnProceso');
 $routes->get('ordenes_finalizadas', 'OrdenesController::ordenesFinalizadas');
 
-$routes->get('orden/nueva', 'OrdenesController::nuevaOrden');
+$routes->get('orden/nueva', 'OrdenesController::nuevaOrden',['filter' => 'auth']);
 $routes->post('orden/agregar', 'OrdenesController::agregarOrden');
 
-$routes->get('detalles_orden/(:num)','DetalleOrdenesController::verDetalles/$1');
 
 /*Encargado de Bodega*/
 
-$routes->get('lista_repuestos', 'RepuestosController::index',['filter' => 'auth']);
+$routes->get('lista_repuestos', 'RepuestosController::index', ['filter' => 'auth']);
 
 //Agregar nuevo registro
 $routes->get('nuevo_repuesto', 'RepuestosController::nuevoRepuesto',['filter' => 'auth']);
