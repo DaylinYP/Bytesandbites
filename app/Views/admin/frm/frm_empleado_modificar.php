@@ -152,37 +152,32 @@
                         </div>
                         <div class="col-lg-6 col-sm-12 ">
                             <div class="row">
-
                                 <label for="txt_rol" class="pb-3">Rol/Puesto:</label>
                                 <select name="txt_rol" id="">
                                     <option value="">Seleccionar Rol/Puesto</option>
-                                    <option value="1">Agente de Servicio</option>
-                                    <option value="2">Técnico</option>
-                                    <option value="3">Bodega</option>
-                                    <option value="4">admin</option>
-                                    <option value="<?php echo $empleadosss['id_rol']; ?>" selected><?php echo set_value('txt_rol', $empleadosss['rol']); ?></option>
+                                    <option value="1" <?php echo set_select('txt_rol', '1', set_value('txt_rol', $empleadosss['id_rol']) == '1'); ?>>Agente de Servicio</option>
+                                    <option value="2" <?php echo set_select('txt_rol', '2', set_value('txt_rol', $empleadosss['id_rol']) == '2'); ?>>Técnico</option>
+                                    <option value="3" <?php echo set_select('txt_rol', '3', set_value('txt_rol', $empleadosss['id_rol']) == '3'); ?>>Bodega</option>
+                                    <option value="4" <?php echo set_select('txt_rol', '4', set_value('txt_rol', $empleadosss['id_rol']) == '4'); ?>>Gerente</option>
                                 </select>
                                 <label for="">
                                     <?php echo validation_show_error('txt_rol'); ?>
                                 </label>
-
                             </div>
                         </div>
 
 
                         <div class="col-lg-6 col-sm-12 ">
                             <div class="row">
-
                                 <label for="txt_empresa" class="pb-3">Empresa:</label>
                                 <select name="txt_empresa" id="">
                                     <option value="">Seleccionar Sucursal</option>
-                                    <option value="1">Sucursal zona 1</option>
-                                    <option value="<?php echo $empleadosss['id_empresa']; ?>" selected><?php echo set_value('txt_empresa', $empleadosss['sucursal']) ?></option>
+                                    <option value="1" <?php echo set_select('txt_empresa', '1', set_value('txt_empresa', $empleadosss['id_empresa']) == '1'); ?>>Bytes & Bits</option>
+                                    <!-- Más opciones según sea necesario -->
                                 </select>
                                 <label for="">
                                     <?php echo validation_show_error('txt_empresa'); ?>
                                 </label>
-
                             </div>
                         </div>
 
@@ -249,15 +244,9 @@
                                 <div class="row">
                                     <label for="txt_estado" class="pb-3">Estado:</label>
                                     <select name="txt_estado" id="">
-
                                         <option value="">Seleccionar Estado</option>
-                                        <option value="1">Activo</option>
-                                        <option value="2">Inactivo</option>
-
-
-                                        <option selected value="<?php echo $empleadosss['estado_id']; ?>"><?php echo set_value('txt_estado', $empleadosss['estado']) ?></option>
-
-
+                                        <option value="1" <?php echo set_select('txt_estado', '1', set_value('txt_estado', $empleadosss['estado_id']) == '1'); ?>>Activo</option>
+                                        <option value="2" <?php echo set_select('txt_estado', '2', set_value('txt_estado', $empleadosss['estado_id']) == '2'); ?>>Inactivo</option>
                                     </select>
                                     <label for="">
                                         <?php echo validation_show_error('txt_estado'); ?>
@@ -300,42 +289,56 @@
 </main>
 </div>
 
-<script>
-    document.getElementById('form-update').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevenir el envío inmediato
+<script> //Alertas para asegurar el envio de formulario y deteccion de errores
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mostrar alerta de error si existe
+        <?php if (session()->getFlashdata('error')): ?>
+            Swal.fire({
+                title: 'Error',
+                text: "<?php echo session()->getFlashdata('error'); ?>",
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
+        <?php endif; ?>
 
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¿Deseas actualizar este registro?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, actualizar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Segunda alerta: Cheque
-                Swal.fire({
-                    title: '¡Bien hecho!',
-                    text: 'Datos Actualizados Correctamente',
-                    icon: 'success',
-                    imageWidth: 400,
-                    imageHeight: 200,
-                    confirmButtonText: 'Aceptar'
-                }).then(() => {
-                    // Finalmente, enviar el formulario
+        // Mostrar alerta de éxito si existe
+        <?php if (session()->getFlashdata('success')): ?>
+            Swal.fire({
+                title: '¡Bien hecho!',
+                text: "<?php echo session()->getFlashdata('success'); ?>",
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
+        <?php endif; ?>
+
+        // Manejar el envío del formulario
+        document.getElementById('form-update').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevenir el envío inmediato
+
+            // Confirmar actualización
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¿Deseas actualizar este registro?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, actualizar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Enviar el formulario
                     this.submit();
-                });
-            } else {
-                // Alerta de cancelación
-                Swal.fire({
-                    title: 'Cancelado',
-                    text: 'La actualización no se ha realizado',
-                    icon: 'info',
-                    confirmButtonText: 'Aceptar'
-                });
-            }
+                } else {
+                    // Cancelar actualización
+                    Swal.fire({
+                        title: 'Cancelado',
+                        text: 'La actualización no se ha realizado',
+                        icon: 'info',
+                        confirmButtonText: 'Aceptar'
+                    });
+                }
+            });
         });
     });
 </script>

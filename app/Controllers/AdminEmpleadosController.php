@@ -40,7 +40,7 @@ class AdminEmpleadosController extends BaseController
       $empleados = new AdminEmpleadosModel();
       $empleado = $empleados->buscarID($id);
       $datos['empleadosss'] = [$empleado];
-    
+
       return view('admin/frm/frm_empleado_modificar', $datos);
    }
 
@@ -51,33 +51,33 @@ class AdminEmpleadosController extends BaseController
       $empleados = new AdminEmpleadosModel();
       $usuarios = new UsuariosModel();
 
-      
 
-         $datos = [
-            'id_empleado' => $this->request->getVar('txt_id'),
-            'primer_nombre' => $this->request->getVar('txt_pr_nombre'),
-            'segundo_nombre' => $this->request->getVar('txt_s_nombre'),
-            'primer_apellido' => $this->request->getVar('txt_p_apellido'),
-            'segundo_apellido' => $this->request->getVar('txt_s_apellido'),
-            'dpi' => $this->request->getVar('txt_dpi'),
-            'nit' => $this->request->getVar('txt_nit'),
-            'email' => $this->request->getVar('txt_email_usuario'),
-            'telefono' => $this->request->getVar('txt_telefono'),
-            'direccion' => $this->request->getVar('txt_direccion'),
-            'id_rol' => $this->request->getVar('txt_rol'),
-            'id_empresa' => $this->request->getVar('txt_empresa'),
-            'extension' => $this->request->getVar('txt_extension')
 
-         ];
+      $datos = [
+         'id_empleado' => $this->request->getVar('txt_id'),
+         'primer_nombre' => $this->request->getVar('txt_pr_nombre'),
+         'segundo_nombre' => $this->request->getVar('txt_s_nombre'),
+         'primer_apellido' => $this->request->getVar('txt_p_apellido'),
+         'segundo_apellido' => $this->request->getVar('txt_s_apellido'),
+         'dpi' => $this->request->getVar('txt_dpi'),
+         'nit' => $this->request->getVar('txt_nit'),
+         'email' => $this->request->getVar('txt_email_usuario'),
+         'telefono' => $this->request->getVar('txt_telefono'),
+         'direccion' => $this->request->getVar('txt_direccion'),
+         'id_rol' => $this->request->getVar('txt_rol'),
+         'id_empresa' => $this->request->getVar('txt_empresa'),
+         'extension' => $this->request->getVar('txt_extension')
 
-         $datosUsuarios = [
-            'id_empleado' => $this->request->getVar('txt_id'),
-            'nombre_usuario' => $this->request->getVar('txt_email_usuario'),
-            'contrasenia' => password_hash($this->request->getPost('txt_contrasenia'), PASSWORD_DEFAULT),
-            'contrasenia_p' => $this->request->getPost('txt_contrasenia'),
-            'fecha_modificacion' => $this->request->getVar('txt_fecha_modificacion'),
-            'estado_id' => $this->request->getVar('txt_estado')
-         ];
+      ];
+
+      $datosUsuarios = [
+         'id_empleado' => $this->request->getVar('txt_id'),
+         'nombre_usuario' => $this->request->getVar('txt_email_usuario'),
+         'contrasenia' => password_hash($this->request->getPost('txt_contrasenia'), PASSWORD_DEFAULT),
+         'contrasenia_p' => $this->request->getPost('txt_contrasenia'),
+         'fecha_modificacion' => $this->request->getVar('txt_fecha_modificacion'),
+         'estado_id' => $this->request->getVar('txt_estado')
+      ];
 
 
 
@@ -208,22 +208,14 @@ class AdminEmpleadosController extends BaseController
          ]
       ];
 
-      if (!$this->validate($reglas)) {
-         return redirect()->back()->withInput();
+      if (!$this->validate($reglas)) { //Regla que sirve para validar y llamar a la alerta de error
+         return redirect()->back()->withInput()->with('error', 'Por favor, corrige los errores en el formulario.');
       }
 
       $empleados->update($datos['id_empleado'], $datos);
       $usuarios->update($datosUsuarios['id_empleado'], $datosUsuarios);
-
-      return redirect()->route('empleados');
-
-
-
-      //  print_r('es valido');
-
-
-
-
+      //Redirige a la vista empleados y llama a la alerta de exito
+      return redirect()->route('empleados')->with('success', 'Datos Actualizados Correctamente');
    }
 
 
@@ -388,16 +380,15 @@ class AdminEmpleadosController extends BaseController
          ]
       ];
 
-      if (!$this->validate($reglas)) {
-         return redirect()->back()->withInput();
+      if (!$this->validate($reglas)) { //Regla que sirve para validar y llamar a la alerta de error
+         return redirect()->back()->withInput()->with('error', 'Por favor, corrige los errores en el formulario.');
       }
-
-      //print_r($datos);
 
       $empleados->insert($datos);
       $usuarios->insert($datosUsuarios);
 
-      return redirect()->route('empleados');
+      //Redirige a la vista empleados y llama a la alerta de exito
+      return redirect()->route('empleados')->with('success', 'Datos Agregados Correctamente');
    }
 
    public function nuevoRol()

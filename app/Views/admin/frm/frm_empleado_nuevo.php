@@ -8,7 +8,7 @@
 
 <div class="main  p-3">
     <main class="container">
-        <form action="<?= base_url('agregar_empleado'); ?>" method="post" class="formulario" id="miFormulario">
+        <form action="<?= base_url('agregar_empleado'); ?>" method="post" class="formulario" id="form-new">
             <?= csrf_field(); ?>
             <div class="row">
                 <div class="col-4">
@@ -240,24 +240,56 @@
 
 
 <!--alerta-->
-<script>
-    document.getElementById('miFormulario').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevenir el envío inmediato
+<script> //Alertas para asegurar el envio de formulario y deteccion de errores
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mostrar alerta de error si existe
+        <?php if (session()->getFlashdata('error')): ?>
+            Swal.fire({
+                title: 'Error',
+                text: "<?php echo session()->getFlashdata('error'); ?>",
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
+        <?php endif; ?>
 
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¿Deseas agregar este registro?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, agregar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Si el usuario confirma, enviar el formulario
-                this.submit();
-            }
+        // Mostrar alerta de éxito si existe
+        <?php if (session()->getFlashdata('success')): ?>
+            Swal.fire({
+                title: '¡Bien hecho!',
+                text: "<?php echo session()->getFlashdata('success'); ?>",
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
+        <?php endif; ?>
+
+        // Manejar el envío del formulario
+        document.getElementById('form-new').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevenir el envío inmediato
+
+            // Confirmar actualización
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¿Deseas actualizar este registro?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, actualizar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Enviar el formulario
+                    this.submit();
+                } else {
+                    // Cancelar actualización
+                    Swal.fire({
+                        title: 'Cancelado',
+                        text: 'La actualización no se ha realizado',
+                        icon: 'info',
+                        confirmButtonText: 'Aceptar'
+                    });
+                }
+            });
         });
     });
 </script>
