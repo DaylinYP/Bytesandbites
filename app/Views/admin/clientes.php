@@ -47,7 +47,6 @@
                                     <th class="">telefono</th>
                                     <th class="">nit</th>
                                     <th class="">empresa</th>
-                                    <th class="">modificar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,9 +62,6 @@
                                         <td><?php echo $clientes['telefono']; ?></td>
                                         <td><?php echo $clientes['nit'] ?></td>
                                         <td><?php echo $clientes['nombre_empresa'] ?></td>
-                                        <td>
-                                            <a class="btn btn-primary bi bi-person-gear" href="<?= base_url('buscar_empleado/') . $clientes['id_cliente'] ?>"></a>
-                                        </td>
                                     </tr>
 
                                 <?php endforeach; ?>

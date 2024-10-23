@@ -17,7 +17,13 @@ class UsuariosController extends BaseController
     public function auth()
     {
         $reglas = [
-            'txt_email_usuario' => 'required',
+            'txt_email_usuario' => [
+                'label'=> 'Usuario',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Es obligatorio'
+                ]
+            ],
             'txt_contrasenia' => 'required',
         ];
 
