@@ -30,12 +30,14 @@ $routes->post('agregar_reporte', 'CReporteQueja::agregarQueja');
 
 /*Ruta para activa la cuenta despues de registro*/
 $routes->get('activate-user/(:any)', 'Users::activateUser/$1');
+/*Ruta para recuperar contraseña*/ 
+$routes->get('password-request', 'Users::linkRequestForm');
 /*Ruta para ir de registro a inicio de sesion*/ 
 $routes->get('iniciodesesion', 'Login::index');
 /*Ruta para enviar el formulario*/
 $routes->post('auth', 'Login::auth');
 /*Ruta para cerrar sesion */
-$routes->get('cerrarsesion', 'CCerrarSesion::index');
+$routes->get('cerrar_sesion', 'CCerrarSesion::index');
 $routes->get('logout', 'Login::logout');
 /*Ruta para boton de login>afterlogin */
 $routes->get('afterlogin', 'CAfterLogin::index');

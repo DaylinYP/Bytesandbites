@@ -50,15 +50,15 @@ class UsersModel extends Model
      */
     public function validateUser($email, $password)
     {
-        // Buscar el correo en la base de datos
+        
         $email = $this->where(['email' => $email, 'activacion' => 1])->first();
 
-        // Verificar si existe el usuario y si la contraseña es correcta
-        if ($email && password_verify($password, $email['txtContrasenia'])) {  // Asegúrate que el campo en la base de datos sea 'password'
-            return $email;
+       
+        if ($email && password_verify($password, $email['contrasenia'])) {         
+                return $email;
         }
 
-        return null; // Si el usuario no existe o la contraseña es incorrecta
+        return null; 
     }
 
 
@@ -80,11 +80,11 @@ class UsersModel extends Model
                 ->orLike('clientes.primer_apellido', $busqueda)
                 ->orLike('clientes.email', $busqueda)
                 ->orLike('clientes.id_cliente', $busqueda)
-                // Agrega más campos según sea necesario
+             
                 ->groupEnd();
         }
 
         return $this->findAll();
     }
-    /**----> >> */
+
 }
