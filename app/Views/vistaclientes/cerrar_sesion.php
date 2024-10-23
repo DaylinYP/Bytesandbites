@@ -1,4 +1,4 @@
-<?php echo $this->extend('layout/layout_registro'); ?>
+<?php echo $this->extend('layout/template'); ?>
 
 <?php echo $this->section('content'); ?>
 
