@@ -10,7 +10,7 @@
             <div class="row py-4">
                 <div class="col-4">
                     <h1 class="titulo">
-                        ÓRDENES DE SERVICIO
+                        LISTA DE SOLICITUDES DE MATERIALES
 
                     </h1>
                 </div>
