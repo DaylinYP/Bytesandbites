@@ -3,6 +3,7 @@
 <?php echo $this->section('content'); ?>
 
 
+
     <div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active c-item" style="height: 800px;">

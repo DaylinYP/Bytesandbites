@@ -24,8 +24,14 @@
 
     <!--Button Sticky-->
     <button class="button-sticky chat-button" type="button" onclick="window.location.href='<?= base_url('servicio_al_cliente') ?>'">
-        <i class="bi bi-emoji-smile-fill"></i>
+    <i class="bi bi-emoji-smile-fill"></i>
     </button>
+    
+    <!--Button Cerrar Sesion-->
+    <button class="button-sticky2 chat-button2" type="button" onclick="window.location.href='<?= base_url('cerrar_sesion') ?>'">
+       <i class="bi bi-escape"></i>
+    </button>
+
 
     <section
         style="background-color:rgb(255, 194, 10); height:40px; width:100%; display: flex; justify-content: center; align-items: center; gap: 15px;">
@@ -130,7 +136,6 @@
    <!--ALERTA QUEJA ENVIADA -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-
     document.querySelector('#form-queja').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -141,10 +146,30 @@
             icon: "success"
         }).then(() => {
             console.log("La alerta fue mostrada y ahora se enviará el formulario");
-            this.submit();
-        }).catch(err => console.log("Error en SweetAlert: ", err));
+            this.submit(); // Se envía el formulario después de la alerta
+        }).catch(err => {
+            console.log("Error en SweetAlert: ", err); // Usamos 'err' aquí, coherente con el parámetro catch
+        });
+    });
+
+    document.querySelector('#form-login').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Mostrar la alerta de éxito
+        Swal.fire({
+            title: "Bienvenido a Bytes&bits!",
+            text: "Has iniciado sesión",
+            icon: "success"
+        }).then(() => {
+            console.log("La alerta fue mostrada y ahora se enviará el formulario");
+            this.submit(); // Se envía el formulario después de la alerta
+        }).catch(err => {
+            console.log("Error en SweetAlert: ", err); // Usamos 'err' aquí, coherente con el parámetro catch
+        });
     });
 </script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
