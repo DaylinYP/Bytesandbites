@@ -99,4 +99,29 @@
 </div>
 
 <!---->
+
+<script> //Aleta de exito vinculada con formularios.
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mostrar alerta de error si existe
+        <?php if (session()->getFlashdata('error')): ?>
+            Swal.fire({
+                title: 'Error',
+                text: "<?php echo session()->getFlashdata('error'); ?>",
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
+        <?php endif; ?>
+
+        // Mostrar alerta de éxito si existe
+        <?php if (session()->getFlashdata('success')): ?>
+            Swal.fire({
+                title: '¡Bien hecho!',
+                text: "<?php echo session()->getFlashdata('success'); ?>",
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
+        <?php endif; ?>
+    });
+</script>
+
 <?= $this->endSection(); ?>

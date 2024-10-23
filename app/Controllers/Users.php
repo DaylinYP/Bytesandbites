@@ -7,13 +7,13 @@ use App\Models\UsersModel;
 class Users extends BaseController
 {
     protected $helpers = ['form'];
-    
+
     public function index(): string
     {
         $data = ['titulo' => 'Registro'];
-        return view('vistaclientes/registro', $data); 
+        return view('vistaclientes/registro', $data);
     }
-    
+
 
     public function create()
     {
@@ -56,10 +56,10 @@ class Users extends BaseController
                 'rules' => 'required|max_length[8]'
             ]
         ];
-    
-     
 
-      
+
+
+
 
 
         // Validación de los campos
@@ -112,16 +112,16 @@ class Users extends BaseController
         $body = '<p>Hola ' . $post['txtPrimerNombre'] . '</p>';
         $body .= "<p>Para continuar con el proceso de registro, haz clic en el siguiente enlace: <a href='$url'>Activar cuenta</a></p>";
         $body .= '¡Gracias!';
-
+     
         // Enviar el email
         $email->setMessage($body);
         $email->send();
-
+       
         // Mostrar mensaje de éxito
-        $title = 'Registro exitoso';
+        $titulo = 'Registro exitoso';
         $message = 'Revisa tu correo electrónico para activar tu cuenta.';
 
-        return $this->showMessage($title, $message);
+        return $this->showMessage($titulo, $message);
     }
 
     public function activateUser($token)
@@ -138,6 +138,9 @@ class Users extends BaseController
         }
 
         return $this->showMessage('Ocurrió un error', 'Por favor, intenta nuevamente más tarde.');
+    }
+    public function linkRequestForm(){
+        return view('vistaclientes/link_request');
     }
 
     private function showMessage($title, $message)

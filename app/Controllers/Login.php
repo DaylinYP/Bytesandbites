@@ -46,6 +46,6 @@ class Login extends BaseController
         if($this->session->get('logged_in')){
             $this->session->destroy();
         }
-        return redirect()->to(base_url('vistaclientes/index'));
+        return redirect()->to(base_url('vistaclientes/cerrar_sesion'));
     }
 }

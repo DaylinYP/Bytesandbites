@@ -12,7 +12,7 @@
     <h1 class="text-center">BIENVENIDO!</h1>
     <p class="text-center">Porfavor, ingrese sus datos</p>
     <div class="card shadow-lg form-signin" style="max-width: 400px; margin: auto;">
-        <!-- Ajuste de ancho -->
+      
         <div class="card-body p-4">
             <h1 class="fs-3 card-title fw-bold mb-4">Iniciar sesión</h1>
             <form method="POST" action="<?= base_url('auth');?>" autocomplete="off">
