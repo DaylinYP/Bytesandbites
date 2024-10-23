@@ -116,6 +116,7 @@ class AdminEmpleadosModel extends Model
          estados.nombre as estado,
          usuarios.id_empleado,
          usuarios.contrasenia,
+         usuarios.contrasenia_p,
          usuarios.nombre_usuario,
          usuarios.fecha_creacion,
          usuarios.fecha_modificacion
