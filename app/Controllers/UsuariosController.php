@@ -65,11 +65,19 @@ class UsuariosController extends BaseController
     private function setSession($userData)
     {
         $data = [
-            'logged_in' => true,
-            'user_id' => $userData['id_empleado'],
+            'logged_in' => $userData['id_empleado'],
             'user_name' => $userData['nombre_usuario'],
             'user_role' => $userData['nombre_rol'], // Guardamos el rol del usuario
-            'user_nombre' => $userData['primer_nombre'] . ' ' . $userData['primer_apellido']
+            'user_nombre' => $userData['primer_nombre'] . ' ' . $userData['primer_apellido'],
+            'user_empleado' => $userData['primer_nombre'] . ' ' . $userData['segundo_nombre'] . ' ' . $userData['primer_apellido'] . ' ' . $userData['segundo_apellido'],
+            'user_dpi'  => $userData['dpi'],
+            'user_nit'            => $userData['nit'],
+            'user_email'          => $userData['email'],
+            'user_telefono'       => $userData['telefono'],
+            'user_direccion'      => $userData['direccion'],
+            'user_nombre_empresa'     => $userData['id_empresa'],
+            'user_extension'      => $userData['extension'],
+        
         ];
 
         // Guardar la información en la sesión
@@ -85,28 +93,6 @@ class UsuariosController extends BaseController
         return redirect()->to(base_url('/usuario'));
     }
 
-    public function vistaInicioAdmin()
-    {
-        $data = [
-            'titulo' => 'Inicio - Panel Administrador',
-        ];
-        return view('admin/Inicio', $data); 
-    }
-
-    public function vistaEmpleadosAdmin()
-    {
-        $data = [
-            'titulo' => 'Empleados - Panel Administrador',
-        ];
-        return view('admin/empleados', $data); 
-    }
-
-    public function vistaInicioAgente()
-    {
-        $data = [
-            'titulo' => 'Inicio - Panel Agente',
-        ];
-        return view('agente/inicio', $data); 
-    }
+    
 
 }

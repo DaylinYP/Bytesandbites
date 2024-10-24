@@ -30,7 +30,7 @@
 <link rel="icon" href="<?= base_url('img/favicon.ico'); ?>?v=1.0" type="image/x-icon">
 <link rel="stylesheet" href="<?= base_url('css/menu.css') ?>?v=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> <!--alerta estilo-->
-
+<title><?= isset($titulo) ? $titulo : 'Login'; ?></title>
 
 </head>
 
@@ -65,7 +65,7 @@
                 </div>
                 <!-- Enlace común para todos -->
                 <li class="sidebar-item">
-                    <a href="<?= base_url('perfil_empleado') ?>" class="sidebar-link text-decoration-none">
+                    <a href="<?= base_url('perfil_usuario') ?>" class="sidebar-link text-decoration-none">
                         <i class="lni lni-user"></i>
                         <span>Perfil</span>
                     </a>
@@ -103,7 +103,7 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="<?= base_url('quejas'); ?>" class="sidebar-link text-decoration-none">
-                            <i class="lni lni-popup"></i>
+                            <i class="lni lni-package"></i>
                             <span>Quejas</span>
                         </a>
                     </li>
@@ -134,12 +134,7 @@
 
                 <!-- Enlaces para Técnico -->
                 <?php if (session()->get('rol') == 'tecnico'): ?>
-                    <li class="sidebar-item">
-                        <a href="<?php echo base_url('editarPerfil'); ?>" class="sidebar-link">
-                            <i class="lni lni-user"></i>
-                            <span>Perfil del técnico</span>
-                        </a>
-                    </li>
+                    
                     <li class="sidebar-item">
                         <a href="<?php echo base_url('ordenesDeServicio'); ?>" class="sidebar-link">
                             <i class="lni lni-list"></i>

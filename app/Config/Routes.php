@@ -56,7 +56,7 @@ $routes->get('listaSolicitudes', 'SolicitarMaterialesController::listaSolicitude
 /* Para ver las órdenes de servicio*/
 $routes ->get('ordenesDeServicio', 'ordenesDeServicioController::index',['filter' => 'auth']);
 /* Para editar la información del técnico*/
-$routes->get('editarPerfil', 'EmpleadoController::editarPerfil',['filter' => 'auth']);
+$routes->get('perfil_usuario', 'EmpleadoController::verPerfil',['filter' => 'auth']);
 
 $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 
