@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= isset($titulo) ? $titulo : 'Login'; ?></title>
-    <link rel="stylesheet" href="<?= base_url('css/styles.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/styles.css?v=1.0') ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 <body>
 
     <!--Button Sticky-->
-    <button class="button-sticky chat-button" type="button" onclick="window.location.href='<?= base_url('servicio_al_cliente') ?>'">
+    <button class="button-sticky chat-button" type="button" onclick="window.location.href='<?= base_url('servicio_al_cliente_lg') ?>'">
         <i class="bi bi-emoji-smile-fill"></i>
     </button>
 
@@ -60,16 +60,29 @@
                     <img src="<?= base_url('img/logotipoBb.png'); ?>" class="logotipo" width="280px" height="80px">
                 </header>
             </li>
-            <li class="active"><a href="<?= base_url('regresar_Home') ?>" class="links">Inicio</a></li>
-            <li><a href="<?= base_url('quienes_somos') ?>">Quienes Somos</a></li>
-            <li><a href="<?= base_url('quienes_somos') ?>">Marcas</a></li>
+            <li class="active"><a href="<?= base_url('inicio_dos') ?>" class="links">Inicio</a></li>
+            <li><a href="<?= base_url('quienes_somos2') ?>">Quienes Somos</a></li>
+            <li><a href="<?= base_url('quienes_somos2') ?>">Marcas</a></li>
 
             <li>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
-                    <button class="btn btn-warning" type="submit">Buscar</button>
-                </form>
+                    <input class="form-control form-control-sm me-2" type="search" placeholder=""
+                        aria-label="Search" style="height: 35px; margin-top:15px;">
+                    <button class="btn btn-warning btn-sm" type="submit" style="height: 30px; margin-top:15px">Buscar</button>
+            <li class="nav-item ms-3 d-flex align-items-center">
+                <button class="btn btn-outline-danger btn-sm chat-button2"
+                    id="logout-button"
+                    type="button"
+                    style="height: 35px;">
+                    <i class="bi bi-escape"></i> Salir
+                </button>
             </li>
+            </form>
+            </li>
+
+
+
+
         </ul>
     </nav>
 
@@ -130,8 +143,8 @@
         <h6>Creado por: GRUPO #1</h6>
     </footer>
 
-    <!--ALERTA QUEJA ENVIADA -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <!--ALERTA QUEJA ENVIADA -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const formQueja = document.querySelector('#form-queja');
@@ -144,7 +157,13 @@
                     Swal.fire({
                         title: "Enviado",
                         text: "Tu reporte ha sido enviado con éxito",
-                        icon: "success"
+                        icon: "success",
+                        customClass: {
+                            popup: 'custom-popup', 
+                            title: 'custom-title', 
+                            confirmButton: 'custom-btn', 
+                            cancelButton: 'custom-cancel' 
+                        }
                     }).then(() => {
                         this.submit();
                     }).catch(err => console.error("Error en SweetAlert:", err));
@@ -159,10 +178,10 @@
                         text: "Has iniciado sesión",
                         icon: "success",
                         customClass: {
-                            popup: 'custom-popup', // Personaliza el contenedor
-                            title: 'custom-title', // Personaliza el título
-                            confirmButton: 'custom-btn', // Estilo para el botón de confirmación
-                            cancelButton: 'custom-cancel' // Estilo para el botón de cancelación
+                            popup: 'custom-popup', 
+                            title: 'custom-title', 
+                            confirmButton: 'custom-btn', 
+                            cancelButton: 'custom-cancel' 
                         }
                     }).then(() => {
                         this.submit();
@@ -181,17 +200,22 @@
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Sí, cerrar sesión!',
-                        cancelButtonText: 'Cancelar'
+                        cancelButtonText: 'Cancelar',
+                        customClass: {
+                            popup: 'custom-popup', 
+                            title: 'custom-title', 
+                            confirmButton: 'custom-btn', 
+                            cancelButton: 'custom-cancel' 
+                        }
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.href = '<?= base_url('regresar_Home'); ?>';
+                            window.location.href = '<?= base_url('inicio_dos'); ?>';
                         }
                     });
                 });
             }
         });
     </script>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

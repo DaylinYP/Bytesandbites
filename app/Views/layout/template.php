@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= isset($titulo) ? $titulo : 'Login'; ?></title>
-    <link rel="stylesheet" href="<?= base_url('css/styles.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/styles.css?v=1.1') ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
@@ -66,8 +66,9 @@
             <li><a href="<?= base_url('login') ?>"><i class="bi bi-person-circle"></i> LOGIN</a></li>
             <li>
                 <form class="d-flex">
-                    <input class="form-control mb-2" type="search" placeholder="" aria-label="Search">
-                    <button class="btn btn-warning" type="submit">Buscar</button>
+                    <input class="form-control form-control-sm me-2" type="search" placeholder=""
+                        aria-label="Search" style="height: 35px; margin-top:15px">
+                    <button class="btn btn-warning btn-sm" type="submit" style="height: 30px; margin-top:15px">Buscar</button>
                 </form>
             </li>
         </ul>
@@ -144,7 +145,13 @@
                     Swal.fire({
                         title: "Enviado",
                         text: "Tu reporte ha sido enviado con éxito",
-                        icon: "success"
+                        icon: "success",
+                        customClass: {
+                            popup: 'custom-popup', 
+                            title: 'custom-title', 
+                            confirmButton: 'custom-btn', 
+                            cancelButton: 'custom-cancel' 
+                    }
                     }).then(() => {
                         this.submit();
                     }).catch(err => console.error("Error en SweetAlert:", err));
@@ -159,10 +166,10 @@
                         text: "Has iniciado sesión",
                         icon: "success",
                         customClass: {
-                            popup: 'custom-popup', // Personaliza el contenedor
-                            title: 'custom-title', // Personaliza el título
-                            confirmButton: 'custom-btn', // Estilo para el botón de confirmación
-                            cancelButton: 'custom-cancel' // Estilo para el botón de cancelación
+                            popup: 'custom-popup', 
+                            title: 'custom-title', 
+                            confirmButton: 'custom-btn', 
+                            cancelButton: 'custom-cancel' 
                         }
                     }).then(() => {
                         this.submit();
@@ -181,7 +188,13 @@
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Sí, cerrar sesión!',
-                        cancelButtonText: 'Cancelar'
+                        cancelButtonText: 'Cancelar',
+                        customClass: {
+                            popup: 'custom-popup', 
+                            title: 'custom-title', 
+                            confirmButton: 'custom-btn', 
+                            cancelButton: 'custom-cancel' 
+                        }
                     }).then((result) => {
                         if (result.isConfirmed) {
                             window.location.href = '<?= base_url('regresar_Home'); ?>';

@@ -3,11 +3,6 @@
 <?php echo $this->section('content'); ?>
 
 
-    <!--Button Cerrar Sesion-->
-    <button class="button-sticky2 chat-button2" id="logout-button" type="button">
-        <i class="bi bi-escape"></i>
-    </button>
-
     <div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active c-item" style="height: 800px;">

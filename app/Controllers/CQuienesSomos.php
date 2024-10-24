@@ -9,5 +9,6 @@ class CQuienesSomos extends BaseController
             $data = ['titulo' => 'Quiénes Somos'];
             return view('vistaClientes/quienessomos', $data);
         }
+
     
 }
