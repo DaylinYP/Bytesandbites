@@ -43,11 +43,7 @@
                 </div>
             </form>
         </div>
-        <div class="card-footer py-3 border-0">
-            <div class="text-center">
-                ¿No tienes una cuenta?<a href=""> Regístrate aquí</a>
-            </div>
-        </div>
+
     </div><br><br>
 </div>
 

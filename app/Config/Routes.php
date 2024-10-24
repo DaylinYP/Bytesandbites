@@ -49,13 +49,14 @@ $routes->get('afterlogin', 'CAfterLogin::index');
 
 /*VISTA TÉCNICO */
 /*Para solicitar materiales*/
-$routes->get('solicitarMateriales', 'SolicitarMaterialesController::solicitarMateriales',['filter' => 'auth']);
+$routes->get('/solicitarMateriales','SolicitarMaterialesController::solicitarMateriales', ['filter' => 'auth']);
+$routes->post('/agregar_solicitud','SolicitarMaterialesController::agregarSolicitud');
 /*Para Lista de materiales solicitados*/
 $routes->get('listaSolicitudes', 'SolicitarMaterialesController::listaSolicitudes',['filter' => 'auth']);
 /* Para ver las órdenes de servicio*/
 $routes ->get('ordenesDeServicio', 'ordenesDeServicioController::index',['filter' => 'auth']);
 /* Para editar la información del técnico*/
-$routes->get('editarPerfil', 'EmpleadoController::editarPerfil',['filter' => 'auth']);
+$routes->get('perfil_usuario', 'EmpleadoController::verPerfil',['filter' => 'auth']);
 
 $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 

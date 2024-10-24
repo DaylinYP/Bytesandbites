@@ -30,10 +30,11 @@
                     <div class="row p-3">
 
                         <div class="col-lg-12 col-sm-12">
-                            <label for="txt_usuario" class="pb-3">Descripcion:</label>
+                            <label for="txt_descripcion_rol" class="pb-3">Descripcion:</label>
                             <div class="row">
 
-                                <textarea name="" id="" class="col-lg-12 col-sm-12"></textarea>
+                                <textarea name="txt_descripcion_rol" id="" value="<?= set_value('txt_descripcion_rol');?>" class="col-lg-12 col-sm-12"></textarea>
+                                <?php echo validation_show_error('txt_descripcion_rol');?>
                             </div>
                         </div>
 
@@ -42,7 +43,7 @@
                 <div class="row pb-4">
                     <div class="col-lg-6 col-sm-12 ">
                         <label for="txt_precio" class="pb-3">Sueldo:</label>
-                        <input type="number" name="txt_precio" class="form-control" value="0 <?php echo set_value('txt_precio')?>" placeholder="Ingrese un precio">
+                        <input type="number" name="txt_precio" class="form-control" value="<?php echo set_value('txt_precio')?>" placeholder="Ingrese un precio">
                         <?php echo validation_show_error('txt_precio'); ?>
                     </div>
                     <div class="col-lg-6 text-center p-3">

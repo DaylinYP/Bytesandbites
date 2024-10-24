@@ -15,6 +15,7 @@ class RolesModel extends Model
     protected $allowedFields    = [
         'id_rol',
         'nombre_rol',
+        'descripcion',
         'precio'
     ];
 

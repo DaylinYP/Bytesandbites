@@ -7,32 +7,34 @@ use App\Models\EmpleadoModel;
 class EmpleadoController extends BaseController
 {
 
-    public function editarPerfil()
+    public function verPerfil()
     {
-        $session = session();
-        $idEmpleado = $session->get('id_empleado'); // Obtener el ID del empleado que inició sesión
 
-        if (!$idEmpleado) {
-            return redirect()->to('/login'); // Redirigir al login si no hay sesión activa
+        // Iniciar la sesión
+        $session = \Config\Services::session();
+
+        // Verificar si el usuario está autenticado
+        if (!$session->get('logged_in')) {
+            return redirect()->to('/login'); // Redirige si no está autenticado
         }
 
-        // Instanciar el modelo de empleados
-        $empleadoModel = new EmpleadoModel();
-
-        // Buscar los datos del empleado según el ID
-        $empleado = $empleadoModel->find($idEmpleado);
-
-        if (!$empleado) {
-            // Manejar el caso en el que el empleado no exista
-            return redirect()->to('/error'); // Redirigir a una página de error personalizada
-        }
-
-        // Pasar los datos del empleado a la vista
-        $datos['empleado'] = $empleado;
-        $datos['titulo'] = 'Editar Perfil del Empleado';
+        // Recuperar datos de la sesión
+        $data = [
+            'titulo' => 'Perfil del Usuario',
+            'logged_in' => $session->get('logged_in'),
+            'user_empleado' => $session->get('user_empleado'),
+            'user_role' => $session->get('user_role'),
+            'user_dpi' => $session->get('user_dpi'),
+            'user_nit' => $session->get('user_nit'),
+            'user_email' => $session->get('user_email'),
+            'user_telefono' => $session->get('user_telefono'),
+            'user_direccion' => $session->get('user_direccion'),
+            'user_nombre_empresa' => $session->get('user_nombre_empresa'),
+            'user_extension' => $session->get('user_extension')
+        ];
 
         // Retornar la vista con los datos del empleado
-        return view('vistaTecnico/editarPerfil', $datos);
+        return view('perfil_usuario', $data);
     }
      public function inicioSesion()
     {

@@ -59,7 +59,7 @@
                             <div class="col">
                                 <label for="txt_precio" class="pb-3">Precio:</label>
                                 <input type="number" name="txt_precio" class="form-control" placeholder="Ingrese el precio"
-                                    value="<?= isset($repuesto['precio']) ? $repuesto['precio'] : ''; ?>" required>
+                                    value="<?= isset($repuesto['precio_repuesto']) ? $repuesto['precio_repuesto'] : ''; ?>" required>
                             </div>
                         </div>
                         <div class="row pb-4">
@@ -120,6 +120,26 @@
             </form>
         </main>
     </div>
+    <script>
+    function actualizarImg() {
+        const fileInput = document.getElementById('txt_imagen');
+        const imgPreview = document.getElementById('img_repuesto');
+        
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                imgPreview.src = e.target.result;
+                imgPreview.style.display = 'block';
+            }
+            
+            reader.readAsDataURL(file);
+        } else {
+            imgPreview.style.display = 'none';
+        }
+    }
+    </script> 
 <?= $this->endSection(); ?> 
 
 

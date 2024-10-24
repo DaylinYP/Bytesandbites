@@ -16,27 +16,42 @@
             $ordenesServicioModel = new OrdenesServicioModel();
             $repuestoModel = new RepuestosModel();
 
-            // Obtener las solicitudes de materiales
-            $solicitudes = $solicitudRepuestoModel->findAll();
-
-            // Obtener las servicios, oredenes de servicio y repuestos
-            $servicios = $servicioModel->findAll();
-            $ordenes = $ordenesServicioModel->findAll();
-            $repuestos = $repuestoModel->findAll();
-
-
+            // Obtener los datos
             // Pasar los datos a la vista
             
             $datos = [
-                'solicitudes' => $solicitudes,
-                'repuestos' => $repuestos,
-                'servicios' => $servicios,
-                'ordenes' => $ordenes,
+                'solicitudes' => $solicitudRepuestoModel->findAll(),
+                'servicios' => $servicioModel->findAll(),
+                'ordenes' => $ordenesServicioModel->findAll(),
+                'repuestos' => $repuestoModel->findAll(),
                 'titulo' => 'Solicitud de Materiales',
             ];
 
             return view('vistaTecnico/solicitudMateriales', $datos);
         }
+        public function agregarSolicitud()
+        {
+            
+                // Prepara los datos para la inserción en la base de datos
+                $datos = [
+
+                    
+                    'fecha_solicitud' => $this->request->getVar('txt_fecha_solicitud'),
+                    'servicio_id' => $this->request->getVar('txt_servicio'),
+                    'no_orden' => $this->request->getVar('txt_orden'),
+                    'id_repuesto' => $this->request->getVar('txt_repuesto'),
+                    'detalles_nuevo_repuesto' => $this->request->getVar('txt_nuevo_repuesto'),
+                ];
+
+                // Inserta los datos en la base de datos
+                $solicitudRepuestoModel = new SolicitudRepuestosModel();
+                $solicitudRepuestoModel->insert($datos);
+
+                // Redirige a la lista de repuestos con un mensaje de éxito
+                return redirect()->to('listaSolicitudes')->with('success', 'Repuesto agregado correctamente.');
+                
+        }
+
 
         public function listaSolicitudes(): string
         {
@@ -45,24 +60,17 @@
             $ordenesServicioModel = new OrdenesServicioModel();
             $repuestoModel = new RepuestosModel();
 
-            // Obtener las solicitudes de materiales
-            $solicitudes = $solicitudRepuestoModel->findAll();
-
-            // Obtener las servicios, oredenes de servicio y repuestos
-            $servicios = $servicioModel->findAll();
-            $ordenes = $ordenesServicioModel->findAll();
-            $repuestos = $repuestoModel->findAll();
-
-
+            // Obtener los datos
             // Pasar los datos a la vista
             
             $datos = [
-                'solicitudes' => $solicitudes,
-                'repuestos' => $repuestos,
-                'servicios' => $servicios,
-                'ordenes' => $ordenes,
+                'solicitudes' => $solicitudRepuestoModel->findAll(),
+                'servicios' => $servicioModel->findAll(),
+                'ordenes' => $ordenesServicioModel->findAll(),
+                'repuestos' => $repuestoModel->findAll(),
                 'titulo' => 'Lista de Solicitudes',
             ];
+
 
             return view('vistaTecnico/lista_solicitudes', $datos);
         }

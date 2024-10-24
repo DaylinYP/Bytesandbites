@@ -63,19 +63,6 @@ class RepuestosController extends BaseController
 
     public function agregarRepuesto()
     {
-        $file = $this->request->getFile('txt_imagen');
-
-        // Verifica si el archivo es válido y no está vacío
-        if ($file && $file->isValid()) {
-            // Generar un nombre único para la imagen
-            $newName = $file->getRandomName();
-
-            // Mover el archivo a la carpeta de uploads
-            $file->move(WRITEPATH . 'uploads', $newName);
-            
-            // Guarda la ruta relativa de la imagen
-            $imgPath = 'uploads/' . $newName; 
-
             // Prepara los datos para la inserción en la base de datos
             $datos = [
                 'id_repuesto' => $this->request->getVar('txt_id_repuesto'),
@@ -83,24 +70,45 @@ class RepuestosController extends BaseController
                 'id_tipo_equipo' => $this->request->getVar('txt_tipo_equipo'),
                 'id_marca' => $this->request->getVar('txt_marca'),
                 'modelo' => $this->request->getVar('txt_modelo'),
-                'precio' => $this->request->getVar('txt_precio'),
-                'img_repuesto' => $imgPath,  // Guarda la ruta relativa
+                'precio_repuesto' => $this->request->getVar('txt_precio'),
                 'cantidad' => $this->request->getVar('txt_cantidad'),
                 'id_proveedor' => $this->request->getVar('txt_proveedor'),
                 'descripcion' => $this->request->getVar('txt_descripcion_repuesto'),
                 'id_estado_repuesto' => $this->request->getVar('txt_estado_repuesto'),
             ];
 
-            // Inserta los datos en la base de datos
-            $repuestoModel = new RepuestosModel();
-            $repuestoModel->insert($datos);
-
-            // Redirige a la lista de repuestos con un mensaje de éxito
-            return redirect()->to('/lista_repuestos')->with('success', 'Repuesto agregado correctamente.');
+            // Manejo del archivo de imagen
+        $img = $this->request->getFile('txt_imagen');
+        if ($img->isValid() && !$img->hasMoved()) {
+            // Define la ruta de destino donde quieres guardar la imagen
+            $newName = $img->getRandomName(); // Genera un nombre aleatorio para la imagen
+            $img->move(ROOTPATH . 'public/uploads/repuestos', $newName);
+            
+            // Guarda la ruta de la imagen en la base de datos
+            $ruta_imagen = 'uploads/repuestos/' . $newName;
         } else {
-            // Manejar el error en caso de que no se suba correctamente
-            return redirect()->back()->with('error', 'No se pudo subir la imagen. Asegúrate de seleccionar un archivo válido.');
+            $ruta_imagen = null; // O maneja el caso donde no se sube imagen
         }
+    
+        // Guardar en la base de datos, asegurándonos de que las claves de los datos coinciden
+        $data = [
+            'id_repuesto' => $datos['id_repuesto'],  // Asegúrate de que el campo sea 'id_repuesto' en la tabla
+            'nombre' => $datos['nombre'],
+            'id_tipo_equipo' => $datos['id_tipo_equipo'],  // Revisar que el nombre sea correcto en la tabla
+            'id_marca' => $datos['id_marca'],  // Revisar que el nombre sea correcto en la tabla
+            'modelo' => $datos['modelo'],
+            'precio_repuesto' => $datos['precio_repuesto'],  // Debe coincidir con el nombre en la base de datos
+            'cantidad' => $datos['cantidad'],
+            'id_proveedor' => $datos['id_proveedor'],  // Asegúrate de que el campo en la tabla sea 'id_proveedor'
+            'descripcion' => $datos['descripcion'],
+            'id_estado_repuesto' => $datos['id_estado_repuesto'],  // Campo correcto de la tabla
+            'img_repuesto' => $ruta_imagen // Guarda la ruta de la imagen en la base de datos
+        ];
+    
+        $repuestosModel = new RepuestosModel();
+        $repuestosModel->insert($data);
+    
+        return redirect()->to('/lista_repuestos');
     }
 
     public function buscarRepuesto($id = null)
@@ -127,47 +135,43 @@ class RepuestosController extends BaseController
 
     public function modificarRepuesto()
     {
-        $repuestoModel = new RepuestosModel();
-
-        // Obtener el archivo de imagen subido
-        $file = $this->request->getFile('txt_imagen');
-        $imgPath = $this->request->getVar('imagen_actual'); // Ruta de la imagen actual
-
-        // Si se selecciona una nueva imagen y es válida
-        if ($file && $file->isValid() && !$file->hasMoved()) {
-            // Generar un nuevo nombre para la imagen
-            $newName = $file->getRandomName();
-            
-            // Mover la nueva imagen a la carpeta de uploads
-            $file->move(WRITEPATH . 'uploads', $newName);
-            
-            // Guardar la ruta de la nueva imagen
-            $imgPath = 'uploads/' . $newName;
-        }
-
-        // Datos a actualizar
+        // Prepara los datos para la actualización en la base de datos
+        $id_repuesto = $this->request->getVar('txt_id_repuesto');
         $datos = [
-            'id_repuesto' => $this->request->getVar('txt_id_repuesto'),
             'nombre' => $this->request->getVar('txt_nombre'),
             'id_tipo_equipo' => $this->request->getVar('txt_tipo_equipo'),
             'id_marca' => $this->request->getVar('txt_marca'),
             'modelo' => $this->request->getVar('txt_modelo'),
-            'precio' => $this->request->getVar('txt_precio'),
-            'img_repuesto' => $imgPath, // Actualizamos la imagen con la nueva o mantenemos la anterior
+            'precio_repuesto' => $this->request->getVar('txt_precio'),
             'cantidad' => $this->request->getVar('txt_cantidad'),
             'id_proveedor' => $this->request->getVar('txt_proveedor'),
             'descripcion' => $this->request->getVar('txt_descripcion_repuesto'),
             'id_estado_repuesto' => $this->request->getVar('txt_estado_repuesto'),
         ];
-
-
-        // Redirigir a la lista de repuestos
-        $repuesto = new RepuestosModel();
-        $repuesto->update($datos['id_repuesto'], $datos);
-        return redirect()->to('lista_repuestos'); 
     
+        // Manejo del archivo de imagen
+        $img = $this->request->getFile('txt_imagen');
+        if ($img->isValid() && !$img->hasMoved()) {
+            // Define la ruta de destino donde quieres guardar la imagen
+            $newName = $img->getRandomName(); // Genera un nombre aleatorio para la imagen
+            $img->move(ROOTPATH . 'public/uploads/repuestos', $newName);
+            
+            // Actualiza la ruta de la imagen
+            $datos['img_repuesto'] = 'uploads/repuestos/' . $newName;
+        } else {
+            // Si no se selecciona una nueva imagen, mantiene la actual
+            $datos['img_repuesto'] = $this->request->getVar('imagen_actual');
+        }
+    
+        // Instancia del modelo
+        $repuestosModel = new RepuestosModel();
+    
+        // Actualiza los datos del repuesto
+        $repuestosModel->update($id_repuesto, $datos);
+    
+        return redirect()->to('/lista_repuestos');
     }
-
+    
 
     public function eliminarRepuesto($id = null)
     {

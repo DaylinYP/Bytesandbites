@@ -108,5 +108,25 @@
                 </div>
             </form>
         </main>
-    </div>   
+    </div> 
+    <script>
+    function actualizarImg() {
+        const fileInput = document.getElementById('txt_imagen');
+        const imgPreview = document.getElementById('img_repuesto');
+        
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                imgPreview.src = e.target.result;
+                imgPreview.style.display = 'block';
+            }
+            
+            reader.readAsDataURL(file);
+        } else {
+            imgPreview.style.display = 'none';
+        }
+    }
+    </script>  
 <?= $this->endSection(); ?> 

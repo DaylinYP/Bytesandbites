@@ -15,6 +15,7 @@ class AdminRolesController extends BaseController
         $rol = new RolesModel();
         $datos = [
             'nombre_rol' => $this->request->getVar('txt_nombre'),
+            'descripcion' => $this->request->getVar('txt_descripcion_rol'),
             'precio' => $this->request->getVar('txt_precio')
         ];
 
@@ -25,6 +26,14 @@ class AdminRolesController extends BaseController
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Es necesario el {field}'
+                ]
+            ],
+            'txt_descripcion_rol' => [
+                'label' => 'Descripcion',
+                'rules' => 'min_length[5]|required',
+                'errors' => [
+                    'min_length' => 'minimo 5 palabras',
+                    'required' => 'Es obligatorio el {field}'
                 ]
             ],
             'txt_precio' => [
