@@ -5,10 +5,7 @@
     <a class="btn-regresar btn btn-danger shadow-lg p-2 mb-3 rounded" href="<?php echo base_url('regresar_Home') ?>" role="button">
         <i class="bi-arrow-left-square-fill"></i> Regresar
     </a>
-
-
     <div class="card-view d-flex justify-content-center align-items-center ">
-
         <div class="text-center">
             <h1 class="mb-4">Servicio al Cliente</h1>
             <div class="card" style="width: 20rem;">
@@ -22,8 +19,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 <?php echo $this->endSection(); ?>

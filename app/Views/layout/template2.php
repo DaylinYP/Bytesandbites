@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> <!--alerta estilo-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> 
 
 </head>
 
@@ -26,9 +26,6 @@
     <button class="button-sticky chat-button" type="button" onclick="window.location.href='<?= base_url('servicio_al_cliente_lg') ?>'">
         <i class="bi bi-emoji-smile-fill"></i>
     </button>
-
-
-
 
     <section
         style="background-color:rgb(255, 194, 10); height:40px; width:100%; display: flex; justify-content: center; align-items: center; gap: 15px;">
@@ -79,20 +76,10 @@
             </li>
             </form>
             </li>
-
-
-
-
         </ul>
     </nav>
 
-
-
-
     <?php echo $this->renderSection("content") ?>
-
-
-
 
     <section class="contenedorRedes">
         <main class="contenedorRedesInterno">
@@ -143,53 +130,75 @@
         <h6>Creado por: GRUPO #1</h6>
     </footer>
 
-   <!--ALERTA QUEJA ENVIADA -->
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--ALERTAS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const formQueja = document.querySelector('#form-queja');
             const formLogin = document.querySelector('#form-login');
             const logoutButton = document.querySelector('#logout-button');
 
+            /*ENVIO DE QUEJA */
             if (formQueja) {
                 formQueja.addEventListener('submit', function(event) {
                     event.preventDefault();
-                    Swal.fire({
-                        title: "Enviado",
-                        text: "Tu reporte ha sido enviado con éxito",
-                        icon: "success",
-                        customClass: {
-                            popup: 'custom-popup', 
-                            title: 'custom-title', 
-                            confirmButton: 'custom-btn', 
-                            cancelButton: 'custom-cancel' 
-                        }
-                    }).then(() => {
-                        this.submit();
-                    }).catch(err => console.error("Error en SweetAlert:", err));
+
+                    const formData = new FormData(formQueja);
+
+                    fetch(formQueja.action, {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`Error HTTP: ${response.status}`);
+                            }
+                            Swal.fire({
+                                title: "Enviado",
+                                text: "Tu reporte ha sido enviado con éxito",
+                                icon: "success",
+                                customClass: {
+                                    popup: 'custom-popup',
+                                    title: 'custom-title',
+                                    confirmButton: 'custom-btn',
+                                    cancelButton: 'custom-cancel'
+                                }
+                            }).then(() => {
+                                formQueja.reset();
+                            });
+                        })
+                        .catch(err => {
+                            console.error("Error en el envío:", err);
+                            Swal.fire({
+                                title: "Error",
+                                text: "No se pudo enviar tu reporte. Intenta nuevamente.",
+                                icon: "error"
+                            });
+                        });
                 });
             }
 
+            /*INICIO DE SESION */
             if (formLogin) {
                 formLogin.addEventListener('submit', function(event) {
                     event.preventDefault();
+
                     Swal.fire({
                         title: "Bienvenido a Bytes&Bits!",
                         text: "Has iniciado sesión",
                         icon: "success",
                         customClass: {
-                            popup: 'custom-popup', 
-                            title: 'custom-title', 
-                            confirmButton: 'custom-btn', 
-                            cancelButton: 'custom-cancel' 
+                            popup: 'custom-popup',
+                            title: 'custom-title',
+                            confirmButton: 'custom-btn',
+                            cancelButton: 'custom-cancel'
                         }
                     }).then(() => {
                         this.submit();
                     }).catch(err => console.error("Error en SweetAlert:", err));
                 });
-
             }
-
+            /*CERRAR LA SESION */
             if (logoutButton) {
                 logoutButton.addEventListener('click', function() {
                     Swal.fire({
@@ -202,22 +211,20 @@
                         confirmButtonText: 'Sí, cerrar sesión!',
                         cancelButtonText: 'Cancelar',
                         customClass: {
-                            popup: 'custom-popup', 
-                            title: 'custom-title', 
-                            confirmButton: 'custom-btn', 
-                            cancelButton: 'custom-cancel' 
+                            popup: 'custom-popup',
+                            title: 'custom-title',
+                            confirmButton: 'custom-btn',
+                            cancelButton: 'custom-cancel'
                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.href = '<?= base_url('inicio_dos'); ?>';
+                            window.location.href = '<?= base_url("regresar_Home"); ?>';
                         }
                     });
                 });
             }
         });
     </script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>

@@ -5,8 +5,6 @@
     <a class="btn-regresar btn btn-danger shadow-lg p-2 mb-3 rounded" href="<?php echo base_url('inicio_dos') ?>" role="button">
         <i class="bi-arrow-left-square-fill"></i> Regresar
     </a>
-
-
     <div class="card-view d-flex justify-content-center align-items-center ">
 
         <div class="text-center">
@@ -22,8 +20,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 <?php echo $this->endSection(); ?>

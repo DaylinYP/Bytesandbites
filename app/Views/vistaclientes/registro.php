@@ -1,10 +1,6 @@
-<?= $this->extend('layout/template'); ?> <!-- Extendemos el template base -->
+<?= $this->extend('layout/template'); ?> 
 
-<?= $this->section('content'); ?> <!-- Iniciamos la sección de contenido -->
-
-    <!-- Formulario o contenido específico de la vista -->
-
-
+<?= $this->section('content'); ?> 
 
 <div class="container">
     <br>
@@ -103,4 +99,4 @@
         </div>
     </div>
 </div><br>
-<?= $this->endSection(); ?> <!-- Cerramos la sección -->
+<?= $this->endSection(); ?>

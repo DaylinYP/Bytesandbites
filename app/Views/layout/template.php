@@ -74,13 +74,7 @@
         </ul>
     </nav>
 
-
-
-
     <?php echo $this->renderSection("content") ?>
-
-
-
 
     <section class="contenedorRedes">
         <main class="contenedorRedesInterno">
@@ -147,11 +141,11 @@
                         text: "Tu reporte ha sido enviado con éxito",
                         icon: "success",
                         customClass: {
-                            popup: 'custom-popup', 
-                            title: 'custom-title', 
-                            confirmButton: 'custom-btn', 
-                            cancelButton: 'custom-cancel' 
-                    }
+                            popup: 'custom-popup',
+                            title: 'custom-title',
+                            confirmButton: 'custom-btn',
+                            cancelButton: 'custom-cancel'
+                        }
                     }).then(() => {
                         this.submit();
                     }).catch(err => console.error("Error en SweetAlert:", err));
@@ -166,10 +160,10 @@
                         text: "Has iniciado sesión",
                         icon: "success",
                         customClass: {
-                            popup: 'custom-popup', 
-                            title: 'custom-title', 
-                            confirmButton: 'custom-btn', 
-                            cancelButton: 'custom-cancel' 
+                            popup: 'custom-popup',
+                            title: 'custom-title',
+                            confirmButton: 'custom-btn',
+                            cancelButton: 'custom-cancel'
                         }
                     }).then(() => {
                         this.submit();
@@ -190,10 +184,10 @@
                         confirmButtonText: 'Sí, cerrar sesión!',
                         cancelButtonText: 'Cancelar',
                         customClass: {
-                            popup: 'custom-popup', 
-                            title: 'custom-title', 
-                            confirmButton: 'custom-btn', 
-                            cancelButton: 'custom-cancel' 
+                            popup: 'custom-popup',
+                            title: 'custom-title',
+                            confirmButton: 'custom-btn',
+                            cancelButton: 'custom-cancel'
                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
@@ -204,9 +198,6 @@
             }
         });
     </script>
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
