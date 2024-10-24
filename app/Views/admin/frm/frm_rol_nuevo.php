@@ -1,4 +1,4 @@
-<?= $this->extend('admin/layout/menu'); ?>
+<?= $this->extend('admin/layout/menu_general'); ?>
 
 <!--Finaliza menu-->
 

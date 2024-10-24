@@ -86,9 +86,12 @@ class AdminEmpleadosModel extends Model
         if (!empty($busqueda)) {
             $this->groupStart()
                 ->like('empleados.primer_nombre', $busqueda)
+                ->orLike('empleados.segundo_nombre', $busqueda)
                 ->orLike('empleados.primer_apellido', $busqueda)
+                ->orLike('empleados.segundo_apellido', $busqueda)
                 ->orLike('empleados.email', $busqueda)
                 ->orLike('empleados.id_empleado', $busqueda)
+                ->orLike('empleados.dpi', $busqueda)
                 // Agrega más campos según sea necesario
                 ->groupEnd();
         }
@@ -115,6 +118,7 @@ class AdminEmpleadosModel extends Model
          estados.estado_id,
          estados.nombre as estado,
          usuarios.id_empleado,
+         usuarios.nombre_usuario,
          usuarios.contrasenia,
          usuarios.contrasenia_p,
          usuarios.nombre_usuario,

@@ -31,52 +31,59 @@
 
                             <label for="txt_p_nombre" class="pb-3">Primer Nombre:</label>
 
-                            <input type="text" name="txt_pr_nombre" class="form-control" placeholder="Ingrese Primer nombre"
+                            <input type="text" name="txt_pr_nombre" class="form-control" placeholder="Ingrese Primer Nombre"
                                 value="<?php echo set_value('txt_pr_nombre', $empleadosss['primer_nombre']); ?>">
 
-                            <label for="">
-
-                                <?php echo validation_show_error('txt_pr_nombre'); ?>
-                            </label>
+                            <?php if (validation_show_error('txt_pr_nombre')): ?>
+                                <div class="alert alert-danger mt-2">
+                                    <?php echo validation_show_error('txt_pr_nombre'); ?>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
                         <div class="col-lg-6 col-sm-12">
                             <label for="txt_s_nombre" class="pb-3">Segundo Nombre:</label>
 
 
-                            <input type="text" name="txt_s_nombre" class="form-control" placeholder="Ingrese su Usuario"
+                            <input type="text" name="txt_s_nombre" class="form-control" placeholder="Ingrese Segundo Nombre"
                                 value="<?php echo set_value('txt_s_nombre', $empleadosss['segundo_nombre']); ?>">
-                            <label for="">
-                                <?php echo validation_show_error('txt_s_nombre'); ?>
-                            </label>
+                            <?php if (validation_show_error('txt_s_nombre')): ?>
+                                <div class="alert alert-danger mt-2">
+                                    <?php echo validation_show_error('txt_s_nombre'); ?>
+                                </div>
+                            <?php endif; ?>
 
 
                         </div>
 
                         <div class="col-lg-6 col-sm-12">
                             <label for="txt_p_apellido" class="pb-3">Primer Apellido:</label>
-                            <input type="text" name="txt_p_apellido" class="form-control" placeholder="Ingrese su Usuario"
+                            <input type="text" name="txt_p_apellido" class="form-control" placeholder="Ingrese Primer Apellido"
                                 value="<?php echo set_value('txt_p_apellido', $empleadosss['primer_apellido']) ?>">
-                            <label for="txt_p_apellido">
-                                <?php echo validation_show_error('txt_p_apellido'); ?>
-                            </label>
+                            <?php if (validation_show_error('txt_p_apellido')): ?>
+                                <div class="alert alert-danger mt-2">
+                                    <?php echo validation_show_error('txt_p_apellido'); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="col-lg-6 col-sm-12">
                             <label for="txt_s_apellido" class="pb-3">Segundo Apellido:</label>
-                            <input type="text" name="txt_s_apellido" class="form-control" placeholder="Ingrese su Usuario"
+                            <input type="text" name="txt_s_apellido" class="form-control" placeholder="Ingrese Segundo Apellido"
                                 value="<?php echo set_value('txt_s_apellido', $empleadosss['segundo_apellido']) ?>">
-                            <label for="">
-                                <?php echo validation_show_error('txt_s_apellido'); ?>
-                            </label>
+                            <?php if (validation_show_error('txt_s_apellido')): ?>
+                                <div class="alert alert-danger mt-2">
+                                    <?php echo validation_show_error('txt_s_apellido'); ?>
+                                </div>
+                            <?php endif; ?>
 
 
                         </div>
 
-                        <div class="col-lg-6 col-sm-12">
+                        <div class="col-lg-6 col-sm-12" hidden>
                             <label for="txt_id" class="pb-3">id_empleado:</label>
                             <input type="text" name="txt_id" class="form-control" placeholder="Ingrese su Usuario"
-                                value="<?php echo set_value('txt_id', $empleadosss['id_empleado']) ?>">
+                                value="<?php echo set_value('txt_id', $empleadosss['id_empleado']) ?>" readonly>
                             <label for="">
                                 <?php echo validation_show_error('txt_id'); ?>
                             </label>
@@ -86,11 +93,13 @@
 
                         <div class="col-lg-6 col-sm-12 ">
                             <label for="txt_dpi" class="pb-3">DPI:</label>
-                            <input type="number" name="txt_dpi" class="form-control" placeholder="Ingrese su Usuario"
+                            <input type="number" name="txt_dpi" class="form-control" placeholder="Ingrese Dpi"
                                 value="<?php echo set_value('txt_dpi', $empleadosss['dpi']) ?>">
-                            <label for="">
-                                <?php echo validation_show_error('txt_dpi'); ?>
-                            </label>
+                            <?php if (validation_show_error('txt_dpi')): ?>
+                                <div class="alert alert-danger mt-2">
+                                    <?php echo validation_show_error('txt_dpi'); ?>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
 
@@ -98,23 +107,27 @@
                         <div class="col-lg-6 col-sm-12 ">
 
 
-                            <label for="txt_nit" class="pb-3">nit:</label>
-                            <input type="number" name="txt_nit" class="form-control" placeholder="Ingrese su Usuario"
+                            <label for="txt_nit" class="pb-3">NIT:</label>
+                            <input type="number" name="txt_nit" class="form-control" placeholder="Ingrese NIT"
                                 value="<?php echo set_value('txt_nit', $empleadosss['nit']) ?>">
-                            <label for="">
-                                <?php echo validation_show_error('txt_nit'); ?>
-                            </label>
+                            <?php if (validation_show_error('txt_nit')): ?>
+                                <div class="alert alert-danger mt-2">
+                                    <?php echo validation_show_error('txt_nit'); ?>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
                         <div class="col-lg-6 col-sm-12 ">
                             <label for="txt_email" class="pb-3">Email:</label>
 
 
-                            <input type="email" name="txt_email_usuario" class="form-control" placeholder="Ingrese su Usuario"
-                                value="<?php echo set_value('txt_email_usuario', $empleadosss['email']) ?>">
-                            <label for="">
-                                <?php echo validation_show_error('txt_email_usuario'); ?>
-                            </label>
+                            <input type="email" name="txt_email" class="form-control" placeholder="Ingrese Correo Electrónico"
+                                value="<?php echo set_value('txt_email', $empleadosss['email']) ?>">
+                            <?php if (validation_show_error('txt_email')): ?>
+                                <div class="alert alert-danger mt-2">
+                                    <?php echo validation_show_error('txt_email'); ?>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
 
@@ -122,32 +135,38 @@
 
 
                             <label for="txt_telefono" class="pb-3">Teléfono:</label>
-                            <input type="number" name="txt_telefono" class="form-control" placeholder="Ingrese su Usuario"
+                            <input type="number" name="txt_telefono" class="form-control" placeholder="Ingrese No.Telefono"
                                 value="<?php echo set_value('txt_telefono', $empleadosss['telefono']) ?>">
-                            <label for="">
-                                <?php echo validation_show_error('txt_telefono'); ?>
-                            </label>
+                            <?php if (validation_show_error('txt_telefono')): ?>
+                                <div class="alert alert-danger mt-2">
+                                    <?php echo validation_show_error('txt_telefono'); ?>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
 
                         <div class="col-lg-6 col-sm-10 ">
                             <label for="txt_direccion" class="pb-3">Direccion:</label>
-                            <input type="text" name="txt_direccion" class="form-control" placeholder="Ingrese su Usuario"
+                            <input type="text" name="txt_direccion" class="form-control" placeholder="Ingrese Dirección"
                                 value="<?php echo set_value('txt_direccion', $empleadosss['direccion']) ?>">
-                            <label for="">
-                                <?php echo validation_show_error('txt_direccion'); ?>
-                            </label>
+                            <?php if (validation_show_error('txt_direccion')): ?>
+                                <div class="alert alert-danger mt-2">
+                                    <?php echo validation_show_error('txt_direccion'); ?>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
 
                         <div class="col-lg-6 col-sm-12 ">
 
                             <label for="txt_extension" class="pb-3">extension:</label>
-                            <input type="number" name="txt_extension" class="form-control" placeholder="Ingrese su Usuario"
+                            <input type="number" name="txt_extension" class="form-control" placeholder="Ingrese Extension"
                                 value="<?php echo set_value('txt_extension', $empleadosss['extension']); ?>">
-                            <label for="">
-                                <?php echo validation_show_error('txt_extension'); ?>
-                            </label>
+                            <?php if (validation_show_error('txt_extension')): ?>
+                                <div class="alert alert-danger mt-2">
+                                    <?php echo validation_show_error('txt_extension'); ?>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
                         <div class="col-lg-6 col-sm-12 ">
@@ -160,9 +179,11 @@
                                     <option value="3" <?php echo set_select('txt_rol', '3', set_value('txt_rol', $empleadosss['id_rol']) == '3'); ?>>Bodega</option>
                                     <option value="4" <?php echo set_select('txt_rol', '4', set_value('txt_rol', $empleadosss['id_rol']) == '4'); ?>>Gerente</option>
                                 </select>
-                                <label for="">
-                                    <?php echo validation_show_error('txt_rol'); ?>
-                                </label>
+                                <?php if (validation_show_error('txt_rol')): ?>
+                                    <div class="alert alert-danger mt-2">
+                                        <?php echo validation_show_error('txt_rol'); ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -173,11 +194,13 @@
                                 <select name="txt_empresa" id="">
                                     <option value="">Seleccionar Sucursal</option>
                                     <option value="1" <?php echo set_select('txt_empresa', '1', set_value('txt_empresa', $empleadosss['id_empresa']) == '1'); ?>>Bytes & Bits</option>
-                                    <!-- Más opciones según sea necesario -->
+                                    <!-- Más opciones de sucursales según sea necesario -->
                                 </select>
-                                <label for="">
-                                    <?php echo validation_show_error('txt_empresa'); ?>
-                                </label>
+                                <?php if (validation_show_error('txt_empresa')): ?>
+                                    <div class="alert alert-danger mt-2">
+                                        <?php echo validation_show_error('txt_empresa'); ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -200,29 +223,33 @@
                             <div class="col-lg-6 offset-lg-3 col-sm-12">
 
                                 <label for="txt_email_usuario" class="pb-3">Nombre Usuario:</label>
-                                <input type="text" name="txt_email_usuario" class="form-control" placeholder="Ingrese Primer nombre"
-                                    value="<?php echo set_value('txt_email_usuario', $empleadosss['email']); ?>">
-                                <label for="">
-                                    <?php echo validation_show_error('txt_email_usuario'); ?>
-                                </label>
+                                <input type="text" name="txt_email_usuario" class="form-control" placeholder="Ingrese Usuario"
+                                    value="<?php echo set_value('txt_email_usuario', $empleadosss['nombre_usuario']); ?>">
+                                <?php if (validation_show_error('txt_email_usuario')): ?>
+                                    <div class="alert alert-danger mt-2">
+                                        <?php echo validation_show_error('txt_email_usuario'); ?>
+                                    </div>
+                                <?php endif; ?>
 
                             </div>
 
                             <div class="col-lg-6 offset-lg-3 col-lg-6 col-sm-12">
 
                                 <label for="txt_s_nombre" class="pb-3">Contraseña:</label>
-                                <input type="password" name="txt_contrasenia" class="form-control" placeholder="Ingrese la contraseña"
+                                <input type="password" name="txt_contrasenia" class="form-control" placeholder="Ingrese Contraseña"
                                     value="<?php echo set_value('txt_contrasenia', $empleadosss['contrasenia_p']); ?>">
-                                <label for="">
-                                    <?php echo validation_show_error('txt_contrasenia'); ?>
-                                </label>
+                                <?php if (validation_show_error('txt_contrasenia')): ?>
+                                    <div class="alert alert-danger mt-2">
+                                        <?php echo validation_show_error('txt_contrasenia'); ?>
+                                    </div>
+                                <?php endif; ?>
 
                             </div>
 
                             <div class="col-lg-6 offset-lg-3 col-lg-6 col-sm-12">
 
                                 <label for="txt_p_apellido" class="pb-3">Fecha Creacion:</label>
-                                <input type="date" name="txt_fecha_creacion" class="form-control" placeholder="Ingrese su Usuario"
+                                <input type="date" name="txt_fecha_creacion" class="form-control"
                                     value="<?php echo set_value('txt_fecha_creacion', $empleadosss['fecha_creacion']); ?>"
                                     readonly>
                                 <label for="txt_p_apellido">
@@ -233,12 +260,13 @@
                             <div class="col-lg-6 offset-lg-3 col-lg-6 col-sm-12">
 
                                 <label for="txt_p_apellido" class="pb-3">Fecha Ultima Modificación:</label>
-                                <input type="date" name="txt_fecha_modificacion" class="form-control" placeholder="Ingrese su Usuario"
+                                <input type="date" name="txt_fecha_modificacion" class="form-control" placeholder="Ingrese Fecha de Hoy"
                                     value="<?php echo set_value('txt_fecha_modificacion', $empleadosss['fecha_modificacion']); ?>">
-                                <label for="txt_p_apellido">
-                                    <?php echo validation_show_error('txt_fecha_modificacion'); ?>
-                                </label>
-
+                                <?php if (validation_show_error('txt_fecha_modificacion')): ?>
+                                    <div class="alert alert-danger mt-2">
+                                        <?php echo validation_show_error('txt_fecha_modificacion'); ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-lg-6 offset-lg-3 col-lg-6 col-sm-12 ">
                                 <div class="row">
@@ -248,9 +276,11 @@
                                         <option value="1" <?php echo set_select('txt_estado', '1', set_value('txt_estado', $empleadosss['estado_id']) == '1'); ?>>Activo</option>
                                         <option value="2" <?php echo set_select('txt_estado', '2', set_value('txt_estado', $empleadosss['estado_id']) == '2'); ?>>Inactivo</option>
                                     </select>
-                                    <label for="">
-                                        <?php echo validation_show_error('txt_estado'); ?>
-                                    </label>
+                                    <?php if (validation_show_error('txt_estado')): ?>
+                                        <div class="alert alert-danger mt-2">
+                                            <?php echo validation_show_error('txt_estado'); ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
@@ -289,7 +319,8 @@
 </main>
 </div>
 
-<script> //Alertas para asegurar el envio de formulario y deteccion de errores
+<script>
+    //Alertas para asegurar el envio de formulario y deteccion de errores
     document.addEventListener('DOMContentLoaded', function() {
         // Mostrar alerta de error si existe
         <?php if (session()->getFlashdata('error')): ?>

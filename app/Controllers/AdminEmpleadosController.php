@@ -4,8 +4,11 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AdminEmpleadosModel;
+use App\Models\AdminEstadosModel;
 use App\Models\EmpleadosModel;
+use App\Models\EmpresasModel;
 use App\Models\EstadosModel;
+use App\Models\RolesModel;
 use App\Models\UsuariosModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -61,7 +64,7 @@ class AdminEmpleadosController extends BaseController
          'segundo_apellido' => $this->request->getVar('txt_s_apellido'),
          'dpi' => $this->request->getVar('txt_dpi'),
          'nit' => $this->request->getVar('txt_nit'),
-         'email' => $this->request->getVar('txt_email_usuario'),
+         'email' => $this->request->getVar('txt_email'),
          'telefono' => $this->request->getVar('txt_telefono'),
          'direccion' => $this->request->getVar('txt_direccion'),
          'id_rol' => $this->request->getVar('txt_rol'),
@@ -82,13 +85,7 @@ class AdminEmpleadosController extends BaseController
 
 
       $reglas = [
-         'txt_id' => [
-            'label' => 'Colocar un id',
-            'rules' => 'required',
-            'errors' => [
-               'required' => 'Es obligatorio el {field}'
-            ]
-         ],
+         
          'txt_pr_nombre' => [
             'label' => 'Primer Nombre',
             'rules' => 'required|min_length[2]',
@@ -136,8 +133,8 @@ class AdminEmpleadosController extends BaseController
                'exact_length' => 'tienen que ser 8'
             ]
          ],
-         'txt_email_usuario' => [
-            'label' => 'EMAIL-Usuario',
+         'txt_email' => [
+            'label' => 'EMAIL',
             'rules' => 'required|min_length[2]',
             'errors' => [
                'required' => 'Es necesario llenar {field}'
@@ -182,7 +179,13 @@ class AdminEmpleadosController extends BaseController
          ],
 
          /**Usuario reglas */
-
+         'txt_email_usuario' => [
+            'label' => 'Usuario',
+            'rules' => 'required|min_length[2]',
+            'errors' => [
+               'required' => 'Es necesario llenar {field}'
+            ]
+         ],
          'txt_contrasenia' => [
             'label' => 'contraseña',
             'rules' => 'required|max_length[8]',
@@ -192,7 +195,7 @@ class AdminEmpleadosController extends BaseController
             ]
 
          ],
-         'txt_fecha_creacion' => [
+         'txt_fecha_modificacion' => [
             'label' => 'fecha',
             'rules' => 'required',
             'errors' => [
@@ -221,21 +224,27 @@ class AdminEmpleadosController extends BaseController
 
    public function nuevoEmpleado()
    {
-      return view('admin/frm/frm_empleado_nuevo');
+      $rolModel = new RolesModel();
+      $estadoModel = new AdminEstadosModel();
+      $empresaModel = new EmpresasModel();
+      $data['roles'] = $rolModel->findAll();
+      $data['estado'] = $estadoModel->findAll();
+      $data['empresa'] = $empresaModel->findAll();
+      return view('admin/frm/frm_empleado_nuevo',$data);
    }
    public function agregarEmpleado()
    {
       $empleados = new AdminEmpleadosModel();
       $usuarios = new UsuariosModel();
       $datos = [
-         'id_empleado' => $this->request->getVar('txt_id'),
+         
          'primer_nombre' => $this->request->getVar('txt_pr_nombre'),
          'segundo_nombre' => $this->request->getVar('txt_s_nombre'),
          'primer_apellido' => $this->request->getVar('txt_p_apellido'),
          'segundo_apellido' => $this->request->getVar('txt_s_apellido'),
          'dpi' => $this->request->getVar('txt_dpi'),
          'nit' => $this->request->getVar('txt_nit'),
-         'email' => $this->request->getVar('txt_email_usuario'),
+         'email' => $this->request->getVar('txt_email'),
          'telefono' => $this->request->getVar('txt_telefono'),
          'direccion' => $this->request->getVar('txt_direccion'),
          'id_rol' => $this->request->getVar('txt_rol'),
@@ -245,7 +254,7 @@ class AdminEmpleadosController extends BaseController
       ];
 
       $datosUsuarios = [
-         'id_empleado' => $this->request->getVar('txt_id'),
+         
          'nombre_usuario' => $this->request->getVar('txt_email_usuario'),
          'contrasenia' => password_hash($this->request->getPost('txt_contrasenia'), PASSWORD_DEFAULT),
          'contrasenia_p' => $this->request->getPost('txt_contrasenia'),
@@ -254,13 +263,6 @@ class AdminEmpleadosController extends BaseController
       ];
 
       $reglas = [
-         'txt_id' => [
-            'label' => 'Colocar un id',
-            'rules' => 'required',
-            'errors' => [
-               'required' => 'Es obligatorio el {field}'
-            ]
-         ],
          'txt_pr_nombre' => [
             'label' => 'Primer Nombre',
             'rules' => 'required|min_length[2]',
@@ -308,8 +310,8 @@ class AdminEmpleadosController extends BaseController
                'exact_length' => 'tienen que ser 8'
             ]
          ],
-         'txt_email_usuario' => [
-            'label' => 'EMAIL-Usuario',
+         'txt_email' => [
+            'label' => 'EMAIL',
             'rules' => 'required|min_length[2]',
             'errors' => [
                'required' => 'Es necesario llenar {field}'
@@ -354,7 +356,13 @@ class AdminEmpleadosController extends BaseController
          ],
 
          /**Usuario reglas */
-
+         'txt_email_usuario' => [
+            'label' => 'Usuario',
+            'rules' => 'required|min_length[2]',
+            'errors' => [
+               'required' => 'Es necesario llenar {field}'
+            ]
+         ],
          'txt_contrasenia' => [
             'label' => 'contraseña',
             'rules' => 'required|max_length[8]',
@@ -385,6 +393,14 @@ class AdminEmpleadosController extends BaseController
       }
 
       $empleados->insert($datos);
+
+      // Obtener el ID del empleado recién creado
+      $id_empleado = $empleados->insertID();
+  
+      // Asignar el ID del empleado a los datos del usuario
+      $datosUsuarios['id_empleado'] = $id_empleado;
+  
+      // Insertar en la tabla usuarios
       $usuarios->insert($datosUsuarios);
 
       //Redirige a la vista empleados y llama a la alerta de exito
