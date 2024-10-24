@@ -22,42 +22,44 @@
 
                 <div class="row pt-4">
                     <div class="col">
-                        <table class="table  tabla">
-                            <thead class="thead bg-warning text-dark">
-                                <tr>
-                                    <th>No de Orden</th>
-                                    <th>ID Cliente</th>
-                                    <th>Fecha Recepción</th>
-                                    <th>Fecha Entrega Estimada</th>
-                                    <th>Fecha Entrega</th>
-                                    <th>Estado</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach ($datos as $orden): ?>
+                        <div class="table-responsive">
+                            <table class="table  tabla">
+                                <thead class="thead bg-warning text-dark">
                                     <tr>
-                                        <td><?php echo $orden['no_orden']; ?></td>
-                                        <td><?php echo $orden['id_cliente']; ?></td>
-                                        <td><?php echo $orden['fecha_recepcion']; ?></td>
-                                        <td><?php echo $orden['fecha_entrega_estimada']; ?></td>
-                                        <td><?php echo $orden['fecha_entrega']; ?></td>
-                                        <td><?php echo $orden['estado_orden']; ?></td>
-                                        <td>
-                                            <a href="<?= base_url('buscar_orden/') . $orden['no_orden'] ?>" class="btn btn-success">
-                                                <i class="bi bi-pencil-square">Actualizar</i>
-                                            </a>
-                                            <a href="<?= base_url('eliminar_orden/') . $orden['no_orden'] ?>" class="btn btn-danger">
-                                                <i class="bi bi-trash">Eliminar</i>
-                                            </a>
-                                        </td>
+                                        <th>No de Orden</th>
+                                        <th>ID Cliente</th>
+                                        <th>Fecha Recepción</th>
+                                        <th>Fecha Entrega Estimada</th>
+                                        <th>Fecha Entrega</th>
+                                        <th>Estado</th>
+                                        <th>Opciones</th>
                                     </tr>
-                                <?php 
-                                endforeach;
-                                ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach ($datos as $orden): ?>
+                                        <tr>
+                                            <td><?php echo $orden['no_orden']; ?></td>
+                                            <td><?php echo $orden['id_cliente']; ?></td>
+                                            <td><?php echo $orden['fecha_recepcion']; ?></td>
+                                            <td><?php echo $orden['fecha_entrega_estimada']; ?></td>
+                                            <td><?php echo $orden['fecha_entrega']; ?></td>
+                                            <td><?php echo $orden['estado_orden']; ?></td>
+                                            <td>
+                                                <a href="<?= base_url('buscar_orden/') . $orden['no_orden'] ?>" class="btn btn-success">
+                                                    <i class="bi bi-pencil-square">Actualizar</i>
+                                                </a>
+                                                <a href="<?= base_url('eliminar_orden/') . $orden['no_orden'] ?>" class="btn btn-danger">
+                                                    <i class="bi bi-trash">Eliminar</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php 
+                                    endforeach;
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </section>

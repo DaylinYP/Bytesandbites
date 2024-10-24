@@ -69,8 +69,13 @@
                                     </td>
                                     <td class="text-light"><?= $repuesto['modelo'] ?></td>
                                     <td class="text-light"><?= $repuesto['precio_repuesto'] ?></td>
-                                    <td class="text-light"><img src="<?= $repuesto['img_repuesto'] ?>" alt="Imagen del repuesto" class="img_lista img-thumbnail"></td>
-                                    <td class="text-light"><?= $repuesto['cantidad'] ?></td>
+                                    <td>
+                                        <?php if ($repuesto['img_repuesto']): ?>
+                                            <img src="<?= base_url($repuesto['img_repuesto']); ?>" alt="Imagen del repuesto" style="width:100px;height:100px;">
+                                        <?php else: ?>
+                                            <span>No hay imagen</span>
+                                        <?php endif; ?>
+                                    </td>                                    <td class="text-light"><?= $repuesto['cantidad'] ?></td>
                                     <td class="text-light">
                                         <?php
                                         // Buscar el nombre del proveedor
