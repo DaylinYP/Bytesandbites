@@ -31,7 +31,7 @@
         }
         public function agregarSolicitud()
         {
-
+            
                 // Prepara los datos para la inserción en la base de datos
                 $datos = [
 
@@ -48,8 +48,8 @@
                 $solicitudRepuestoModel->insert($datos);
 
                 // Redirige a la lista de repuestos con un mensaje de éxito
-                return redirect()->to('vistaTecnico/lista_solicitudes')->with('success', 'Solicitud agregado correctamente.');
-            
+                return redirect()->to('listaSolicitudes')->with('success', 'Repuesto agregado correctamente.');
+                
         }
 
 
