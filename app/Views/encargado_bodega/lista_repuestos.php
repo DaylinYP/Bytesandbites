@@ -23,7 +23,7 @@
         <div>
             <main class="container-fluid py-5">
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover shadow-lg border border-white animate__animated animate__slideInRight">
+                    <table class="table table-striped table-hover shadow-lg border border-white animate__animated animate__slideInRight" id="dataTable">
                         <thead class="bg-warning">
                             <tr>
                                 <th scope="col">Código del Repuesto</th>
@@ -115,5 +115,10 @@
             </main>
         </div>
     </div>
+    <!--datatable-->
+    <script src="<?= base_url('js/jquery-3.5.1.js') ?>"></script>
+    <!-- datatables JS -->
+    <script type="text/javascript" src="<?= base_url('datatables/datatables.min.js') ?>"></script>
+    <script type="text/javascript" src="<?= base_url('js/main.js') ?>"></script>
 <?= $this->endSection(); ?> 
    
