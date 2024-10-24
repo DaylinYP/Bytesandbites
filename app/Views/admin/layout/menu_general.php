@@ -110,7 +110,7 @@
                     <li class="sidebar-item">
                         <a href="<?= base_url('nuevo_rol'); ?>" class="sidebar-link text-decoration-none">
                             <i class=" bi bi-diagram-3-fill"></i>
-                            <span>Quejas</span>
+                            <span>Nuevo Rol</span>
                         </a>
                     </li>
                 <?php endif; ?>

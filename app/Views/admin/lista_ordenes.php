@@ -36,7 +36,7 @@
                 <div class="text-center d-flex justify-content-evenly pt-4">
                     <?php if (!empty($detalles_equipos)): ?>
                         <div style="overflow-x: auto; width: 100%; overflow-y: auto; max-height: 500px; width: 100%;">
-                            <table class="table table-hover table-dark  vertical-bar">
+                            <table class="table table-hover table-dark table-responsive" id="dataTable">
                                 <thead class="text-dark">
                                     <tr>
                                         <th>No. Orden</th>
@@ -205,20 +205,12 @@
 
 </main>
 </div>
+<!--datatable-->
+<script src="<?= base_url('js/jquery-3.5.1.js') ?>"></script>
+    <!-- datatables JS -->
+    <script type="text/javascript" src="<?= base_url('datatables/datatables.min.js') ?>"></script>
+    <script type="text/javascript" src="<?= base_url('js/main.js') ?>"></script>
 
 <!---->
 <?= $this->endSection(); ?>
 
-<style>
-    .vertical-bar {
-        width: 2px; /* Ajusta el ancho de la barra vertical */
-        background-color: #ffffff; /* Color de la barra */
-    }
-    .table th,
-    .table td {
-        position: relative;
-    }
-    .table tr td:last-child {
-        padding: 0; /* Elimina padding para la barra vertical */
-    }
-</style>
