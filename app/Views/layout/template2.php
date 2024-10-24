@@ -132,99 +132,104 @@
 
     <!--ALERTAS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const formQueja = document.querySelector('#form-queja');
-            const formLogin = document.querySelector('#form-login');
-            const logoutButton = document.querySelector('#logout-button');
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const formQueja = document.querySelector('#form-queja');
+        const formLogin = document.querySelector('#form-login');
+        const logoutButton = document.querySelector('#logout-button');
 
-            /*ENVIO DE QUEJA */
-            if (formQueja) {
-                formQueja.addEventListener('submit', function(event) {
-                    event.preventDefault();
+        /* ENVIO DE QUEJA */
+        if (formQueja) {
+            formQueja.addEventListener('submit', function(event) {
+                event.preventDefault();
 
-                    const formData = new FormData(formQueja);
+                const formData = new FormData(formQueja);
 
-                    fetch(formQueja.action, {
-                            method: 'POST',
-                            body: formData
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error(`Error HTTP: ${response.status}`);
+                fetch(formQueja.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Error HTTP: ${response.status}`);
+                        }
+                        return response.text(); // O puedes usar response.json() si el servidor devuelve JSON
+                    })
+                    .then(data => {
+                        Swal.fire({
+                            title: "Enviado",
+                            text: "Tu reporte ha sido enviado con éxito",
+                            icon: "success",
+                            customClass: {
+                                popup: 'custom-popup',
+                                title: 'custom-title',
+                                confirmButton: 'custom-btn',
+                                cancelButton: 'custom-cancel'
                             }
-                            Swal.fire({
-                                title: "Enviado",
-                                text: "Tu reporte ha sido enviado con éxito",
-                                icon: "success",
-                                customClass: {
-                                    popup: 'custom-popup',
-                                    title: 'custom-title',
-                                    confirmButton: 'custom-btn',
-                                    cancelButton: 'custom-cancel'
-                                }
-                            }).then(() => {
-                                formQueja.reset();
-                            });
-                        })
-                        .catch(err => {
-                            console.error("Error en el envío:", err);
-                            Swal.fire({
-                                title: "Error",
-                                text: "No se pudo enviar tu reporte. Intenta nuevamente.",
-                                icon: "error"
-                            });
+                        }).then(() => {
+                            formQueja.reset();
                         });
-                });
-            }
-
-            /*INICIO DE SESION */
-            if (formLogin) {
-                formLogin.addEventListener('submit', function(event) {
-                    event.preventDefault();
-
-                    Swal.fire({
-                        title: "Bienvenido a Bytes&Bits!",
-                        text: "Has iniciado sesión",
-                        icon: "success",
-                        customClass: {
-                            popup: 'custom-popup',
-                            title: 'custom-title',
-                            confirmButton: 'custom-btn',
-                            cancelButton: 'custom-cancel'
-                        }
-                    }).then(() => {
-                        this.submit();
-                    }).catch(err => console.error("Error en SweetAlert:", err));
-                });
-            }
-            /*CERRAR LA SESION */
-            if (logoutButton) {
-                logoutButton.addEventListener('click', function() {
-                    Swal.fire({
-                        title: '¿Estás seguro?',
-                        text: "¿Quieres cerrar sesión?",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sí, cerrar sesión!',
-                        cancelButtonText: 'Cancelar',
-                        customClass: {
-                            popup: 'custom-popup',
-                            title: 'custom-title',
-                            confirmButton: 'custom-btn',
-                            cancelButton: 'custom-cancel'
-                        }
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = '<?= base_url("regresar_Home"); ?>';
-                        }
+                    })
+                    .catch(err => {
+                        console.error("Error en el envío:", err);
+                        Swal.fire({
+                            title: "Error",
+                            text: "No se pudo enviar tu reporte. Intenta nuevamente.",
+                            icon: "error"
+                        });
                     });
+            });
+        }
+
+        /* INICIO DE SESION */
+        if (formLogin) {
+            formLogin.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                Swal.fire({
+                    title: "Bienvenido a Bytes&Bits!",
+                    text: "Has iniciado sesión",
+                    icon: "success",
+                    customClass: {
+                        popup: 'custom-popup',
+                        title: 'custom-title',
+                        confirmButton: 'custom-btn',
+                        cancelButton: 'custom-cancel'
+                    }
+                }).then(() => {
+                    this.submit();
+                }).catch(err => console.error("Error en SweetAlert:", err));
+            });
+        }
+
+        /* CERRAR LA SESION */
+        if (logoutButton) {
+            logoutButton.addEventListener('click', function() {
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "¿Quieres cerrar sesión?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, cerrar sesión!',
+                    cancelButtonText: 'Cancelar',
+                    customClass: {
+                        popup: 'custom-popup',
+                        title: 'custom-title',
+                        confirmButton: 'custom-btn',
+                        cancelButton: 'custom-cancel'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '<?= base_url("regresar_Home"); ?>';
+                    }
                 });
-            }
-        });
-    </script>
+            });
+        }
+    });
+</script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>

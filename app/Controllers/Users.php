@@ -49,18 +49,13 @@ class Users extends BaseController
             ],
             'txtEmail' => [
                 'label' => 'Correo Electrónico',
-                'rules' => 'required|max_length[150]|valid_email|is_unique[clientes.email]' // especifica 'clientes.email'
+                'rules' => 'required|max_length[150]|valid_email|is_unique[clientes.email]'
             ],
             'txtTelefono' => [
                 'label' => 'Teléfono',
                 'rules' => 'required|max_length[8]'
             ]
         ];
-
-
-
-
-
 
         // Validación de los campos
         if (!$this->validate($rules)) {
@@ -112,11 +107,11 @@ class Users extends BaseController
         $body = '<p>Hola ' . $post['txtPrimerNombre'] . '</p>';
         $body .= "<p>Para continuar con el proceso de registro, haz clic en el siguiente enlace: <a href='$url'>Activar cuenta</a></p>";
         $body .= '¡Gracias!';
-     
+
         // Enviar el email
         $email->setMessage($body);
         $email->send();
-       
+
         // Mostrar mensaje de éxito
         $titulo = 'Registro exitoso';
         $message = 'Revisa tu correo electrónico para activar tu cuenta.';
@@ -139,10 +134,116 @@ class Users extends BaseController
 
         return $this->showMessage('Ocurrió un error', 'Por favor, intenta nuevamente más tarde.');
     }
-    public function linkRequestForm(){
+    public function linkRequestForm()
+    {
         return view('vistaclientes/link_request');
     }
 
+    public function sendResetLinkEmail()
+    {
+
+        $rules = [
+            'email' => 'required|max_length[150]|valid_email'
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
+        }
+
+        $userModel = new UsersModel();
+
+        $postEmail = $this->request->getPost('email');
+        $user = $userModel->where(['email' => $postEmail, 'activacion' => 1])->first();
+
+        if ($user) {
+            $token = bin2hex(random_bytes(20));
+
+            $expiresAt = new \DateTime();
+            $expiresAt->modify('+1 hour');
+            $userModel->update($user['id_cliente'], [
+                'reset_token' => $token,
+                'reset_token_expires_at' => $expiresAt->format('Y-m-d H:i:s')
+            ]);
+
+            $email = \Config\Services::email();
+            $email->setTo($postEmail);
+            $email->setSubject('Recuperar contraseña');
+
+            // Cuerpo del mensaje
+            $url = base_url('password-reset/' . $token);
+            $body = '<p>Estimad@ ' . ($user['txtPrimerNombre'] ?? 'Usuario') . '</p>';
+            $body .= "<p>Se ha solicitado un reinicio de contraseña.<br> Para restaurar la contraseña, 
+            visita la siguiente dirección: <a href='$url'>$url</a></p>";
+
+            // Enviar el email
+            $email->setMessage($body);
+
+            if (!$email->send()) {
+                // Manejo de errores al enviar el correo
+                return redirect()->back()->with('errors', 'Error al enviar el correo electrónico.');
+            }
+        } else {
+            return redirect()->back()->withInput()->with('errors', 'El correo electrónico no está registrado.');
+        }
+
+        // Mostrar mensaje de éxito
+        $titulo = 'Correo de recuperación enviado';
+        $message = 'Se ha enviado un correo electrónico con instrucciones para reestablecer tu contraseña.';
+
+        return $this->showMessage($titulo, $message);
+    }
+
+    public function resetForm($token)
+    {
+        $userModel = new UsersModel();
+        $user = $userModel->where(['reset_token' => $token])->first();
+
+        if ($user) {
+            $currentDateTime = new \DateTime();
+            $currentDateTimeStr = $currentDateTime->format('Y-m-d H:i:s');
+
+            if ($currentDateTimeStr <= $user['reset_token_expires_at']) {
+                return view('vistaclientes/password-reset', ['token' => $token]);
+            } else {
+                return $this->showMessage('El enlace ha expirado', 'Por favor, solicita un nuevo enlace para restablecer
+                tu contraseña.');
+            }
+        }
+        return $this->showMessage('Ocurrió un error', 'Por favor, intenta nuevamente más tarde.');
+    }
+    public function resetPassword()
+    {
+        $rules = [
+            'password' => [
+                'label' => 'Contraseña',
+                'rules' => 'required|max_length[40]|min_length[5]'
+            ],
+            'repassword' => [
+                'label' => 'Confirmar Contraseña',
+                'rules' => 'required|matches[password]|max_length[50]|min_length[5]'
+            ]
+
+        ];
+        // Validación de los campos
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
+        }
+
+        // Obtener los datos del POST
+        $userModel = new UsersModel();
+        $post = $this->request->getPost(['token', 'password']);
+        $user = $userModel->where(['reset_token' => $post['token'], 'activacion' => 1])->first();
+
+        if ($user) {
+            $userModel->update($user['id_cliente'], [
+                'contrasenia' => password_hash($post['password'], PASSWORD_DEFAULT),
+                'reset_token' => '',
+                'reset_token_expires_at' => ''
+            ]);
+            return $this->showMessage('Contraseña modificada', 'Hemos modificado la contraseña');
+        }
+        return $this->showMessage('Ocurrió un error', 'Por favor, intenta nuevamente más tarde.');
+    }
     private function showMessage($title, $message)
     {
         $data = [

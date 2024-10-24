@@ -22,16 +22,21 @@ $routes->get('servicio_al_cliente', 'CServicioAlCliente::index');
 $routes->get('reporte_queja', 'CReporteQueja::index');
 $routes->post('agregar_reporte', 'CReporteQueja::agregarQueja');
 /*Inicio despues del login */
-$routes->get('inicio_dos', 'CInicioDos::index');
 $routes->get('quienes_somos2', 'CInicioDos::verPagina');
 $routes->get('reporte_de_queja', 'CInicioDos::agregarQueja');
 $routes->get('servicio_al_cliente_lg', 'CInicioDos::verReporteQueja');
+
 
 
 /*Ruta para activa la cuenta despues de registro*/
 $routes->get('activate-user/(:any)', 'Users::activateUser/$1');
 /*Ruta para recuperar contraseña*/
 $routes->get('password-request', 'Users::linkRequestForm');
+$routes->post('password-email', 'Users::sendResetLinkEmail');
+$routes->get('password-reset/(:any)', 'Users::resetForm/$1');
+$routes->post('password/reset', 'Users::resetPassword');
+
+
 /*Ruta para ir de registro a inicio de sesion*/
 $routes->get('iniciodesesion', 'Login::index');
 /*Ruta para enviar el formulario*/
