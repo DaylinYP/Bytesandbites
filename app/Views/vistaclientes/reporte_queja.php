@@ -10,7 +10,9 @@
     <h1 class="text-center">Reporte Queja/Sugerencia</h1>
 
     <form id="form-queja" action="<?= base_url('agregar_reporte'); ?>" method="post">
-        <div class="container mt-3">
+    <?= csrf_field(); ?>
+
+    <div class="container mt-3">
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <div class="mb-3">
