@@ -62,11 +62,11 @@
             </li>
             <li class="active"><a href="<?= base_url('regresar_Home') ?>" class="links">Inicio</a></li>
             <li><a href="<?= base_url('quienes_somos') ?>">Quienes Somos</a></li>
-            <li><a href="<?= base_url('registrarse') ?>">Registrarse</a></li>
-            <li><a href="<?= base_url('login') ?>"><i class="bi bi-person-circle"></i> LOGIN</a></li>
+            <li><a href="<?= base_url('quienes_somos') ?>">Marcas</a></li>
+
             <li>
                 <form class="d-flex">
-                    <input class="form-control mb-2" type="search" placeholder="" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
                     <button class="btn btn-warning" type="submit">Buscar</button>
                 </form>
             </li>

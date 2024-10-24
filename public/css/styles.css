@@ -456,7 +456,28 @@ footer {
 .card {
     border: none;
 }
-
+/*Estilos para alertas*/
+.custom-popup {
+    background-color: #000000;  
+    border: 2px solid #000000;
+    color: white;
+  }
+  
+  .custom-title {
+    color: #ffce2b; 
+    font-weight: bold;
+  }
+  
+  .custom-btn {
+    background-color:  #7000cc;
+    color: white;
+  }
+  
+  .custom-cancel {
+    background-color: #dc3545; 
+    color: white;
+  }
+  
 /*INICIA MEDIA QUERIES*/
 @media screen and (max-width: 1250px) {
     nav {
