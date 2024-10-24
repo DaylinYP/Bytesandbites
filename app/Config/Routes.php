@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 /*VISTA CLIENTES*/
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index' ,['filter'=>'auth']);
 /*Formulario registro de clientes*/
 $routes->get('registro', 'Users::index');
 $routes->post('registro', 'Users::create');
@@ -26,7 +26,11 @@ $routes->get('quienes_somos2', 'CInicioDos::verPagina');
 $routes->get('reporte_de_queja', 'CInicioDos::agregarQueja');
 $routes->get('servicio_al_cliente_lg', 'CInicioDos::verReporteQueja');
 
+//Cliente Home
+$routes->group('/',['filter'=>'auth'], function($routes){
+    $routes->get('inicio_dos', 'CInicioDos::index');
 
+});
 
 /*Ruta para activa la cuenta despues de registro*/
 $routes->get('activate-user/(:any)', 'Users::activateUser/$1');
