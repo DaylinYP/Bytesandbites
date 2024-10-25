@@ -32,11 +32,11 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Buscar</button>
                 <?= form_close() ;?>
-                <div class="text-center d-flex justify-content-evenly table-scroll">
+                <div class="text-center d-flex justify-content-evenly table-responsive"> <!-- table-scroll-->
 
                     <?php if (!empty($datos)): ?>
 
-                        <table class="table table-hover table-dark">
+                        <table class="table table-hover table-dark" id="dataTable">
                             <thead class="">
                                 <tr class="">
                                     <th>id_empleado</th>

@@ -30,6 +30,10 @@
 <link rel="icon" href="<?= base_url('img/favicon.ico'); ?>?v=1.0" type="image/x-icon">
 <link rel="stylesheet" href="<?= base_url('css/menu.css') ?>?v=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> <!--alerta estilo-->
+<link rel="stylesheet" type="text/css" href="<?= base_url('datatables/datatables.min.css') ?>"> <!--css datatable-->
+<!--font awesome con CDN-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 <title><?= isset($titulo) ? $titulo : 'Login'; ?></title>
 
 </head>
@@ -134,7 +138,7 @@
 
                 <!-- Enlaces para Técnico -->
                 <?php if (session()->get('rol') == 'tecnico'): ?>
-                    
+
                     <li class="sidebar-item">
                         <a href="<?php echo base_url('ordenesDeServicio'); ?>" class="sidebar-link">
                             <i class="lni lni-list"></i>
@@ -225,6 +229,13 @@
 
         <!--alerta finaliza-->
 
+        <!--datatable-->
+        <script src="<?= base_url('js/jquery-3.5.1.js') ?>"></script>
+        <!-- datatables JS -->
+        <script type="text/javascript" src="<?= base_url('datatables/datatables.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= base_url('js/main.js') ?>"></script>
+
+            
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
