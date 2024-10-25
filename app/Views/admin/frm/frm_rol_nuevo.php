@@ -7,7 +7,8 @@
 
 <div class="main p-3 ">
     <main class="container d-flex justify-content-center">
-        <form action="<?= base_url('agregar_rol');?>" method="post" class="formulario" id="form-rol">
+        <form action="<?= base_url('agregar_rol'); ?>" method="post" class="formulario" id="form-rol">
+            <?= csrf_field(); ?>
             <div class="row">
                 <div class="col-4">
                     <h1>
@@ -24,8 +25,13 @@
                 <div class="row">
                     <div class="col-lg-12 col-sm-12">
                         <label for="txt_nombre" class="pb-3">Nombre del Rol/Puesto:</label>
-                        <input type="text" name="txt_nombre" class="form-control" value="<?= set_value('txt_nombre')?>" placeholder="Nombre del Rol/Puesto">
-                        <?php echo validation_show_error('txt_nombre');?>
+                        <input type="text" name="txt_nombre" class="form-control" value="<?= set_value('txt_nombre') ?>" placeholder="Nombre del Rol/Puesto">
+                        <?php if (validation_show_error('txt_nombre')): ?>
+                            <div class="alert alert-danger mt-2">
+                                <?php echo validation_show_error('txt_nombre'); ?>
+                            </div>
+                        <?php endif; ?>
+
                     </div>
                     <div class="row p-3">
 
@@ -33,8 +39,12 @@
                             <label for="txt_descripcion_rol" class="pb-3">Descripcion:</label>
                             <div class="row">
 
-                                <textarea name="txt_descripcion_rol" id="" value="<?= set_value('txt_descripcion_rol');?>" class="col-lg-12 col-sm-12"></textarea>
-                                <?php echo validation_show_error('txt_descripcion_rol');?>
+                                <textarea name="txt_descripcion_rol" id="" value="<?= set_value('txt_descripcion_rol'); ?>" class="col-lg-12 col-sm-12"></textarea>
+                                <?php if (validation_show_error('txt_descripcion_rol')): ?>
+                                    <div class="alert alert-danger mt-2">
+                                        <?php echo validation_show_error('txt_descripcion_rol'); ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -43,8 +53,12 @@
                 <div class="row pb-4">
                     <div class="col-lg-6 col-sm-12 ">
                         <label for="txt_precio" class="pb-3">Sueldo:</label>
-                        <input type="number" name="txt_precio" class="form-control" value="<?php echo set_value('txt_precio')?>" placeholder="Ingrese un precio">
-                        <?php echo validation_show_error('txt_precio'); ?>
+                        <input type="number" name="txt_precio" class="form-control" value="<?php echo set_value('txt_precio') ?>" placeholder="Ingrese un precio">
+                        <?php if (validation_show_error('txt_precio')): ?>
+                            <div class="alert alert-danger mt-2">
+                                <?php echo validation_show_error('txt_precio'); ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="col-lg-6 text-center p-3">
                         <button class="btn btn-primary" type="submit">guardar</button>
@@ -63,7 +77,8 @@
 <hr>
 <!--Alerta <<<<-->
 
-<script> //Alertas para asegurar el envio de formulario y deteccion de errores
+<script>
+    //Alertas para asegurar el envio de formulario y deteccion de errores
     document.addEventListener('DOMContentLoaded', function() {
         // Mostrar alerta de error si existe
         <?php if (session()->getFlashdata('error')): ?>
@@ -117,4 +132,4 @@
     });
 </script>
 <!---Finaliza Alerta>>>>-->
-<?= $this->endSection();?>
+<?= $this->endSection(); ?>

@@ -9,6 +9,7 @@
 <div class="main  p-3">
     <main class="container">
         <form action="<?= base_url('modificar_empleado'); ?>" method="post" class="formulario" id="form-update">
+            <?= csrf_field(); ?>
             <?php foreach ($empleadosss as $empleadosss): ?>
                 <div class="row">
                     <div class="col-4">
