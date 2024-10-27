@@ -60,7 +60,7 @@
                     <img src="<?= base_url('img/logotipoBb.png'); ?>" class="logotipo" width="280px" height="80px">
                 </header>
             </li>
-            <li class="active"><a href="<?= base_url('regresar_Home') ?>" class="links">Inicio</a></li>
+            <li class="active"><a href="<?= base_url('/') ?>" class="links">Inicio</a></li>
             <li><a href="<?= base_url('quienes_somos') ?>">Quienes Somos</a></li>
             <li><a href="<?= base_url('registrarse') ?>">Registrarse</a></li>
             <li><a href="<?= base_url('login') ?>"><i class="bi bi-person-circle"></i> LOGIN</a></li>
@@ -191,7 +191,7 @@
                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.href = '<?= base_url('regresar_Home'); ?>';
+                            window.location.href = '<?= base_url('/'); ?>';
                         }
                     });
                 });

@@ -153,7 +153,7 @@
                         if (!response.ok) {
                             throw new Error(`Error HTTP: ${response.status}`);
                         }
-                        return response.text(); // O puedes usar response.json() si el servidor devuelve JSON
+                        return response.text(); 
                     })
                     .then(data => {
                         Swal.fire({
@@ -222,7 +222,7 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = '<?= base_url("regresar_Home"); ?>';
+                        window.location.href = '<?= base_url("/"); ?>';
                     }
                 });
             });

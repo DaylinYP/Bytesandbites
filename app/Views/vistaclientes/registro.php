@@ -4,7 +4,7 @@
 
 <div class="container">
     <br>
-    <a class="btn btn-danger shadow-lg p-2 mb-3 rounded" href="<?php echo base_url('regresar_Home') ?>" role="button">
+    <a class="btn btn-danger shadow-lg p-2 mb-3 rounded" href="<?php echo base_url('/') ?>" role="button">
         <i class="bi-arrow-left-square-fill"></i> Regresar
     </a>
 

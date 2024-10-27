@@ -129,7 +129,7 @@ class Users extends BaseController
                 'activacion' => 1,
                 'activation_token' => ''
             ]);
-            return $this->showMessage('Cuenta activada', 'Tu cuenta ha sido activada.');
+            return $this->showMessage2('Cuenta activada', 'Tu cuenta ha sido activada.');
         }
 
         return $this->showMessage('Ocurrió un error', 'Por favor, intenta nuevamente más tarde.');
@@ -251,5 +251,13 @@ class Users extends BaseController
             'message' => $message
         ];
         return view('layout/message', $data);
+    }
+    private function showMessage2($title, $message)
+    {
+        $data = [
+            'title' => $title,
+            'message' => $message
+        ];
+        return view('layout/message2', $data);
     }
 }

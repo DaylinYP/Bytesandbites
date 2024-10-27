@@ -46,7 +46,6 @@ class Login extends BaseController
         if($this->session->get('logged_in')){
             $this->session->destroy();
         }
-        return redirect()->to(base_url('cerrar_sesion'));
     }
 
 }

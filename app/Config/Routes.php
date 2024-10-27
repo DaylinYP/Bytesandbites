@@ -7,14 +7,11 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 /*VISTA CLIENTES*/
-$routes->get('/', 'Home::index' ,['filter'=>'auth']);
+$routes->get('/', 'Home::index');
 /*Formulario registro de clientes*/
 $routes->get('registro', 'Users::index');
 $routes->post('registro', 'Users::create');
-/*Ruta de botón regresar de form_registro a página de inicio*/
-$routes->get('regresar_Home', 'Home::index');
 /*Ruta para acceder a las paginas desde el nav*/
-$routes->get('index', 'Home:index');
 $routes->get('registrarse', 'Users::index');
 $routes->get('quienes_somos', 'CQuienesSomos::index');
 $routes->get('login', 'Login::index');

@@ -7,7 +7,7 @@ class Home extends BaseController
     public function index(): string
     {
         $data = ['titulo' => 'Inicio'];
-        return view('vistaClientes/index', $data);
+        return view('vistaclientes/index', $data);
 
     } 
 }
