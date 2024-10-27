@@ -33,11 +33,12 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Buscar</button>
                 <?= form_close() ;?>
-                <div class="text-center d-flex justify-content-evenly table-scroll">
+                <div class="text-center d-flex justify-content-evenly ">
 
                     
                 <?php if (!empty($datos)): ?>
-                        <table class="table table-hover table-dark">
+                    <div class="table-responsive" style="overflow-y: auto;">
+                        <table class="table table-hover table-dark" id="myTable">
                             <thead class="">
                                 <tr class="">
                                     <th>id</th>
@@ -68,6 +69,8 @@
 
                             </tbody>
                         </table>
+                        </div>
+                        <div id="myTable_paginate" class="dataTables_paginate"></div>
                         <?php else: ?>
                         <p>No se encontraron resultados.</p>
                     <?php endif; ?>

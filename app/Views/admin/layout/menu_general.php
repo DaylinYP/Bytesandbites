@@ -233,7 +233,8 @@
         <script src="<?= base_url('js/jquery-3.5.1.js') ?>"></script>
         <!-- datatables JS -->
         <script type="text/javascript" src="<?= base_url('datatables/datatables.min.js') ?>"></script>
-        <script type="text/javascript" src="<?= base_url('js/main.js') ?>"></script>
+        <script type="text/javascript" src="<?= base_url('js/adminTable.js') ?>"></script>
+        <!-- <script type="text/javascript" src="< ? =  base_url('js/main.js')  */?>*/"></script> -->
 
             
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
