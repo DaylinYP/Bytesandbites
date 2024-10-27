@@ -152,8 +152,8 @@ class Users extends BaseController
 
         $userModel = new UsersModel();
 
-        $postEmail = $this->request->getPost('email');
-        $user = $userModel->where(['email' => $postEmail, 'activacion' => 1])->first();
+        $post = $this->request->getPost(['email']);
+        $user = $userModel->where(['email' => $post['email'], 'activacion' => 1])->first();
 
         if ($user) {
             $token = bin2hex(random_bytes(20));
@@ -166,7 +166,7 @@ class Users extends BaseController
             ]);
 
             $email = \Config\Services::email();
-            $email->setTo($postEmail);
+            $email->setTo($post['email']);
             $email->setSubject('Recuperar contraseña');
 
             // Cuerpo del mensaje
@@ -177,21 +177,15 @@ class Users extends BaseController
 
             // Enviar el email
             $email->setMessage($body);
-
-            if (!$email->send()) {
-                // Manejo de errores al enviar el correo
-                return redirect()->back()->with('errors', 'Error al enviar el correo electrónico.');
-            }
-        } else {
-            return redirect()->back()->withInput()->with('errors', 'El correo electrónico no está registrado.');
+            $email->send();
         }
-
         // Mostrar mensaje de éxito
         $titulo = 'Correo de recuperación enviado';
         $message = 'Se ha enviado un correo electrónico con instrucciones para reestablecer tu contraseña.';
 
-        return $this->showMessage($titulo, $message);
-    }
+              return $this->showMessage($titulo, $message);
+    
+}
 
     public function resetForm($token)
     {
