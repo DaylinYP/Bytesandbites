@@ -153,11 +153,8 @@ class Users extends BaseController
         $userModel = new UsersModel();
 
         $post = $this->request->getPost(['email']);
-        $user = $this->userModel->where('email', $post['email'])->first();
-        if (!$user) {
-            session()->setFlashdata('errors', 'El correo no está registrado.');
-            return redirect()->back();
-        }
+        $user = $userModel->where('email', $post['email'])->first();
+
         if ($user) {
             $token = bin2hex(random_bytes(20));
 
@@ -236,7 +233,7 @@ class Users extends BaseController
                 'reset_token' => '',
                 'reset_token_expires_at' => ''
             ]);
-            return $this->showMessage('Contraseña modificada', 'Hemos modificado la contraseña');
+            return $this->showMessage2('Contraseña modificada', 'Hemos modificado la contraseña');
         }
         return $this->showMessage('Ocurrió un error', 'Por favor, intenta nuevamente más tarde.');
     }
