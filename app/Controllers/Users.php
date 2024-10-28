@@ -129,7 +129,7 @@ class Users extends BaseController
                 'activacion' => 1,
                 'activation_token' => ''
             ]);
-            return $this->showMessage('Cuenta activada', 'Tu cuenta ha sido activada.');
+            return $this->showMessage2('Cuenta activada', 'Tu cuenta ha sido activada.');
         }
 
         return $this->showMessage('Ocurrió un error', 'Por favor, intenta nuevamente más tarde.');
@@ -152,8 +152,8 @@ class Users extends BaseController
 
         $userModel = new UsersModel();
 
-        $postEmail = $this->request->getPost('email');
-        $user = $userModel->where(['email' => $postEmail, 'activacion' => 1])->first();
+        $post = $this->request->getPost(['email']);
+        $user = $userModel->where('email', $post['email'])->first();
 
         if ($user) {
             $token = bin2hex(random_bytes(20));
@@ -166,7 +166,7 @@ class Users extends BaseController
             ]);
 
             $email = \Config\Services::email();
-            $email->setTo($postEmail);
+            $email->setTo($post['email']);
             $email->setSubject('Recuperar contraseña');
 
             // Cuerpo del mensaje
@@ -177,15 +177,8 @@ class Users extends BaseController
 
             // Enviar el email
             $email->setMessage($body);
-
-            if (!$email->send()) {
-                // Manejo de errores al enviar el correo
-                return redirect()->back()->with('errors', 'Error al enviar el correo electrónico.');
-            }
-        } else {
-            return redirect()->back()->withInput()->with('errors', 'El correo electrónico no está registrado.');
+            $email->send();
         }
-
         // Mostrar mensaje de éxito
         $titulo = 'Correo de recuperación enviado';
         $message = 'Se ha enviado un correo electrónico con instrucciones para reestablecer tu contraseña.';
@@ -240,7 +233,7 @@ class Users extends BaseController
                 'reset_token' => '',
                 'reset_token_expires_at' => ''
             ]);
-            return $this->showMessage('Contraseña modificada', 'Hemos modificado la contraseña');
+            return $this->showMessage2('Contraseña modificada', 'Hemos modificado la contraseña');
         }
         return $this->showMessage('Ocurrió un error', 'Por favor, intenta nuevamente más tarde.');
     }
@@ -251,5 +244,13 @@ class Users extends BaseController
             'message' => $message
         ];
         return view('layout/message', $data);
+    }
+    private function showMessage2($title, $message)
+    {
+        $data = [
+            'title' => $title,
+            'message' => $message
+        ];
+        return view('layout/message2', $data);
     }
 }

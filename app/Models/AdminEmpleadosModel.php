@@ -48,7 +48,8 @@ class AdminEmpleadosModel extends Model
          empleados.nit,
          empleados.telefono,
          empleados.direccion,
-         roles.nombre_rol as rol, 
+         roles.nombre_rol as rol,
+         roles.precio as sueldo, 
          empresas.nombre_empresa as sucursal,
          empleados.extension,
          estados.nombre as estado'
@@ -73,7 +74,8 @@ class AdminEmpleadosModel extends Model
              empleados.nit,
              empleados.telefono,
              empleados.direccion,
-             roles.nombre_rol as rol, 
+             roles.nombre_rol as rol,
+             roles.precio as sueldo, 
              empresas.nombre_empresa as sucursal,
              empleados.extension,
              estados.nombre as estado'

@@ -132,60 +132,37 @@
 
     <!--ALERTAS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const formQueja = document.querySelector('#form-queja');
         const formLogin = document.querySelector('#form-login');
         const logoutButton = document.querySelector('#logout-button');
 
-        /* ENVIO DE QUEJA */
+        // Alerta al enviar formulario de queja
         if (formQueja) {
-            formQueja.addEventListener('submit', function(event) {
+            formQueja.addEventListener('submit', function (event) {
                 event.preventDefault();
-
-                const formData = new FormData(formQueja);
-
-                fetch(formQueja.action, {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Error HTTP: ${response.status}`);
-                        }
-                        return response.text(); // O puedes usar response.json() si el servidor devuelve JSON
-                    })
-                    .then(data => {
-                        Swal.fire({
-                            title: "Enviado",
-                            text: "Tu reporte ha sido enviado con éxito",
-                            icon: "success",
-                            customClass: {
-                                popup: 'custom-popup',
-                                title: 'custom-title',
-                                confirmButton: 'custom-btn',
-                                cancelButton: 'custom-cancel'
-                            }
-                        }).then(() => {
-                            formQueja.reset();
-                        });
-                    })
-                    .catch(err => {
-                        console.error("Error en el envío:", err);
-                        Swal.fire({
-                            title: "Error",
-                            text: "No se pudo enviar tu reporte. Intenta nuevamente.",
-                            icon: "error"
-                        });
-                    });
+                Swal.fire({
+                    title: "Enviado",
+                    text: "Tu reporte ha sido enviado con éxito",
+                    icon: "success",
+                    customClass: {
+                        popup: 'custom-popup',
+                        title: 'custom-title',
+                        confirmButton: 'custom-btn',
+                        cancelButton: 'custom-cancel'
+                    }
+                }).then(() => {
+                    this.submit();
+                }).catch(err => console.error("Error", err));
             });
         }
 
-        /* INICIO DE SESION */
+        // Alerta al iniciar sesión
         if (formLogin) {
-            formLogin.addEventListener('submit', function(event) {
+            formLogin.addEventListener('submit', function (event) {
                 event.preventDefault();
-
                 Swal.fire({
                     title: "Bienvenido a Bytes&Bits!",
                     text: "Has iniciado sesión",
@@ -198,13 +175,13 @@
                     }
                 }).then(() => {
                     this.submit();
-                }).catch(err => console.error("Error en SweetAlert:", err));
+                }).catch(err => console.error("Error", err));
             });
         }
 
-        /* CERRAR LA SESION */
+        // Cerrar sesión con confirmación y redirección
         if (logoutButton) {
-            logoutButton.addEventListener('click', function() {
+            logoutButton.addEventListener('click', function () {
                 Swal.fire({
                     title: '¿Estás seguro?',
                     text: "¿Quieres cerrar sesión?",
@@ -222,13 +199,31 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = '<?= base_url("regresar_Home"); ?>';
+                        window.location.href = '<?= base_url("/") ?>?logout=true';
                     }
                 });
             });
         }
+
+        // Mostrar alerta y redirigir si el usuario ha cerrado sesión
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('logout') === 'true') {
+            Swal.fire({
+                title: "Sesión Cerrada",
+                text: "Has cerrado sesión correctamente.",
+                icon: "success",
+                customClass: {
+                    popup: 'custom-popup',
+                    title: 'custom-title',
+                    confirmButton: 'custom-btn'
+                }
+            }).then(() => {
+                window.location.href = '<?= base_url("/") ?>';
+            });
+        }
     });
 </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

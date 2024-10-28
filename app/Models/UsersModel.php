@@ -77,9 +77,13 @@ class UsersModel extends Model
         if (!empty($busqueda)) {
             $this->groupStart()
                 ->like('clientes.primer_nombre', $busqueda)
+                ->orLike('clientes.segundo_nombre', $busqueda)
                 ->orLike('clientes.primer_apellido', $busqueda)
+                ->orLike('clientes.segundo_apellido', $busqueda)
                 ->orLike('clientes.email', $busqueda)
                 ->orLike('clientes.id_cliente', $busqueda)
+                ->orLike('clientes.telefono', $busqueda)
+                ->orLike('clientes.nit', $busqueda)
              
                 ->groupEnd();
         }

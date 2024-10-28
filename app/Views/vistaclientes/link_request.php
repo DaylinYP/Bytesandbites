@@ -6,7 +6,9 @@
     <div class="card-body p-5">
         <h1 class="h1Bienvenidos fs-4 card-title fw-bold mb-4 text-center">¿Has olvidado tu contraseña?</h1>
         <form action="<?= base_url('password-email') ?>" method="POST" autocomplete="off" style="max-width: 300px; margin: auto;">
-            <div class="mb-3">
+        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+        <div class="mb-3">
+            
                 <label for="email">Correo Electrónico</label> 
                 <input type="email" class="form-control" name="email" id="email" required autofocus> 
             </div>

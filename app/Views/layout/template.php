@@ -60,7 +60,7 @@
                     <img src="<?= base_url('img/logotipoBb.png'); ?>" class="logotipo" width="280px" height="80px">
                 </header>
             </li>
-            <li class="active"><a href="<?= base_url('regresar_Home') ?>" class="links">Inicio</a></li>
+            <li class="active"><a href="<?= base_url('/') ?>" class="links">Inicio</a></li>
             <li><a href="<?= base_url('quienes_somos') ?>">Quienes Somos</a></li>
             <li><a href="<?= base_url('registrarse') ?>">Registrarse</a></li>
             <li><a href="<?= base_url('login') ?>"><i class="bi bi-person-circle"></i> LOGIN</a></li>
@@ -127,77 +127,99 @@
 
     <!--ALERTA QUEJA ENVIADA -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const formQueja = document.querySelector('#form-queja');
-            const formLogin = document.querySelector('#form-login');
-            const logoutButton = document.querySelector('#logout-button');
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const formQueja = document.querySelector('#form-queja');
+        const formLogin = document.querySelector('#form-login');
+        const logoutButton = document.querySelector('#logout-button');
 
-            if (formQueja) {
-                formQueja.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    Swal.fire({
-                        title: "Enviado",
-                        text: "Tu reporte ha sido enviado con éxito",
-                        icon: "success",
-                        customClass: {
-                            popup: 'custom-popup',
-                            title: 'custom-title',
-                            confirmButton: 'custom-btn',
-                            cancelButton: 'custom-cancel'
-                        }
-                    }).then(() => {
-                        this.submit();
-                    }).catch(err => console.error("Error en SweetAlert:", err));
+        // Alerta al enviar formulario de queja
+        if (formQueja) {
+            formQueja.addEventListener('submit', function (event) {
+                event.preventDefault();
+                Swal.fire({
+                    title: "Enviado",
+                    text: "Tu reporte ha sido enviado con éxito",
+                    icon: "success",
+                    customClass: {
+                        popup: 'custom-popup',
+                        title: 'custom-title',
+                        confirmButton: 'custom-btn',
+                        cancelButton: 'custom-cancel'
+                    }
+                }).then(() => {
+                    this.submit();
+                }).catch(err => console.error("Error", err));
+            });
+        }
+
+        // Alerta al iniciar sesión
+        if (formLogin) {
+            formLogin.addEventListener('submit', function (event) {
+                event.preventDefault();
+                Swal.fire({
+                    title: "Bienvenido a Bytes&Bits!",
+                    text: "Has iniciado sesión",
+                    icon: "success",
+                    customClass: {
+                        popup: 'custom-popup',
+                        title: 'custom-title',
+                        confirmButton: 'custom-btn',
+                        cancelButton: 'custom-cancel'
+                    }
+                }).then(() => {
+                    this.submit();
+                }).catch(err => console.error("Error", err));
+            });
+        }
+
+        // Cerrar sesión con confirmación y redirección
+        if (logoutButton) {
+            logoutButton.addEventListener('click', function () {
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "¿Quieres cerrar sesión?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, cerrar sesión!',
+                    cancelButtonText: 'Cancelar',
+                    customClass: {
+                        popup: 'custom-popup',
+                        title: 'custom-title',
+                        confirmButton: 'custom-btn',
+                        cancelButton: 'custom-cancel'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirige con el parámetro logout
+                        window.location.href = '<?= base_url("/") ?>?logout=true';
+                    }
                 });
-            }
+            });
+        }
 
-            if (formLogin) {
-                formLogin.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    Swal.fire({
-                        title: "Bienvenido a Bytes&Bits!",
-                        text: "Has iniciado sesión",
-                        icon: "success",
-                        customClass: {
-                            popup: 'custom-popup',
-                            title: 'custom-title',
-                            confirmButton: 'custom-btn',
-                            cancelButton: 'custom-cancel'
-                        }
-                    }).then(() => {
-                        this.submit();
-                    }).catch(err => console.error("Error en SweetAlert:", err));
-                });
+        // Mostrar alerta y redirigir si el usuario ha cerrado sesión
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('logout') === 'true') {
+            Swal.fire({
+                title: "Sesión Cerrada",
+                text: "Has cerrado sesión correctamente.",
+                icon: "success",
+                customClass: {
+                    popup: 'custom-popup',
+                    title: 'custom-title',
+                    confirmButton: 'custom-btn'
+                }
+            }).then(() => {
+                window.location.href = '<?= base_url("/") ?>';
+            });
+        }
+    });
+</script>
 
-            }
-
-            if (logoutButton) {
-                logoutButton.addEventListener('click', function() {
-                    Swal.fire({
-                        title: '¿Estás seguro?',
-                        text: "¿Quieres cerrar sesión?",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sí, cerrar sesión!',
-                        cancelButtonText: 'Cancelar',
-                        customClass: {
-                            popup: 'custom-popup',
-                            title: 'custom-title',
-                            confirmButton: 'custom-btn',
-                            cancelButton: 'custom-cancel'
-                        }
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = '<?= base_url('regresar_Home'); ?>';
-                        }
-                    });
-                });
-            }
-        });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>

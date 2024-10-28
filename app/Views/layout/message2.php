@@ -6,7 +6,13 @@
         <h1 class="fs-4 card-title fw-bold mb-4"><?= $title; ?></h1>
         <p><?= $message; ?></p>
    
+<div class="d-flex justify-content-center"> 
+            <a href="<?= base_url('login'); ?>" class="btn btn-warning">
+                Iniciar Sesión
+            </a>
+        </div>
     </div>
 </div>
 
 <?php echo $this->endSection(); ?>
+
