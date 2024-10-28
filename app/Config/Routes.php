@@ -23,6 +23,7 @@ $routes->get('quienes_somos2', 'CInicioDos::verPagina');
 $routes->get('reporte_de_queja', 'CInicioDos::agregarQueja');
 $routes->get('servicio_al_cliente_lg', 'CInicioDos::verReporteQueja');
 $routes->get('inicio_dos', 'CInicioDos::index');
+$routes->post('agregar_reporte2', 'CReporteQueja::agregarQueja2');
 
 /*Ruta para activa la cuenta despues de registro*/
 $routes->get('activate-user/(:any)', 'Users::activateUser/$1');
