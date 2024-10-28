@@ -6,19 +6,23 @@
     <div class="main texto p-3">
         <div class="row container-fluid">
 
-            <div class="col-11 text-center">
-                <h1 class="titulo   titulo-principal  py-5">
-                    Lista de Repuestos
-                </h1>
+            <div class="row py-2">
+                <div class="col-6">
+                    <h1 class="titulo">
+                        Lista de Repuestos
+                    </h1>
+                </div>
+                <div class="col">
+                    <hr>
+                </div>
+            </div>
 
             </div>
-            <div class="col-1 d-md-flex justify-content-md-end  py-5 animate__animated animate__slideInRight">
+            <div class="col-12 d-md-flex justify-content-md-end  pb-5 animate__animated animate__slideInRight">
                 <a href="<?= base_url('nuevo_repuesto') ?>" class="btn btn-outline-dark btn-lg position-absolute  translate-middle rounded-pill">
                     <i class="bi bi-plus-square p-1"></i> Nuevo Repuesto
                 </a>
             </div>
-
-        </div>
 
         <div>
             <main class="container-fluid py-5">
@@ -75,7 +79,8 @@
                                         <?php else: ?>
                                             <span>No hay imagen</span>
                                         <?php endif; ?>
-                                    </td>                                    <td class="text-light"><?= $repuesto['cantidad'] ?></td>
+                                    </td>                                    
+                                    <td class="text-light"><?= $repuesto['cantidad'] ?></td>
                                     <td class="text-light">
                                         <?php
                                         // Buscar el nombre del proveedor
@@ -115,10 +120,34 @@
             </main>
         </div>
     </div>
-    <!--datatable-->
-    <script src="<?= base_url('js/jquery-3.5.1.js') ?>"></script>
-    <!-- datatables JS -->
-    <script type="text/javascript" src="<?= base_url('datatables/datatables.min.js') ?>"></script>
-    <script type="text/javascript" src="<?= base_url('js/main.js') ?>"></script>
+    <!--alerta-->
+    <script>
+        //Alertas para asegurar el envio de formulario y deteccion de errores
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar alerta de error si existe
+            <?php if (session()->getFlashdata('error')): ?>
+                Swal.fire({
+                    title: 'Error',
+                    text: "<?php echo session()->getFlashdata('error'); ?>",
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
+            <?php endif; ?>
+
+            // Mostrar alerta de éxito si existe
+            <?php if (session()->getFlashdata('success')): ?>
+                Swal.fire({
+                    title: '¡Bien hecho!',
+                    text: "<?php echo session()->getFlashdata('success'); ?>",
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
+            <?php endif; ?>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--alerta finaliza-->
+    
 <?= $this->endSection(); ?> 
    

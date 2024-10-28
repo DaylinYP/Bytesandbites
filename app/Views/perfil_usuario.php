@@ -8,14 +8,14 @@
             <div class="row">
                 <div class="col-4">
                     <h1 class="titulo text-dark">
-                        DATOS DEL Usuario
+                        DATOS DEL USUARIO
                     </h1>
                 </div>
                 <div class="col">
                     <hr>
                 </div>
             </div>
-            <section class="form-fondo">
+            <section class="form-fondo bg-dark">
                 
                     <div class="row pt-4">
                         <div class="col">

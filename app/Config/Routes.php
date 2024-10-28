@@ -61,8 +61,12 @@ $routes->get('/solicitarMateriales', 'SolicitarMaterialesController::solicitarMa
 $routes->post('/agregar_solicitud', 'SolicitarMaterialesController::agregarSolicitud');
 /*Para Lista de materiales solicitados*/
 $routes->get('listaSolicitudes', 'SolicitarMaterialesController::listaSolicitudes', ['filter' => 'auth']);
-/* Para ver las órdenes de servicio*/
-$routes->get('ordenesDeServicio', 'ordenesDeServicioController::index', ['filter' => 'auth']);
+/* Para ver las órdenes pendientes*/
+$routes->get('ordenesDeServicio', 'OrdenesDeServicioController::index', ['filter' => 'auth']);
+/* Para ver las órdenes Asignadas*/
+$routes->post('asignarOrden/(:num)', 'ordenesDeServicioController::asignarOrden/$1');
+$routes->get('ordenes_asignadas', 'OrdenesDeServicioController::ordenesAsignadas', ['filter' => 'auth']);
+
 /* Para editar la información del técnico*/
 $routes->get('perfil_usuario', 'EmpleadoController::verPerfil', ['filter' => 'auth']);
 
@@ -125,7 +129,12 @@ $routes->get('ordenes_enproceso', 'OrdenesController::ordenesEnProceso');
 $routes->get('ordenes_finalizadas', 'OrdenesController::ordenesFinalizadas');
 
 $routes->get('orden/nueva', 'OrdenesController::nuevaOrden', ['filter' => 'auth']);
-$routes->post('orden/agregar', 'OrdenesController::agregarOrden');
+$routes->post('orden/agregar', 'OrdenesController::agregarOrden', ['filter' => 'auth']);
+
+/*imprimir orden */
+$routes->get('imprimir-orden/(:num)', 'OrdenesController::ordenImprint/$1', ['filter' => 'auth']);
+
+
 
 
 /*Encargado de Bodega*/
@@ -133,17 +142,17 @@ $routes->post('orden/agregar', 'OrdenesController::agregarOrden');
 $routes->get('lista_repuestos', 'RepuestosController::index', ['filter' => 'auth']);
 
 //Agregar nuevo registro
-$routes->get('nuevo_repuesto', 'RepuestosController::nuevoRepuesto', ['filter' => 'auth']);
+$routes->get('nuevo_repuesto', 'RepuestosController::nuevoRepuesto',['filter' => 'auth']);
 $routes->post('agregar_repuesto', 'RepuestosController::agregarRepuesto');
 
 //Actualizar un registro
-$routes->get('buscar_repuesto/(:num)', 'RepuestosController::buscarRepuesto/$1', ['filter' => 'auth']);
+$routes->get('buscar_repuesto/(:num)', 'RepuestosController::buscarRepuesto/$1',['filter' => 'auth']);
 $routes->post('modificar_repuesto', 'RepuestosController::modificarRepuesto');
 
 
 // Eliminar registro
-$routes->get('eliminar_Repuesto/(:num)', 'RepuestosController::eliminarRepuesto/$1', ['filter' => 'auth']);
+$routes->get('eliminar_Repuesto/(:num)', 'RepuestosController::eliminarRepuesto/$1',['filter' => 'auth']);
 
-/**---------> */
+/**---------> */ 
 //Perfil de empleados
 $routes->get('perfil_empleado/(:num)', 'EmpleadoController::perfilEmpleado/$1');

@@ -31,7 +31,7 @@
                         <strong>Estado:</strong> <?= isset($orden['estado_orden']) ? $orden['estado_orden'] : 'N/A' ?><br>
                     </p>
                     <div>
-                    <a href="<?= base_url('verOrdenes'); ?>" class="btn btn-warning form-control">
+                    <a href="<?= site_url('imprimir-orden/' . $orden['no_orden']) ?>" class="btn btn-warning form-control">
                             Ver Detalles
                         </a>
                     </div>

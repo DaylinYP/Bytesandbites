@@ -46,11 +46,8 @@
                                             <td><?php echo $orden['fecha_entrega']; ?></td>
                                             <td><?php echo $orden['estado_orden']; ?></td>
                                             <td>
-                                                <a href="<?= base_url('buscar_orden/') . $orden['no_orden'] ?>" class="btn btn-success">
-                                                    <i class="bi bi-pencil-square">Actualizar</i>
-                                                </a>
-                                                <a href="<?= base_url('eliminar_orden/') . $orden['no_orden'] ?>" class="btn btn-danger">
-                                                    <i class="bi bi-trash">Eliminar</i>
+                                                <a href="#" class="btn btn-primary" onclick="asignarOrden('<?= $orden['no_orden'] ?>')">
+                                                    <i class="bi bi-pencil-square">Asignar orden</i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -71,6 +68,33 @@
         crossorigin="anonymous"></script>
 
     <script src="<?= base_url('js/script.js') ?>"></script>
+    <script>
+        function asignarOrden(noOrden) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¿Deseas asignar esta orden?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, asignar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "<?= base_url('asignar_orden/') ?>" + noOrden;
+                } else {
+                    Swal.fire({
+                        title: 'Cancelado',
+                        text: 'La orden no ha sido asignada',
+                        icon: 'info',
+                        confirmButtonText: 'Aceptar'
+                    });
+                }
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <?= $this->endSection(); ?> 
 
-    
+          

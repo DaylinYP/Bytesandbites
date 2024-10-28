@@ -31,8 +31,6 @@
 <link rel="stylesheet" href="<?= base_url('css/menu.css') ?>?v=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"> <!--alerta estilo-->
 <link rel="stylesheet" type="text/css" href="<?= base_url('datatables/datatables.min.css') ?>"> <!--css datatable-->
-<!--font awesome con CDN-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 <title><?= isset($titulo) ? $titulo : 'Login'; ?></title>
 
@@ -42,7 +40,7 @@
 
     <!--Menu-->
     <div class="wrapper">
-        <aside id="sidebar">
+        <aside id="sidebar" >
 
             <!-- Menú para roles -->
             <ul class="sidebar-nav">
@@ -143,6 +141,12 @@
                         <a href="<?php echo base_url('ordenesDeServicio'); ?>" class="sidebar-link">
                             <i class="lni lni-list"></i>
                             <span>Órdenes de servicio</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="<?php echo base_url('ordenes_asignadas'); ?>" class="sidebar-link">
+                            <i class="lni lni-list"></i>
+                            <span>Órdenes Asignadas</span>
                         </a>
                     </li>
                     <li class="sidebar-item">

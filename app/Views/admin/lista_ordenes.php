@@ -9,7 +9,7 @@
 <div class="main  p-3">
     <main class="container">
         <div class="col-xl-1 col-12">
-                    <div class=" d-md-flex justify-content-md-end container py-5 animate__animated animate__slideInRight mx-4 my-4">
+                    <div class=" d-md-flex justify-content-md-end container py-3 animate__animated animate__slideInRight mx-4 my-4">
                         <a href="<?=base_url('menu_ordenes_servicio')?>" class="btn btn-outline-primary btn-lg position-absolute  translate-middle rounded-pill"><i class="bi bi-caret-left-square"></i></a>
                     </div>
                 </div>
@@ -35,8 +35,8 @@
             
                 <div class="text-center d-flex justify-content-evenly pt-4">
                     <?php if (!empty($detalles_equipos)): ?>
-                        <div style="overflow-x: auto; width: 100%; overflow-y: auto; max-height: 500px; width: 100%;">
-                            <table class="table table-hover table-dark table-responsive" id="dataTable">
+                        <div style="overflow-x: auto; width: 100%; overflow-y: auto; max-height: 800px; width: 100%;">
+                            <table class="table table-hover table-dark table-responsive">
                                 <thead class="text-dark">
                                     <tr>
                                         <th>No. Orden</th>
@@ -205,11 +205,7 @@
 
 </main>
 </div>
-<!--datatable-->
-<script src="<?= base_url('js/jquery-3.5.1.js') ?>"></script>
-    <!-- datatables JS -->
-    <script type="text/javascript" src="<?= base_url('datatables/datatables.min.js') ?>"></script>
-    <script type="text/javascript" src="<?= base_url('js/main.js') ?>"></script>
+
 
 <!---->
 <?= $this->endSection(); ?>

@@ -107,8 +107,9 @@ class RepuestosController extends BaseController
     
         $repuestosModel = new RepuestosModel();
         $repuestosModel->insert($data);
-    
+
         return redirect()->to('/lista_repuestos');
+
     }
 
     public function buscarRepuesto($id = null)
@@ -171,7 +172,7 @@ class RepuestosController extends BaseController
     
         return redirect()->to('/lista_repuestos');
     }
-    
+
 
     public function eliminarRepuesto($id = null)
     {

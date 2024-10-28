@@ -11,7 +11,9 @@
         
         
         <main class="container">
-            <form action="<?=base_url('modificar_repuesto')?>" method="post" enctype="multipart/form-data"> <!-- Agregado enctype -->
+            <form  id="form-update" action="<?=base_url('modificar_repuesto')?>" method="post" enctype="multipart/form-data"> <!-- Agregado enctype -->
+                 <?= csrf_field(); ?>
+
                 <section class="bg-dark form-fondo texto text-light">
                     <div class="row pt-4">
                         <div class="row pb-4">
@@ -140,6 +142,59 @@
         }
     }
     </script> 
+    <script>
+    // Manejar el envío del formulario
+document.getElementById('form-update').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevenir el envío inmediato
+
+    // Validar campos requeridos
+    let camposVacios = [];
+    const inputsRequeridos = document.querySelectorAll('#form-update [required]');
+
+    inputsRequeridos.forEach(input => {
+        if (!input.value) {
+            camposVacios.push(input.placeholder); // Agregar el placeholder del campo vacío a la lista
+        }
+    });
+
+    if (camposVacios.length > 0) {
+        // Mostrar alerta si hay campos vacíos
+        Swal.fire({
+            title: 'Error',
+            text: 'Los siguientes campos están vacíos: ' + camposVacios.join(', '),
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+    } else {
+        // Confirmar actualización si todos los campos están llenos
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Deseas actualizar este registro?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, actualizar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Enviar el formulario
+                this.submit();
+            } else {
+                // Cancelar actualización
+                Swal.fire({
+                    title: 'Cancelado',
+                    text: 'La actualización no se ha realizado',
+                    icon: 'info',
+                    confirmButtonText: 'Aceptar'
+                });
+            }
+        });
+    }
+});
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?= $this->endSection(); ?> 
 
 
