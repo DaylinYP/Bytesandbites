@@ -14,7 +14,7 @@
             </div>
             <div class="mb-3">
                 <label for="repassword">Confirmar Contraseña</label>
-                <input type="password" class="form-control" name="repassword" id="repassword" required autofocus>
+                <input type="password" class="form-control" name="repassword" id="repassword" required>
             </div>
             <div class="d-flex align-items-center">
                 <button type="submit" class="btn btn-warning sm-auto">Restablecer Contraseña</button>

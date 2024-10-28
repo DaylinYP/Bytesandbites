@@ -153,8 +153,11 @@ class Users extends BaseController
         $userModel = new UsersModel();
 
         $post = $this->request->getPost(['email']);
-        $user = $userModel->where(['email' => $post['email'], 'activacion' => 1])->first();
-
+        $user = $this->userModel->where('email', $post['email'])->first();
+        if (!$user) {
+            session()->setFlashdata('errors', 'El correo no está registrado.');
+            return redirect()->back();
+        }
         if ($user) {
             $token = bin2hex(random_bytes(20));
 
@@ -183,9 +186,8 @@ class Users extends BaseController
         $titulo = 'Correo de recuperación enviado';
         $message = 'Se ha enviado un correo electrónico con instrucciones para reestablecer tu contraseña.';
 
-              return $this->showMessage($titulo, $message);
-    
-}
+        return $this->showMessage($titulo, $message);
+    }
 
     public function resetForm($token)
     {
