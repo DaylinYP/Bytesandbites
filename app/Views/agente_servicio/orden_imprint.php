@@ -131,7 +131,13 @@
         <hr>
         <!-- Botón para Imprimir -->
     <div class="text-end py-3">
-        <button id="btnImprimir" class="btn btn-warning form-control">Imprimir Orden</button>
+        <button id="btnImprimir" class="btn btn-warning form-control">
+            <?php if ($ordenes['id_estado_orden'] == 3): ?>
+                    IMPRIMIR FACTURA
+                <?php else: ?>
+                    IMPRIMIR ORDEN
+            <?php endif; ?>    
+        </button>
     </div>
         <hr>
         <footer style="background-color: rgb(89, 70, 121)" class="p-5 text-white rounded-bottom">
