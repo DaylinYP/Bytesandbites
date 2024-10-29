@@ -69,6 +69,8 @@ $routes->get('inicioSesion', 'EmpleadoController::inicioSesion');
 
 
 
+
+
 /*Admin---<*/
 
 /*Inicio*/
