@@ -111,6 +111,7 @@ h6,
     box-shadow: 0 0 30px rgba(0, 0, 0, .2);
 
 }
+
 .button-sticky2 {
     height: 40px;
     width: 45px;
@@ -127,19 +128,22 @@ h6,
     text-shadow: 0 0 2px #000000;
 
 }
-.bi-escape{
+
+.bi-escape {
     color: rgb(255, 255, 255);
     font-size: 1.2rem;
     text-shadow: 0 0 2px #000000;
 }
- .bi-escape:hover {
+
+.bi-escape:hover {
     color: rgb(255, 255, 255);
     font-size: 1.5rem;
     text-shadow: 0 0 5px #000000;
 
 }
 
-.button-sticky:hover, .button-sticky2:hover {
+.button-sticky:hover,
+.button-sticky2:hover {
     background-color: rgb(231, 176, 10);
 }
 
@@ -159,9 +163,11 @@ h6,
     font-family: 'Comfortaa', cursive;
 
 }
-.btn-regresar{
+
+.btn-regresar {
     margin-top: 50px;
 }
+
 /* INICIA NAV */
 nav {
     background-color: rgb(0, 0, 0);
@@ -214,6 +220,20 @@ li a:hover {
     width: 60%;
     display: flex;
     justify-content: center;
+}
+
+#suggestionsList {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 400px;
+    overflow-y: auto;
+    width: 200px;
+    padding: 10px 0;
+    font-weight: 300;
+    cursor: pointer;
 }
 
 /*FINALIZA NAV*/
@@ -462,28 +482,29 @@ footer {
 .card {
     border: none;
 }
+
 /*Estilos para alertas*/
 .custom-popup {
-    background-color: #000000;  
+    background-color: #000000;
     border: 2px solid #000000;
     color: white;
-  }
-  
-  .custom-title {
-    color: #ffce2b; 
+}
+
+.custom-title {
+    color: #ffce2b;
     font-weight: bold;
-  }
-  
-  .custom-btn {
-    background-color:  #7000cc;
+}
+
+.custom-btn {
+    background-color: #7000cc;
     color: white;
-  }
-  
-  .custom-cancel {
-    background-color: #dc3545; 
+}
+
+.custom-cancel {
+    background-color: #dc3545;
     color: white;
-  }
-  
+}
+
 /*INICIA MEDIA QUERIES*/
 @media screen and (max-width: 1250px) {
     nav {

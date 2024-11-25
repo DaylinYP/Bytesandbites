@@ -66,14 +66,17 @@
             <li><a href="<?= base_url('registrarse') ?>">Registrarse</a></li>
             <li><a href="<?= base_url('login') ?>"><i class="bi bi-person-circle"></i> LOGIN</a></li>
             <li>
-                <form class="d-flex">
-                    <input class="form-control form-control-sm me-2" type="search" placeholder=""
-                        aria-label="Search" style="height: 35px; margin-top:15px">
+                <form class="d-flex" id="searchForm" onsubmit="searchFunction(event)">
+                    <input id="searchInput" class="form-control form-control-sm me-2" type="search" placeholder="Servicios..." aria-label="Search" style="height: 35px; margin-top:15px" oninput="showSuggestions()">
                     <button class="btn btn-warning btn-sm" type="submit" style="height: 30px; margin-top:15px">Buscar</button>
                 </form>
+                <div id="suggestionsList">
+                </div>
             </li>
+
         </ul>
     </nav>
+
 
     <?php echo $this->renderSection("content") ?>
 
@@ -126,100 +129,143 @@
         <h6>Creado por: GRUPO #1</h6>
     </footer>
 
+
+    <!--BUSCADOR FUNCIONAL-->
+    <script>
+        const suggestions = [
+            "Reparación de Computadoras",
+            "Instalación de Software",
+            "Recuperación de Datos",
+            "Migración de Datos",
+            "Mantenimiento Preventivo",
+            "Seguridad Informática"
+        ];
+
+        function showSuggestions() {
+            const input = document.getElementById('searchInput').value;
+            const suggestionsList = document.getElementById('suggestionsList');
+
+            if (input.length === 0) {
+                suggestionsList.style.display = 'none'; // Ocultar la lista si no hay texto
+            } else {
+                const filteredSuggestions = suggestions.filter(item => item.toLowerCase().includes(input.toLowerCase()));
+
+                if (filteredSuggestions.length > 0) {
+                    suggestionsList.innerHTML = filteredSuggestions.map(item => `<div class="suggestion-item">${item}</div>`).join('');
+                    suggestionsList.style.display = 'block';
+                } else {
+                    suggestionsList.style.display = 'none'; // Ocultar la lista si no hay coincidencias
+                }
+                const suggestionItems = document.querySelectorAll('.suggestion-item');
+                suggestionItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        document.getElementById('searchInput').value = item.textContent;
+                        suggestionsList.style.display = 'none'; // Ocultar la lista después de seleccionar una opción
+                    });
+                });
+            }
+        }
+
+        function searchFunction(event) {
+            event.preventDefault();
+            const searchTerm = document.getElementById('searchInput').value;
+            alert('Buscando: ' + searchTerm);
+        }
+    </script>
     <!--ALERTA QUEJA ENVIADA -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const formQueja = document.querySelector('#form-queja');
-        const formLogin = document.querySelector('#form-login');
-        const logoutButton = document.querySelector('#logout-button');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formQueja = document.querySelector('#form-queja');
+            const formLogin = document.querySelector('#form-login');
+            const logoutButton = document.querySelector('#logout-button');
 
-        // Alerta al enviar formulario de queja
-        if (formQueja) {
-            formQueja.addEventListener('submit', function (event) {
-                event.preventDefault();
-                Swal.fire({
-                    title: "Enviado",
-                    text: "Tu reporte ha sido enviado con éxito",
-                    icon: "success",
-                    customClass: {
-                        popup: 'custom-popup',
-                        title: 'custom-title',
-                        confirmButton: 'custom-btn',
-                        cancelButton: 'custom-cancel'
-                    }
-                }).then(() => {
-                    this.submit();
-                }).catch(err => console.error("Error", err));
-            });
-        }
-
-        // Alerta al iniciar sesión
-        if (formLogin) {
-            formLogin.addEventListener('submit', function (event) {
-                event.preventDefault();
-                Swal.fire({
-                    title: "Bienvenido a Bytes&Bits!",
-                    text: "Has iniciado sesión",
-                    icon: "success",
-                    customClass: {
-                        popup: 'custom-popup',
-                        title: 'custom-title',
-                        confirmButton: 'custom-btn',
-                        cancelButton: 'custom-cancel'
-                    }
-                }).then(() => {
-                    this.submit();
-                }).catch(err => console.error("Error", err));
-            });
-        }
-
-        // Cerrar sesión con confirmación y redirección
-        if (logoutButton) {
-            logoutButton.addEventListener('click', function () {
-                Swal.fire({
-                    title: '¿Estás seguro?',
-                    text: "¿Quieres cerrar sesión?",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sí, cerrar sesión!',
-                    cancelButtonText: 'Cancelar',
-                    customClass: {
-                        popup: 'custom-popup',
-                        title: 'custom-title',
-                        confirmButton: 'custom-btn',
-                        cancelButton: 'custom-cancel'
-                    }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Redirige con el parámetro logout
-                        window.location.href = '<?= base_url("/") ?>?logout=true';
-                    }
+            // Alerta al enviar formulario de queja
+            if (formQueja) {
+                formQueja.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    Swal.fire({
+                        title: "Enviado",
+                        text: "Tu reporte ha sido enviado con éxito",
+                        icon: "success",
+                        customClass: {
+                            popup: 'custom-popup',
+                            title: 'custom-title',
+                            confirmButton: 'custom-btn',
+                            cancelButton: 'custom-cancel'
+                        }
+                    }).then(() => {
+                        this.submit();
+                    }).catch(err => console.error("Error", err));
                 });
-            });
-        }
+            }
 
-        // Mostrar alerta y redirigir si el usuario ha cerrado sesión
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('logout') === 'true') {
-            Swal.fire({
-                title: "Sesión Cerrada",
-                text: "Has cerrado sesión correctamente.",
-                icon: "success",
-                customClass: {
-                    popup: 'custom-popup',
-                    title: 'custom-title',
-                    confirmButton: 'custom-btn'
-                }
-            }).then(() => {
-                window.location.href = '<?= base_url("/") ?>';
-            });
-        }
-    });
-</script>
+            // Alerta al iniciar sesión
+            if (formLogin) {
+                formLogin.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    Swal.fire({
+                        title: "Bienvenido a Bytes&Bits!",
+                        text: "Has iniciado sesión",
+                        icon: "success",
+                        customClass: {
+                            popup: 'custom-popup',
+                            title: 'custom-title',
+                            confirmButton: 'custom-btn',
+                            cancelButton: 'custom-cancel'
+                        }
+                    }).then(() => {
+                        this.submit();
+                    }).catch(err => console.error("Error", err));
+                });
+            }
+
+            // Cerrar sesión con confirmación y redirección
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: "¿Quieres cerrar sesión?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, cerrar sesión!',
+                        cancelButtonText: 'Cancelar',
+                        customClass: {
+                            popup: 'custom-popup',
+                            title: 'custom-title',
+                            confirmButton: 'custom-btn',
+                            cancelButton: 'custom-cancel'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Redirige con el parámetro logout
+                            window.location.href = '<?= base_url("/") ?>?logout=true';
+                        }
+                    });
+                });
+            }
+
+            // Mostrar alerta y redirigir si el usuario ha cerrado sesión
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('logout') === 'true') {
+                Swal.fire({
+                    title: "Sesión Cerrada",
+                    text: "Has cerrado sesión correctamente.",
+                    icon: "success",
+                    customClass: {
+                        popup: 'custom-popup',
+                        title: 'custom-title',
+                        confirmButton: 'custom-btn'
+                    }
+                }).then(() => {
+                    window.location.href = '<?= base_url("/") ?>';
+                });
+            }
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
